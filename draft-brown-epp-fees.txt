@@ -440,7 +440,7 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
          <pattern value="[A-Z]{3}" />
        </restriction>
      </simpleType>
-     <simpleType name="actionType">
+
 
 
 
@@ -449,6 +449,7 @@ Brown                      Expires May 5, 2014                  [Page 8]
 Internet-Draft     Registry Fee Extension for the EPP      November 2013
 
 
+     <simpleType name="actionType">
        <restriction base="string">
          <enumeration value="create" />
          <enumeration value="renew" />
@@ -456,6 +457,7 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
          <enumeration value="restore" />
        </restriction>
      </simpleType>
+
      <simpleType name="feeType">
        <restriction base="decimal" />
      </simpleType>
@@ -495,8 +497,6 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
    document.
 
    XML: See the "Formal Syntax" section of this document.
-
-
 
 
 
