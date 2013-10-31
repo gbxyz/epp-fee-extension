@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+  xmlns:fee="urn:ietf:params:xml:ns:fee-0.1"
+  xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+  xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"
+  targetNamespace="urn:ietf:params:xml:ns:fee-0.1"
+  elementFormDefault="qualified">
+
+  <import namespace="urn:ietf:params:xml:ns:eppcom-1.0" />
+  <import namespace="urn:ietf:params:xml:ns:domain-1.0" />
+
+  <annotation>
+    <documentation>Extensible Provisioning Protocol v1.0 domain name
+    extension schema for fee information.</documentation>
+  </annotation>
+
+  <!--
+  Child elements found in EPP commands.
+  -->
+  <element name="check" type="fee:checkType" />
+  <element name="chkData" type="fee:chkDataType" />
+
+  <!--
+    client <check> command
+  -->
+  <complexType name="checkType">
+    <sequence>
+      <element name="domain" type="eppcom:labelType" />
+      <element name="currency" type="fee:currencyType" />
+      <element name="action" type="fee:actionType" />
+      <element name="period" type="domain:periodType" />
+    </sequence>
+  </complexType>
+
+  <!--
+    server <check> result
+  -->
+  <complexType name="chkDataType">
+    <sequence>
+      <element name="domain" type="eppcom:labelType" />
+      <element name="currency" type="fee:currencyType" />
+      <element name="action" type="fee:actionType" />
+      <element name="period" type="domain:periodType" />
+      <element name="fee" type="fee:feeType" />
+    </sequence>
+  </complexType>
+
+  <!--
+    common types
+  -->
+  <simpleType name="currencyType">
+    <restriction base="string">
+      <pattern value="[A-Z]{3}" />
+    </restriction>
+  </simpleType>
+  <simpleType name="actionType">
+    <restriction base="string">
+      <enumeration value="create" />
+      <enumeration value="renew" />
+      <enumeration value="transfer" />
+      <enumeration value="restore" />
+    </restriction>
+  </simpleType>
+  <simpleType name="feeType">
+    <restriction base="decimal" />
+  </simpleType>
+</schema>

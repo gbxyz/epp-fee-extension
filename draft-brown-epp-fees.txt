@@ -1,0 +1,560 @@
+
+
+
+Internet Engineering Task Force                                GB. Brown
+Internet-Draft                                      CentralNic Group plc
+Intended status: Experimental                              November 2013
+Expires: May 5, 2014
+
+
+    Registry Fee Extension for the Extensible Provisioning Protocol
+                          draft-brown-epp-fees
+
+Abstract
+
+   This document describes an Extensible Provisioning Protocol (EPP)
+   extension mapping for registry fees.
+
+Status of this Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at http://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on May 5, 2014.
+
+Copyright Notice
+
+   Copyright (c) 2013 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+   (http://trustee.ietf.org/license-info) in effect on the date of
+   publication of this document.  Please review these documents
+   carefully, as they describe your rights and restrictions with respect
+   to this document.  Code Components extracted from this document must
+   include Simplified BSD License text as described in Section 4.e of
+   the Trust Legal Provisions and are provided without warranty as
+   described in the Simplified BSD License.
+
+
+
+
+
+
+Brown                      Expires May 5, 2014                  [Page 1]
+
+Internet-Draft     Registry Fee Extension for the EPP      November 2013
+
+
+Table of Contents
+
+   1.  Introduction . . . . . . . . . . . . . . . . . . . . . . . . .  3
+     1.1.  Conventions Used in This Document  . . . . . . . . . . . .  3
+   2.  EPP Command Mapping  . . . . . . . . . . . . . . . . . . . . .  3
+     2.1.  EPP Query Commands . . . . . . . . . . . . . . . . . . . .  3
+       2.1.1.  EPP <check> Command  . . . . . . . . . . . . . . . . .  4
+     2.2.  EPP Transform Commands . . . . . . . . . . . . . . . . . .  6
+     2.3.  Formal Syntax  . . . . . . . . . . . . . . . . . . . . . .  7
+   3.  Security Considerations  . . . . . . . . . . . . . . . . . . .  9
+   4.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . .  9
+   5.  Normative References . . . . . . . . . . . . . . . . . . . . . 10
+   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 10
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Brown                      Expires May 5, 2014                  [Page 2]
+
+Internet-Draft     Registry Fee Extension for the EPP      November 2013
+
+
+1.  Introduction
+
+   Historically, domain name registries have applied a simple fee
+   structure for billable transactions, namely a basic unit price
+   applied to domain <create>, <renew>, <transfer> and RGP restore
+   commands.  Given the relatively small number of EPP servers that EPP
+   clients have been required to connect to, it has generally been the
+   case that client operators have been able to obtain details of these
+   fees out-of-band by contacting the server operators.
+
+   Given the imminent expansion of the DNS namespace, and the
+   proliferation of novel business models, it is now desirable to
+   provide a method for EPP clients to query EPP servers for the fees
+   associated with certain transactions.
+
+   This document describes an extension mapping for version 1.0 of the
+   Extensible Provisioning Protocol (EPP) [RFC5730].  This EPP mapping
+   provides a mechanism by which EPP clients may query the fees
+   associated with various billable transactions.
+
+1.1.  Conventions Used in This Document
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+   document are to be interpreted as described in RFC 2119 [RFC2119].
+
+   XML is case sensitive.  Unless stated otherwise, XML specifications
+   and examples provided in this document MUST be interpreted in the
+   character case presented in order to develop a conforming
+   implementation.
+
+   "fee" is used as an abbreviation for
+   "urn:ietf:params:xml:ns:fee-0.1".  The XML namespace prefix "fee" is
+   used, but implementations MUST NOT depend on it and instead employ a
+   proper namespace-aware XML parser and serializer to interpret and
+   output the XML documents.
+
+
+2.  EPP Command Mapping
+
+   A detailed description of the EPP syntax and semantics can be found
+   in [RFC5730].
+
+2.1.  EPP Query Commands
+
+   This extension does not add any elements to the EPP <info>, <poll>,
+   or <transfer> commands or responses.
+
+
+
+
+Brown                      Expires May 5, 2014                  [Page 3]
+
+Internet-Draft     Registry Fee Extension for the EPP      November 2013
+
+
+2.1.1.  EPP <check> Command
+
+   This extension defines additional elements for the EPP <check>
+   command.
+
+   The command frame MAY contain an <extension> element which MAY
+   contain one or more child <fee:check> elements with the following
+   child elements:
+
+   o  A <domain:name> element that contains the domain name.
+
+   o  A <fee:currency> element that contains the currency the fee is
+      charged in.  This must be a three-character currency code from
+      [ISO 4217].
+
+   o  A <fee:action> element identifying the command.  This MUST be one
+      of the following:
+
+      *  "create" indicating a <domain:create> command;
+
+      *  "renew" indicating a <domain:renew> command;
+
+      *  "transfer" indicating a <domain:transfer> command;
+
+      *  "restore" indicating a RGP restore command as described in
+         [RFC3915].
+
+   o  A <fee:period> element that contains the number of units to be
+      added to the registration period of the domain object.
+
+   Example <check> command:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Brown                      Expires May 5, 2014                  [Page 4]
+
+Internet-Draft     Registry Fee Extension for the EPP      November 2013
+
+
+   C: <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+   C: <epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
+   C:   <command>
+   C:     <check>
+   C:       <domain:check
+   C:        xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
+   C:         <domain:name>example.com</domain:name>
+   C:       </domain:check>
+   C:     </check>
+   C:     <extension>
+   C:       <fee:check xmlns:fee="urn:ietf:params:xml:ns:fee-0.1">
+   C:         <fee:domain>example.com</fee:domain>
+   C:         <fee:currency>USD</fee:currency>
+   C:         <fee:action>create</fee:action>
+   C:         <fee:period unit="y">1</fee:period>
+   C:       </fee:check>
+   C:       <fee:check xmlns:fee="urn:ietf:params:xml:ns:fee-0.1">
+   C:         <fee:domain>example.net</fee:domain>
+   C:         <fee:currency>EUR</fee:currency>
+   C:         <fee:action>transfer</fee:action>
+   C:         <fee:period unit="y">2</fee:period>
+   C:       </fee:check>
+   C:     </extension>
+   C:     <clTRID>ABC-12345</clTRID>
+   C:   </command>
+   C: </epp>
+
+   When the server receives a <check> command that includes the
+   extension elements described above, its response MUST contain an
+   <extension> element, which MUST contain a child <fee:chkData> element
+   for each <fee:check> element contained in the command.  The <fee:
+   chkData> MUST contain the following child elements:
+
+   o  A <domain:name> element that contains a domain name which matches
+      the name in the original <fee:check> element.
+
+   o  A <fee:currency> element that contains same currency code that
+      appeared in the original <fee:check> element.
+
+   o  A <fee:action> element that contains same action that appeared in
+      the original <fee:check> element.
+
+   o  A <fee:period> element that contains same unit that appeared in
+      the original <fee:check> element.
+
+   o  A <fee:fee> element that contains the fee associated with the
+      specified transaction.
+
+
+
+
+Brown                      Expires May 5, 2014                  [Page 5]
+
+Internet-Draft     Registry Fee Extension for the EPP      November 2013
+
+
+   Example <check> response:
+
+   S: <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+   S: <epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
+   S:   <response>
+   S:     <result code="1000">
+   S:       <msg>Command completed successfully</msg>
+   S:     </result>
+   S:     <resData>
+   S:       <domain:chkData
+   S:        xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
+   S:         <domain:cd>
+   S:           <domain:name avail="1">example.com</domain:name>
+   S:         </domain:cd>
+   S:         <domain:cd>
+   S:           <domain:name avail="0">example.net</domain:name>
+   S:           <domain:reason>In use</domain:reason>
+   S:         </domain:cd>
+   S:       </domain:chkData>
+   S:     </resData>
+   S:     <extension>
+   S:        <fee:chkData xmlns:fee="urn:ietf:params:xml:ns:fee-0.1">
+   S:          <fee:domain>example.com</fee:domain>
+   S:          <fee:currency>USD</fee:currency>
+   S:          <fee:action>create</fee:action>
+   S:          <fee:period unit="y">1</fee:period>
+   S:          <fee:fee>10.00</fee:fee>
+   S:        </fee:chkData>
+   S:        <fee:chkData xmlns:fee="urn:ietf:params:xml:ns:fee-0.1">
+   S:          <fee:domain>example.net</fee:domain>
+   S:          <fee:currency>EUR</fee:currency>
+   S:          <fee:action>transfer</fee:action>
+   S:          <fee:period unit="y">2</fee:period>
+   S:          <fee:fee>5.00</fee:fee>
+   S:        </fee:chkData>
+   S:     </extension>
+   S:     <trID>
+   S:       <clTRID>ABC-12345</clTRID>
+   S:       <svTRID>54322-XYZ</svTRID>
+   S:     </trID>
+   S:   </response>
+   S: </epp>
+
+2.2.  EPP Transform Commands
+
+   This extension does not add any elements to the EPP <create>,
+   <delete>, <renew>, or <transfer> commands or responses.
+
+
+
+
+Brown                      Expires May 5, 2014                  [Page 6]
+
+Internet-Draft     Registry Fee Extension for the EPP      November 2013
+
+
+2.3.  Formal Syntax
+
+   An EPP object mapping is specified in XML Schema notation.  The
+   formal syntax presented here is a complete schema representation of
+   the object mapping suitable for automated validation of EPP XML
+   instances.
+
+   Copyright (c) 2013 IETF Trust and the persons identified as authors
+   of the code.  All rights reserved.
+
+   Redistribution and use in source and binary forms, with or without
+   modification, are permitted provided that the following conditions
+   are met:
+
+   o  Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+
+   o  Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in
+      the documentation and/or other materials provided with the
+      distribution.
+
+   o  Neither the name of Internet Society, IETF or IETF Trust, nor the
+      names of specific contributors, may be used to endorse or promote
+      products derived from this software without specific prior written
+      permission.
+
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+   "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+   A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT
+   OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+   SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+   LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+   DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+   THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+   (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+   BEGIN
+   <?xml version="1.0" encoding="utf-8"?>
+   <schema xmlns="http://www.w3.org/2001/XMLSchema"
+     xmlns:fee="urn:ietf:params:xml:ns:fee-0.1"
+     xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+     xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"
+     targetNamespace="urn:ietf:params:xml:ns:fee-0.1"
+     elementFormDefault="qualified">
+
+
+
+
+Brown                      Expires May 5, 2014                  [Page 7]
+
+Internet-Draft     Registry Fee Extension for the EPP      November 2013
+
+
+     <import namespace="urn:ietf:params:xml:ns:eppcom-1.0" />
+     <import namespace="urn:ietf:params:xml:ns:domain-1.0" />
+
+     <annotation>
+       <documentation>Extensible Provisioning Protocol v1.0 domain name
+       extension schema for fee information.</documentation>
+     </annotation>
+
+     <!--
+     Child elements found in EPP commands.
+     -->
+     <element name="check" type="fee:checkType" />
+     <element name="chkData" type="fee:chkDataType" />
+
+     <!--
+       client <check> command
+     -->
+     <complexType name="checkType">
+       <sequence>
+         <element name="domain" type="eppcom:labelType" />
+         <element name="currency" type="fee:currencyType" />
+         <element name="action" type="fee:actionType" />
+         <element name="period" type="domain:periodType" />
+       </sequence>
+     </complexType>
+
+     <!--
+       server <check> result
+     -->
+     <complexType name="chkDataType">
+       <sequence>
+         <element name="domain" type="eppcom:labelType" />
+         <element name="currency" type="fee:currencyType" />
+         <element name="action" type="fee:actionType" />
+         <element name="period" type="domain:periodType" />
+         <element name="fee" type="fee:feeType" />
+       </sequence>
+     </complexType>
+
+     <!--
+       common types
+     -->
+     <simpleType name="currencyType">
+       <restriction base="string">
+         <pattern value="[A-Z]{3}" />
+       </restriction>
+     </simpleType>
+     <simpleType name="actionType">
+
+
+
+Brown                      Expires May 5, 2014                  [Page 8]
+
+Internet-Draft     Registry Fee Extension for the EPP      November 2013
+
+
+       <restriction base="string">
+         <enumeration value="create" />
+         <enumeration value="renew" />
+         <enumeration value="transfer" />
+         <enumeration value="restore" />
+       </restriction>
+     </simpleType>
+     <simpleType name="feeType">
+       <restriction base="decimal" />
+     </simpleType>
+   </schema>
+   END
+
+
+3.  Security Considerations
+
+   The mapping extensions described in this document do not provide any
+   security services beyond those described by EPP [RFC5730], the EPP
+   domain name mapping [RFC5731], and protocol layers used by EPP.  The
+   security considerations described in these other specifications apply
+   to this specification as well.
+
+
+4.  IANA Considerations
+
+   This document uses URNs to describe XML namespaces and XML schemas
+   conforming to a registry mechanism described in [RFC3688].  Two URI
+   assignments were requested and have been registered by the IANA.
+
+   Registration request for the digital signature namespace:
+
+   URI: urn:ietf:params:xml:ns:fee-0.1
+
+   Registrant Contact: See the "Author's Address" section of this
+   document.
+
+   XML: None.  Namespace URIs do not represent an XML specification.
+
+   Registration request for the EPP fee XML schema:
+
+   URI: urn:ietf:params:xml:ns:fee-0.1
+
+   Registrant Contact: See the "Author's Address" section of this
+   document.
+
+   XML: See the "Formal Syntax" section of this document.
+
+
+
+
+
+Brown                      Expires May 5, 2014                  [Page 9]
+
+Internet-Draft     Registry Fee Extension for the EPP      November 2013
+
+
+5.  Normative References
+
+   [ISO 4217]
+              ISO, "ISO 4217:2008, Codes for the representation of
+              currencies and funds", 2008, <ISO 4217>.
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119, March 1997.
+
+   [RFC3688]  Mealling, M., "The IETF XML Registry", BCP 81, RFC 3688,
+              January 2004.
+
+   [RFC3915]  Hollenbeck, S., "Domain Registry Grace Period Mapping for
+              the Extensible Provisioning Protocol (EPP)", RFC 3915,
+              September 2004.
+
+   [RFC5730]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)",
+              STD 69, RFC 5730, August 2009.
+
+   [RFC5731]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)
+              Domain Name Mapping", STD 69, RFC 5731, August 2009.
+
+
+Author's Address
+
+   Gavin Brown
+   CentralNic Group plc
+   35-39 Mooregate
+   London, England  EC2R 6AR
+   GB
+
+   Phone: +44 20 33 88 0600
+   Email: gavin.brown@centralnic.com
+   URI:   https://www.centralnic.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Brown                      Expires May 5, 2014                 [Page 10]
+
