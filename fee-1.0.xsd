@@ -53,6 +53,7 @@
       <pattern value="[A-Z]{3}" />
     </restriction>
   </simpleType>
+
   <simpleType name="actionType">
     <restriction base="string">
       <enumeration value="create" />
@@ -61,6 +62,7 @@
       <enumeration value="restore" />
     </restriction>
   </simpleType>
+
   <simpleType name="feeType">
     <restriction base="decimal" />
   </simpleType>
