@@ -259,16 +259,16 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
    chkData> MUST contain the following child elements:
 
    o  A <domain:name> element that contains a domain name which matches
-      the name in the original <fee:check> element.
+      the name in the corresponding <fee:check> element.
 
    o  A <fee:currency> element that contains same currency code that
-      appeared in the original <fee:check> element.
+      appeared in the corresponding <fee:check> element.
 
    o  A <fee:action> element that contains same action that appeared in
-      the original <fee:check> element.
+      the corresponding <fee:check> element.
 
    o  A <fee:period> element that contains same unit that appeared in
-      the original <fee:check> element.
+      the corresponding <fee:check> element.
 
    o  A <fee:fee> element that contains the fee associated with the
       specified transaction.

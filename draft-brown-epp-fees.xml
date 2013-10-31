@@ -210,16 +210,16 @@ C: </epp>
 
         <t><list style="symbols">
 	  <t>A &lt;domain:name&gt; element that contains a domain name which
-	  matches the name in the original &lt;fee:check&gt; element.</t>
+	  matches the name in the corresponding &lt;fee:check&gt; element.</t>
 
 	  <t>A &lt;fee:currency&gt; element that contains same currency code
-	  that appeared in the original &lt;fee:check&gt; element.</t>
+	  that appeared in the corresponding &lt;fee:check&gt; element.</t>
 
 	  <t>A &lt;fee:action&gt; element that contains same action
-	  that appeared in the original &lt;fee:check&gt; element.</t>
+	  that appeared in the corresponding &lt;fee:check&gt; element.</t>
 
           <t>A &lt;fee:period&gt; element that contains same unit
-	  that appeared in the original &lt;fee:check&gt; element.</t>
+	  that appeared in the corresponding &lt;fee:check&gt; element.</t>
 
 	  <t>A &lt;fee:fee&gt; element that contains the fee associated with the
 	  specified transaction.</t>
