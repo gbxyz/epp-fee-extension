@@ -1,7 +1,7 @@
 
 
 
-Internet Engineering Task Force                                GB. Brown
+Internet Engineering Task Force                                 G. Brown
 Internet-Draft                                      CentralNic Group plc
 Intended status: Experimental                              November 2013
 Expires: May 5, 2014
