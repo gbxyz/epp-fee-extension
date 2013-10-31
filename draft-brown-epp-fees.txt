@@ -126,7 +126,7 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
    Given the imminent expansion of the DNS namespace, and the
    proliferation of novel business models, it is now desirable to
    provide a method for EPP clients to query EPP servers for the fees
-   associated with certain transactions.
+   associated with certain commands and specific objects.
 
    This document describes an extension mapping for version 1.0 of the
    Extensible Provisioning Protocol (EPP) [RFC5730].  This EPP mapping

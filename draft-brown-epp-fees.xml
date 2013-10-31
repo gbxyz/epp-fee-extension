@@ -101,7 +101,7 @@ they will automatically be output with "(if approved)" -->
       <t>Given the imminent expansion of the DNS namespace, and the
       proliferation of novel business models, it is now desirable to provide a
       method for EPP clients to query EPP servers for the fees associated with
-      certain transactions.</t>
+      certain commands and specific objects.</t>
 
       <t>This document describes an extension mapping for version 1.0 of the 
       <xref target="RFC5730">Extensible Provisioning Protocol (EPP)</xref>. This
