@@ -62,7 +62,7 @@ Table of Contents
    1.  Introduction . . . . . . . . . . . . . . . . . . . . . . . . .  3
      1.1.  Conventions Used in This Document  . . . . . . . . . . . .  3
    2.  EPP Command Mapping  . . . . . . . . . . . . . . . . . . . . .  3
-     2.1.  EPP Query Commands . . . . . . . . . . . . . . . . . . . .  3
+     2.1.  EPP Query Commands . . . . . . . . . . . . . . . . . . . .  4
        2.1.1.  EPP <check> Command  . . . . . . . . . . . . . . . . .  4
      2.2.  EPP Transform Commands . . . . . . . . . . . . . . . . . .  6
      2.3.  Formal Syntax  . . . . . . . . . . . . . . . . . . . . . .  7
@@ -150,17 +150,17 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
    proper namespace-aware XML parser and serializer to interpret and
    output the XML documents.
 
+   The XML namespace prefix above contains a version number,
+   specifically "0.1".  This version number will increment with
+   successive versions of this document, and will reach 1.0 if and when
+   this document is published as an RFC.  This permits clients to
+   distinguish which version of the extension a server has implemented.
+
 
 2.  EPP Command Mapping
 
    A detailed description of the EPP syntax and semantics can be found
    in [RFC5730].
-
-2.1.  EPP Query Commands
-
-   This extension does not add any elements to the EPP <info>, <poll>,
-   or <transfer> commands or responses.
-
 
 
 
@@ -168,6 +168,11 @@ Brown                      Expires May 5, 2014                  [Page 3]
 
 Internet-Draft     Registry Fee Extension for the EPP      November 2013
 
+
+2.1.  EPP Query Commands
+
+   This extension does not add any elements to the EPP <info>, <poll>,
+   or <transfer> commands or responses.
 
 2.1.1.  EPP <check> Command
 
@@ -200,11 +205,6 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
       added to the registration period of the domain object.
 
    Example <check> command:
-
-
-
-
-
 
 
 
