@@ -64,21 +64,21 @@ Table of Contents
    2.  EPP Command Mapping  . . . . . . . . . . . . . . . . . . . . .  3
      2.1.  EPP Query Commands . . . . . . . . . . . . . . . . . . . .  4
        2.1.1.  EPP <check> Command  . . . . . . . . . . . . . . . . .  4
-     2.2.  EPP Transform Commands . . . . . . . . . . . . . . . . . .  7
-     2.3.  Formal Syntax  . . . . . . . . . . . . . . . . . . . . . .  7
-   3.  Security Considerations  . . . . . . . . . . . . . . . . . . .  9
-   4.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . .  9
-   5.  Normative References . . . . . . . . . . . . . . . . . . . . . 10
-   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 10
-
-
-
-
-
-
-
-
-
+       2.1.2.  EPP Transfer Query Command . . . . . . . . . . . . . .  7
+     2.2.  EPP Transform Commands . . . . . . . . . . . . . . . . . .  8
+       2.2.1.  EPP <create> Command . . . . . . . . . . . . . . . . .  8
+       2.2.2.  EPP <delete> Command . . . . . . . . . . . . . . . . .  8
+       2.2.3.  EPP <renew> Command  . . . . . . . . . . . . . . . . .  9
+       2.2.4.  EPP <transfer> Command . . . . . . . . . . . . . . . .  9
+       2.2.5.  EPP <update> Command . . . . . . . . . . . . . . . . . 10
+     2.3.  Formal Syntax  . . . . . . . . . . . . . . . . . . . . . . 11
+   3.  Security Considerations  . . . . . . . . . . . . . . . . . . . 14
+   4.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 14
+   5.  Acknowledgements . . . . . . . . . . . . . . . . . . . . . . . 15
+   6.  Change History . . . . . . . . . . . . . . . . . . . . . . . . 15
+     6.1.  Change from 0.1 to 0.2 . . . . . . . . . . . . . . . . . . 15
+   7.  Normative References . . . . . . . . . . . . . . . . . . . . . 15
+   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 16
 
 
 
@@ -171,8 +171,8 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
 
 2.1.  EPP Query Commands
 
-   This extension does not add any elements to the EPP <info>, <poll>,
-   or <transfer> commands or responses.
+   This extension does not add any elements to the EPP <info> or <poll>
+   commands or responses.
 
 2.1.1.  EPP <check> Command
 
@@ -337,10 +337,252 @@ Brown                      Expires May 5, 2014                  [Page 6]
 Internet-Draft     Registry Fee Extension for the EPP      November 2013
 
 
+2.1.2.  EPP Transfer Query Command
+
+   This extension does not add any elements to the EPP <transfer> query
+   command, but does include elements in the response, when the
+   extension has been selected during a <login> command.
+
+   When the <transfer> query command has been processed successfully,
+   the client selected the extension when it logged in, and the client
+   is authorised by the server to view information about the transfer,
+   the server MUST include in the <extension> section of the EPP
+   response a <fee:trnData> element that contains a <fee:fee> element
+   containing the fee associated with this command.
+
+   Example <transfer> query response:
+
+   S: <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+   S: <epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
+   S:   <response>
+   S:     <result code="1001">
+   S:       <msg>Command completed successfully; action pending</msg>
+   S:     </result>
+   S:     <resData>
+   S:       <domain:trnData
+   S:        xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
+   S:         <domain:name>example.com</domain:name>
+   S:         <domain:trStatus>pending</domain:trStatus>
+   S:         <domain:reID>ClientX</domain:reID>
+   S:         <domain:reDate>2000-06-08T22:00:00.0Z</domain:reDate>
+   S:         <domain:acID>ClientY</domain:acID>
+   S:         <domain:acDate>2000-06-13T22:00:00.0Z</domain:acDate>
+   S:         <domain:exDate>2002-09-08T22:00:00.0Z</domain:exDate>
+   S:       </domain:trnData>
+   S:     </resData>
+   S:     <extension>
+   S:       <fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.1">
+   S:         <fee:fee>5.00</fee:fee>
+   S:       </fee:trnData>
+   S:     </extension>
+   S:     <trID>
+   S:       <clTRID>ABC-12345</clTRID>
+   S:       <svTRID>54322-XYZ</svTRID>
+   S:     </trID>
+   S:   </response>
+   S: </epp>
+
+
+
+
+
+
+
+Brown                      Expires May 5, 2014                  [Page 7]
+
+Internet-Draft     Registry Fee Extension for the EPP      November 2013
+
+
 2.2.  EPP Transform Commands
 
-   This extension does not add any elements to the EPP <create>,
-   <delete>, <renew>, or <transfer> commands or responses.
+2.2.1.  EPP <create> Command
+
+   This extension does not add any elements to the EPP <create> command,
+   but does include elements in the response, when the extension has
+   been selected during a <login> command.
+
+   When the <create> command has been processed successfully, and the
+   client selected the extension when it logged in, the server MUST
+   include in the <extension> section of the EPP response a <fee:
+   creData> element that contains a <fee:fee> element containing the fee
+   associated with this command.
+
+   Example <create> response:
+
+   S: <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+   S: <epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
+   S:   <response>
+   S:     <result code="1000">
+   S:       <msg>Command completed successfully</msg>
+   S:     </result>
+   S:     <resData>
+   S:       <domain:creData
+   S:        xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
+   S:         <domain:name>example.com</domain:name>
+   S:         <domain:crDate>1999-04-03T22:00:00.0Z</domain:crDate>
+   S:         <domain:exDate>2001-04-03T22:00:00.0Z</domain:exDate>
+   S:       </domain:creData>
+   S:     </resData>
+   S:     <extension>
+   S:       <fee:creData xmlns:fee="urn:ietf:params:xml:ns:fee-0.1">
+   S:         <fee:fee>5.00</fee:fee>
+   S:       </fee:creData>
+   S:     </extension>
+   S:     <trID>
+   S:       <clTRID>ABC-12345</clTRID>
+   S:       <svTRID>54321-XYZ</svTRID>
+   S:     </trID>
+   S:   </response>
+   S: </epp>
+
+2.2.2.  EPP <delete> Command
+
+   This extension does not add any elements to the EPP <delete> command
+   or response.
+
+
+
+
+
+Brown                      Expires May 5, 2014                  [Page 8]
+
+Internet-Draft     Registry Fee Extension for the EPP      November 2013
+
+
+2.2.3.  EPP <renew> Command
+
+   This extension does not add any elements to the EPP <renew> command,
+   but does include elements in the response, when the extension has
+   been selected during a <login> command.
+
+   When the <renew> command has been processed successfully, and the
+   client selected the extension when it logged in, the server MUST
+   include in the <extension> section of the EPP response a <fee:
+   renData> element that contains a <fee:fee> element containing the fee
+   associated with this command.
+
+   Example <renew> response:
+
+   S: <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+   S: <epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
+   S:   <response>
+   S:     <result code="1000">
+   S:       <msg>Command completed successfully</msg>
+   S:     </result>
+   S:     <resData>
+   S:       <domain:renData
+   S:        xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
+   S:         <domain:name>example.com</domain:name>
+   S:         <domain:exDate>2005-04-03T22:00:00.0Z</domain:exDate>
+   S:       </domain:renData>
+   S:     </resData>
+   S:     <extension>
+   S:       <fee:renData xmlns:fee="urn:ietf:params:xml:ns:fee-0.1">
+   S:         <fee:fee>5.00</fee:fee>
+   S:       </fee:renData>
+   S:     </extension>
+   S:     <trID>
+   S:       <clTRID>ABC-12345</clTRID>
+   S:       <svTRID>54322-XYZ</svTRID>
+   S:     </trID>
+   S:   </response>
+   S: </epp>
+
+2.2.4.  EPP <transfer> Command
+
+   This extension does not add any elements to the EPP <transfer>
+   command, but does include elements in the response, when the
+   extension has been selected during a <login> command.
+
+   When the <transfer> command has been processed successfully, and the
+   client selected the extension when it logged in, and if the "op"
+   attribute of the <transfer> element of the request was either
+
+
+
+Brown                      Expires May 5, 2014                  [Page 9]
+
+Internet-Draft     Registry Fee Extension for the EPP      November 2013
+
+
+   "request", the server MUST include in the <extension> section of the
+   EPP response a <fee:trnData> element that contains a <fee:fee>
+   element containing the fee associated with this command.
+
+   Example <transfer> response:
+
+   S: <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+   S: <epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
+   S:   <response>
+   S:     <result code="1001">
+   S:       <msg>Command completed successfully; action pending</msg>
+   S:     </result>
+   S:     <resData>
+   S:       <domain:trnData
+   S:        xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
+   S:         <domain:name>example.com</domain:name>
+   S:         <domain:trStatus>pending</domain:trStatus>
+   S:         <domain:reID>ClientX</domain:reID>
+   S:         <domain:reDate>2000-06-08T22:00:00.0Z</domain:reDate>
+   S:         <domain:acID>ClientY</domain:acID>
+   S:         <domain:acDate>2000-06-13T22:00:00.0Z</domain:acDate>
+   S:         <domain:exDate>2002-09-08T22:00:00.0Z</domain:exDate>
+   S:       </domain:trnData>
+   S:     </resData>
+   S:     <extension>
+   S:       <fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.1">
+   S:         <fee:fee>5.00</fee:fee>
+   S:       </fee:trnData>
+   S:     </extension>
+   S:     <trID>
+   S:       <clTRID>ABC-12345</clTRID>
+   S:       <svTRID>54322-XYZ</svTRID>
+   S:     </trID>
+   S:   </response>
+   S: </epp>
+
+2.2.5.  EPP <update> Command
+
+   This extension does not add any elements to the EPP <update> command,
+   but does include elements in the response, when the extension has
+   been selected during a <login> command.
+
+   When the <update> command has been processed successfully, and the
+   client selected the extension when it logged in, the server MAY
+   include in the <extension> section of the EPP response a <fee:
+   updData> element that contains a <fee:fee> element containing any fee
+   associated with this command.
+
+
+
+
+Brown                      Expires May 5, 2014                 [Page 10]
+
+Internet-Draft     Registry Fee Extension for the EPP      November 2013
+
+
+   If no fee is has been charged for the <update>, then the <fee:
+   updData> MUST not be inserted into the response.
+
+   Example <update> response:
+
+   S: <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+   S: <epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
+   S:   <response>
+   S:     <result code="1000">
+   S:       <msg>Command completed successfully</msg>
+   S:     </result>
+   S:     <extension>
+   S:       <fee:updData xmlns:fee="urn:ietf:params:xml:ns:fee-0.1">
+   S:         <fee:fee>5.00</fee:fee>
+   S:       </fee:updData>
+   S:     </extension>
+   S:     <trID>
+   S:       <clTRID>ABC-12345</clTRID>
+   S:       <svTRID>54321-XYZ</svTRID>
+   S:     </trID>
+   S:   </response>
+   S: </epp>
 
 2.3.  Formal Syntax
 
@@ -367,6 +609,14 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
    o  Neither the name of Internet Society, IETF or IETF Trust, nor the
       names of specific contributors, may be used to endorse or promote
       products derived from this software without specific prior written
+
+
+
+Brown                      Expires May 5, 2014                 [Page 11]
+
+Internet-Draft     Registry Fee Extension for the EPP      November 2013
+
+
       permission.
 
    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
@@ -385,14 +635,6 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
    <?xml version="1.0" encoding="utf-8"?>
    <schema xmlns="http://www.w3.org/2001/XMLSchema"
      xmlns:fee="urn:ietf:params:xml:ns:fee-0.2"
-
-
-
-Brown                      Expires May 5, 2014                  [Page 7]
-
-Internet-Draft     Registry Fee Extension for the EPP      November 2013
-
-
      xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
      xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"
      targetNamespace="urn:ietf:params:xml:ns:fee-0.2"
@@ -402,15 +644,20 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
      <import namespace="urn:ietf:params:xml:ns:domain-1.0" />
 
      <annotation>
-       <documentation>Extensible Provisioning Protocol v1.0 domain name
-       extension schema for fee information.</documentation>
+       <documentation>Extensible Provisioning Protocol
+       v1.0 domain name extension schema for
+       fee information.</documentation>
      </annotation>
 
      <!--
-     Child elements found in EPP commands.
+     Child elements found in EPP commands and responses
      -->
      <element name="check" type="fee:checkType" />
      <element name="chkData" type="fee:chkDataType" />
+     <element name="creData" type="fee:transformDataType" />
+     <element name="renData" type="fee:transformDataType" />
+     <element name="trnData" type="fee:transformDataType" />
+     <element name="updData" type="fee:transformDataType" />
 
      <!--
        client <check> command
@@ -418,6 +665,14 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
      <complexType name="checkType">
        <sequence>
          <element name="domain" type="eppcom:labelType" />
+
+
+
+Brown                      Expires May 5, 2014                 [Page 12]
+
+Internet-Draft     Registry Fee Extension for the EPP      November 2013
+
+
          <element name="currency" type="fee:currencyType" />
          <element name="action" type="fee:actionType" />
          <element name="period" type="domain:periodType" />
@@ -438,17 +693,19 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
      </complexType>
 
      <!--
+       general transform command (create, renew, update,
+       transfer) result
+     -->
+     <complexType name="transformDataType">
+       <sequence>
+         <element name="fee" type="fee:feeType" />
+       </sequence>
+     </complexType>
+
+     <!--
        common types
      -->
      <simpleType name="currencyType">
-
-
-
-Brown                      Expires May 5, 2014                  [Page 8]
-
-Internet-Draft     Registry Fee Extension for the EPP      November 2013
-
-
        <restriction base="string">
          <pattern value="[A-Z]{3}" />
        </restriction>
@@ -457,13 +714,21 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
      <complexType name="actionType">
        <simpleContent>
          <extension base="fee:actionTypeValue">
-           <attribute name="phase" type="token"/>
+           <attribute name="phase" type="token" />
          </extension>
        </simpleContent>
      </complexType>
 
      <simpleType name="actionTypeValue">
        <restriction base="string">
+
+
+
+Brown                      Expires May 5, 2014                 [Page 13]
+
+Internet-Draft     Registry Fee Extension for the EPP      November 2013
+
+
          <enumeration value="create" />
          <enumeration value="renew" />
          <enumeration value="transfer" />
@@ -497,14 +762,6 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
 
    URI: urn:ietf:params:xml:ns:fee-0.1
 
-
-
-
-Brown                      Expires May 5, 2014                  [Page 9]
-
-Internet-Draft     Registry Fee Extension for the EPP      November 2013
-
-
    Registrant Contact: See the "Author's Address" section of this
    document.
 
@@ -520,7 +777,37 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
    XML: See the "Formal Syntax" section of this document.
 
 
-5.  Normative References
+
+
+
+Brown                      Expires May 5, 2014                 [Page 14]
+
+Internet-Draft     Registry Fee Extension for the EPP      November 2013
+
+
+5.  Acknowledgements
+
+   The author wishes to thank James Gould of Verisign and Luis Munoz of
+   ISC for their feedback and suggestions.
+
+
+6.  Change History
+
+6.1.  Change from 0.1 to 0.2
+
+   1.  Added note about the use of the "XXX" code for non-currency
+       transactions.
+
+   2.  Added phase attribute to the <fee:action> element. and normative
+       reference to [draft-tan-epp-launchphase].
+
+   3.  Added description of extension to transform and transfer query
+       commands.
+
+   4.  Added Acknowledgements and Change History sections.
+
+
+7.  Normative References
 
    [ISO4217]  International Organization for Standardization, "ISO 4217:
               2008, Codes for the representation of currencies and
@@ -549,14 +836,7 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
 
 
 
-
-
-
-
-
-
-
-Brown                      Expires May 5, 2014                 [Page 10]
+Brown                      Expires May 5, 2014                 [Page 15]
 
 Internet-Draft     Registry Fee Extension for the EPP      November 2013
 
@@ -612,5 +892,5 @@ Author's Address
 
 
 
-Brown                      Expires May 5, 2014                 [Page 11]
+Brown                      Expires May 5, 2014                 [Page 16]
 
