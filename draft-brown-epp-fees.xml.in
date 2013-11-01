@@ -98,7 +98,7 @@
         the XML documents.</t>
 
         <t>The XML namespace prefix above contains a version number,
-        specifically "0.1". This version number will increment with successive
+        specifically "0.2". This version number will increment with successive
         versions of this document, and will reach 1.0 if and when this document
         is published as an RFC. This permits clients to distinguish which
         version of the extension a server has implemented.</t>
