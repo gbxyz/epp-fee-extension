@@ -383,7 +383,7 @@ END</artwork></figure>
         <t><list style="numbers">
           <t>Added note about the use of the "XXX" code for non-currency
           transactions.</t>
-          <t>Added phase attribute to the &lt;fee:action&gt; element. and
+          <t>Added phase attribute to the &lt;fee:action&gt; element, and
           normative reference to <xref target="draft-tan-epp-launchphase"/>.</t>
           <t>Added description of extension to transform and transfer query
           commands.</t>
