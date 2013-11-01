@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="us-ascii"?>
 
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
-	<!-- One method to get references from the online citation libraries.
-	There has to be one entity for each item to be referenced. 
-	An alternate method (rfc include) is described in the references. -->
-	
 	<!ENTITY I-D.narten-iana-considerations-rfc2434bis SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.narten-iana-considerations-rfc2434bis.xml">
 	
 	<!ENTITY RFC2119 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
@@ -16,47 +12,21 @@
 	<!ENTITY RFC5730 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5730.xml">
 
 	<!ENTITY RFC5731 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5731.xml">
-
 ]>
 
 <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
 
-<!-- used by XSLT processors -->
-<!-- For a complete list and description of processing instructions (PIs), 
-please see http://xml.resource.org/authoring/README.html. -->
-<!-- Below are generally applicable Processing Instructions (PIs) that most I-Ds might want to use.
-(Here they are set differently than their defaults in xml2rfc v1.32) -->
 <?rfc strict="yes" ?>
-<!-- give errors regarding ID-nits and DTD validation -->
-<!-- control the table of contents (ToC) -->
 <?rfc toc="yes"?>
-<!-- generate a ToC -->
 <?rfc tocdepth="4"?>
-<!-- the number of levels of subsections in ToC. default: 3 -->
-<!-- control references -->
 <?rfc symrefs="yes"?>
-<!-- use symbolic references tags, i.e, [RFC2119] instead of [1] -->
 <?rfc sortrefs="yes" ?>
-<!-- sort the reference entries alphabetically -->
-<!-- control vertical white space 
-(using these PIs as follows is recommended by the RFC Editor) -->
 <?rfc compact="yes" ?>
-<!-- do not start each main section on a new page -->
 <?rfc subcompact="no" ?>
-<!-- keep one blank line between list items -->
 <?rfc comments="yes" ?>
-<!-- show cref output -->
 <?rfc inline="yes" ?>
-<!-- inline cref output -->
-<!-- end of list of popular I-D processing instructions -->
 
 <rfc category="exp" docName="draft-brown-epp-fees" ipr="trust200902">
-  <!-- category values: std, bcp, info, exp, and historic
-ipr values: full3667, noModification3667, noDerivatives3667
-you can add the attributes updates="NNNN" and obsoletes="NNNN" 
-they will automatically be output with "(if approved)" -->
-  <!-- ***** FRONT MATTER ***** -->
-
   <front>
     <title abbrev="Registry Fee Extension for the EPP">Registry Fee Extension
     for the Extensible Provisioning Protocol</title>
@@ -79,10 +49,10 @@ they will automatically be output with "(if approved)" -->
 
     <date month="November" year="2013" />
 
-    <!-- Meta-data Declarations -->
     <area>Applications</area>
     <workgroup>Internet Engineering Task Force</workgroup>
     <keyword>EPP, XML</keyword>
+
     <abstract><t>This document describes an Extensible Provisioning Protocol
     (EPP) extension mapping for registry fees.</t></abstract>
   </front>
@@ -109,6 +79,7 @@ they will automatically be output with "(if approved)" -->
       associated with various billable transactions.</t>
 
       <section title="Conventions Used in This Document">
+
         <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
         "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
         document are to be interpreted as described in 
@@ -155,7 +126,9 @@ they will automatically be output with "(if approved)" -->
 	    <t>A &lt;domain:name&gt; element that contains the domain name.</t>
 	    <t>A &lt;fee:currency&gt; element that contains the currency the fee
 	    is charged in. This must be a three-character currency code from
-	    <xref target="ISO 4217"/>.</t>
+	    <xref target="ISO4217"/> (Note: ISO 4217 provides the special "XXX"
+	    code which may be used if the server uses a non-currency based
+	    system for assessing fees, such as a system of credits).</t>
 	    <t>A &lt;fee:action&gt; element identifying the command. This MUST
 	    be one of the following:
 	      <list>
@@ -165,7 +138,9 @@ they will automatically be output with "(if approved)" -->
                 <t>"restore" indicating a RGP restore command as described in
                  <xref target="RFC3915" />.</t>
 	      </list>
-	    </t>
+	    The &lt;fee:action&gt; element MAY have an OPTIONAL "phase"
+	    attribute specifying a launch phase as described in
+	    <xref target="draft-tan-epp-launchphase" />.</t>
 	    <t>A &lt;fee:period&gt; element that contains the number of units to
 	    be added to the registration period of the domain object.</t> 
 	  </list></t>
@@ -186,7 +161,7 @@ C:     <extension>
 C:       <fee:check xmlns:fee="urn:ietf:params:xml:ns:fee-0.1">
 C:         <fee:domain>example.com</fee:domain>
 C:         <fee:currency>USD</fee:currency>
-C:         <fee:action>create</fee:action>
+C:         <fee:action phase="sunrise">create</fee:action>
 C:         <fee:period unit="y">1</fee:period>
 C:       </fee:check>
 C:       <fee:check xmlns:fee="urn:ietf:params:xml:ns:fee-0.1">
@@ -216,14 +191,15 @@ C: </epp>
 	  that appeared in the corresponding &lt;fee:check&gt; element.</t>
 
 	  <t>A &lt;fee:action&gt; element that contains same action
-	  that appeared in the corresponding &lt;fee:check&gt; element.</t>
+	  that appeared in the corresponding &lt;fee:check&gt; element. This
+	  element MAY have an OPTIONAL "phase" attribute which MUST match the
+	  same attribute in the corresponding &lt;fee:check&gt; element.</t>
 
           <t>A &lt;fee:period&gt; element that contains same unit
 	  that appeared in the corresponding &lt;fee:check&gt; element.</t>
 
 	  <t>A &lt;fee:fee&gt; element that contains the fee associated with the
 	  specified transaction.</t>
-
 
         </list></t>
 
@@ -252,7 +228,7 @@ S:     <extension>
 S:        <fee:chkData xmlns:fee="urn:ietf:params:xml:ns:fee-0.1">
 S:          <fee:domain>example.com</fee:domain>
 S:          <fee:currency>USD</fee:currency>
-S:          <fee:action>create</fee:action>
+S:          <fee:action phase="sunrise">create</fee:action>
 S:          <fee:period unit="y">1</fee:period>
 S:          <fee:fee>10.00</fee:fee>
 S:        </fee:chkData>
@@ -322,10 +298,10 @@ S: </epp>
 BEGIN
 <?xml version="1.0" encoding="utf-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-  xmlns:fee="urn:ietf:params:xml:ns:fee-0.1"
+  xmlns:fee="urn:ietf:params:xml:ns:fee-0.2"
   xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
   xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"
-  targetNamespace="urn:ietf:params:xml:ns:fee-0.1"
+  targetNamespace="urn:ietf:params:xml:ns:fee-0.2"
   elementFormDefault="qualified">
 
   <import namespace="urn:ietf:params:xml:ns:eppcom-1.0" />
@@ -376,7 +352,15 @@ BEGIN
     </restriction>
   </simpleType>
 
-  <simpleType name="actionType">
+  <complexType name="actionType">
+    <simpleContent>
+      <extension base="fee:actionTypeValue">
+        <attribute name="phase" type="token"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+
+  <simpleType name="actionTypeValue">
     <restriction base="string">
       <enumeration value="create" />
       <enumeration value="renew" />
@@ -422,17 +406,6 @@ END]]></artwork></figure>
   </middle>
 
   <back>
-    <!-- References split into informative and normative -->
-    <!-- There are 2 ways to insert reference entries from the citation libraries:
-1. define an ENTITY at the top, and use "ampersand character"RFC2629; here (as shown)
-2. simply use a PI "less than character"?rfc include="reference.RFC.2119.xml"?> here
-(for I-Ds: include="reference.I-D.narten-iana-considerations-rfc2434bis.xml")
-
-Both are cited textually in the same manner: by using xref elements.
-If you use the PI option, xml2rfc will, by default, try to find included files in the same
-directory as the including file. You can also define the XML_LIBRARY environment variable
-with a value containing a set of directories to search.  These can be either in the local
-filing system or remote ones accessed by http (http://domain/dir/... ).-->
     <references title="Normative References">
       &RFC2119;
       &RFC3688;
@@ -440,15 +413,33 @@ filing system or remote ones accessed by http (http://domain/dir/... ).-->
       &RFC5730;
       &RFC5731;
 
-      <reference anchor="ISO 4217" target="ISO 4217">
+      <reference anchor="ISO4217">
           <front>
               <title>ISO 4217:2008, Codes for the representation of currencies
               and funds</title>
               <author>
-                  <organization>ISO</organization>
+                  <organization>International Organization for
+                  Standardization</organization>
               </author>
               <date year="2008" />
           </front>
+          <format type="XML"
+            target="http://www.currency-iso.org/dam/downloads/table_a1.xml" />
+          <format type="HTML"
+            target="http://www.iso.org/iso/home/standards/currency_codes.htm" />
+      </reference>
+
+      <reference anchor="draft-tan-epp-launchphase">
+          <front>
+              <title>Launch Phase Mapping for the  Extensible Provisioning
+              Protocol (EPP)</title>
+              <author fullname="James Gould" initials="J" surname="Gould"/>
+              <author fullname="Wil Tan" initials="W" surname="Tan"/>
+              <author fullname="Gavin Brown" initials="G" surname="Brown"/>
+              <date year="2013" />
+          </front>
+          <format type="HTML"
+            target="http://tools.ietf.org/html/draft-tan-epp-launchphase" />
       </reference>
 
     </references>
