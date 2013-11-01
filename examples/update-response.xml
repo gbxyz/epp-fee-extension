@@ -5,7 +5,7 @@
       <msg>Command completed successfully</msg>
     </result>
     <extension>
-      <fee:updData xmlns:fee="urn:ietf:params:xml:ns:fee-0.1">
+      <fee:updData xmlns:fee="urn:ietf:params:xml:ns:fee-0.2">
         <fee:fee>5.00</fee:fee>
       </fee:updData>
     </extension>

@@ -145,7 +145,7 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
    implementation.
 
    "fee" is used as an abbreviation for
-   "urn:ietf:params:xml:ns:fee-0.1".  The XML namespace prefix "fee" is
+   "urn:ietf:params:xml:ns:fee-0.2".  The XML namespace prefix "fee" is
    used, but implementations MUST NOT depend on it and instead employ a
    proper namespace-aware XML parser and serializer to interpret and
    output the XML documents.
@@ -235,13 +235,13 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
    C:       </domain:check>
    C:     </check>
    C:     <extension>
-   C:       <fee:check xmlns:fee="urn:ietf:params:xml:ns:fee-0.1">
+   C:       <fee:check xmlns:fee="urn:ietf:params:xml:ns:fee-0.2">
    C:         <fee:domain>example.com</fee:domain>
    C:         <fee:currency>USD</fee:currency>
    C:         <fee:action phase="sunrise">create</fee:action>
    C:         <fee:period unit="y">1</fee:period>
    C:       </fee:check>
-   C:       <fee:check xmlns:fee="urn:ietf:params:xml:ns:fee-0.1">
+   C:       <fee:check xmlns:fee="urn:ietf:params:xml:ns:fee-0.2">
    C:         <fee:domain>example.net</fee:domain>
    C:         <fee:currency>EUR</fee:currency>
    C:         <fee:action>transfer</fee:action>
@@ -305,14 +305,14 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
    S:       </domain:chkData>
    S:     </resData>
    S:     <extension>
-   S:        <fee:chkData xmlns:fee="urn:ietf:params:xml:ns:fee-0.1">
+   S:        <fee:chkData xmlns:fee="urn:ietf:params:xml:ns:fee-0.2">
    S:          <fee:domain>example.com</fee:domain>
    S:          <fee:currency>USD</fee:currency>
    S:          <fee:action phase="sunrise">create</fee:action>
    S:          <fee:period unit="y">1</fee:period>
    S:          <fee:fee>10.00</fee:fee>
    S:        </fee:chkData>
-   S:        <fee:chkData xmlns:fee="urn:ietf:params:xml:ns:fee-0.1">
+   S:        <fee:chkData xmlns:fee="urn:ietf:params:xml:ns:fee-0.2">
    S:          <fee:domain>example.net</fee:domain>
    S:          <fee:currency>EUR</fee:currency>
    S:          <fee:action>transfer</fee:action>
@@ -371,7 +371,7 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
    S:       </domain:trnData>
    S:     </resData>
    S:     <extension>
-   S:       <fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.1">
+   S:       <fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.2">
    S:         <fee:fee>5.00</fee:fee>
    S:       </fee:trnData>
    S:     </extension>
@@ -424,7 +424,7 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
    S:       </domain:creData>
    S:     </resData>
    S:     <extension>
-   S:       <fee:creData xmlns:fee="urn:ietf:params:xml:ns:fee-0.1">
+   S:       <fee:creData xmlns:fee="urn:ietf:params:xml:ns:fee-0.2">
    S:         <fee:fee>5.00</fee:fee>
    S:       </fee:creData>
    S:     </extension>
@@ -477,7 +477,7 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
    S:       </domain:renData>
    S:     </resData>
    S:     <extension>
-   S:       <fee:renData xmlns:fee="urn:ietf:params:xml:ns:fee-0.1">
+   S:       <fee:renData xmlns:fee="urn:ietf:params:xml:ns:fee-0.2">
    S:         <fee:fee>5.00</fee:fee>
    S:       </fee:renData>
    S:     </extension>
@@ -530,7 +530,7 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
    S:       </domain:trnData>
    S:     </resData>
    S:     <extension>
-   S:       <fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.1">
+   S:       <fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.2">
    S:         <fee:fee>5.00</fee:fee>
    S:       </fee:trnData>
    S:     </extension>
@@ -573,7 +573,7 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
    S:       <msg>Command completed successfully</msg>
    S:     </result>
    S:     <extension>
-   S:       <fee:updData xmlns:fee="urn:ietf:params:xml:ns:fee-0.1">
+   S:       <fee:updData xmlns:fee="urn:ietf:params:xml:ns:fee-0.2">
    S:         <fee:fee>5.00</fee:fee>
    S:       </fee:updData>
    S:     </extension>
@@ -760,7 +760,7 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
 
    Registration request for the digital signature namespace:
 
-   URI: urn:ietf:params:xml:ns:fee-0.1
+   URI: urn:ietf:params:xml:ns:fee-0.2
 
    Registrant Contact: See the "Author's Address" section of this
    document.
@@ -769,7 +769,7 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
 
    Registration request for the EPP fee XML schema:
 
-   URI: urn:ietf:params:xml:ns:fee-0.1
+   URI: urn:ietf:params:xml:ns:fee-0.2
 
    Registrant Contact: See the "Author's Address" section of this
    document.

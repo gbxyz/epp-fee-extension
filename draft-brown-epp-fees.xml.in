@@ -92,7 +92,7 @@
         implementation.</t>
 
         <t>"fee" is used as an abbreviation for
-        "urn:ietf:params:xml:ns:fee-0.1". The XML namespace prefix "fee" is
+        "urn:ietf:params:xml:ns:fee-0.2". The XML namespace prefix "fee" is
         used, but implementations MUST NOT depend on it and instead employ a
         proper namespace-aware XML parser and serializer to interpret and output
         the XML documents.</t>
@@ -362,12 +362,12 @@ END</artwork></figure>
       Two URI assignments were requested and have been registered by the
       IANA.</t>
       <t>Registration request for the digital signature namespace:</t>
-      <t>URI: urn:ietf:params:xml:ns:fee-0.1</t>
+      <t>URI: urn:ietf:params:xml:ns:fee-0.2</t>
       <t>Registrant Contact: See the "Author's Address" section of this
       document.</t>
       <t>XML: None. Namespace URIs do not represent an XML specification.</t>
       <t>Registration request for the EPP fee XML schema:</t>
-      <t>URI: urn:ietf:params:xml:ns:fee-0.1</t>
+      <t>URI: urn:ietf:params:xml:ns:fee-0.2</t>
       <t>Registrant Contact: See the "Author's Address" section of this
       document.</t>
       <t>XML: See the "Formal Syntax" section of this document.</t>

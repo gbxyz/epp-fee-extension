@@ -12,7 +12,7 @@
       </domain:renData>
     </resData>
     <extension>
-      <fee:renData xmlns:fee="urn:ietf:params:xml:ns:fee-0.1">
+      <fee:renData xmlns:fee="urn:ietf:params:xml:ns:fee-0.2">
         <fee:fee>5.00</fee:fee>
       </fee:renData>
     </extension>
