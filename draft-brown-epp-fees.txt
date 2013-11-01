@@ -798,7 +798,7 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
    1.  Added note about the use of the "XXX" code for non-currency
        transactions.
 
-   2.  Added phase attribute to the <fee:action> element. and normative
+   2.  Added phase attribute to the <fee:action> element, and normative
        reference to [draft-tan-epp-launchphase].
 
    3.  Added description of extension to transform and transfer query

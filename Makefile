@@ -11,5 +11,4 @@ all:
 
 	xml2rfc draft-brown-epp-fees.xml
 
-clean:
 	rm -fv draft-brown-epp-fees.xml examples/*txt
