@@ -14,6 +14,10 @@
           <domain:name avail="0">example.net</domain:name>
           <domain:reason>In use</domain:reason>
         </domain:cd>
+        <domain:cd>
+          <domain:name avail="0">example.org</domain:name>
+          <domain:reason>In use</domain:reason>
+        </domain:cd>
       </domain:chkData>
     </resData>
     <extension>
@@ -27,9 +31,17 @@
        <fee:chkData xmlns:fee="urn:ietf:params:xml:ns:fee-0.2">
          <fee:domain>example.net</fee:domain>
          <fee:currency>EUR</fee:currency>
-         <fee:action>transfer</fee:action>
+         <fee:action phase="claims"
+           subphase="landrush">create</fee:action>
          <fee:period unit="y">2</fee:period>
          <fee:fee>5.00</fee:fee>
+       </fee:chkData>
+       <fee:chkData xmlns:fee="urn:ietf:params:xml:ns:fee-0.2">
+         <fee:domain>example.org</fee:domain>
+         <fee:currency>EUR</fee:currency>
+         <fee:action>transfer</fee:action>
+         <fee:period unit="y">2</fee:period>
+         <fee:fee>2.50</fee:fee>
        </fee:chkData>
     </extension>
     <trID>

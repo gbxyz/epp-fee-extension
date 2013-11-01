@@ -92,13 +92,13 @@
         implementation.</t>
 
         <t>"fee" is used as an abbreviation for
-        "urn:ietf:params:xml:ns:fee-0.2". The XML namespace prefix "fee" is
+        "urn:ietf:params:xml:ns:fee-0.3". The XML namespace prefix "fee" is
         used, but implementations MUST NOT depend on it and instead employ a
         proper namespace-aware XML parser and serializer to interpret and output
         the XML documents.</t>
 
         <t>The XML namespace prefix above contains a version number,
-        specifically "0.2". This version number will increment with successive
+        specifically "0.3". This version number will increment with successive
         versions of this document, and will reach 1.0 if and when this document
         is published as an RFC. This permits clients to distinguish which
         version of the extension a server has implemented.</t>
@@ -125,11 +125,13 @@
 
           <t><list style="symbols">
             <t>A &lt;domain:name&gt; element that contains the domain name.</t>
+
             <t>A &lt;fee:currency&gt; element that contains the currency the fee
             is charged in. This must be a three-character currency code from
             <xref target="ISO4217"/> (Note: ISO 4217 provides the special "XXX"
             code which may be used if the server uses a non-currency based
             system for assessing fees, such as a system of credits).</t>
+
             <t>A &lt;fee:action&gt; element identifying the command. This MUST
             be one of the following:
               <list>
@@ -141,7 +143,10 @@
               </list>
             The &lt;fee:action&gt; element MAY have an OPTIONAL "phase"
             attribute specifying a launch phase as described in
-            <xref target="draft-tan-epp-launchphase" />.</t>
+            <xref target="draft-tan-epp-launchphase" />. It may also contain an
+            OPTIONAL "subphase" attribute identifying the custom or sub-phase
+            as described in <xref target="draft-tan-epp-launchphase" />.</t>
+
             <t>A &lt;fee:period&gt; element that contains the number of units to
             be added to the registration period of the domain object.</t> 
           </list></t>
@@ -168,8 +173,9 @@
 
             <t>A &lt;fee:action&gt; element that contains same action
             that appeared in the corresponding &lt;fee:check&gt; element. This
-            element MAY have an OPTIONAL "phase" attribute which MUST match the
-            same attribute in the corresponding &lt;fee:check&gt; element.</t>
+            element MAY have the OPTIONAL "phase" and "subphase" elements, 
+            which MUST match the same attributes in the corresponding
+            &lt;fee:check&gt; element.</t>
 
             <t>A &lt;fee:period&gt; element that contains same unit
             that appeared in the corresponding &lt;fee:check&gt; element.</t>
@@ -362,12 +368,12 @@ END</artwork></figure>
       Two URI assignments were requested and have been registered by the
       IANA.</t>
       <t>Registration request for the digital signature namespace:</t>
-      <t>URI: urn:ietf:params:xml:ns:fee-0.2</t>
+      <t>URI: urn:ietf:params:xml:ns:fee-0.3</t>
       <t>Registrant Contact: See the "Author's Address" section of this
       document.</t>
       <t>XML: None. Namespace URIs do not represent an XML specification.</t>
       <t>Registration request for the EPP fee XML schema:</t>
-      <t>URI: urn:ietf:params:xml:ns:fee-0.2</t>
+      <t>URI: urn:ietf:params:xml:ns:fee-0.3</t>
       <t>Registrant Contact: See the "Author's Address" section of this
       document.</t>
       <t>XML: See the "Formal Syntax" section of this document.</t>
@@ -388,6 +394,11 @@ END</artwork></figure>
           <t>Added description of extension to transform and transfer query
           commands.</t>
           <t>Added Acknowledgements and Change History sections.</t>
+        </list></t>
+      </section>
+      <section title="Change from 0.2 to 0.3">
+        <t><list style="numbers">
+          <t>Added the subphase attribute to the &lt;fee:action&gt; element.</t>
         </list></t>
       </section>
     </section>
