@@ -37,7 +37,7 @@
 <?rfc comments="yes" ?>
 <?rfc inline="yes" ?>
 
-<rfc category="exp" docName="draft-brown-epp-fees" ipr="trust200902">
+<rfc category="exp" docName="draft-brown-epp-fees-00" ipr="trust200902">
 
   <front>
     <title abbrev="Registry Fee Extension for EPP">Registry Fee Extension for
