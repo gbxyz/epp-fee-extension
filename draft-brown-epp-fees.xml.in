@@ -132,17 +132,18 @@
             code which may be used if the server uses a non-currency based
             system for assessing fees, such as a system of credits).</t>
 
-            <t>A &lt;fee:action&gt; element identifying the command. This MUST
-            be one of the following:
+            <t>A &lt;fee:action&gt; element identifying the command. The element
+            values supported by the server is a matter of repository policy, but
+            MUST include as a minimum the following values:
               <list>
                 <t>"create" indicating a &lt;domain:create&gt; command;</t>
                 <t>"renew" indicating a &lt;domain:renew&gt; command;</t>
                 <t>"transfer" indicating a &lt;domain:transfer&gt; command;</t>
-                <t>"restore" indicating a RGP restore command as described in
-                 <xref target="RFC3915" />.</t>
               </list>
-            The &lt;fee:action&gt; element MAY have an OPTIONAL "phase"
-            attribute specifying a launch phase as described in
+            If the server supports the <xref target="RFC3915">Registry Grace
+            Period Mapping</xref>, then the server MUST also support the
+            "restore" value. The &lt;fee:action&gt; element MAY have an OPTIONAL
+            "phase" attribute specifying a launch phase as described in
             <xref target="draft-tan-epp-launchphase" />. It may also contain an
             OPTIONAL "subphase" attribute identifying the custom or sub-phase
             as described in <xref target="draft-tan-epp-launchphase" />.</t>
@@ -399,6 +400,8 @@ END</artwork></figure>
       <section title="Change from 0.2 to 0.3">
         <t><list style="numbers">
           <t>Added the subphase attribute to the &lt;fee:action&gt; element.</t>
+          <t>Removed the enumeration for the &lt;fee:action&gt; element so any
+          token may be used.</t>
         </list></t>
       </section>
     </section>

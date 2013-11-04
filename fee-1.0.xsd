@@ -79,11 +79,9 @@
   </complexType>
 
   <simpleType name="actionTypeValue">
-    <restriction base="string">
-      <enumeration value="create" />
-      <enumeration value="renew" />
-      <enumeration value="transfer" />
-      <enumeration value="restore" />
+    <restriction base="token">
+      <minLength value="3"/>
+      <maxLength value="16"/>
     </restriction>
   </simpleType>
 
