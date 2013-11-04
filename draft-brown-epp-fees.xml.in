@@ -20,7 +20,7 @@
     "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5731.xml">
 ]>
 
-<?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
+<?xml-stylesheet type="text/xsl" href="rfc2629.xslt" ?>
 
 <?rfc strict="yes" ?>
 <?rfc toc="yes"?>
