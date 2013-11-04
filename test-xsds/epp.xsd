@@ -4,5 +4,5 @@
   <xsd:import namespace="urn:ietf:params:xml:ns:epp-1.0" schemaLocation="epp-1.0.xsd" />
   <xsd:import namespace="urn:ietf:params:xml:ns:domain-1.0" schemaLocation="domain-1.0.xsd" />
   <xsd:import namespace="urn:ietf:params:xml:ns:host-1.0" schemaLocation="host-1.0.xsd" />
-  <xsd:import namespace="urn:ietf:params:xml:ns:fee-0.3" schemaLocation="fee-1.0.xsd" />
+  <xsd:import namespace="urn:ietf:params:xml:ns:fee-0.3" schemaLocation="fee.xsd" />
 </xsd:schema>

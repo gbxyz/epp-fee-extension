@@ -18,19 +18,19 @@
   <!--
   Child elements found in EPP commands and responses
   -->
-  <element name="check" type="fee:checkType" />
-  <element name="chkData" type="fee:chkDataType" />
+  <element name="info" type="fee:infoType" />
+  <element name="infData" type="fee:infDataType" />
   <element name="creData" type="fee:transformDataType" />
   <element name="renData" type="fee:transformDataType" />
   <element name="trnData" type="fee:transformDataType" />
   <element name="updData" type="fee:transformDataType" />
+  <element name="delData" type="fee:deleteDataType" />
 
   <!--
-    client <check> command
+    client <info> command
   -->
-  <complexType name="checkType">
+  <complexType name="infoType">
     <sequence>
-      <element name="domain" type="eppcom:labelType" />
       <element name="currency" type="fee:currencyType" />
       <element name="action" type="fee:actionType" />
       <element name="period" type="domain:periodType" />
@@ -38,11 +38,10 @@
   </complexType>
 
   <!--
-    server <check> result
+    server <info> result
   -->
-  <complexType name="chkDataType">
+  <complexType name="infDataType">
     <sequence>
-      <element name="domain" type="eppcom:labelType" />
       <element name="currency" type="fee:currencyType" />
       <element name="action" type="fee:actionType" />
       <element name="period" type="domain:periodType" />
@@ -51,12 +50,20 @@
   </complexType>
 
   <!--
-    general transform command (create, renew, update,
-    transfer) result
+    general transform (create, renew, update, transfer) result
   -->
   <complexType name="transformDataType">
     <sequence>
       <element name="fee" type="fee:feeType" />
+    </sequence>
+  </complexType>
+
+  <!--
+    delete result
+  -->
+  <complexType name="deleteDataType">
+    <sequence>
+      <element name="credit" type="fee:feeType" />
     </sequence>
   </complexType>
 

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="us-ascii"?>
 
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
+
+  <!-- when the namespace version bumps, update this and it will update
+    everywhere -->
+  <!ENTITY VERSION "0.3">
+
   <!ENTITY I-D.narten-iana-considerations-rfc2434bis SYSTEM
     "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.narten-iana-considerations-rfc2434bis.xml">
   
@@ -70,20 +75,20 @@
       <t>Historically, domain name registries have applied a simple fee
       structure for billable transactions, namely a basic unit price applied to
       domain &lt;create&gt;, &lt;renew&gt;, &lt;transfer&gt; and RGP restore
-      commands. Given the relatively small number of EPP servers that EPP
-      clients have been required to connect to, it has generally been the case
+      commands. Given the relatively small number of EPP servers to which EPP
+      clients have been required to connect, it has generally been the case
       that client operators have been able to obtain details of these fees
       out-of-band by contacting the server operators.</t>
 
       <t>Given the imminent expansion of the DNS namespace, and the
       proliferation of novel business models, it is now desirable to provide a
-      method for EPP clients to query EPP servers for the fees associated with
-      certain commands and specific objects.</t>
+      method for EPP clients to query EPP servers for the fees and credits
+      associated with certain commands and specific objects.</t>
 
       <t>This document describes an extension mapping for version 1.0 of the 
       <xref target="RFC5730">Extensible Provisioning Protocol (EPP)</xref>. This
       EPP mapping provides a mechanism by which EPP clients may query the fees
-      associated with various billable transactions.</t>
+      and credits associated with various billable transactions.</t>
 
       <section title="Conventions Used in This Document">
 
@@ -98,16 +103,16 @@
         implementation.</t>
 
         <t>"fee" is used as an abbreviation for
-        "urn:ietf:params:xml:ns:fee-0.3". The XML namespace prefix "fee" is
-        used, but implementations MUST NOT depend on it and instead employ a
+        "urn:ietf:params:xml:ns:fee-&VERSION;". The XML namespace prefix "fee"
+        is used, but implementations MUST NOT depend on it and instead employ a
         proper namespace-aware XML parser and serializer to interpret and output
         the XML documents.</t>
 
         <t>The XML namespace prefix above contains a version number,
-        specifically "0.3". This version number will increment with successive
-        versions of this document, and will reach 1.0 if and when this document
-        is published as an RFC. This permits clients to distinguish which
-        version of the extension a server has implemented.</t>
+        specifically "&VERSION;". This version number will increment with
+        successive versions of this document, and will reach 1.0 if and when
+        this document is published as an RFC. This permits clients to
+        distinguish which version of the extension a server has implemented.</t>
 
       </section>
     </section>
@@ -118,20 +123,18 @@
       <xref target="RFC5730" />.</t>
 
       <section title="EPP Query Commands">
-        <t>This extension does not add any elements to the EPP &lt;info&gt; or
+        <t>This extension does not add any elements to the EPP &lt;check&gt; or
         &lt;poll&gt; commands or responses.</t>
 
-        <section title="EPP &lt;check&gt; Command">
+        <section title="EPP &lt;info&gt; Command">
           <t>This extension defines additional elements for the EPP
-          &lt;check&gt; command.</t>
+          &lt;info&gt; command.</t>
 
           <t>The command frame MAY contain an &lt;extension&gt; element which
-          MAY contain one or more child &lt;fee:check&gt; elements with the
-          following child elements:</t>
+          contains a &lt;fee:info&gt; element with the following child
+          elements:</t>
 
           <t><list style="symbols">
-            <t>A &lt;domain:name&gt; element that contains the domain name.</t>
-
             <t>A &lt;fee:currency&gt; element that contains the currency the fee
             is charged in. This must be a three-character currency code from
             <xref target="ISO4217"/> (Note: ISO 4217 provides the special "XXX"
@@ -150,52 +153,60 @@
             Period Mapping</xref>, then the server MUST also support the
             "restore" value. The &lt;fee:action&gt; element MAY have an OPTIONAL
             "phase" attribute specifying a launch phase as described in
-            <xref target="draft-tan-epp-launchphase" />. It may also contain an
-            OPTIONAL "subphase" attribute identifying the custom or sub-phase
-            as described in <xref target="draft-tan-epp-launchphase" />.</t>
+            <xref target="draft-tan-epp-launchphase" />. The &lt;fee:action&gt;
+            element may also contain an OPTIONAL "subphase" attribute
+            identifying the custom or sub-phase as described in
+            <xref target="draft-tan-epp-launchphase" />.</t>
 
             <t>A &lt;fee:period&gt; element that contains the number of units to
             be added to the registration period of the domain object.</t> 
           </list></t>
 
-          <t>Example &lt;check&gt; command:</t>
+          <t>Example &lt;info&gt; command:</t>
 
           <figure><artwork>
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text"
-   href="examples/check-command.txt" /></artwork></figure>
+   href="examples/info-command.txt" /></artwork></figure>
 
-          <t>When the server receives a &lt;check&gt; command that includes the
-          extension elements described above, its response MUST contain an
-          &lt;extension&gt; element, which MUST contain a child
-          &lt;fee:chkData&gt; element for each &lt;fee:check&gt; element
-          contained in the command. The &lt;fee:chkData&gt; MUST contain the
-          following child elements:</t>
+          <t>When the server receives an &lt;info&gt; command that includes the
+          extension element described above, its response MUST (subject to the
+          exceptions described below) contain an &lt;extension&gt; element,
+          which MUST contain a child &lt;fee:infData&gt; element. The
+          &lt;fee:infData&gt; MUST contain the following child elements:</t>
 
           <t><list style="symbols">
-            <t>A &lt;domain:name&gt; element that contains a domain name which
-            matches the name in the corresponding &lt;fee:check&gt; element.</t>
-
             <t>A &lt;fee:currency&gt; element that contains same currency code
-            that appeared in the corresponding &lt;fee:check&gt; element.</t>
+            that appeared in the original &lt;fee:check&gt; element.</t>
 
-            <t>A &lt;fee:action&gt; element that contains same action
-            that appeared in the corresponding &lt;fee:check&gt; element. This
-            element MAY have the OPTIONAL "phase" and "subphase" elements, 
-            which MUST match the same attributes in the corresponding
-            &lt;fee:check&gt; element.</t>
+            <t>A &lt;fee:action&gt; element that contains same action that
+            appeared in the original &lt;fee:check&gt; element. This element MAY
+            have the OPTIONAL "phase" and "subphase" elements, which MUST match
+            the same attributes in the original &lt;fee:check&gt; element.</t>
 
-            <t>A &lt;fee:period&gt; element that contains same unit
-            that appeared in the corresponding &lt;fee:check&gt; element.</t>
+            <t>A &lt;fee:period&gt; element that contains same unit that
+            appeared in the original &lt;fee:check&gt; element.</t>
 
             <t>A &lt;fee:fee&gt; element that contains the fee associated with
             the specified transaction.</t>
           </list></t>
 
-          <t>Example &lt;check&gt; response:</t>
+          <t>If the domain name requested in the command is invalid, sponsored
+          by another client, or otherwise ineligible for registration, the
+          server MAY choose to omit the &lt;fee:infData&gt; element and return
+          an error instead.</t>
+
+          <t>Example &lt;info&gt; response:</t>
 
           <figure><artwork>
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text"
-   href="examples/check-response.txt" /></artwork></figure>
+   href="examples/info-response.txt" /></artwork></figure>
+
+          <t>Example &lt;info&gt; response where the domain name is not
+          registered:</t>
+
+          <figure><artwork>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text"
+   href="examples/info-response-notregistered.txt" /></artwork></figure>
 
         </section>
 
@@ -208,10 +219,12 @@
           <t>When the &lt;transfer&gt; query command has been processed
           successfully, the client selected the extension when it logged in, and
           the client is authorised by the server to view information about the
-          transfer, the server MUST include in the &lt;extension&gt; section of
+          transfer, the server MAY include in the &lt;extension&gt; section of
           the EPP response a &lt;fee:trnData&gt; element that contains a
           &lt;fee:fee&gt; element containing the fee associated with this
-          command.</t>
+          command.  If no &lt;fee:trnData&gt; element is included in the
+          response, then no fee has been assessed by the server for this
+          transaction.</t>
 
           <t>Example &lt;transfer&gt; query response:</t>
 
@@ -232,9 +245,11 @@
 
           <t>When the &lt;create&gt; command has been processed successfully,
           and the client selected the extension when it logged in, the server
-          MUST include in the &lt;extension&gt; section of the EPP response a
+          MAY include in the &lt;extension&gt; section of the EPP response a
           &lt;fee:creData&gt; element that contains a &lt;fee:fee&gt; element
-          containing the fee associated with this command.</t>
+          containing the fee associated with this command. If no
+          &lt;fee:creData&gt; element is included in the response, then no fee
+          has been assessed by the server for this transaction.</t>
 
           <t>Example &lt;create&gt; response:</t>
 
@@ -246,7 +261,22 @@
 
         <section title="EPP &lt;delete&gt; Command">
           <t>This extension does not add any elements to the EPP &lt;delete&gt;
-          command or response.</t>
+          command, but does include elements in the response, when the extension
+          has been selected during a &lt;login&gt; command.</t>
+
+          <t>When the &lt;delete&gt; command has been processed successfully,
+          and the client selected the extension when it logged in, the server
+          MAY include in the &lt;extension&gt; section of the EPP response a
+          &lt;fee:delData&gt; element that contains a &lt;fee:credit&gt; element
+          containing any credit associated with the deletion of the domain. If
+          no &lt;fee:delData&gt; element is included in the response, then no
+          credit has been assessed by the server for this transaction.</t>
+
+          <t>Example &lt;delete&gt; response:</t>
+
+          <figure><artwork>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text"
+   href="examples/delete-response.txt" /></artwork></figure>
         </section>
 
         <section title="EPP &lt;renew&gt; Command">
@@ -256,9 +286,11 @@
 
           <t>When the &lt;renew&gt; command has been processed successfully,
           and the client selected the extension when it logged in, the server
-          MUST include in the &lt;extension&gt; section of the EPP response a
+          MAY include in the &lt;extension&gt; section of the EPP response a
           &lt;fee:renData&gt; element that contains a &lt;fee:fee&gt; element
-          containing the fee associated with this command.</t>
+          containing the fee associated with this command. If no
+          &lt;fee:renData&gt; element is included in the response, then no
+          fee has been assessed by the server for this transaction.</t>
 
           <t>Example &lt;renew&gt; response:</t>
 
@@ -277,10 +309,12 @@
           <t>When the &lt;transfer&gt; command has been processed successfully,
           and the client selected the extension when it logged in, and if the
           "op" attribute of the &lt;transfer&gt; element of the request was
-          either "request", the server MUST include in the &lt;extension&gt;
+          "request", the server MAY include in the &lt;extension&gt;
           section of the EPP response a &lt;fee:trnData&gt; element that
           contains a &lt;fee:fee&gt; element containing the fee associated with
-          this command.</t>
+          this command. If no &lt;fee:trnData&gt; element is included in the
+          response, then no fee has been assessed by the server for this
+          transaction.</t>
 
           <t>Example &lt;transfer&gt; response:</t>
 
@@ -299,10 +333,9 @@
           and the client selected the extension when it logged in, the server
           MAY include in the &lt;extension&gt; section of the EPP response a
           &lt;fee:updData&gt; element that contains a &lt;fee:fee&gt; element
-          containing any fee associated with this command.</t>
-
-          <t>If no fee is has been charged for the &lt;update&gt;, then the 
-          &lt;fee:updData&gt; MUST not be inserted into the response.</t>
+          containing any fee associated with this command. If no
+          &lt;fee:updData&gt; element is included in the response, then no
+          fee has been assessed by the server for this transaction.</t>
 
           <t>Example &lt;update&gt; response:</t>
 
@@ -355,8 +388,8 @@
 
 <figure><artwork>
 BEGIN
-<xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-  href="fee-1.0.xsd" parse="text"/>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="fee.xsd"
+  parse="text"/>
 END</artwork></figure>
 
       </section>
@@ -376,20 +409,21 @@ END</artwork></figure>
       Two URI assignments were requested and have been registered by the
       IANA.</t>
       <t>Registration request for the digital signature namespace:</t>
-      <t>URI: urn:ietf:params:xml:ns:fee-0.3</t>
+      <t>URI: urn:ietf:params:xml:ns:fee-&VERSION;</t>
       <t>Registrant Contact: See the "Author's Address" section of this
       document.</t>
       <t>XML: None. Namespace URIs do not represent an XML specification.</t>
       <t>Registration request for the EPP fee XML schema:</t>
-      <t>URI: urn:ietf:params:xml:ns:fee-0.3</t>
+      <t>URI: urn:ietf:params:xml:ns:fee-&VERSION;</t>
       <t>Registrant Contact: See the "Author's Address" section of this
       document.</t>
       <t>XML: See the "Formal Syntax" section of this document.</t>
     </section>
 
     <section title="Acknowledgements">
-      <t>The author wishes to thank James Gould of Verisign and Luis Mu&#241;oz
-      of ISC for their feedback and suggestions.</t>
+      <t>The author wishes to thank James Gould of Verisig, Luis Mu&#241;oz
+      of ISC, and Michael Young of Architelos for their feedback and
+      suggestions.</t>
     </section>
 
     <section title="Change History">
@@ -409,6 +443,13 @@ END</artwork></figure>
           <t>Added the subphase attribute to the &lt;fee:action&gt; element.</t>
           <t>Removed the enumeration for the &lt;fee:action&gt; element so any
           token may be used.</t>
+          <t>Moved the fee lookup command from &lt;check&gt; to
+          &lt;info&gt;.</t>
+          <t>Added an extension to the &lt;delete&gt; command to return credit
+          information.</t>
+          <t>Changed MUSTs to MAYs so that the response extension elements can
+          be omitted where no fee is applicable.</t>
+          <t>Update of introductory text.</t>
         </list></t>
       </section>
     </section>
