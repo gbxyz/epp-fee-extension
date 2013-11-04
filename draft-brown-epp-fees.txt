@@ -7,7 +7,7 @@ Intended status: Experimental                           November 4, 2013
 Expires: May 8, 2014
 
 
-    Registry Fee Extension for the Extensible Provisioning Protocol
+ Registry Fee Extension for the Extensible Provisioning Protocol (EPP)
                           draft-brown-epp-fees
 
 Abstract
@@ -54,7 +54,7 @@ Copyright Notice
 
 Brown                      Expires May 8, 2014                  [Page 1]
 
-Internet-Draft     Registry Fee Extension for the EPP      November 2013
+Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
 Table of Contents
@@ -110,7 +110,7 @@ Table of Contents
 
 Brown                      Expires May 8, 2014                  [Page 2]
 
-Internet-Draft     Registry Fee Extension for the EPP      November 2013
+Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
 1.  Introduction
@@ -166,7 +166,7 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
 
 Brown                      Expires May 8, 2014                  [Page 3]
 
-Internet-Draft     Registry Fee Extension for the EPP      November 2013
+Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
 2.1.  EPP Query Commands
@@ -222,7 +222,7 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
 
 Brown                      Expires May 8, 2014                  [Page 4]
 
-Internet-Draft     Registry Fee Extension for the EPP      November 2013
+Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
    C: <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -278,7 +278,7 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
 
 Brown                      Expires May 8, 2014                  [Page 5]
 
-Internet-Draft     Registry Fee Extension for the EPP      November 2013
+Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
    o  A <fee:action> element that contains same action that appeared in
@@ -317,14 +317,14 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
    S:       </domain:chkData>
    S:     </resData>
    S:     <extension>
-   S:        <fee:chkData xmlns:fee="urn:ietf:params:xml:ns:fee-0.2">
+   S:        <fee:chkData xmlns:fee="urn:ietf:params:xml:ns:fee-0.3">
    S:          <fee:domain>example.com</fee:domain>
    S:          <fee:currency>USD</fee:currency>
    S:          <fee:action phase="sunrise">create</fee:action>
    S:          <fee:period unit="y">1</fee:period>
    S:          <fee:fee>10.00</fee:fee>
    S:        </fee:chkData>
-   S:        <fee:chkData xmlns:fee="urn:ietf:params:xml:ns:fee-0.2">
+   S:        <fee:chkData xmlns:fee="urn:ietf:params:xml:ns:fee-0.3">
    S:          <fee:domain>example.net</fee:domain>
    S:          <fee:currency>EUR</fee:currency>
    S:          <fee:action phase="claims"
@@ -334,13 +334,13 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
 
 Brown                      Expires May 8, 2014                  [Page 6]
 
-Internet-Draft     Registry Fee Extension for the EPP      November 2013
+Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
    S:          <fee:period unit="y">2</fee:period>
    S:          <fee:fee>5.00</fee:fee>
    S:        </fee:chkData>
-   S:        <fee:chkData xmlns:fee="urn:ietf:params:xml:ns:fee-0.2">
+   S:        <fee:chkData xmlns:fee="urn:ietf:params:xml:ns:fee-0.3">
    S:          <fee:domain>example.org</fee:domain>
    S:          <fee:currency>EUR</fee:currency>
    S:          <fee:action>transfer</fee:action>
@@ -390,7 +390,7 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
 
 Brown                      Expires May 8, 2014                  [Page 7]
 
-Internet-Draft     Registry Fee Extension for the EPP      November 2013
+Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
    S: <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -446,7 +446,7 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
 
 Brown                      Expires May 8, 2014                  [Page 8]
 
-Internet-Draft     Registry Fee Extension for the EPP      November 2013
+Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
    S: <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -502,7 +502,7 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
 
 Brown                      Expires May 8, 2014                  [Page 9]
 
-Internet-Draft     Registry Fee Extension for the EPP      November 2013
+Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
    S: <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -558,7 +558,7 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
 
 Brown                      Expires May 8, 2014                 [Page 10]
 
-Internet-Draft     Registry Fee Extension for the EPP      November 2013
+Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
    S: <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -614,7 +614,7 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
 
 Brown                      Expires May 8, 2014                 [Page 11]
 
-Internet-Draft     Registry Fee Extension for the EPP      November 2013
+Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
    S: <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -670,7 +670,7 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
 
 Brown                      Expires May 8, 2014                 [Page 12]
 
-Internet-Draft     Registry Fee Extension for the EPP      November 2013
+Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
    A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT
@@ -726,7 +726,7 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
 
 Brown                      Expires May 8, 2014                 [Page 13]
 
-Internet-Draft     Registry Fee Extension for the EPP      November 2013
+Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
      <!--
@@ -782,7 +782,7 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
 
 Brown                      Expires May 8, 2014                 [Page 14]
 
-Internet-Draft     Registry Fee Extension for the EPP      November 2013
+Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
      <simpleType name="feeType">
@@ -838,7 +838,7 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
 
 Brown                      Expires May 8, 2014                 [Page 15]
 
-Internet-Draft     Registry Fee Extension for the EPP      November 2013
+Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
 6.  Change History
@@ -859,6 +859,9 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
 6.2.  Change from 0.2 to 0.3
 
    1.  Added the subphase attribute to the <fee:action> element.
+
+   2.  Removed the enumeration for the <fee:action> element so any token
+       may be used.
 
 
 7.  Normative References
@@ -889,12 +892,9 @@ Internet-Draft     Registry Fee Extension for the EPP      November 2013
 
 
 
-
-
-
 Brown                      Expires May 8, 2014                 [Page 16]
 
-Internet-Draft     Registry Fee Extension for the EPP      November 2013
+Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
 Author's Address
