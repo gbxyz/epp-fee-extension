@@ -899,8 +899,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 5.  Acknowledgements
 
-   The author wishes to thank James Gould of Verisig, Luis Munoz of ISC,
-   and Michael Young of Architelos for their feedback and suggestions.
+   The author wishes to thank James Gould of Verisign, Luis Munoz of
+   ISC, and Michael Young of Architelos for their feedback and
+   suggestions.
 
 
 6.  Change History
@@ -944,7 +945,6 @@ Internet-Draft       Registry Fee Extension for EPP        November 2013
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119, March 1997.
-
 
 
 
