@@ -4,7 +4,7 @@
 
   <!-- when the namespace version bumps, update this and it will update
     everywhere -->
-  <!ENTITY VERSION "0.3">
+  <!ENTITY VERSION "0.4">
 
   <!ENTITY I-D.narten-iana-considerations-rfc2434bis SYSTEM
     "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.narten-iana-considerations-rfc2434bis.xml">
@@ -117,14 +117,109 @@
       </section>
     </section>
 
+    <section title="Client Actions">
+      <t>The &lt;fee:action&gt; element is used in EPP query commands to
+      determine the command to which a fee is applicable.</t>
+
+      <t>The element values permitted by the server is a matter of repository
+      policy, but MUST include as a minimum the following values:
+
+        <list>
+          <t>"create" indicating a &lt;domain:create&gt; command;</t>
+          <t>"renew" indicating a &lt;domain:renew&gt; command;</t>
+          <t>"transfer" indicating a &lt;domain:transfer&gt; command;</t>
+        </list>
+
+      If the server supports the <xref target="RFC3915">Registry Grace Period
+      Mapping</xref>, then the server MUST also support the "restore" value.</t>
+
+      <t>The &lt;fee:action&gt; element MAY have an OPTIONAL "phase" attribute
+      specifying a launch phase as described in
+      <xref target="draft-tan-epp-launchphase" />. It may also contain an
+      OPTIONAL "subphase" attribute identifying the custom or sub-phase as
+      described in <xref target="draft-tan-epp-launchphase" />.</t>
+
+    </section>
+
+    <section title="Currency Codes">
+      <t>The &lt;fee:currency&gt; element is used to indicate which currency
+      fees are charged in. This value of this element MUST be a three-character
+      currency code from <xref target="ISO4217"/>.</t>
+
+      <t>Note that ISO 4217 provides the special "XXX" code, which may be used
+      if the server uses a non-currency based system for assessing fees, such as
+      a system of credits.</t>
+    </section>
+
     <section title="EPP Command Mapping">
 
       <t>A detailed description of the EPP syntax and semantics can be found in
       <xref target="RFC5730" />.</t>
 
       <section title="EPP Query Commands">
-        <t>This extension does not add any elements to the EPP &lt;check&gt; or
-        &lt;poll&gt; commands or responses.</t>
+        <t>This extension does not add any elements to the EPP &lt;poll&gt;
+        command or response.</t>
+
+        <section title="EPP &lt;check&gt; Command">
+          <t>This extension defines additional elements for the EPP
+          &lt;check&gt; command.</t>
+
+          <t>The command frame MAY contain an &lt;extension&gt; element which
+          MAY contain one or more child &lt;fee:check&gt; elements with the
+          following child elements:</t>
+
+          <t><list style="symbols">
+            <t>A &lt;domain:name&gt; element that contains a domain name.</t>
+
+            <t>A &lt;fee:currency&gt; element that contains the currency the fee
+            is charged in.</t>
+
+            <t>A &lt;fee:action&gt; element identifying the command.</t>
+
+            <t>A &lt;fee:period&gt; element that contains the number of units to
+            be added to the registration period of the domain object.</t> 
+          </list></t>
+
+          <t>Example &lt;check&gt; command:</t>
+
+          <figure><artwork>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text"
+   href="examples/check-command.txt" /></artwork></figure>
+
+          <t>When the server receives a &lt;check&gt; command that includes the
+          extension elements described above, its response MUST contain an
+          &lt;extension&gt; element, which MUST contain a child
+          &lt;fee:chkData&gt; element for each &lt;fee:check&gt; element
+          contained in the command. The &lt;fee:chkData&gt; MUST contain the
+          following child elements:</t>
+
+          <t><list style="symbols">
+            <t>A &lt;domain:name&gt; element that contains a domain name which
+            matches the name in the corresponding &lt;fee:check&gt; element.</t>
+
+            <t>A &lt;fee:currency&gt; element that contains same currency code
+            that appeared in the corresponding &lt;fee:check&gt; element.</t>
+
+            <t>A &lt;fee:action&gt; element that contains same action
+            that appeared in the corresponding &lt;fee:check&gt; element. This
+            element MAY have the OPTIONAL "phase" and "subphase" elements, 
+            which MUST match the same attributes in the corresponding
+            &lt;fee:check&gt; element.</t>
+
+            <t>A &lt;fee:period&gt; element that contains same unit
+            that appeared in the corresponding &lt;fee:check&gt; element.</t>
+
+            <t>A &lt;fee:fee&gt; element that contains the fee associated with
+            the specified transaction.</t>
+          </list></t>
+
+          <t>Example &lt;check&gt; response:</t>
+
+          <figure><artwork>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text"
+   href="examples/check-response.txt" /></artwork></figure>
+
+        </section>
 
         <section title="EPP &lt;info&gt; Command">
           <t>This extension defines additional elements for the EPP
@@ -136,27 +231,9 @@
 
           <t><list style="symbols">
             <t>A &lt;fee:currency&gt; element that contains the currency the fee
-            is charged in. This must be a three-character currency code from
-            <xref target="ISO4217"/> (Note: ISO 4217 provides the special "XXX"
-            code which may be used if the server uses a non-currency based
-            system for assessing fees, such as a system of credits).</t>
+            is charged in.</t>
 
-            <t>A &lt;fee:action&gt; element identifying the command. The element
-            values supported by the server is a matter of repository policy, but
-            MUST include as a minimum the following values:
-              <list>
-                <t>"create" indicating a &lt;domain:create&gt; command;</t>
-                <t>"renew" indicating a &lt;domain:renew&gt; command;</t>
-                <t>"transfer" indicating a &lt;domain:transfer&gt; command;</t>
-              </list>
-            If the server supports the <xref target="RFC3915">Registry Grace
-            Period Mapping</xref>, then the server MUST also support the
-            "restore" value. The &lt;fee:action&gt; element MAY have an OPTIONAL
-            "phase" attribute specifying a launch phase as described in
-            <xref target="draft-tan-epp-launchphase" />. The &lt;fee:action&gt;
-            element may also contain an OPTIONAL "subphase" attribute
-            identifying the custom or sub-phase as described in
-            <xref target="draft-tan-epp-launchphase" />.</t>
+            <t>A &lt;fee:action&gt; element identifying the command.</t>
 
             <t>A &lt;fee:period&gt; element that contains the number of units to
             be added to the registration period of the domain object.</t> 
@@ -239,17 +316,49 @@
       <section title="EPP Transform Commands">
 
         <section title="EPP &lt;create&gt; Command">
-          <t>This extension does not add any elements to the EPP &lt;create&gt;
-          command, but does include elements in the response, when the extension
-          has been selected during a &lt;login&gt; command.</t>
+          <t>This extension adds elements to both the EPP &lt;create&gt; command
+          and response, when the extension has been selected during a
+          &lt;login&gt; command.</t>
+
+          <t>When submitting a &lt;create&gt; command to the server, the client
+          MAY include in the &lt;extension&gt; element a &lt;fee:create&gt;
+          element which includes the following child elements:</t>
+
+          <t><list style="symbols">
+            <t>A &lt;fee:currency&gt; element containing the currency of the fee
+            that the command will result in.</t>
+
+            <t>A &lt;fee:fee&gt; element that contains the fee associated with
+            the command.</t>
+          </list></t>
+
+          <t>Depending on server policy, the server MAY choose to accept or
+          refuse the command depending on whether the currency and fee provided
+          by the client agrees with the server's own calculation of the fee. If
+          the server chooses to refuse the command due to an incorrect fee, it
+          MUST respond with a 2004 "Parameter value range error".</t>
 
           <t>When the &lt;create&gt; command has been processed successfully,
           and the client selected the extension when it logged in, the server
           MAY include in the &lt;extension&gt; section of the EPP response a
-          &lt;fee:creData&gt; element that contains a &lt;fee:fee&gt; element
-          containing the fee associated with this command. If no
-          &lt;fee:creData&gt; element is included in the response, then no fee
-          has been assessed by the server for this transaction.</t>
+          &lt;fee:creData&gt; element that contains the following child
+          elements:</t>
+
+          <t><list style="symbols">
+            <t>A &lt;fee:currency&gt; element containing the currency of the
+            fee.</t>
+
+            <t>A &lt;fee:fee&gt; element that contains the fee.</t>
+          </list></t>
+
+          <t>If no &lt;fee:creData&gt; element is included in the response, then
+          no fee has been assessed by the server for this transaction.</t>
+
+          <t>Example &lt;create&gt; command:</t>
+
+          <figure><artwork>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text"
+   href="examples/create-command.txt" /></artwork></figure>
 
           <t>Example &lt;create&gt; response:</t>
 
@@ -262,14 +371,23 @@
         <section title="EPP &lt;delete&gt; Command">
           <t>This extension does not add any elements to the EPP &lt;delete&gt;
           command, but does include elements in the response, when the extension
-          has been selected during a &lt;login&gt; command.</t>
+          has been selected during the &lt;login&gt; command.</t>
 
           <t>When the &lt;delete&gt; command has been processed successfully,
           and the client selected the extension when it logged in, the server
           MAY include in the &lt;extension&gt; section of the EPP response a
-          &lt;fee:delData&gt; element that contains a &lt;fee:credit&gt; element
-          containing any credit associated with the deletion of the domain. If
-          no &lt;fee:delData&gt; element is included in the response, then no
+          &lt;fee:delData&gt; element that contains the following child
+          elements:</t>
+
+          <t><list style="symbols">
+            <t>A &lt;fee:currency&gt; element containing the currency of the
+            credit.</t>
+
+            <t>A &lt;fee:credit&gt; element that contains the credit associated
+            with the deletion of the domain.</t>
+          </list></t>
+
+          <t>If no &lt;fee:delData&gt; element is included in the response, then no
           credit has been assessed by the server for this transaction.</t>
 
           <t>Example &lt;delete&gt; response:</t>
@@ -280,17 +398,49 @@
         </section>
 
         <section title="EPP &lt;renew&gt; Command">
-          <t>This extension does not add any elements to the EPP &lt;renew&gt;
-          command, but does include elements in the response, when the extension
-          has been selected during a &lt;login&gt; command.</t>
+          <t>This extension adds elements to both the EPP &lt;renew&gt; command
+          and response, when the extension has been selected during a
+          &lt;login&gt; command.</t>
+
+          <t>When submitting a &lt;renew&gt; command to the server, the client
+          MAY include in the &lt;extension&gt; element a &lt;fee:renew&gt;
+          element which includes the following child elements:</t>
+
+          <t><list style="symbols">
+            <t>A &lt;fee:currency&gt; element containing the currency of the fee
+            that the command will result in.</t>
+
+            <t>A &lt;fee:fee&gt; element that contains the fee associated with
+            the command.</t>
+          </list></t>
+
+          <t>Depending on server policy, the server MAY choose to accept or
+          refuse the command depending on whether the currency and fee provided
+          by the client agrees with the server's own calculation of the fee. If
+          the server chooses to refuse the command due to an incorrect fee, it
+          MUST respond with a 2004 "Parameter value range error".</t>
 
           <t>When the &lt;renew&gt; command has been processed successfully,
           and the client selected the extension when it logged in, the server
           MAY include in the &lt;extension&gt; section of the EPP response a
-          &lt;fee:renData&gt; element that contains a &lt;fee:fee&gt; element
-          containing the fee associated with this command. If no
-          &lt;fee:renData&gt; element is included in the response, then no
-          fee has been assessed by the server for this transaction.</t>
+          &lt;fee:renData&gt; element that contains the following child
+          elements:</t>
+
+          <t><list style="symbols">
+            <t>A &lt;fee:currency&gt; element containing the currency of the
+            fee.</t>
+
+            <t>A &lt;fee:fee&gt; element that contains the fee.</t>
+          </list></t>
+
+          <t>If no &lt;fee:renData&gt; element is included in the response, then
+          no fee has been assessed by the server for this transaction.</t>
+
+          <t>Example &lt;renew&gt; command:</t>
+
+          <figure><artwork>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text"
+   href="examples/renew-command.txt" /></artwork></figure>
 
           <t>Example &lt;renew&gt; response:</t>
 
@@ -301,20 +451,50 @@
         </section>
 
         <section title="EPP &lt;transfer&gt; Command">
-          <t>This extension does not add any elements to the EPP
-          &lt;transfer&gt; command, but does include elements in the response,
-          when the extension has been selected during a &lt;login&gt;
-          command.</t>
+          <t>This extension adds elements to both the EPP &lt;transfer&gt;
+          command and response, when the value of the "op" attribute of the
+          &lt;transfer&gt; command element is "request", and the extension has
+          been selected during the &lt;login&gt; command.</t>
+
+          <t>When submitting a &lt;transfer&gt; command to the server, the client
+          MAY include in the &lt;extension&gt; element a &lt;fee:transfer&gt;
+          element which includes the following child elements:</t>
+
+          <t><list style="symbols">
+            <t>A &lt;fee:currency&gt; element containing the currency of the fee
+            that the command will result in.</t>
+
+            <t>A &lt;fee:fee&gt; element that contains the fee associated with
+            the command.</t>
+          </list></t>
+
+          <t>Depending on server policy, the server MAY choose to accept or
+          refuse the command depending on whether the currency and fee provided
+          by the client agrees with the server's own calculation of the fee. If
+          the server chooses to refuse the command due to an incorrect fee, it
+          MUST respond with a 2004 "Parameter value range error".</t>
 
           <t>When the &lt;transfer&gt; command has been processed successfully,
-          and the client selected the extension when it logged in, and if the
-          "op" attribute of the &lt;transfer&gt; element of the request was
-          "request", the server MAY include in the &lt;extension&gt;
-          section of the EPP response a &lt;fee:trnData&gt; element that
-          contains a &lt;fee:fee&gt; element containing the fee associated with
-          this command. If no &lt;fee:trnData&gt; element is included in the
-          response, then no fee has been assessed by the server for this
-          transaction.</t>
+          and the client selected the extension when it logged in, the server
+          MAY include in the &lt;extension&gt; section of the EPP response a
+          &lt;fee:trnData&gt; element that contains the following child
+          elements:</t>
+
+          <t><list style="symbols">
+            <t>A &lt;fee:currency&gt; element containing the currency of the
+            fee.</t>
+
+            <t>A &lt;fee:fee&gt; element that contains the fee.</t>
+          </list></t>
+
+          <t>If no &lt;fee:transfData&gt; element is included in the response, then
+          no fee has been assessed by the server for this transaction.</t>
+
+          <t>Example &lt;transfer&gt; command:</t>
+
+          <figure><artwork>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text"
+   href="examples/transfer-command.txt" /></artwork></figure>
 
           <t>Example &lt;transfer&gt; response:</t>
 
@@ -325,17 +505,49 @@
         </section>
 
         <section title="EPP &lt;update&gt; Command">
-          <t>This extension does not add any elements to the EPP &lt;update&gt;
-          command, but does include elements in the response, when the extension
-          has been selected during a &lt;login&gt; command.</t>
+          <t>This extension adds elements to both the EPP &lt;update&gt; command
+          and response, when the extension has been selected during a
+          &lt;login&gt; has been selected during the &lt;login&gt; command.</t>
+
+          <t>When submitting a &lt;update&gt; command to the server, the client
+          MAY include in the &lt;extension&gt; element a &lt;fee:update&gt;
+          element which includes the following child elements:</t>
+
+          <t><list style="symbols">
+            <t>A &lt;fee:currency&gt; element containing the currency of the fee
+            that the command will result in.</t>
+
+            <t>A &lt;fee:fee&gt; element that contains the fee associated with
+            the command.</t>
+          </list></t>
+
+          <t>Depending on server policy, the server MAY choose to accept or
+          refuse the command depending on whether the currency and fee provided
+          by the client agrees with the server's own calculation of the fee. If
+          the server chooses to refuse the command due to an incorrect fee, it
+          MUST respond with a 2004 "Parameter value range error".</t>
 
           <t>When the &lt;update&gt; command has been processed successfully,
           and the client selected the extension when it logged in, the server
           MAY include in the &lt;extension&gt; section of the EPP response a
-          &lt;fee:updData&gt; element that contains a &lt;fee:fee&gt; element
-          containing any fee associated with this command. If no
-          &lt;fee:updData&gt; element is included in the response, then no
-          fee has been assessed by the server for this transaction.</t>
+          &lt;fee:upData&gt; element that contains the following child
+          elements:</t>
+
+          <t><list style="symbols">
+            <t>A &lt;fee:currency&gt; element containing the currency of the
+            fee.</t>
+
+            <t>A &lt;fee:fee&gt; element that contains the fee.</t>
+          </list></t>
+
+          <t>If no &lt;fee:upData&gt; element is included in the response, then
+          no fee has been assessed by the server for this transaction.</t>
+
+          <t>Example &lt;update&gt; command:</t>
+
+          <figure><artwork>
+<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text"
+   href="examples/update-command.txt" /></artwork></figure>
 
           <t>Example &lt;update&gt; response:</t>
 
@@ -421,9 +633,14 @@ END</artwork></figure>
     </section>
 
     <section title="Acknowledgements">
-      <t>The author wishes to thank James Gould of Verisign, Luis Mu&#241;oz
-      of ISC, and Michael Young of Architelos for their feedback and
-      suggestions.</t>
+      <t>The author wishes to thank the following persons for their feedback and
+      suggestions:</t>
+      <t><list style="symbols">
+        <t>James Gould of Verisign</t>
+        <t>Luis Mu&#241;oz of ISC</t>
+        <t>Michael Young of Architelos</t>
+        <t>Ben Levac and Jeff Eckhaus of Demand Media</t>
+       </list></t>
     </section>
 
     <section title="Change History">
@@ -450,6 +667,15 @@ END</artwork></figure>
           <t>Changed MUSTs to MAYs so that the response extension elements can
           be omitted where no fee is applicable.</t>
           <t>Update of introductory text.</t>
+        </list></t>
+      </section>
+      <section title="Change from 0.3 to 0.4">
+        <t><list style="numbers">
+          <t>Restore the &lt;check&gt; command extension; either &lt;check&gt;
+          or &lt;info&gt; can be used.</t>
+          <t>added extension elements for &lt;create&gt;, &lt;renew&gt;,
+          &lt;transfer&gt; and &lt;update&gt; so that the server can reject the
+          command if the fee is incorrect.</t>
         </list></t>
       </section>
     </section>

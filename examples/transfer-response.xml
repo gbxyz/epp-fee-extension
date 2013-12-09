@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
   <response>
     <result code="1001">
@@ -6,7 +6,7 @@
     </result>
     <resData>
       <domain:trnData
-       xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
+        xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
         <domain:name>example.com</domain:name>
         <domain:trStatus>pending</domain:trStatus>
         <domain:reID>ClientX</domain:reID>
@@ -17,7 +17,8 @@
       </domain:trnData>
     </resData>
     <extension>
-      <fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.3">
+      <fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.4">
+        <fee:currency>USD</fee:currency>
         <fee:fee>5.00</fee:fee>
       </fee:trnData>
     </extension>

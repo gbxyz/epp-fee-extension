@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
   <response>
     <result code="1000">
@@ -6,10 +6,10 @@
     </result>
     <resData>
       <domain:infData
-       xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
+        xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
         <domain:name>example.com</domain:name>
         <domain:roid>EXAMPLE1-REP</domain:roid>
-        <domain:status s="ok"/>
+        <domain:status s="ok" />
         <domain:registrant>jd1234</domain:registrant>
         <domain:contact type="admin">sh8013</domain:contact>
         <domain:contact type="tech">sh8013</domain:contact>
@@ -32,12 +32,12 @@
       </domain:infData>
     </resData>
     <extension>
-       <fee:infData xmlns:fee="urn:ietf:params:xml:ns:fee-0.3">
-         <fee:currency>USD</fee:currency>
-         <fee:action phase="sunrise">create</fee:action>
-         <fee:period unit="y">1</fee:period>
-         <fee:fee>10.00</fee:fee>
-       </fee:infData>
+      <fee:infData xmlns:fee="urn:ietf:params:xml:ns:fee-0.4">
+        <fee:currency>USD</fee:currency>
+        <fee:action phase="sunrise">create</fee:action>
+        <fee:period unit="y">1</fee:period>
+        <fee:fee>10.00</fee:fee>
+      </fee:infData>
     </extension>
     <trID>
       <clTRID>ABC-12345</clTRID>

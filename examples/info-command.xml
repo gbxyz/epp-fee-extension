@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
   <command>
     <info>
       <domain:info
-       xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
+        xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
         <domain:name hosts="all">example.com</domain:name>
       </domain:info>
     </info>
     <extension>
-      <fee:info xmlns:fee="urn:ietf:params:xml:ns:fee-0.3">
+      <fee:info xmlns:fee="urn:ietf:params:xml:ns:fee-0.4">
         <fee:currency>USD</fee:currency>
         <fee:action phase="sunrise">create</fee:action>
         <fee:period unit="y">1</fee:period>
