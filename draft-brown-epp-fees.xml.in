@@ -124,7 +124,7 @@
       <t>The element values permitted by the server is a matter of repository
       policy, but MUST include as a minimum the following values:
 
-        <list>
+        <list style="symbols">
           <t>"create" indicating a &lt;domain:create&gt; command;</t>
           <t>"renew" indicating a &lt;domain:renew&gt; command;</t>
           <t>"transfer" indicating a &lt;domain:transfer&gt; command;</t>

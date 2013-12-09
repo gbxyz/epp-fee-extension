@@ -172,11 +172,11 @@ Internet-Draft       Registry Fee Extension for EPP        November 2013
    The element values permitted by the server is a matter of repository
    policy, but MUST include as a minimum the following values:
 
-      "create" indicating a <domain:create> command;
+   o  "create" indicating a <domain:create> command;
 
-      "renew" indicating a <domain:renew> command;
+   o  "renew" indicating a <domain:renew> command;
 
-      "transfer" indicating a <domain:transfer> command;
+   o  "transfer" indicating a <domain:transfer> command;
 
    If the server supports the Registry Grace Period Mapping [RFC3915],
    then the server MUST also support the "restore" value.
