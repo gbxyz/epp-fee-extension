@@ -11,14 +11,14 @@
     </check>
     <extension>
       <fee:check
-        xmlns:fee="urn:ietf:params:xml:ns:fee-0.4">
+        xmlns:fee="urn:ietf:params:xml:ns:fee-0.5">
         <fee:domain>example.com</fee:domain>
         <fee:currency>USD</fee:currency>
         <fee:action phase="sunrise">create</fee:action>
         <fee:period unit="y">1</fee:period>
       </fee:check>
       <fee:check
-        xmlns:fee="urn:ietf:params:xml:ns:fee-0.4">
+        xmlns:fee="urn:ietf:params:xml:ns:fee-0.5">
         <fee:domain>example.net</fee:domain>
         <fee:currency>EUR</fee:currency>
         <fee:action phase="claims" subphase="landrush">
@@ -26,7 +26,7 @@
         <fee:period unit="y">2</fee:period>
       </fee:check>
       <fee:check
-        xmlns:fee="urn:ietf:params:xml:ns:fee-0.4">
+        xmlns:fee="urn:ietf:params:xml:ns:fee-0.5">
         <fee:domain>example.org</fee:domain>
         <fee:currency>EUR</fee:currency>
         <fee:action>transfer</fee:action>

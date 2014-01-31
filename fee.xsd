@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-  xmlns:fee="urn:ietf:params:xml:ns:fee-0.4"
+  xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"
   xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
   xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"
-  targetNamespace="urn:ietf:params:xml:ns:fee-0.4"
+  targetNamespace="urn:ietf:params:xml:ns:fee-0.5"
   elementFormDefault="qualified">
 
   <import namespace="urn:ietf:params:xml:ns:eppcom-1.0" />
@@ -97,6 +97,7 @@
     <sequence>
       <element name="currency" type="fee:currencyType" />
       <element name="fee" type="fee:feeType" />
+      <element name="balance" type="fee:feeType" minOccurs="0" />
     </sequence>
   </complexType>
 

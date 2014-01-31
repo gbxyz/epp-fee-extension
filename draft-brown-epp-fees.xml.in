@@ -4,7 +4,11 @@
 
   <!-- when the namespace version bumps, update this and it will update
     everywhere -->
-  <!ENTITY VERSION "0.4">
+  <!ENTITY VERSION "0.5">
+
+  <!-- this is the version of the draft as published on the IETF
+    website -->
+  <!ENTITY IETFVERSION "02">
 
   <!ENTITY I-D.narten-iana-considerations-rfc2434bis SYSTEM
     "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.narten-iana-considerations-rfc2434bis.xml">
@@ -37,7 +41,7 @@
 <?rfc comments="yes" ?>
 <?rfc inline="yes" ?>
 
-<rfc category="exp" docName="draft-brown-epp-fees-00" ipr="trust200902">
+<rfc category="exp" docName="draft-brown-epp-fees-&IETFVERSION;" ipr="trust200902">
 
   <front>
     <title abbrev="Registry Fee Extension for EPP">Registry Fee Extension for
@@ -59,7 +63,7 @@
       </address>
     </author>
 
-    <date month="November" year="2013" />
+    <date month="December" year="2013" />
 
     <area>Applications</area>
     <workgroup>Internet Engineering Task Force</workgroup>
@@ -88,7 +92,8 @@
       <t>This document describes an extension mapping for version 1.0 of the 
       <xref target="RFC5730">Extensible Provisioning Protocol (EPP)</xref>. This
       EPP mapping provides a mechanism by which EPP clients may query the fees
-      and credits associated with various billable transactions.</t>
+      and credits associated with various billable transactions, and also
+      obtain their current account balance.</t>
 
       <section title="Conventions Used in This Document">
 
@@ -146,9 +151,24 @@
       fees are charged in. This value of this element MUST be a three-character
       currency code from <xref target="ISO4217"/>.</t>
 
-      <t>Note that ISO 4217 provides the special "XXX" code, which may be used
+      <t>Note that ISO 4217 provides the special "XXX" code, which MAY be used
       if the server uses a non-currency based system for assessing fees, such as
       a system of credits.</t>
+    </section>
+
+    <section title="Account Balance">
+      <t>The &lt;fee:balance&gt; element is an OPTIONAL element which MAY
+      be included in server responses to transform commands. If present,
+      it can be used by the client to determine the remaining credit at
+      the server.</t>
+
+      <t>Whether or not the &lt;fee:balance&gt; is included in response
+      frames is a matter of server policy. However, if a server chooses
+      to offer support for this element, it MUST be included responses
+      to all transform commands (ie create, renew, update, delete,
+      transfer request).</t>
+
+      <t>The value of the &lt;fee:balance&gt; MAY be negative.</t>
     </section>
 
     <section title="EPP Command Mapping">
@@ -349,6 +369,11 @@
             fee.</t>
 
             <t>A &lt;fee:fee&gt; element that contains the fee.</t>
+
+            <t>An OPTIONAL &lt;fee:balance&gt; element that contains the
+            client's current account balance, once the above fee has been
+            deducted.</t>
+
           </list></t>
 
           <t>If no &lt;fee:creData&gt; element is included in the response, then
@@ -385,6 +410,11 @@
 
             <t>A &lt;fee:credit&gt; element that contains the credit associated
             with the deletion of the domain.</t>
+
+            <t>An OPTIONAL &lt;fee:balance&gt; element that contains the
+            client's current account balance, once the above credit has been
+            added.</t>
+
           </list></t>
 
           <t>If no &lt;fee:delData&gt; element is included in the response, then no
@@ -431,6 +461,10 @@
             fee.</t>
 
             <t>A &lt;fee:fee&gt; element that contains the fee.</t>
+
+            <t>An OPTIONAL &lt;fee:balance&gt; element that contains the
+            client's current account balance, once the above fee has been
+            deducted.</t>
           </list></t>
 
           <t>If no &lt;fee:renData&gt; element is included in the response, then
@@ -485,6 +519,10 @@
             fee.</t>
 
             <t>A &lt;fee:fee&gt; element that contains the fee.</t>
+
+            <t>An OPTIONAL &lt;fee:balance&gt; element that contains the
+            client's current account balance, once the above fee has been
+            deducted.</t>
           </list></t>
 
           <t>If no &lt;fee:transfData&gt; element is included in the response, then
@@ -538,6 +576,10 @@
             fee.</t>
 
             <t>A &lt;fee:fee&gt; element that contains the fee.</t>
+
+            <t>An OPTIONAL &lt;fee:balance&gt; element that contains the
+            client's current account balance, once the above fee has been
+            deducted.</t>
           </list></t>
 
           <t>If no &lt;fee:upData&gt; element is included in the response, then
@@ -676,6 +718,11 @@ END</artwork></figure>
           <t>added extension elements for &lt;create&gt;, &lt;renew&gt;,
           &lt;transfer&gt; and &lt;update&gt; so that the server can reject the
           command if the fee is incorrect.</t>
+        </list></t>
+      </section>
+      <section title="Change from 0.4 to 0.%">
+        <t><list style="numbers">
+          <t>Added the &lt;fee:balance&gt; element.</t>
         </list></t>
       </section>
     </section>

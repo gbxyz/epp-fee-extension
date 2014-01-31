@@ -6,7 +6,7 @@
     </result>
     <extension>
       <fee:infData
-        xmlns:fee="urn:ietf:params:xml:ns:fee-0.4">
+        xmlns:fee="urn:ietf:params:xml:ns:fee-0.5">
         <fee:currency>USD</fee:currency>
         <fee:action phase="sunrise">create</fee:action>
         <fee:period unit="y">1</fee:period>

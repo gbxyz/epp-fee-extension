@@ -22,7 +22,7 @@
     </resData>
     <extension>
       <fee:chkData
-        xmlns:fee="urn:ietf:params:xml:ns:fee-0.4">
+        xmlns:fee="urn:ietf:params:xml:ns:fee-0.5">
         <fee:domain>example.com</fee:domain>
         <fee:currency>USD</fee:currency>
         <fee:action phase="sunrise">create</fee:action>
@@ -30,7 +30,7 @@
         <fee:fee>10.00</fee:fee>
       </fee:chkData>
       <fee:chkData
-        xmlns:fee="urn:ietf:params:xml:ns:fee-0.4">
+        xmlns:fee="urn:ietf:params:xml:ns:fee-0.5">
         <fee:domain>example.net</fee:domain>
         <fee:currency>EUR</fee:currency>
         <fee:action phase="claims" subphase="landrush">
@@ -39,7 +39,7 @@
         <fee:fee>5.00</fee:fee>
       </fee:chkData>
       <fee:chkData
-        xmlns:fee="urn:ietf:params:xml:ns:fee-0.4">
+        xmlns:fee="urn:ietf:params:xml:ns:fee-0.5">
         <fee:domain>example.org</fee:domain>
         <fee:currency>EUR</fee:currency>
         <fee:action>transfer</fee:action>

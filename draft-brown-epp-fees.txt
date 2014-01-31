@@ -3,12 +3,12 @@
 
 Internet Engineering Task Force                                 G. Brown
 Internet-Draft                                      CentralNic Group plc
-Intended status: Experimental                              November 2013
-Expires: May 5, 2014
+Intended status: Experimental                           December 9, 2013
+Expires: June 12, 2014
 
 
  Registry Fee Extension for the Extensible Provisioning Protocol (EPP)
-                        draft-brown-epp-fees-00
+                        draft-brown-epp-fees-01
 
 Abstract
 
@@ -30,7 +30,7 @@ Status of this Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 5, 2014.
+   This Internet-Draft will expire on June 12, 2014.
 
 Copyright Notice
 
@@ -52,9 +52,9 @@ Copyright Notice
 
 
 
-Brown                      Expires May 5, 2014                  [Page 1]
+Brown                     Expires June 12, 2014                 [Page 1]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2013
+Internet-Draft       Registry Fee Extension for EPP        December 2013
 
 
 Table of Contents
@@ -108,9 +108,9 @@ Table of Contents
 
 
 
-Brown                      Expires May 5, 2014                  [Page 2]
+Brown                     Expires June 12, 2014                 [Page 2]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2013
+Internet-Draft       Registry Fee Extension for EPP        December 2013
 
 
 1.  Introduction
@@ -164,9 +164,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
 
-Brown                      Expires May 5, 2014                  [Page 3]
+Brown                     Expires June 12, 2014                 [Page 3]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2013
+Internet-Draft       Registry Fee Extension for EPP        December 2013
 
 
    The element values permitted by the server is a matter of repository
@@ -220,9 +220,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
 
-Brown                      Expires May 5, 2014                  [Page 4]
+Brown                     Expires June 12, 2014                 [Page 4]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2013
+Internet-Draft       Registry Fee Extension for EPP        December 2013
 
 
    o  A <domain:name> element that contains a domain name.
@@ -276,9 +276,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
 
-Brown                      Expires May 5, 2014                  [Page 5]
+Brown                     Expires June 12, 2014                 [Page 5]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2013
+Internet-Draft       Registry Fee Extension for EPP        December 2013
 
 
    C: <?xml version="1.0" encoding="utf-8" standalone="no"?>
@@ -332,9 +332,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
 
-Brown                      Expires May 5, 2014                  [Page 6]
+Brown                     Expires June 12, 2014                 [Page 6]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2013
+Internet-Draft       Registry Fee Extension for EPP        December 2013
 
 
    o  A <fee:currency> element that contains same currency code that
@@ -388,9 +388,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
 
-Brown                      Expires May 5, 2014                  [Page 7]
+Brown                     Expires June 12, 2014                 [Page 7]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2013
+Internet-Draft       Registry Fee Extension for EPP        December 2013
 
 
    S:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.4">
@@ -444,9 +444,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
 
-Brown                      Expires May 5, 2014                  [Page 8]
+Brown                     Expires June 12, 2014                 [Page 8]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2013
+Internet-Draft       Registry Fee Extension for EPP        December 2013
 
 
    C: <?xml version="1.0" encoding="utf-8" standalone="no"?>
@@ -500,9 +500,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
 
-Brown                      Expires May 5, 2014                  [Page 9]
+Brown                     Expires June 12, 2014                 [Page 9]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2013
+Internet-Draft       Registry Fee Extension for EPP        December 2013
 
 
    S: <?xml version="1.0" encoding="utf-8" standalone="no"?>
@@ -556,9 +556,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
 
-Brown                      Expires May 5, 2014                 [Page 10]
+Brown                     Expires June 12, 2014                [Page 10]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2013
+Internet-Draft       Registry Fee Extension for EPP        December 2013
 
 
    Example <info> response where the domain name is not registered:
@@ -612,9 +612,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
 
-Brown                      Expires May 5, 2014                 [Page 11]
+Brown                     Expires June 12, 2014                [Page 11]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2013
+Internet-Draft       Registry Fee Extension for EPP        December 2013
 
 
    S: <?xml version="1.0" encoding="utf-8" standalone="no"?>
@@ -668,9 +668,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
 
-Brown                      Expires May 5, 2014                 [Page 12]
+Brown                     Expires June 12, 2014                [Page 12]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2013
+Internet-Draft       Registry Fee Extension for EPP        December 2013
 
 
    Depending on server policy, the server MAY choose to accept or refuse
@@ -724,9 +724,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
 
-Brown                      Expires May 5, 2014                 [Page 13]
+Brown                     Expires June 12, 2014                [Page 13]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2013
+Internet-Draft       Registry Fee Extension for EPP        December 2013
 
 
    C: </epp>
@@ -780,9 +780,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
 
-Brown                      Expires May 5, 2014                 [Page 14]
+Brown                     Expires June 12, 2014                [Page 14]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2013
+Internet-Draft       Registry Fee Extension for EPP        December 2013
 
 
    credit has been assessed by the server for this transaction.
@@ -836,9 +836,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
 
-Brown                      Expires May 5, 2014                 [Page 15]
+Brown                     Expires June 12, 2014                [Page 15]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2013
+Internet-Draft       Registry Fee Extension for EPP        December 2013
 
 
    renData> element that contains the following child elements:
@@ -892,9 +892,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
 
-Brown                      Expires May 5, 2014                 [Page 16]
+Brown                     Expires June 12, 2014                [Page 16]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2013
+Internet-Draft       Registry Fee Extension for EPP        December 2013
 
 
    S: <?xml version="1.0" encoding="utf-8" standalone="no"?>
@@ -948,9 +948,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
 
-Brown                      Expires May 5, 2014                 [Page 17]
+Brown                     Expires June 12, 2014                [Page 17]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2013
+Internet-Draft       Registry Fee Extension for EPP        December 2013
 
 
    When the <transfer> command has been processed successfully, and the
@@ -1004,9 +1004,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
 
-Brown                      Expires May 5, 2014                 [Page 18]
+Brown                     Expires June 12, 2014                [Page 18]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2013
+Internet-Draft       Registry Fee Extension for EPP        December 2013
 
 
    S: <?xml version="1.0" encoding="utf-8" standalone="no"?>
@@ -1060,9 +1060,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
 
-Brown                      Expires May 5, 2014                 [Page 19]
+Brown                     Expires June 12, 2014                [Page 19]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2013
+Internet-Draft       Registry Fee Extension for EPP        December 2013
 
 
    the command depending on whether the currency and fee provided by the
@@ -1116,9 +1116,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
 
-Brown                      Expires May 5, 2014                 [Page 20]
+Brown                     Expires June 12, 2014                [Page 20]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2013
+Internet-Draft       Registry Fee Extension for EPP        December 2013
 
 
    S: <?xml version="1.0" encoding="utf-8" standalone="no"?>
@@ -1172,9 +1172,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
 
-Brown                      Expires May 5, 2014                 [Page 21]
+Brown                     Expires June 12, 2014                [Page 21]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2013
+Internet-Draft       Registry Fee Extension for EPP        December 2013
 
 
    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -1228,9 +1228,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
 
-Brown                      Expires May 5, 2014                 [Page 22]
+Brown                     Expires June 12, 2014                [Page 22]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2013
+Internet-Draft       Registry Fee Extension for EPP        December 2013
 
 
      <complexType name="checkType">
@@ -1284,9 +1284,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
 
-Brown                      Expires May 5, 2014                 [Page 23]
+Brown                     Expires June 12, 2014                [Page 23]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2013
+Internet-Draft       Registry Fee Extension for EPP        December 2013
 
 
      <complexType name="transformCommandType">
@@ -1340,9 +1340,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
 
-Brown                      Expires May 5, 2014                 [Page 24]
+Brown                     Expires June 12, 2014                [Page 24]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2013
+Internet-Draft       Registry Fee Extension for EPP        December 2013
 
 
          <maxLength value="16"/>
@@ -1396,9 +1396,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
 
-Brown                      Expires May 5, 2014                 [Page 25]
+Brown                     Expires June 12, 2014                [Page 25]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2013
+Internet-Draft       Registry Fee Extension for EPP        December 2013
 
 
    and suggestions:
@@ -1452,9 +1452,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2013
 
 
 
-Brown                      Expires May 5, 2014                 [Page 26]
+Brown                     Expires June 12, 2014                [Page 26]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2013
+Internet-Draft       Registry Fee Extension for EPP        December 2013
 
 
    2.  added extension elements for <create>, <renew>, <transfer> and
@@ -1508,5 +1508,5 @@ Author's Address
 
 
 
-Brown                      Expires May 5, 2014                 [Page 27]
+Brown                     Expires June 12, 2014                [Page 27]
 

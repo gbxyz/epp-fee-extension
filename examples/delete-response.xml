@@ -5,7 +5,7 @@
       <msg>Command completed successfully</msg>
     </result>
     <extension>
-      <fee:delData xmlns:fee="urn:ietf:params:xml:ns:fee-0.4">
+      <fee:delData xmlns:fee="urn:ietf:params:xml:ns:fee-0.5">
         <fee:currency>USD</fee:currency>
         <fee:credit>5.00</fee:credit>
       </fee:delData>

@@ -17,7 +17,7 @@
       </domain:trnData>
     </resData>
     <extension>
-      <fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.4">
+      <fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.5">
         <fee:currency>USD</fee:currency>
         <fee:fee>5.00</fee:fee>
       </fee:trnData>
