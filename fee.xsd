@@ -53,7 +53,8 @@
       <element name="currency" type="fee:currencyType" />
       <element name="action" type="fee:actionType" />
       <element name="period" type="domain:periodType" />
-      <element name="fee" type="fee:feeType" />
+      <element name="fee" type="fee:feeType"
+        maxOccurs="unbounded" />
     </sequence>
   </complexType>
 
@@ -76,7 +77,8 @@
       <element name="currency" type="fee:currencyType" />
       <element name="action" type="fee:actionType" />
       <element name="period" type="domain:periodType" />
-      <element name="fee" type="fee:feeType" />
+      <element name="fee" type="fee:feeType"
+        maxOccurs="unbounded" />
     </sequence>
   </complexType>
 
@@ -96,8 +98,10 @@
   <complexType name="transformResultType">
     <sequence>
       <element name="currency" type="fee:currencyType" />
-      <element name="fee" type="fee:feeType" />
-      <element name="balance" type="fee:feeType" minOccurs="0" />
+      <element name="fee" type="fee:feeType"
+        maxOccurs="unbounded" />
+      <element name="balance" type="fee:balanceType"
+        minOccurs="0" />
     </sequence>
   </complexType>
 
@@ -107,7 +111,7 @@
   <complexType name="deleteDataType">
     <sequence>
       <element name="currency" type="fee:currencyType" />
-      <element name="credit" type="fee:feeType" />
+      <element name="credit" type="fee:creditType" />
     </sequence>
   </complexType>
 
@@ -136,7 +140,35 @@
     </restriction>
   </simpleType>
 
-  <simpleType name="feeType">
+  <simpleType name="nonNegativeDecimal">
+    <restriction base="decimal">
+      <minInclusive value="0" />
+    </restriction>
+  </simpleType>
+
+  <simpleType name="negativeDecimal">
+    <restriction base="decimal">
+      <maxInclusive value="0" />
+    </restriction>
+  </simpleType>
+
+  <complexType name="feeType">
+    <simpleContent>
+      <extension base="fee:nonNegativeDecimal">
+        <attribute name="description"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+
+  <complexType name="creditType">
+    <simpleContent>
+      <extension base="fee:negativeDecimal">
+        <attribute name="description"/>
+      </extension>
+    </simpleContent>
+  </complexType>
+
+  <simpleType name="balanceType">
     <restriction base="decimal" />
   </simpleType>
 </schema>

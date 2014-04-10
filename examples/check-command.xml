@@ -32,6 +32,13 @@
         <fee:action>transfer</fee:action>
         <fee:period unit="y">2</fee:period>
       </fee:check>
+      <fee:check
+        xmlns:fee="urn:ietf:params:xml:ns:fee-0.5">
+        <fee:domain>example.xyz</fee:domain>
+        <fee:currency>GBP</fee:currency>
+        <fee:action>restore</fee:action>
+        <fee:period unit="y">1</fee:period>
+      </fee:check>
     </extension>
     <clTRID>ABC-12345</clTRID>
   </command>

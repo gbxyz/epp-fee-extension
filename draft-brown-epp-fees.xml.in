@@ -4,11 +4,11 @@
 
   <!-- when the namespace version bumps, update this and it will update
     everywhere -->
+
   <!ENTITY VERSION "0.5">
 
   <!-- this is the version of the draft as published on the IETF
     website -->
-  <!ENTITY IETFVERSION "02">
 
   <!ENTITY I-D.narten-iana-considerations-rfc2434bis SYSTEM
     "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.narten-iana-considerations-rfc2434bis.xml">
@@ -41,7 +41,7 @@
 <?rfc comments="yes" ?>
 <?rfc inline="yes" ?>
 
-<rfc category="exp" docName="draft-brown-epp-fees-&IETFVERSION;" ipr="trust200902">
+<rfc category="exp" docName="draft-brown-epp-fees-02" ipr="trust200902">
 
   <front>
     <title abbrev="Registry Fee Extension for EPP">Registry Fee Extension for
@@ -63,7 +63,7 @@
       </address>
     </author>
 
-    <date month="January" year="2014" />
+    <date month="April" year="2014" />
 
     <area>Applications</area>
     <workgroup>Internet Engineering Task Force</workgroup>
@@ -78,16 +78,17 @@
     <section title="Introduction">
       <t>Historically, domain name registries have applied a simple fee
       structure for billable transactions, namely a basic unit price applied to
-      domain &lt;create&gt;, &lt;renew&gt;, &lt;transfer&gt; and RGP restore
-      commands. Given the relatively small number of EPP servers to which EPP
-      clients have been required to connect, it has generally been the case
-      that client operators have been able to obtain details of these fees
-      out-of-band by contacting the server operators.</t>
+      domain &lt;create&gt;, &lt;renew&gt;, &lt;transfer&gt; and <xref
+      target="RFC3915">RGP</xref> restore commands. Given the relatively small
+      number of EPP servers to which EPP clients have been required to connect,
+      it has generally been the case that client operators have been able to
+      obtain details of these fees out-of-band by contacting the server
+      operators.</t>
 
-      <t>Given the imminent expansion of the DNS namespace, and the
-      proliferation of novel business models, it is now desirable to provide a
-      method for EPP clients to query EPP servers for the fees and credits
-      associated with certain commands and specific objects.</t>
+      <t>Given the present expansion of the DNS namespace, and the proliferation
+      of novel business models, it is now desirable to provide a method for EPP
+      clients to query EPP servers for the fees and credits associated with
+      certain commands and specific objects.</t>
 
       <t>This document describes an extension mapping for version 1.0 of the 
       <xref target="RFC5730">Extensible Provisioning Protocol (EPP)</xref>. This
@@ -122,6 +123,8 @@
       </section>
     </section>
 
+    <section title="Extension Elements">
+
     <section title="Client Actions">
       <t>The &lt;fee:action&gt; element is used in EPP query commands to
       determine the command to which a fee is applicable.</t>
@@ -140,9 +143,9 @@
 
       <t>The &lt;fee:action&gt; element MAY have an OPTIONAL "phase" attribute
       specifying a launch phase as described in
-      <xref target="draft-tan-epp-launchphase" />. It may also contain an
+      <xref target="draft-ietf-eppext-launchphase" />. It may also contain an
       OPTIONAL "subphase" attribute identifying the custom or sub-phase as
-      described in <xref target="draft-tan-epp-launchphase" />.</t>
+      described in <xref target="draft-ietf-eppext-launchphase" />.</t>
 
     </section>
 
@@ -155,6 +158,28 @@
       if the server uses a non-currency based system for assessing fees, such as
       a system of credits.</t>
     </section>
+
+	<section title="Fees and Credits">
+	  <t>Servers which implement this extension will include elements in
+	  response frames which provide information about the fees and/or credits
+	  associated with a given billable transaction.</t>
+
+	  <t>The &lt;fee:fee&gt; and &lt;fee:credit&gt; elements are used to provide
+	  this information. The presence of a &lt;fee:fee&gt; element in a response
+	  indicates a debit against the client's account balance; a
+	  &lt;fee:credit&gt; element indicates a credit. A &lt;fee:fee&gt; element
+	  MUST have a non-negative value. A &lt;fee:credit&gt; element MUST have a
+	  negative value.</t>
+
+	  <t>&lt;fee:fee&gt; and &lt;fee:credit&gt; elements MAY have an OPTIONAL
+	  "description" attribute which provides a human-readable description of the
+	  fee.</t>
+
+	  <t>A server MAY respond with multiple &lt;fee:fee&gt; and
+	  &lt;fee:credit&gt; elements in the same response. In such cases, the net
+	  fee or credit applicable to the transaction is the arithmetic sum of the
+	  values of each of the &lt;fee:fee&gt; or &lt;fee:credit&gt; elements.</t>
+	</section>
 
     <section title="Account Balance">
       <t>The &lt;fee:balance&gt; element is an OPTIONAL element which MAY
@@ -169,6 +194,8 @@
       transfer request).</t>
 
       <t>The value of the &lt;fee:balance&gt; MAY be negative.</t>
+    </section>
+
     </section>
 
     <section title="EPP Command Mapping">
@@ -229,8 +256,8 @@
             <t>A &lt;fee:period&gt; element that contains same unit
             that appeared in the corresponding &lt;fee:check&gt; element.</t>
 
-            <t>A &lt;fee:fee&gt; element that contains the fee associated with
-            the specified transaction.</t>
+            <t>One or more &lt;fee:fee&gt; elements that contain the fees
+            associated with the specified transaction.</t>
           </list></t>
 
           <t>Example &lt;check&gt; response:</t>
@@ -283,8 +310,8 @@
             <t>A &lt;fee:period&gt; element that contains same unit that
             appeared in the original &lt;fee:check&gt; element.</t>
 
-            <t>A &lt;fee:fee&gt; element that contains the fee associated with
-            the specified transaction.</t>
+            <t>One or more &lt;fee:fee&gt; elements that contain the fees
+            associated with the specified transaction.</t>
           </list></t>
 
           <t>If the domain name requested in the command is invalid, sponsored
@@ -317,8 +344,8 @@
           successfully, the client selected the extension when it logged in, and
           the client is authorised by the server to view information about the
           transfer, the server MAY include in the &lt;extension&gt; section of
-          the EPP response a &lt;fee:trnData&gt; element that contains a
-          &lt;fee:fee&gt; element containing the fee associated with this
+          the EPP response a &lt;fee:trnData&gt; element that contains one or
+          more &lt;fee:fee&gt; elements containing the fee sassociated with this
           command.  If no &lt;fee:trnData&gt; element is included in the
           response, then no fee has been assessed by the server for this
           transaction.</t>
@@ -348,15 +375,15 @@
             <t>A &lt;fee:currency&gt; element containing the currency of the fee
             that the command will result in.</t>
 
-            <t>A &lt;fee:fee&gt; element that contains the fee associated with
-            the command.</t>
+            <t>One or more &lt;fee:fee&gt; elements that contain the fees
+            associated with the command.</t>
           </list></t>
 
           <t>Depending on server policy, the server MAY choose to accept or
-          refuse the command depending on whether the currency and fee provided
-          by the client agrees with the server's own calculation of the fee. If
-          the server chooses to refuse the command due to an incorrect fee, it
-          MUST respond with a 2004 "Parameter value range error".</t>
+          refuse the command depending on whether the currency and fees provided
+          by the client agrees with the server's own calculation of the fees. If
+          the server chooses to refuse the command due to incorrect fees, it
+          MUST respond with a 2004 "Parameter value range" error.</t>
 
           <t>When the &lt;create&gt; command has been processed successfully,
           and the client selected the extension when it logged in, the server
@@ -368,12 +395,12 @@
             <t>A &lt;fee:currency&gt; element containing the currency of the
             fee.</t>
 
-            <t>A &lt;fee:fee&gt; element that contains the fee.</t>
+            <t>One or more &lt;fee:fee&gt; elements that contain the fees
+            associated with the command.</t>
 
             <t>An OPTIONAL &lt;fee:balance&gt; element that contains the
             client's current account balance, once the above fee has been
             deducted.</t>
-
           </list></t>
 
           <t>If no &lt;fee:creData&gt; element is included in the response, then
@@ -408,13 +435,12 @@
             <t>A &lt;fee:currency&gt; element containing the currency of the
             credit.</t>
 
-            <t>A &lt;fee:credit&gt; element that contains the credit associated
-            with the deletion of the domain.</t>
+            <t>One or more  &lt;fee:credit&gt; elements that contains the
+            credits associated with the deletion of the domain.</t>
 
             <t>An OPTIONAL &lt;fee:balance&gt; element that contains the
             client's current account balance, once the above credit has been
             added.</t>
-
           </list></t>
 
           <t>If no &lt;fee:delData&gt; element is included in the response, then no
@@ -440,14 +466,14 @@
             <t>A &lt;fee:currency&gt; element containing the currency of the fee
             that the command will result in.</t>
 
-            <t>A &lt;fee:fee&gt; element that contains the fee associated with
-            the command.</t>
+            <t>One or more &lt;fee:fee&gt; elements that contain the fees
+            associated with the command.</t>
           </list></t>
 
           <t>Depending on server policy, the server MAY choose to accept or
-          refuse the command depending on whether the currency and fee provided
-          by the client agrees with the server's own calculation of the fee. If
-          the server chooses to refuse the command due to an incorrect fee, it
+          refuse the command depending on whether the currency and fees provided
+          by the client agrees with the server's own calculation of the fees. If
+          the server chooses to refuse the command due to incorrect fees, it
           MUST respond with a 2004 "Parameter value range error".</t>
 
           <t>When the &lt;renew&gt; command has been processed successfully,
@@ -460,7 +486,8 @@
             <t>A &lt;fee:currency&gt; element containing the currency of the
             fee.</t>
 
-            <t>A &lt;fee:fee&gt; element that contains the fee.</t>
+            <t>One or more &lt;fee:fee&gt; elements that contain the fees
+            associated with the command.</t>
 
             <t>An OPTIONAL &lt;fee:balance&gt; element that contains the
             client's current account balance, once the above fee has been
@@ -498,14 +525,14 @@
             <t>A &lt;fee:currency&gt; element containing the currency of the fee
             that the command will result in.</t>
 
-            <t>A &lt;fee:fee&gt; element that contains the fee associated with
-            the command.</t>
+            <t>One or more &lt;fee:fee&gt; elements that contain the fees
+            associated with the command.</t>
           </list></t>
 
           <t>Depending on server policy, the server MAY choose to accept or
-          refuse the command depending on whether the currency and fee provided
-          by the client agrees with the server's own calculation of the fee. If
-          the server chooses to refuse the command due to an incorrect fee, it
+          refuse the command depending on whether the currency and fees provided
+          by the client agrees with the server's own calculation of the fees. If
+          the server chooses to refuse the command due to incorrect fees, it
           MUST respond with a 2004 "Parameter value range error".</t>
 
           <t>When the &lt;transfer&gt; command has been processed successfully,
@@ -518,7 +545,8 @@
             <t>A &lt;fee:currency&gt; element containing the currency of the
             fee.</t>
 
-            <t>A &lt;fee:fee&gt; element that contains the fee.</t>
+            <t>One or more &lt;fee:fee&gt; elements that contain the fees
+            associated with the command.</t>
 
             <t>An OPTIONAL &lt;fee:balance&gt; element that contains the
             client's current account balance, once the above fee has been
@@ -555,14 +583,14 @@
             <t>A &lt;fee:currency&gt; element containing the currency of the fee
             that the command will result in.</t>
 
-            <t>A &lt;fee:fee&gt; element that contains the fee associated with
-            the command.</t>
+            <t>One or more &lt;fee:fee&gt; elements that contain the fees
+            associated with the command.</t>
           </list></t>
 
           <t>Depending on server policy, the server MAY choose to accept or
-          refuse the command depending on whether the currency and fee provided
-          by the client agrees with the server's own calculation of the fee. If
-          the server chooses to refuse the command due to an incorrect fee, it
+          refuse the command depending on whether the currency and fees provided
+          by the client agrees with the server's own calculation of the fees. If
+          the server chooses to refuse the command due to incorrect fees, it
           MUST respond with a 2004 "Parameter value range error".</t>
 
           <t>When the &lt;update&gt; command has been processed successfully,
@@ -575,7 +603,8 @@
             <t>A &lt;fee:currency&gt; element containing the currency of the
             fee.</t>
 
-            <t>A &lt;fee:fee&gt; element that contains the fee.</t>
+            <t>One or more &lt;fee:fee&gt; elements that contain the fees
+            associated with the command.</t>
 
             <t>An OPTIONAL &lt;fee:balance&gt; element that contains the
             client's current account balance, once the above fee has been
@@ -686,32 +715,7 @@ END</artwork></figure>
     </section>
 
     <section title="Change History">
-      <section title="Change from 0.1 to 0.2">
-        <t><list style="numbers">
-          <t>Added note about the use of the "XXX" code for non-currency
-          transactions.</t>
-          <t>Added phase attribute to the &lt;fee:action&gt; element, and
-          normative reference to <xref target="draft-tan-epp-launchphase"/>.</t>
-          <t>Added description of extension to transform and transfer query
-          commands.</t>
-          <t>Added Acknowledgements and Change History sections.</t>
-        </list></t>
-      </section>
-      <section title="Change from 0.2 to 0.3">
-        <t><list style="numbers">
-          <t>Added the subphase attribute to the &lt;fee:action&gt; element.</t>
-          <t>Removed the enumeration for the &lt;fee:action&gt; element so any
-          token may be used.</t>
-          <t>Moved the fee lookup command from &lt;check&gt; to
-          &lt;info&gt;.</t>
-          <t>Added an extension to the &lt;delete&gt; command to return credit
-          information.</t>
-          <t>Changed MUSTs to MAYs so that the response extension elements can
-          be omitted where no fee is applicable.</t>
-          <t>Update of introductory text.</t>
-        </list></t>
-      </section>
-      <section title="Change from 0.3 to 0.4">
+      <section title="Changes from 00 to 01">
         <t><list style="numbers">
           <t>Restore the &lt;check&gt; command extension; either &lt;check&gt;
           or &lt;info&gt; can be used.</t>
@@ -720,9 +724,17 @@ END</artwork></figure>
           command if the fee is incorrect.</t>
         </list></t>
       </section>
-      <section title="Change from 0.4 to 0.%">
+      <section title="Changes from 01 to 02">
         <t><list style="numbers">
+          <t>Use Internet-Draft version number rather than XML namespace version
+            number in this section.</t>
+          <t>Support for multiple &lt;fee:fee&gt; and &lt;fee:credit&gt;
+            elements.</t>
+          <t>Added the "description" attribute to &lt;fee:fee&gt; and
+            &lt;fee:credit&gt; elements.</t>
           <t>Added the &lt;fee:balance&gt; element.</t>
+          <t>Updated reference to
+            <xref target="draft-ietf-eppext-launchphase"/>.</t>
         </list></t>
       </section>
     </section>
@@ -753,17 +765,17 @@ END</artwork></figure>
             target="http://www.iso.org/iso/home/standards/currency_codes.htm" />
       </reference>
 
-      <reference anchor="draft-tan-epp-launchphase">
+      <reference anchor="draft-ietf-eppext-launchphase">
           <front>
               <title>Launch Phase Mapping for the  Extensible Provisioning
               Protocol (EPP)</title>
               <author fullname="James Gould" initials="J" surname="Gould"/>
               <author fullname="Wil Tan" initials="W" surname="Tan"/>
               <author fullname="Gavin Brown" initials="G" surname="Brown"/>
-              <date year="2013" />
+              <date year="2014" />
           </front>
           <format type="HTML"
-            target="http://tools.ietf.org/html/draft-tan-epp-launchphase" />
+            target="http://tools.ietf.org/html/draft-ietf-eppext-launchphase" />
       </reference>
 
     </references>
