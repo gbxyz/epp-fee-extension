@@ -39,7 +39,7 @@
     <sequence>
     <element name="domain" type="eppcom:labelType" />
     <element name="currency" type="fee:currencyType" />
-    <element name="action" type="fee:actionType" />
+    <element name="command" type="fee:commandType" />
     <element name="period" type="domain:periodType" />
     </sequence>
   </complexType>
@@ -51,7 +51,7 @@
     <sequence>
       <element name="domain" type="eppcom:labelType" />
       <element name="currency" type="fee:currencyType" />
-      <element name="action" type="fee:actionType" />
+      <element name="command" type="fee:commandType" />
       <element name="period" type="domain:periodType" />
       <element name="fee" type="fee:feeType"
         maxOccurs="unbounded" />
@@ -64,7 +64,7 @@
   <complexType name="infoType">
     <sequence>
       <element name="currency" type="fee:currencyType" />
-      <element name="action" type="fee:actionType" />
+      <element name="command" type="fee:commandType" />
       <element name="period" type="domain:periodType" />
     </sequence>
   </complexType>
@@ -75,7 +75,7 @@
   <complexType name="infDataType">
     <sequence>
       <element name="currency" type="fee:currencyType" />
-      <element name="action" type="fee:actionType" />
+      <element name="command" type="fee:commandType" />
       <element name="period" type="domain:periodType" />
       <element name="fee" type="fee:feeType"
         maxOccurs="unbounded" />
@@ -124,16 +124,16 @@
     </restriction>
   </simpleType>
 
-  <complexType name="actionType">
+  <complexType name="commandType">
     <simpleContent>
-      <extension base="fee:actionTypeValue">
+      <extension base="fee:commandTypeValue">
         <attribute name="phase" type="token" />
         <attribute name="subphase" type="token" />
       </extension>
     </simpleContent>
   </complexType>
 
-  <simpleType name="actionTypeValue">
+  <simpleType name="commandTypeValue">
     <restriction base="token">
       <minLength value="3"/>
       <maxLength value="16"/>

@@ -25,7 +25,7 @@
         xmlns:fee="urn:ietf:params:xml:ns:fee-0.5">
         <fee:domain>example.com</fee:domain>
         <fee:currency>USD</fee:currency>
-        <fee:action phase="sunrise">create</fee:action>
+        <fee:command phase="sunrise">create</fee:command>
         <fee:period unit="y">1</fee:period>
         <fee:fee description="Application Fee">5.00</fee:fee>
         <fee:fee description="Registration Fee">5.00</fee:fee>
@@ -34,8 +34,8 @@
         xmlns:fee="urn:ietf:params:xml:ns:fee-0.5">
         <fee:domain>example.net</fee:domain>
         <fee:currency>EUR</fee:currency>
-        <fee:action phase="claims" subphase="landrush">
-        create</fee:action>
+        <fee:command phase="claims" subphase="landrush">
+        create</fee:command>
         <fee:period unit="y">2</fee:period>
         <fee:fee>5.00</fee:fee>
       </fee:chkData>
@@ -43,7 +43,7 @@
         xmlns:fee="urn:ietf:params:xml:ns:fee-0.5">
         <fee:domain>example.org</fee:domain>
         <fee:currency>EUR</fee:currency>
-        <fee:action>transfer</fee:action>
+        <fee:command>transfer</fee:command>
         <fee:period unit="y">2</fee:period>
         <fee:fee description="Transfer Fee">2.50</fee:fee>
         <fee:fee description="Renewal Fee">10.00</fee:fee>
@@ -52,7 +52,7 @@
         xmlns:fee="urn:ietf:params:xml:ns:fee-0.5">
         <fee:domain>example.xyz</fee:domain>
         <fee:currency>GBP</fee:currency>
-        <fee:action>restore</fee:action>
+        <fee:command>restore</fee:command>
         <fee:period unit="y">1</fee:period>
         <fee:fee description="Restore Fee">25</fee:fee>
         <fee:fee description="Renewal Fee">5.00</fee:fee>

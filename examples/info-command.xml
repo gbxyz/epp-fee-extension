@@ -10,7 +10,7 @@
     <extension>
       <fee:info xmlns:fee="urn:ietf:params:xml:ns:fee-0.5">
         <fee:currency>USD</fee:currency>
-        <fee:action phase="sunrise">create</fee:action>
+        <fee:command phase="sunrise">create</fee:command>
         <fee:period unit="y">1</fee:period>
       </fee:info>
     </extension>

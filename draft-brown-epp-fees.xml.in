@@ -63,7 +63,7 @@
       </address>
     </author>
 
-    <date month="April" year="2014" />
+    <date month="May" year="2014" />
 
     <area>Applications</area>
     <workgroup>Internet Engineering Task Force</workgroup>
@@ -125,8 +125,8 @@
 
     <section title="Extension Elements">
 
-    <section title="Client Actions">
-      <t>The &lt;fee:action&gt; element is used in EPP query commands to
+   <section title="Client Commands">
+      <t>The &lt;fee:command&gt; element is used in EPP query commands to
       determine the command to which a fee is applicable.</t>
 
       <t>The element values permitted by the server is a matter of repository
@@ -141,7 +141,7 @@
       If the server supports the <xref target="RFC3915">Registry Grace Period
       Mapping</xref>, then the server MUST also support the "restore" value.</t>
 
-      <t>The &lt;fee:action&gt; element MAY have an OPTIONAL "phase" attribute
+      <t>The &lt;fee:command&gt; element MAY have an OPTIONAL "phase" attribute
       specifying a launch phase as described in
       <xref target="draft-ietf-eppext-launchphase" />. It may also contain an
       OPTIONAL "subphase" attribute identifying the custom or sub-phase as
@@ -221,7 +221,7 @@
             <t>A &lt;fee:currency&gt; element that contains the currency the fee
             is charged in.</t>
 
-            <t>A &lt;fee:action&gt; element identifying the command.</t>
+            <t>A &lt;fee:command&gt; element identifying the command.</t>
 
             <t>A &lt;fee:period&gt; element that contains the number of units to
             be added to the registration period of the domain object.</t> 
@@ -247,7 +247,7 @@
             <t>A &lt;fee:currency&gt; element that contains same currency code
             that appeared in the corresponding &lt;fee:check&gt; element.</t>
 
-            <t>A &lt;fee:action&gt; element that contains same action
+            <t>A &lt;fee:command&gt; element that contains same action
             that appeared in the corresponding &lt;fee:check&gt; element. This
             element MAY have the OPTIONAL "phase" and "subphase" elements, 
             which MUST match the same attributes in the corresponding
@@ -280,7 +280,7 @@
             <t>A &lt;fee:currency&gt; element that contains the currency the fee
             is charged in.</t>
 
-            <t>A &lt;fee:action&gt; element identifying the command.</t>
+            <t>A &lt;fee:command&gt; element identifying the command.</t>
 
             <t>A &lt;fee:period&gt; element that contains the number of units to
             be added to the registration period of the domain object.</t> 
@@ -302,7 +302,7 @@
             <t>A &lt;fee:currency&gt; element that contains same currency code
             that appeared in the original &lt;fee:check&gt; element.</t>
 
-            <t>A &lt;fee:action&gt; element that contains same action that
+            <t>A &lt;fee:command&gt; element that contains same action that
             appeared in the original &lt;fee:check&gt; element. This element MAY
             have the OPTIONAL "phase" and "subphase" elements, which MUST match
             the same attributes in the original &lt;fee:check&gt; element.</t>
@@ -735,6 +735,7 @@ END</artwork></figure>
           <t>Added the &lt;fee:balance&gt; element.</t>
           <t>Updated reference to
             <xref target="draft-ietf-eppext-launchphase"/>.</t>
+          <t>Use &lt;fee:command&gt; instead of &lt;fee:action&gt;.</t>
         </list></t>
       </section>
     </section>
