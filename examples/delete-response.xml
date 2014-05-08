@@ -9,6 +9,7 @@
         xmlns:fee="urn:ietf:params:xml:ns:fee-0.5">
         <fee:currency>USD</fee:currency>
         <fee:credit description="AGP Credit">-5.00</fee:credit>
+        <fee:balance>1005.00</fee:balance>
       </fee:delData>
     </extension>
     <trID>

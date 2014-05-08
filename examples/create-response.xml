@@ -16,6 +16,8 @@
       <fee:creData xmlns:fee="urn:ietf:params:xml:ns:fee-0.5">
         <fee:currency>USD</fee:currency>
         <fee:fee>5.00</fee:fee>
+        <fee:balance>-5.00</fee:balance>
+        <fee:creditLimit>1000.00</fee:creditLimit>
       </fee:creData>
     </extension>
     <trID>

@@ -126,8 +126,9 @@
     <section title="Extension Elements">
 
    <section title="Client Commands">
-      <t>The &lt;fee:command&gt; element is used in EPP query commands to
-      determine the command to which a fee is applicable.</t>
+      <t>The &lt;fee:command&gt; element is used in EPP &lt;check&gt; and
+      &lt;info&gt; commands to determine the fee which is applicable to the
+      given command.</t>
 
       <t>The element values permitted by the server is a matter of repository
       policy, but MUST include as a minimum the following values:
@@ -157,6 +158,26 @@
       <t>Note that ISO 4217 provides the special "XXX" code, which MAY be used
       if the server uses a non-currency based system for assessing fees, such as
       a system of credits.</t>
+
+      <t>The use of &lt;fee:currency&gt; elements in command frames is OPTIONAL:
+      if a &lt;fee:currency&gt; element is not present in a command frame, the
+      server MUST determine the currency based on the client's account settings
+      which MUST be agreed by the client and server via an out-of-band
+      channel. However, &lt;fee:currency&gt; element MUST be present in
+      response frames.</t>
+    </section>
+
+	<section title="Registration Periods">
+	  <t>The &lt;fee:period&gt; element is used to indicate the units to be
+	  added to the registration period of domain names by the &lt;create&gt;,
+	  &lt;renew&gt; and &lt;transfer&gt; commands. This element is derived from
+	  the &lt;domain:period&gt; element described in
+	  <xref target="RFC5731"/>.</t>
+
+	  <t>The &lt;fee:period&gt; element is OPTIONAL in command frames: if
+	  ommitted, the server MUST determine the fee(s) using a validity period of
+	  1 year. The &lt;fee:period&gt; element MUST be present in response
+	  frames.</t>
     </section>
 
 	<section title="Fees and Credits">
@@ -189,11 +210,34 @@
 
       <t>Whether or not the &lt;fee:balance&gt; is included in response
       frames is a matter of server policy. However, if a server chooses
-      to offer support for this element, it MUST be included responses
-      to all transform commands (ie create, renew, update, delete,
-      transfer request).</t>
+      to offer support for this element, it MUST be included in responses
+      to all "transform" commands (ie &lt;create&gt;, &lt;renew&gt;,
+      &lt;update&gt;, &lt;delete&gt;, &lt;transfer op="request"&gt;).</t>
 
-      <t>The value of the &lt;fee:balance&gt; MAY be negative.</t>
+      <t>The value of the &lt;fee:balance&gt; MAY be negative. A negative
+      balance indicates that the server has extended a line of credit to the
+      client (see below).</t>
+
+      <t>When a server includes a &lt;fee:balance&gt; element in response to
+      transform commands, the value of the element MUST reflect the client's
+      account balance after any fees associated with that command have been
+      deducted.</t>
+    </section>
+
+    <section title="Credit Limit">
+      <t>As described above, if a server returns a response frame containing a
+      &lt;fee:balance&gt; with a negative value, then the server has extended a
+      line of credit to the client. A server MAY also include a
+      &lt;fee:creditLimit&gt; element in responses which indicates the maximum
+      credit available to a client. A server MAY reject certain transactions if
+      the absolute value of the &lt;fee:balance&gt; is equal to or exceeds the
+      value of the &lt;fee:creditLimit&gt; element.</t>
+
+      <t>Whether or not the &lt; fee:creditLimit&gt; is included in response
+      frames is a matter of server policy. However, if a server chooses
+      to offer support for this element, it MUST be included in responses
+      to all "transform" commands (ie &lt;create&gt;, &lt;renew&gt;,
+      &lt;update&gt;, &lt;delete&gt;, &lt;transfer op="request"&gt;).</t>
     </section>
 
     </section>
@@ -212,19 +256,18 @@
           &lt;check&gt; command.</t>
 
           <t>The command frame MAY contain an &lt;extension&gt; element which
-          MAY contain one or more child &lt;fee:check&gt; elements with the
+          MAY contain a &lt;fee:check&gt; element. The &lt;fee:check&gt; element
+          MUST contain at least one &lt;fee:domain&gt; element, with the
           following child elements:</t>
 
           <t><list style="symbols">
-            <t>A &lt;domain:name&gt; element that contains a domain name.</t>
+            <t>A &lt;fee:name&gt; element that contains a domain name;</t>
 
-            <t>A &lt;fee:currency&gt; element that contains the currency the fee
-            is charged in.</t>
+            <t>An OPTIONAL &lt;fee:currency&gt; element;</t>
 
-            <t>A &lt;fee:command&gt; element identifying the command.</t>
+            <t>A &lt;fee:command&gt; element;</t>
 
-            <t>A &lt;fee:period&gt; element that contains the number of units to
-            be added to the registration period of the domain object.</t> 
+            <t>An OPTIONAL &lt;fee:period&gt; element.</t>
           </list></t>
 
           <t>Example &lt;check&gt; command:</t>
@@ -236,28 +279,34 @@
           <t>When the server receives a &lt;check&gt; command that includes the
           extension elements described above, its response MUST contain an
           &lt;extension&gt; element, which MUST contain a child
-          &lt;fee:chkData&gt; element for each &lt;fee:check&gt; element
-          contained in the command. The &lt;fee:chkData&gt; MUST contain the
+          &lt;fee:chkData&gt; element. The &lt;fee:chkData&gt; element MUST
+          contain a &lt;fee:cd&gt; element for each &lt;fee:check&gt; element
+          contained in the command. The &lt;fee:cd&gt; MUST contain the
           following child elements:</t>
 
           <t><list style="symbols">
-            <t>A &lt;domain:name&gt; element that contains a domain name which
+            <t>A &lt;fee:name&gt; element that contains a domain name which
             matches the name in the corresponding &lt;fee:check&gt; element.</t>
 
             <t>A &lt;fee:currency&gt; element that contains same currency code
-            that appeared in the corresponding &lt;fee:check&gt; element.</t>
+            that appeared in the corresponding &lt;fee:check&gt; element. If no
+            &lt;fee:currency&gt; element appeared in the corresponding
+            &lt;fee:check&gt; element, then the client's default billing
+            currency should be used.</t>
 
-            <t>A &lt;fee:command&gt; element that contains same action
+            <t>A &lt;fee:command&gt; element that contains same command
             that appeared in the corresponding &lt;fee:check&gt; element. This
             element MAY have the OPTIONAL "phase" and "subphase" elements, 
             which MUST match the same attributes in the corresponding
             &lt;fee:check&gt; element.</t>
 
             <t>A &lt;fee:period&gt; element that contains same unit
-            that appeared in the corresponding &lt;fee:check&gt; element.</t>
+            that appeared in the corresponding &lt;fee:check&gt; element. If
+            no &lt;fee:period&gt; appeared in the corresponding
+            &lt;fee:check&gt; element, then this element MUST have a value of
+            1 year.</t>
 
-            <t>One or more &lt;fee:fee&gt; elements that contain the fees
-            associated with the specified transaction.</t>
+            <t>One or more &lt;fee:fee&gt; elements.</t>
           </list></t>
 
           <t>Example &lt;check&gt; response:</t>
@@ -277,13 +326,11 @@
           elements:</t>
 
           <t><list style="symbols">
-            <t>A &lt;fee:currency&gt; element that contains the currency the fee
-            is charged in.</t>
+            <t>An OPTIONAL &lt;fee:currency&gt; element;</t>
 
-            <t>A &lt;fee:command&gt; element identifying the command.</t>
+            <t>A &lt;fee:command&gt; element;</t>
 
-            <t>A &lt;fee:period&gt; element that contains the number of units to
-            be added to the registration period of the domain object.</t> 
+            <t>An OPTIONAL &lt;fee:period&gt; element.</t>
           </list></t>
 
           <t>Example &lt;info&gt; command:</t>
@@ -300,18 +347,23 @@
 
           <t><list style="symbols">
             <t>A &lt;fee:currency&gt; element that contains same currency code
-            that appeared in the original &lt;fee:check&gt; element.</t>
+            that appeared in the &lt;fee:currency&gt; element element of the
+            command frame. If no &lt;fee:currency&gt; element appeared in the
+            command frame, then the client's default billing currency should be
+            used.</t>
 
-            <t>A &lt;fee:command&gt; element that contains same action that
-            appeared in the original &lt;fee:check&gt; element. This element MAY
-            have the OPTIONAL "phase" and "subphase" elements, which MUST match
-            the same attributes in the original &lt;fee:check&gt; element.</t>
+            <t>A &lt;fee:command&gt; element that contains same command
+            that appeared in the &lt;fee:command&gt; element of the command
+            frame. This element MAY have the OPTIONAL "phase" and "subphase"
+            elements, which MUST match the same attributes in the
+            &lt;fee:command&gt; element of the command frame.</t>
 
-            <t>A &lt;fee:period&gt; element that contains same unit that
-            appeared in the original &lt;fee:check&gt; element.</t>
+            <t>A &lt;fee:period&gt; element that contains same unit
+            that appeared in the corresponding &lt;fee:period&gt; element of the
+            command frame. If no &lt;fee:period&gt; appeared in the command
+            frame, then this element MUST have a value of 1 year.</t>
 
-            <t>One or more &lt;fee:fee&gt; elements that contain the fees
-            associated with the specified transaction.</t>
+            <t>One or more &lt;fee:fee&gt; elements.</t>
           </list></t>
 
           <t>If the domain name requested in the command is invalid, sponsored
@@ -344,11 +396,19 @@
           successfully, the client selected the extension when it logged in, and
           the client is authorised by the server to view information about the
           transfer, the server MAY include in the &lt;extension&gt; section of
-          the EPP response a &lt;fee:trnData&gt; element that contains one or
-          more &lt;fee:fee&gt; elements containing the fee sassociated with this
-          command.  If no &lt;fee:trnData&gt; element is included in the
-          response, then no fee has been assessed by the server for this
-          transaction.</t>
+          the EPP response a &lt;fee:trnData&gt; element that contains the
+          following child elements:</t>
+          
+          <t><list style="symbols">
+            <t>A &lt;fee:currency&gt; element.</t>
+
+            <t>one or more &lt;fee:fee&gt; elements containing the fees
+            associated with the transfer.</t>
+          </list></t>
+         
+          <t>If no &lt;fee:trnData&gt; element is included in the
+          response, then no fee will be assessed by the server for the
+          transfer.</t>
 
           <t>Example &lt;transfer&gt; query response:</t>
 
@@ -372,11 +432,9 @@
           element which includes the following child elements:</t>
 
           <t><list style="symbols">
-            <t>A &lt;fee:currency&gt; element containing the currency of the fee
-            that the command will result in.</t>
+            <t>An OPTIONAL &lt;fee:currency&gt; element;</t>
 
-            <t>One or more &lt;fee:fee&gt; elements that contain the fees
-            associated with the command.</t>
+            <t>One or more &lt;fee:fee&gt; elements.</t>
           </list></t>
 
           <t>Depending on server policy, the server MAY choose to accept or
@@ -386,22 +444,14 @@
           MUST respond with a 2004 "Parameter value range" error.</t>
 
           <t>When the &lt;create&gt; command has been processed successfully,
-          and the client selected the extension when it logged in, the server
-          MAY include in the &lt;extension&gt; section of the EPP response a
+          and the client selected the extension when it logged in, and a fee was
+          assessed by the server for the transaction, the server MUST include in
+          the &lt;extension&gt; section of the EPP response a
           &lt;fee:creData&gt; element that contains the following child
           elements:</t>
 
-          <t><list style="symbols">
-            <t>A &lt;fee:currency&gt; element containing the currency of the
-            fee.</t>
-
-            <t>One or more &lt;fee:fee&gt; elements that contain the fees
-            associated with the command.</t>
-
-            <t>An OPTIONAL &lt;fee:balance&gt; element that contains the
-            client's current account balance, once the above fee has been
-            deducted.</t>
-          </list></t>
+          <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="xml"
+            href="transform-response-elements.xml" />
 
           <t>If no &lt;fee:creData&gt; element is included in the response, then
           no fee has been assessed by the server for this transaction.</t>
@@ -431,20 +481,11 @@
           &lt;fee:delData&gt; element that contains the following child
           elements:</t>
 
-          <t><list style="symbols">
-            <t>A &lt;fee:currency&gt; element containing the currency of the
-            credit.</t>
+          <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="xml"
+            href="transform-response-elements.xml" />
 
-            <t>One or more  &lt;fee:credit&gt; elements that contains the
-            credits associated with the deletion of the domain.</t>
-
-            <t>An OPTIONAL &lt;fee:balance&gt; element that contains the
-            client's current account balance, once the above credit has been
-            added.</t>
-          </list></t>
-
-          <t>If no &lt;fee:delData&gt; element is included in the response, then no
-          credit has been assessed by the server for this transaction.</t>
+          <t>If no &lt;fee:delData&gt; element is included in the response, then
+          no credit has been assessed by the server for this transaction.</t>
 
           <t>Example &lt;delete&gt; response:</t>
 
@@ -463,11 +504,9 @@
           element which includes the following child elements:</t>
 
           <t><list style="symbols">
-            <t>A &lt;fee:currency&gt; element containing the currency of the fee
-            that the command will result in.</t>
+            <t>A &lt;fee:currency&gt; element;</t>
 
-            <t>One or more &lt;fee:fee&gt; elements that contain the fees
-            associated with the command.</t>
+            <t>One or more &lt;fee:fee&gt; elements.</t>
           </list></t>
 
           <t>Depending on server policy, the server MAY choose to accept or
@@ -482,17 +521,8 @@
           &lt;fee:renData&gt; element that contains the following child
           elements:</t>
 
-          <t><list style="symbols">
-            <t>A &lt;fee:currency&gt; element containing the currency of the
-            fee.</t>
-
-            <t>One or more &lt;fee:fee&gt; elements that contain the fees
-            associated with the command.</t>
-
-            <t>An OPTIONAL &lt;fee:balance&gt; element that contains the
-            client's current account balance, once the above fee has been
-            deducted.</t>
-          </list></t>
+          <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="xml"
+            href="transform-response-elements.xml" />
 
           <t>If no &lt;fee:renData&gt; element is included in the response, then
           no fee has been assessed by the server for this transaction.</t>
@@ -522,11 +552,9 @@
           element which includes the following child elements:</t>
 
           <t><list style="symbols">
-            <t>A &lt;fee:currency&gt; element containing the currency of the fee
-            that the command will result in.</t>
+            <t>A &lt;fee:currency&gt; element;</t>
 
-            <t>One or more &lt;fee:fee&gt; elements that contain the fees
-            associated with the command.</t>
+            <t>One or more &lt;fee:fee&gt; elements.</t>
           </list></t>
 
           <t>Depending on server policy, the server MAY choose to accept or
@@ -541,17 +569,8 @@
           &lt;fee:trnData&gt; element that contains the following child
           elements:</t>
 
-          <t><list style="symbols">
-            <t>A &lt;fee:currency&gt; element containing the currency of the
-            fee.</t>
-
-            <t>One or more &lt;fee:fee&gt; elements that contain the fees
-            associated with the command.</t>
-
-            <t>An OPTIONAL &lt;fee:balance&gt; element that contains the
-            client's current account balance, once the above fee has been
-            deducted.</t>
-          </list></t>
+          <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="xml"
+            href="transform-response-elements.xml" />
 
           <t>If no &lt;fee:transfData&gt; element is included in the response, then
           no fee has been assessed by the server for this transaction.</t>
@@ -580,11 +599,9 @@
           element which includes the following child elements:</t>
 
           <t><list style="symbols">
-            <t>A &lt;fee:currency&gt; element containing the currency of the fee
-            that the command will result in.</t>
+            <t>A &lt;fee:currency&gt; element;</t>
 
-            <t>One or more &lt;fee:fee&gt; elements that contain the fees
-            associated with the command.</t>
+            <t>One or more &lt;fee:fee&gt; elements.</t>
           </list></t>
 
           <t>Depending on server policy, the server MAY choose to accept or
@@ -599,17 +616,8 @@
           &lt;fee:upData&gt; element that contains the following child
           elements:</t>
 
-          <t><list style="symbols">
-            <t>A &lt;fee:currency&gt; element containing the currency of the
-            fee.</t>
-
-            <t>One or more &lt;fee:fee&gt; elements that contain the fees
-            associated with the command.</t>
-
-            <t>An OPTIONAL &lt;fee:balance&gt; element that contains the
-            client's current account balance, once the above fee has been
-            deducted.</t>
-          </list></t>
+          <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="xml"
+            href="transform-response-elements.xml" />
 
           <t>If no &lt;fee:upData&gt; element is included in the response, then
           no fee has been assessed by the server for this transaction.</t>
@@ -711,6 +719,9 @@ END</artwork></figure>
         <t>Luis Mu&#241;oz of ISC</t>
         <t>Michael Young of Architelos</t>
         <t>Ben Levac and Jeff Eckhaus of Demand Media</t>
+        <t>Seth Goldman of Google</t>
+        <t>Klaus Malorny of Knipp</t>
+        <t>Jody Kolker and Roger Carney of Go Daddy</t>
        </list></t>
     </section>
 
@@ -736,6 +747,10 @@ END</artwork></figure>
           <t>Updated reference to
             <xref target="draft-ietf-eppext-launchphase"/>.</t>
           <t>Use &lt;fee:command&gt; instead of &lt;fee:action&gt;.</t>
+          <t>Use a single child element of &lt;fee:chkData&gt; instead of multiple
+          elements for each domain. This also requires using a different name
+          (&lt;fee:name&gt;) for the domain name.</t>
+          <t>added the &lt;fee:creditLimit&gt; element.</t>
         </list></t>
       </section>
     </section>

@@ -37,10 +37,19 @@
   -->
   <complexType name="checkType">
     <sequence>
-    <element name="domain" type="eppcom:labelType" />
-    <element name="currency" type="fee:currencyType" />
-    <element name="command" type="fee:commandType" />
-    <element name="period" type="domain:periodType" />
+      <element name="domain" type="fee:domainCheckType"
+        maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+
+  <complexType name="domainCheckType">
+    <sequence>
+      <element name="name" type="eppcom:labelType" />
+      <element name="currency" type="fee:currencyType"
+        minOccurs="0" />
+      <element name="command" type="fee:commandType" />
+      <element name="period" type="domain:periodType"
+        minOccurs="0" />
     </sequence>
   </complexType>
   
@@ -49,13 +58,31 @@
   -->
   <complexType name="chkDataType">
     <sequence>
-      <element name="domain" type="eppcom:labelType" />
+      <element name="cd" type="fee:domainCDType"
+        maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+
+  <complexType name="domainCDType">
+    <sequence>
+      <element name="name" type="fee:domainNameType" />
       <element name="currency" type="fee:currencyType" />
       <element name="command" type="fee:commandType" />
       <element name="period" type="domain:periodType" />
       <element name="fee" type="fee:feeType"
         maxOccurs="unbounded" />
     </sequence>
+  </complexType>
+
+  <!--
+  extends the domain name with an optional "premium" attribute
+  -->
+  <complexType name="domainNameType">
+    <simpleContent>
+      <extension base="eppcom:labelType">
+        <attribute name="premium" type="boolean" />
+      </extension>
+    </simpleContent>
   </complexType>
 
   <!--
@@ -102,6 +129,8 @@
         maxOccurs="unbounded" />
       <element name="balance" type="fee:balanceType"
         minOccurs="0" />
+      <element name="creditLimit" type="fee:creditLimitType"
+        minOccurs="0" />
     </sequence>
   </complexType>
 
@@ -112,6 +141,10 @@
     <sequence>
       <element name="currency" type="fee:currencyType" />
       <element name="credit" type="fee:creditType" />
+      <element name="balance" type="fee:balanceType"
+        minOccurs="0" />
+      <element name="creditLimit" type="fee:creditLimitType"
+        minOccurs="0" />
     </sequence>
   </complexType>
 
@@ -171,4 +204,9 @@
   <simpleType name="balanceType">
     <restriction base="decimal" />
   </simpleType>
+
+  <simpleType name="creditLimitType">
+    <restriction base="decimal" />
+  </simpleType>
+
 </schema>
