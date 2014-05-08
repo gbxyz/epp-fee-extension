@@ -317,7 +317,9 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
    contain a <fee:check> element.  The <fee:check> element MUST contain
    at least one <fee:domain> element, with the following child elements:
 
-   o  A <fee:name> element that contains a domain name;
+   o  A <fee:name> element.  The domain name need not correspond to a
+      <domain:name> element that appears in the <domain:check> element
+      of the main body of the frame.
 
    o  An OPTIONAL <fee:currency> element;
 
@@ -326,8 +328,6 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
    o  An OPTIONAL <fee:period> element.
 
    Example <check> command:
-
-
 
 
 

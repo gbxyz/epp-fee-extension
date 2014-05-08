@@ -261,7 +261,9 @@
           following child elements:</t>
 
           <t><list style="symbols">
-            <t>A &lt;fee:name&gt; element that contains a domain name;</t>
+            <t>A &lt;fee:name&gt; element. The domain name need not correspond
+            to a &lt;domain:name&gt; element that appears in the
+            &lt;domain:check&gt; element of the main body of the frame.</t>
 
             <t>An OPTIONAL &lt;fee:currency&gt; element;</t>
 
