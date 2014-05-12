@@ -39,7 +39,8 @@ build:
 
 	xmllint --xinclude draft-brown-epp-fees.xml.in > draft-brown-epp-fees.xml
 
-	xml2rfc draft-brown-epp-fees.xml
+	xml2rfc draft-brown-epp-fees.xml draft-brown-epp-fees.txt
+	xml2rfc draft-brown-epp-fees.xml draft-brown-epp-fees.html
 
 clean:
 	rm -vf draft-brown-epp-fees.xml examples/*txt
