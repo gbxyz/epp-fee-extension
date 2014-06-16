@@ -488,8 +488,15 @@
           &lt;fee:delData&gt; element that contains the following child
           elements:</t>
 
-          <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="xml"
-            href="transform-response-elements.xml" />
+          <t><list style="symbols">
+            <t>A &lt;fee:currency&gt; element;</t>
+
+            <t>One or more &lt;fee:credit&gt; elements;</t>
+
+            <t>An OPTIONAL &lt;fee:balance&gt; element;</t>
+
+            <t>An OPTIONAL &lt;fee:creditLimit&gt; element.</t>
+          </list></t>
 
           <t>If no &lt;fee:delData&gt; element is included in the response, then
           no credit has been assessed by the server for this transaction.</t>
