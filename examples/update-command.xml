@@ -11,10 +11,10 @@
       </domain:update>
     </update>
     <extension>
-      <fee:create xmlns:fee="urn:ietf:params:xml:ns:fee-0.5">
+      <fee:update xmlns:fee="urn:ietf:params:xml:ns:fee-0.5">
         <fee:currency>USD</fee:currency>
         <fee:fee>5.00</fee:fee>
-      </fee:create>
+      </fee:update>
     </extension>
     <clTRID>ABC-12345</clTRID>
   </command>

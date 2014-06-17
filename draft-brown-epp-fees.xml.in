@@ -11,22 +11,22 @@
     website -->
 
   <!ENTITY I-D.narten-iana-considerations-rfc2434bis SYSTEM
-    "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.narten-iana-considerations-rfc2434bis.xml">
+    "http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.narten-iana-considerations-rfc2434bis.xml">
   
   <!ENTITY RFC2119 SYSTEM
-    "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
+    "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml">
   
   <!ENTITY RFC3688 SYSTEM
-    "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3688.xml">
+    "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.3688.xml">
 
   <!ENTITY RFC3915 SYSTEM
-    "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3915.xml">
+    "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.3915.xml">
   
   <!ENTITY RFC5730 SYSTEM
-    "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5730.xml">
+    "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5730.xml">
 
   <!ENTITY RFC5731 SYSTEM
-    "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5731.xml">
+    "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5731.xml">
 ]>
 
 <?xml-stylesheet type="text/xsl" href="rfc2629.xslt" ?>
@@ -445,6 +445,11 @@
           the server chooses to refuse the command due to incorrect fees, it
           MUST respond with a 2004 "Parameter value range" error.</t>
 
+          <t>A server MAY require the currency and fees to be provided for the
+          command. If the server chooses to refuse the command due to missing
+          fees, it MUST response with a 2003 "Required parameter missing"
+          error.</t>
+
           <t>When the &lt;create&gt; command has been processed successfully,
           and the client selected the extension when it logged in, and a fee was
           assessed by the server for the transaction, the server MUST include in
@@ -483,8 +488,15 @@
           &lt;fee:delData&gt; element that contains the following child
           elements:</t>
 
-          <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="xml"
-            href="transform-response-elements.xml" />
+          <t><list style="symbols">
+            <t>A &lt;fee:currency&gt; element;</t>
+
+            <t>One or more &lt;fee:credit&gt; elements;</t>
+
+            <t>An OPTIONAL &lt;fee:balance&gt; element;</t>
+
+            <t>An OPTIONAL &lt;fee:creditLimit&gt; element.</t>
+          </list></t>
 
           <t>If no &lt;fee:delData&gt; element is included in the response, then
           no credit has been assessed by the server for this transaction.</t>
@@ -516,6 +528,11 @@
           by the client agrees with the server's own calculation of the fees. If
           the server chooses to refuse the command due to incorrect fees, it
           MUST respond with a 2004 "Parameter value range error".</t>
+
+          <t>A server MAY require the currency and fees to be provided for the
+          command. If the server chooses to refuse the command due to missing
+          fees, it MUST response with a 2003 "Required parameter missing"
+          error.</t>
 
           <t>When the &lt;renew&gt; command has been processed successfully,
           and the client selected the extension when it logged in, the server
@@ -565,6 +582,11 @@
           the server chooses to refuse the command due to incorrect fees, it
           MUST respond with a 2004 "Parameter value range error".</t>
 
+          <t>A server MAY require the currency and fees to be provided for the
+          command. If the server chooses to refuse the command due to missing
+          fees, it MUST response with a 2003 "Required parameter missing"
+          error.</t>
+
           <t>When the &lt;transfer&gt; command has been processed successfully,
           and the client selected the extension when it logged in, the server
           MAY include in the &lt;extension&gt; section of the EPP response a
@@ -611,6 +633,11 @@
           by the client agrees with the server's own calculation of the fees. If
           the server chooses to refuse the command due to incorrect fees, it
           MUST respond with a 2004 "Parameter value range error".</t>
+
+          <t>A server MAY require the currency and fees to be provided for the
+          command. If the server chooses to refuse the command due to missing
+          fees, it MUST response with a 2003 "Required parameter missing"
+          error.</t>
 
           <t>When the &lt;update&gt; command has been processed successfully,
           and the client selected the extension when it logged in, the server
