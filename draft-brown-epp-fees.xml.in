@@ -196,6 +196,11 @@
 	  "description" attribute which provides a human-readable description of the
 	  fee.</t>
 
+<!--
+      <t>&lt;fee:fee&gt; elements MAY have an OPTIONAL "refundable" attribute
+      which takes a boolean value. If the 
+-->
+
 	  <t>A server MAY respond with multiple &lt;fee:fee&gt; and
 	  &lt;fee:credit&gt; elements in the same response. In such cases, the net
 	  fee or credit applicable to the transaction is the arithmetic sum of the

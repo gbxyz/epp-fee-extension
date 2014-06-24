@@ -23,8 +23,7 @@
     <extension>
       <fee:chkData
         xmlns:fee="urn:ietf:params:xml:ns:fee-0.5">
-        <fee:cd
-          xmlns:fee="urn:ietf:params:xml:ns:fee-0.5">
+        <fee:cd>
           <fee:name>example.com</fee:name>
           <fee:currency>USD</fee:currency>
           <fee:command phase="sunrise">create</fee:command>
@@ -32,8 +31,7 @@
           <fee:fee description="Application Fee">5.00</fee:fee>
           <fee:fee description="Registration Fee">5.00</fee:fee>
         </fee:cd>
-        <fee:cd
-          xmlns:fee="urn:ietf:params:xml:ns:fee-0.5">
+        <fee:cd>
           <fee:name>example.net</fee:name>
           <fee:currency>EUR</fee:currency>
           <fee:command phase="claims" subphase="landrush">
@@ -41,8 +39,7 @@
           <fee:period unit="y">2</fee:period>
           <fee:fee>5.00</fee:fee>
         </fee:cd>
-        <fee:cd
-          xmlns:fee="urn:ietf:params:xml:ns:fee-0.5">
+        <fee:cd>
           <fee:name>example.org</fee:name>
           <fee:currency>EUR</fee:currency>
           <fee:command>transfer</fee:command>
@@ -50,9 +47,8 @@
           <fee:fee description="Transfer Fee">2.50</fee:fee>
           <fee:fee description="Renewal Fee">10.00</fee:fee>
         </fee:cd>
-        <fee:cd
-          xmlns:fee="urn:ietf:params:xml:ns:fee-0.5">
-          <fee:name premium="1">example.xyz</fee:name>
+        <fee:cd>
+          <fee:name>example.xyz</fee:name>
           <fee:currency>GBP</fee:currency>
           <fee:command>restore</fee:command>
           <fee:period unit="y">1</fee:period>
