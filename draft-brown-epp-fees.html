@@ -1,0 +1,1825 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head><title>Registry Fee Extension for
+    the Extensible Provisioning Protocol (EPP)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="description" content="Registry Fee Extension for
+    the Extensible Provisioning Protocol (EPP)">
+<meta name="keywords" content="EPP, XML">
+<meta name="generator" content="xml2rfc v1.36 (http://xml.resource.org/)">
+<style type='text/css'><!--
+        body {
+                font-family: verdana, charcoal, helvetica, arial, sans-serif;
+                font-size: small; color: #000; background-color: #FFF;
+                margin: 2em;
+        }
+        h1, h2, h3, h4, h5, h6 {
+                font-family: helvetica, monaco, "MS Sans Serif", arial, sans-serif;
+                font-weight: bold; font-style: normal;
+        }
+        h1 { color: #900; background-color: transparent; text-align: right; }
+        h3 { color: #333; background-color: transparent; }
+
+        td.RFCbug {
+                font-size: x-small; text-decoration: none;
+                width: 30px; height: 30px; padding-top: 2px;
+                text-align: justify; vertical-align: middle;
+                background-color: #000;
+        }
+        td.RFCbug span.RFC {
+                font-family: monaco, charcoal, geneva, "MS Sans Serif", helvetica, verdana, sans-serif;
+                font-weight: bold; color: #666;
+        }
+        td.RFCbug span.hotText {
+                font-family: charcoal, monaco, geneva, "MS Sans Serif", helvetica, verdana, sans-serif;
+                font-weight: normal; text-align: center; color: #FFF;
+        }
+
+        table.TOCbug { width: 30px; height: 15px; }
+        td.TOCbug {
+                text-align: center; width: 30px; height: 15px;
+                color: #FFF; background-color: #900;
+        }
+        td.TOCbug a {
+                font-family: monaco, charcoal, geneva, "MS Sans Serif", helvetica, sans-serif;
+                font-weight: bold; font-size: x-small; text-decoration: none;
+                color: #FFF; background-color: transparent;
+        }
+
+        td.header {
+                font-family: arial, helvetica, sans-serif; font-size: x-small;
+                vertical-align: top; width: 33%;
+                color: #FFF; background-color: #666;
+        }
+        td.author { font-weight: bold; font-size: x-small; margin-left: 4em; }
+        td.author-text { font-size: x-small; }
+
+        /* info code from SantaKlauss at http://www.madaboutstyle.com/tooltip2.html */
+        a.info {
+                /* This is the key. */
+                position: relative;
+                z-index: 24;
+                text-decoration: none;
+        }
+        a.info:hover {
+                z-index: 25;
+                color: #FFF; background-color: #900;
+        }
+        a.info span { display: none; }
+        a.info:hover span.info {
+                /* The span will display just on :hover state. */
+                display: block;
+                position: absolute;
+                font-size: smaller;
+                top: 2em; left: -5em; width: 15em;
+                padding: 2px; border: 1px solid #333;
+                color: #900; background-color: #EEE;
+                text-align: left;
+        }
+
+        a { font-weight: bold; }
+        a:link    { color: #900; background-color: transparent; }
+        a:visited { color: #633; background-color: transparent; }
+        a:active  { color: #633; background-color: transparent; }
+
+        p { margin-left: 2em; margin-right: 2em; }
+        p.copyright { font-size: x-small; }
+        p.toc { font-size: small; font-weight: bold; margin-left: 3em; }
+        table.toc { margin: 0 0 0 3em; padding: 0; border: 0; vertical-align: text-top; }
+        td.toc { font-size: small; font-weight: bold; vertical-align: text-top; }
+
+        ol.text { margin-left: 2em; margin-right: 2em; }
+        ul.text { margin-left: 2em; margin-right: 2em; }
+        li      { margin-left: 3em; }
+
+        /* RFC-2629 <spanx>s and <artwork>s. */
+        em     { font-style: italic; }
+        strong { font-weight: bold; }
+        dfn    { font-weight: bold; font-style: normal; }
+        cite   { font-weight: normal; font-style: normal; }
+        tt     { color: #036; }
+        tt, pre, pre dfn, pre em, pre cite, pre span {
+                font-family: "Courier New", Courier, monospace; font-size: small;
+        }
+        pre {
+                text-align: left; padding: 4px;
+                color: #000; background-color: #CCC;
+        }
+        pre dfn  { color: #900; }
+        pre em   { color: #66F; background-color: #FFC; font-weight: normal; }
+        pre .key { color: #33C; font-weight: bold; }
+        pre .id  { color: #900; }
+        pre .str { color: #000; background-color: #CFF; }
+        pre .val { color: #066; }
+        pre .rep { color: #909; }
+        pre .oth { color: #000; background-color: #FCF; }
+        pre .err { background-color: #FCC; }
+
+        /* RFC-2629 <texttable>s. */
+        table.all, table.full, table.headers, table.none {
+                font-size: small; text-align: center; border-width: 2px;
+                vertical-align: top; border-collapse: collapse;
+        }
+        table.all, table.full { border-style: solid; border-color: black; }
+        table.headers, table.none { border-style: none; }
+        th {
+                font-weight: bold; border-color: black;
+                border-width: 2px 2px 3px 2px;
+        }
+        table.all th, table.full th { border-style: solid; }
+        table.headers th { border-style: none none solid none; }
+        table.none th { border-style: none; }
+        table.all td {
+                border-style: solid; border-color: #333;
+                border-width: 1px 2px;
+        }
+        table.full td, table.headers td, table.none td { border-style: none; }
+
+        hr { height: 1px; }
+        hr.insert {
+                width: 80%; border-style: none; border-width: 0;
+                color: #CCC; background-color: #CCC;
+        }
+--></style>
+</head>
+<body>
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<table summary="layout" width="66%" border="0" cellpadding="0" cellspacing="0"><tr><td><table summary="layout" width="100%" border="0" cellpadding="2" cellspacing="1">
+<tr><td class="header">Internet Engineering Task Force</td><td class="header">G. Brown</td></tr>
+<tr><td class="header">Internet-Draft</td><td class="header">CentralNic Group plc</td></tr>
+<tr><td class="header">Intended status: Experimental</td><td class="header">June 27, 2014</td></tr>
+<tr><td class="header">Expires: December 29, 2014</td><td class="header">&nbsp;</td></tr>
+</table></td></tr></table>
+<h1><br />Registry Fee Extension for
+    the Extensible Provisioning Protocol (EPP)<br />draft-brown-epp-fees-02</h1>
+
+<h3>Abstract</h3>
+
+<p>This document describes an Extensible Provisioning Protocol
+    (EPP) extension mapping for registry fees.
+</p>
+<h3>Status of this Memo</h3>
+<p>
+This Internet-Draft is submitted  in full
+conformance with the provisions of BCP&nbsp;78 and BCP&nbsp;79.</p>
+<p>
+Internet-Drafts are working documents of the Internet Engineering
+Task Force (IETF).  Note that other groups may also distribute
+working documents as Internet-Drafts.  The list of current
+Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
+<p>
+Internet-Drafts are draft documents valid for a maximum of six months
+and may be updated, replaced, or obsoleted by other documents at any time.
+It is inappropriate to use Internet-Drafts as reference material or to cite
+them other than as &ldquo;work in progress.&rdquo;</p>
+<p>
+This Internet-Draft will expire on December 29, 2014.</p>
+
+<h3>Copyright Notice</h3>
+<p>
+Copyright (c) 2014 IETF Trust and the persons identified as the
+document authors.  All rights reserved.</p>
+<p>
+This document is subject to BCP 78 and the IETF Trust's Legal
+Provisions Relating to IETF Documents
+(http://trustee.ietf.org/license-info) in effect on the date of
+publication of this document.  Please review these documents
+carefully, as they describe your rights and restrictions with respect
+to this document. Code Components extracted from this document must
+include Simplified BSD License text as described in Section 4.e of
+the Trust Legal Provisions and are provided without warranty as
+described in the Simplified BSD License.</p>
+<a name="toc"></a><br /><hr />
+<h3>Table of Contents</h3>
+<p class="toc">
+<a href="#anchor1">1.</a>&nbsp;
+Introduction<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor2">1.1.</a>&nbsp;
+Conventions Used in This Document<br />
+<a href="#anchor3">2.</a>&nbsp;
+Extension Elements<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor4">2.1.</a>&nbsp;
+Client Commands<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor5">2.2.</a>&nbsp;
+Currency Codes<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor6">2.3.</a>&nbsp;
+Registration Periods<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor7">2.4.</a>&nbsp;
+Fees and Credits<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor8">2.4.1.</a>&nbsp;
+Grace Periods<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor9">2.5.</a>&nbsp;
+Account Balance<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor10">2.6.</a>&nbsp;
+Credit Limit<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor11">2.7.</a>&nbsp;
+Classification of Domain Names<br />
+<a href="#anchor12">3.</a>&nbsp;
+EPP Command Mapping<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor13">3.1.</a>&nbsp;
+EPP Query Commands<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor14">3.1.1.</a>&nbsp;
+EPP &lt;check&gt; Command<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor15">3.1.2.</a>&nbsp;
+EPP &lt;info&gt; Command<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor16">3.1.3.</a>&nbsp;
+EPP Transfer Query Command<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor17">3.2.</a>&nbsp;
+EPP Transform Commands<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor18">3.2.1.</a>&nbsp;
+EPP &lt;create&gt; Command<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor19">3.2.2.</a>&nbsp;
+EPP &lt;delete&gt; Command<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor20">3.2.3.</a>&nbsp;
+EPP &lt;renew&gt; Command<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor21">3.2.4.</a>&nbsp;
+EPP &lt;transfer&gt; Command<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor22">3.2.5.</a>&nbsp;
+EPP &lt;update&gt; Command<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor23">3.3.</a>&nbsp;
+Formal Syntax<br />
+<a href="#Security">4.</a>&nbsp;
+Security Considerations<br />
+<a href="#IANA">5.</a>&nbsp;
+IANA Considerations<br />
+<a href="#anchor24">6.</a>&nbsp;
+Acknowledgements<br />
+<a href="#anchor25">7.</a>&nbsp;
+Change History<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor26">7.1.</a>&nbsp;
+Changes from 00 to 01<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor27">7.2.</a>&nbsp;
+Changes from 01 to 02<br />
+<a href="#rfc.references1">8.</a>&nbsp;
+Normative References<br />
+<a href="#rfc.authors">&#167;</a>&nbsp;
+Author's Address<br />
+</p>
+<br clear="all" />
+
+<a name="anchor1"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.1"></a><h3>1.&nbsp;
+Introduction</h3>
+
+<p>Historically, domain name registries have applied a simple fee
+      structure for billable transactions, namely a basic unit price applied to
+      domain &lt;create&gt;, &lt;renew&gt;, &lt;transfer&gt; and <a class='info' href='#RFC3915'>RGP<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Domain Registry Grace Period Mapping for the Extensible Provisioning Protocol (EPP),&rdquo; September&nbsp;2004.</span><span>)</span></a> [RFC3915] restore commands. Given the relatively small
+      number of EPP servers to which EPP clients have been required to connect,
+      it has generally been the case that client operators have been able to
+      obtain details of these fees out-of-band by contacting the server
+      operators.
+</p>
+<p>Given the present expansion of the DNS namespace, and the proliferation
+      of novel business models, it is now desirable to provide a method for EPP
+      clients to query EPP servers for the fees and credits associated with
+      certain commands and specific objects.
+</p>
+<p>This document describes an extension mapping for version 1.0 of the 
+      <a class='info' href='#RFC5730'>Extensible Provisioning Protocol (EPP)<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP),&rdquo; August&nbsp;2009.</span><span>)</span></a> [RFC5730]. This
+      EPP mapping provides a mechanism by which EPP clients may query the fees
+      and credits associated with various billable transactions, and also
+      obtain their current account balance.
+</p>
+<a name="anchor2"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.1.1"></a><h3>1.1.&nbsp;
+Conventions Used in This Document</h3>
+
+<p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+        "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+        document are to be interpreted as described in 
+        <a class='info' href='#RFC2119'>RFC 2119<span> (</span><span class='info'>Bradner, S., &ldquo;Key words for use in RFCs to Indicate Requirement Levels,&rdquo; March&nbsp;1997.</span><span>)</span></a> [RFC2119].
+</p>
+<p>XML is case sensitive. Unless stated otherwise, XML specifications
+        and examples provided in this document MUST be interpreted in the
+        character case presented in order to develop a conforming
+        implementation.
+</p>
+<p>"fee" is used as an abbreviation for
+        "urn:ietf:params:xml:ns:fee-0.5". The XML namespace prefix "fee"
+        is used, but implementations MUST NOT depend on it and instead employ a
+        proper namespace-aware XML parser and serializer to interpret and output
+        the XML documents.
+</p>
+<p>The XML namespace prefix above contains a version number,
+        specifically "0.5". This version number will increment with
+        successive versions of this document, and will reach 1.0 if and when
+        this document is published as an RFC. This permits clients to
+        distinguish which version of the extension a server has implemented.
+</p>
+<a name="anchor3"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2"></a><h3>2.&nbsp;
+Extension Elements</h3>
+
+<a name="anchor4"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.1"></a><h3>2.1.&nbsp;
+Client Commands</h3>
+
+<p>The &lt;fee:command&gt; element is used in EPP &lt;check&gt; and
+      &lt;info&gt; commands to determine the fee which is applicable to the
+      given command.
+</p>
+<p>The element values permitted by the server is a matter of repository
+      policy, but MUST include as a minimum the following values:
+
+        </p>
+<ul class="text">
+<li>"create" indicating a &lt;domain:create&gt; command;
+</li>
+<li>"renew" indicating a &lt;domain:renew&gt; command;
+</li>
+<li>"transfer" indicating a &lt;domain:transfer&gt; command;
+</li>
+</ul><p>
+
+      If the server supports the <a class='info' href='#RFC3915'>Registry Grace Period
+      Mapping<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Domain Registry Grace Period Mapping for the Extensible Provisioning Protocol (EPP),&rdquo; September&nbsp;2004.</span><span>)</span></a> [RFC3915], then the server MUST also support the "restore" value.
+</p>
+<p>The &lt;fee:command&gt; element MAY have an OPTIONAL "phase" attribute
+      specifying a launch phase as described in
+      <a class='info' href='#draft-ietf-eppext-launchphase'>[draft&#8209;ietf&#8209;eppext&#8209;launchphase]<span> (</span><span class='info'>Gould, J., Tan, W., and G. Brown, &ldquo;Launch Phase Mapping for the  Extensible Provisioning               Protocol (EPP),&rdquo; 2014.</span><span>)</span></a>. It may also contain an
+      OPTIONAL "subphase" attribute identifying the custom or sub-phase as
+      described in <a class='info' href='#draft-ietf-eppext-launchphase'>[draft&#8209;ietf&#8209;eppext&#8209;launchphase]<span> (</span><span class='info'>Gould, J., Tan, W., and G. Brown, &ldquo;Launch Phase Mapping for the  Extensible Provisioning               Protocol (EPP),&rdquo; 2014.</span><span>)</span></a>.
+</p>
+<a name="anchor5"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.2"></a><h3>2.2.&nbsp;
+Currency Codes</h3>
+
+<p>The &lt;fee:currency&gt; element is used to indicate which currency
+      fees are charged in. This value of this element MUST be a three-character
+      currency code from <a class='info' href='#ISO4217'>[ISO4217]<span> (</span><span class='info'>International Organization for                   Standardization, &ldquo;ISO 4217:2008, Codes for the representation of currencies               and funds,&rdquo; 2008.</span><span>)</span></a>.
+</p>
+<p>Note that ISO 4217 provides the special "XXX" code, which MAY be used
+      if the server uses a non-currency based system for assessing fees, such as
+      a system of credits.
+</p>
+<p>The use of &lt;fee:currency&gt; elements in command frames is OPTIONAL:
+      if a &lt;fee:currency&gt; element is not present in a command frame, the
+      server MUST determine the currency based on the client's account settings
+      which MUST be agreed by the client and server via an out-of-band
+      channel. However, &lt;fee:currency&gt; element MUST be present in
+      response frames.
+</p>
+<p>Servers SHOULD NOT perform a currency conversion if a client uses an
+      incorrect currency code. Servers SHOULD return an error instead.
+</p>
+<a name="anchor6"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.3"></a><h3>2.3.&nbsp;
+Registration Periods</h3>
+
+<p>The &lt;fee:period&gt; element is used to indicate the units to be
+	  added to the registration period of domain names by the &lt;create&gt;,
+	  &lt;renew&gt; and &lt;transfer&gt; commands. This element is derived from
+	  the &lt;domain:period&gt; element described in
+	  <a class='info' href='#RFC5731'>[RFC5731]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Domain Name Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a>.
+</p>
+<p>The &lt;fee:period&gt; element is OPTIONAL in command frames: if
+	  ommitted, the server MUST determine the fee(s) using a validity period of
+	  1 year. The &lt;fee:period&gt; element MUST be present in response
+	  frames.
+</p>
+<a name="anchor7"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.4"></a><h3>2.4.&nbsp;
+Fees and Credits</h3>
+
+<p>Servers which implement this extension will include elements in
+	  response frames which provide information about the fees and/or credits
+	  associated with a given billable transaction.
+</p>
+<p>The &lt;fee:fee&gt; and &lt;fee:credit&gt; elements are used to provide
+	  this information. The presence of a &lt;fee:fee&gt; element in a response
+	  indicates a debit against the client's account balance; a
+	  &lt;fee:credit&gt; element indicates a credit. A &lt;fee:fee&gt; element
+	  MUST have a non-negative value. A &lt;fee:credit&gt; element MUST have a
+	  negative value.
+</p>
+<p>A server MAY respond with multiple &lt;fee:fee&gt; and
+	  &lt;fee:credit&gt; elements in the same response. In such cases, the net
+	  fee or credit applicable to the transaction is the arithmetic sum of the
+	  values of each of the &lt;fee:fee&gt; or &lt;fee:credit&gt; elements.
+</p>
+<p>&lt;fee:fee&gt; and &lt;fee:credit&gt; elements MAY have an OPTIONAL
+	  "description" attribute which provides a human-readable description of the
+	  fee. Servers SHOULD provide documentation on the possible values of
+	  this attribute, and their meanings.
+</p>
+<p>&lt;fee:fee&gt; elements MAY have an OPTIONAL "refundable" attribute
+	  which takes a boolean value. Fees may be refunded under certain
+	  circumstances, such as when a domain application is rejected (as
+	  described in <a class='info' href='#draft-ietf-eppext-launchphase'>[draft&#8209;ietf&#8209;eppext&#8209;launchphase]<span> (</span><span class='info'>Gould, J., Tan, W., and G. Brown, &ldquo;Launch Phase Mapping for the  Extensible Provisioning               Protocol (EPP),&rdquo; 2014.</span><span>)</span></a>) or when a
+	  domain name is deleted during the relevant Grace Period (see below).
+	  If the "refundable" attribute is omitted, then the default value of
+	  "1" should be assumed (i.e. the fee is refundable).
+</p>
+<a name="anchor8"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.4.1"></a><h3>2.4.1.&nbsp;
+Grace Periods</h3>
+
+<p><a class='info' href='#RFC3915'>[RFC3915]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Domain Registry Grace Period Mapping for the Extensible Provisioning Protocol (EPP),&rdquo; September&nbsp;2004.</span><span>)</span></a> describes a system of "grace periods",
+	    which are time periods following a billable transaction during which,
+	    if a domain name is deleted, the client receives a refund.
+</p>
+<p>The "grace-period" attribute MAY be used to indicate the relevant
+	    grace period for a fee. If a server implements the Registry Grace
+	    Period Servers extension, it SHOULD specify the grace period for
+	    all relevant transactions. If no "grace-period" attribute value is
+	    provided, then no grace period is applicable.
+</p>
+<p>If a &lt;fee:fee&gt; element has a "grace-period" attribute then
+	    it MUST also be refundable. If the "refundable" attribute of a
+	    &lt;fee:fee&gt; element evaluates to false then it MUST NOT have a
+	    "grace-period" attribute.
+</p>
+<a name="anchor9"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.5"></a><h3>2.5.&nbsp;
+Account Balance</h3>
+
+<p>The &lt;fee:balance&gt; element is an OPTIONAL element which MAY
+      be included in server responses to transform commands. If present,
+      it can be used by the client to determine the remaining credit at
+      the server.
+</p>
+<p>Whether or not the &lt;fee:balance&gt; is included in response
+      frames is a matter of server policy. However, if a server chooses
+      to offer support for this element, it MUST be included in responses
+      to all domain "transform" commands (ie &lt;create&gt;, &lt;renew&gt;,
+      &lt;update&gt;, &lt;delete&gt;, &lt;transfer op="request"&gt;).
+</p>
+<p>The value of the &lt;fee:balance&gt; MAY be negative. A negative
+      balance indicates that the server has extended a line of credit to the
+      client (see below).
+</p>
+<p>When a server includes a &lt;fee:balance&gt; element in response to
+      transform commands, the value of the element MUST reflect the client's
+      account balance after any fees or credits associated with that command
+      have been applied.
+</p>
+<a name="anchor10"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.6"></a><h3>2.6.&nbsp;
+Credit Limit</h3>
+
+<p>As described above, if a server returns a response frame containing a
+      &lt;fee:balance&gt; with a negative value, then the server has extended a
+      line of credit to the client. A server MAY also include a
+      &lt;fee:creditLimit&gt; element in responses which indicates the maximum
+      credit available to a client. A server MAY reject certain transactions if
+      the absolute value of the &lt;fee:balance&gt; is equal to or exceeds the
+      value of the &lt;fee:creditLimit&gt; element.
+</p>
+<p>Whether or not the &lt;fee:creditLimit&gt; is included in response
+      frames is a matter of server policy. However, if a server chooses
+      to offer support for this element, it MUST be included in responses
+      to all domain "transform" commands (ie &lt;create&gt;, &lt;renew&gt;,
+      &lt;update&gt;, &lt;delete&gt;, &lt;transfer op="request"&gt;).
+</p>
+<a name="anchor11"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.7"></a><h3>2.7.&nbsp;
+Classification of Domain Names</h3>
+
+<p>Domain names may be assigned to a particular class, category, or tier,
+      each of which has a particular fee or set of fess associated with it. The
+      &lt;fee:class&gt; element which appears in &lt;check&gt; and &lt;info&gt;
+      responses is used to indicate the classification of a domain name.
+</p>
+<p>If a server makes use of this element, it MUST provide clients with a
+      list of all the values that the element may take via an out-of-band
+      channel. Servers MUST NOT use values which do not appear on this list.
+</p>
+<a name="anchor12"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.3"></a><h3>3.&nbsp;
+EPP Command Mapping</h3>
+
+<p>A detailed description of the EPP syntax and semantics can be found in
+      <a class='info' href='#RFC5730'>[RFC5730]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP),&rdquo; August&nbsp;2009.</span><span>)</span></a>.
+</p>
+<a name="anchor13"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.3.1"></a><h3>3.1.&nbsp;
+EPP Query Commands</h3>
+
+<p>This extension does not add any elements to the EPP &lt;poll&gt;
+        command or response.
+</p>
+<a name="anchor14"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.3.1.1"></a><h3>3.1.1.&nbsp;
+EPP &lt;check&gt; Command</h3>
+
+<p>This extension defines additional elements for the EPP
+          &lt;check&gt; command.
+</p>
+<p>The command frame MAY contain an &lt;extension&gt; element which
+          MAY contain a &lt;fee:check&gt; element. The &lt;fee:check&gt; element
+          MUST contain at least one &lt;fee:domain&gt; element, with the
+          following child elements:
+</p>
+<p></p>
+<ul class="text">
+<li>A &lt;fee:name&gt; element. The domain name need not correspond
+            to a &lt;domain:name&gt; element that appears in the
+            &lt;domain:check&gt; element of the main body of the frame.
+</li>
+<li>An OPTIONAL &lt;fee:currency&gt; element;
+</li>
+<li>A &lt;fee:command&gt; element;
+</li>
+<li>An OPTIONAL &lt;fee:period&gt; element.
+</li>
+</ul>
+
+<p>Example &lt;check&gt; command:
+</p><div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+C: &lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
+C: &lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+C:   &lt;command&gt;
+C:     &lt;check&gt;
+C:       &lt;domain:check
+C:         xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+C:         &lt;domain:name&gt;example.com&lt;/domain:name&gt;
+C:         &lt;domain:name&gt;example.net&lt;/domain:name&gt;
+C:         &lt;domain:name&gt;example.org&lt;/domain:name&gt;
+C:       &lt;/domain:check&gt;
+C:     &lt;/check&gt;
+C:     &lt;extension&gt;
+C:       &lt;fee:check
+C:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"&gt;
+C:         &lt;fee:domain&gt;
+C:           &lt;fee:name&gt;example.com&lt;/fee:name&gt;
+C:           &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
+C:           &lt;fee:command phase="sunrise"&gt;create&lt;/fee:command&gt;
+C:           &lt;fee:period unit="y"&gt;1&lt;/fee:period&gt;
+C:         &lt;/fee:domain&gt;
+C:         &lt;fee:domain&gt;
+C:           &lt;fee:name&gt;example.net&lt;/fee:name&gt;
+C:           &lt;fee:currency&gt;EUR&lt;/fee:currency&gt;
+C:           &lt;fee:command phase="claims" subphase="landrush"&gt;
+C:           create&lt;/fee:command&gt;
+C:           &lt;fee:period unit="y"&gt;2&lt;/fee:period&gt;
+C:         &lt;/fee:domain&gt;
+C:         &lt;fee:domain&gt;
+C:           &lt;fee:name&gt;example.org&lt;/fee:name&gt;
+C:           &lt;fee:currency&gt;EUR&lt;/fee:currency&gt;
+C:           &lt;fee:command&gt;transfer&lt;/fee:command&gt;
+C:         &lt;/fee:domain&gt;
+C:         &lt;fee:domain&gt;
+C:           &lt;fee:name&gt;example.xyz&lt;/fee:name&gt;
+C:           &lt;fee:command&gt;restore&lt;/fee:command&gt;
+C:           &lt;fee:period unit="y"&gt;1&lt;/fee:period&gt;
+C:         &lt;/fee:domain&gt;
+C:       &lt;/fee:check&gt;
+C:     &lt;/extension&gt;
+C:     &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+C:   &lt;/command&gt;
+C: &lt;/epp&gt;
+</pre></div>
+<p>When the server receives a &lt;check&gt; command that includes the
+          extension elements described above, its response MUST contain an
+          &lt;extension&gt; element, which MUST contain a child
+          &lt;fee:chkData&gt; element. The &lt;fee:chkData&gt; element MUST
+          contain a &lt;fee:cd&gt; element for each &lt;fee:check&gt; element
+          contained in the command. The &lt;fee:cd&gt; MUST contain the
+          following child elements:
+</p>
+<p></p>
+<ul class="text">
+<li>A &lt;fee:name&gt; element that contains a domain name which
+            matches the name in the corresponding &lt;fee:check&gt; element.
+</li>
+<li>A &lt;fee:currency&gt; element that contains same currency code
+            that appeared in the corresponding &lt;fee:check&gt; element. If no
+            &lt;fee:currency&gt; element appeared in the corresponding
+            &lt;fee:check&gt; element, then the client's default billing
+            currency should be used.
+</li>
+<li>A &lt;fee:command&gt; element that contains same command
+            that appeared in the corresponding &lt;fee:check&gt; element. This
+            element MAY have the OPTIONAL "phase" and "subphase" elements, 
+            which MUST match the same attributes in the corresponding
+            &lt;fee:check&gt; element.
+</li>
+<li>A &lt;fee:period&gt; element that contains same unit
+            that appeared in the corresponding &lt;fee:check&gt; element. If
+            no &lt;fee:period&gt; appeared in the corresponding
+            &lt;fee:check&gt; element, then this element MUST have a value of
+            1 year.
+</li>
+<li>One or more &lt;fee:fee&gt; elements.
+</li>
+<li>An OPTIONAL &lt;fee:class&gt; element.
+</li>
+</ul>
+
+<p>Example &lt;check&gt; response:
+</p><div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+S: &lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
+S: &lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+S:   &lt;response&gt;
+S:     &lt;result code="1000"&gt;
+S:       &lt;msg&gt;Command completed successfully&lt;/msg&gt;
+S:     &lt;/result&gt;
+S:     &lt;resData&gt;
+S:       &lt;domain:chkData
+S:         xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+S:         &lt;domain:cd&gt;
+S:           &lt;domain:name avail="1"&gt;example.com&lt;/domain:name&gt;
+S:         &lt;/domain:cd&gt;
+S:         &lt;domain:cd&gt;
+S:           &lt;domain:name avail="0"&gt;example.net&lt;/domain:name&gt;
+S:           &lt;domain:reason&gt;In use&lt;/domain:reason&gt;
+S:         &lt;/domain:cd&gt;
+S:         &lt;domain:cd&gt;
+S:           &lt;domain:name avail="0"&gt;example.org&lt;/domain:name&gt;
+S:           &lt;domain:reason&gt;In use&lt;/domain:reason&gt;
+S:         &lt;/domain:cd&gt;
+S:       &lt;/domain:chkData&gt;
+S:     &lt;/resData&gt;
+S:     &lt;extension&gt;
+S:       &lt;fee:chkData
+S:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"&gt;
+S:         &lt;fee:cd&gt;
+S:           &lt;fee:name&gt;example.com&lt;/fee:name&gt;
+S:           &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
+S:           &lt;fee:command phase="sunrise"&gt;create&lt;/fee:command&gt;
+S:           &lt;fee:period unit="y"&gt;1&lt;/fee:period&gt;
+S:           &lt;fee:fee description="Application Fee"
+S:             refundable="0"&gt;5.00&lt;/fee:fee&gt;
+S:           &lt;fee:fee description="Registration Fee"
+S:             refundable="1"&gt;5.00&lt;/fee:fee&gt;
+S:         &lt;/fee:cd&gt;
+S:         &lt;fee:cd&gt;
+S:           &lt;fee:name&gt;example.net&lt;/fee:name&gt;
+S:           &lt;fee:currency&gt;EUR&lt;/fee:currency&gt;
+S:           &lt;fee:command phase="claims" subphase="landrush"&gt;
+S:           create&lt;/fee:command&gt;
+S:           &lt;fee:period unit="y"&gt;2&lt;/fee:period&gt;
+S:           &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
+S:         &lt;/fee:cd&gt;
+S:         &lt;fee:cd&gt;
+S:           &lt;fee:name&gt;example.org&lt;/fee:name&gt;
+S:           &lt;fee:currency&gt;EUR&lt;/fee:currency&gt;
+S:           &lt;fee:command&gt;transfer&lt;/fee:command&gt;
+S:           &lt;fee:period unit="y"&gt;2&lt;/fee:period&gt;
+S:           &lt;fee:fee description="Transfer Fee"&gt;2.50&lt;/fee:fee&gt;
+S:           &lt;fee:fee description="Renewal Fee"&gt;10.00&lt;/fee:fee&gt;
+S:         &lt;/fee:cd&gt;
+S:         &lt;fee:cd&gt;
+S:           &lt;fee:name&gt;example.xyz&lt;/fee:name&gt;
+S:           &lt;fee:currency&gt;GBP&lt;/fee:currency&gt;
+S:           &lt;fee:command&gt;restore&lt;/fee:command&gt;
+S:           &lt;fee:period unit="y"&gt;1&lt;/fee:period&gt;
+S:           &lt;fee:fee description="Restore Fee"&gt;25&lt;/fee:fee&gt;
+S:           &lt;fee:fee description="Renewal Fee"&gt;5.00&lt;/fee:fee&gt;
+S:           &lt;fee:class&gt;premium-tier1&lt;/fee:class&gt;
+S:         &lt;/fee:cd&gt;
+S:       &lt;/fee:chkData&gt;
+S:     &lt;/extension&gt;
+S:     &lt;trID&gt;
+S:       &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+S:       &lt;svTRID&gt;54322-XYZ&lt;/svTRID&gt;
+S:     &lt;/trID&gt;
+S:   &lt;/response&gt;
+S: &lt;/epp&gt;
+</pre></div>
+<a name="anchor15"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.3.1.2"></a><h3>3.1.2.&nbsp;
+EPP &lt;info&gt; Command</h3>
+
+<p>This extension defines additional elements for the EPP
+          &lt;info&gt; command.
+</p>
+<p>The command frame MAY contain an &lt;extension&gt; element which
+          contains a &lt;fee:info&gt; element with the following child
+          elements:
+</p>
+<p></p>
+<ul class="text">
+<li>An OPTIONAL &lt;fee:currency&gt; element;
+</li>
+<li>A &lt;fee:command&gt; element;
+</li>
+<li>An OPTIONAL &lt;fee:period&gt; element.
+</li>
+</ul>
+
+<p>Example &lt;info&gt; command:
+</p><div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+C: &lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
+C: &lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+C:   &lt;command&gt;
+C:     &lt;info&gt;
+C:       &lt;domain:info
+C:         xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+C:         &lt;domain:name hosts="all"&gt;example.com&lt;/domain:name&gt;
+C:       &lt;/domain:info&gt;
+C:     &lt;/info&gt;
+C:     &lt;extension&gt;
+C:       &lt;fee:info xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"&gt;
+C:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
+C:         &lt;fee:command phase="sunrise"&gt;create&lt;/fee:command&gt;
+C:         &lt;fee:period unit="y"&gt;1&lt;/fee:period&gt;
+C:       &lt;/fee:info&gt;
+C:     &lt;/extension&gt;
+C:     &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+C:   &lt;/command&gt;
+C: &lt;/epp&gt;
+</pre></div>
+<p>When the server receives an &lt;info&gt; command that includes the
+          extension element described above, its response MUST (subject to the
+          exceptions described below) contain an &lt;extension&gt; element,
+          which MUST contain a child &lt;fee:infData&gt; element. The
+          &lt;fee:infData&gt; MUST contain the following child elements:
+</p>
+<p></p>
+<ul class="text">
+<li>A &lt;fee:currency&gt; element that contains same currency code
+            that appeared in the &lt;fee:currency&gt; element element of the
+            command frame. If no &lt;fee:currency&gt; element appeared in the
+            command frame, then the client's default billing currency should be
+            used.
+</li>
+<li>A &lt;fee:command&gt; element that contains same command
+            that appeared in the &lt;fee:command&gt; element of the command
+            frame. This element MAY have the OPTIONAL "phase" and "subphase"
+            elements, which MUST match the same attributes in the
+            &lt;fee:command&gt; element of the command frame.
+</li>
+<li>A &lt;fee:period&gt; element that contains same unit
+            that appeared in the corresponding &lt;fee:period&gt; element of the
+            command frame. If no &lt;fee:period&gt; appeared in the command
+            frame, then this element MUST have a value of 1 year.
+</li>
+<li>One or more &lt;fee:fee&gt; elements.
+</li>
+<li>An OPTIONAL &lt;fee:class&gt; element.
+</li>
+</ul>
+
+<p>If the domain name requested in the command is invalid, sponsored
+          by another client, or otherwise ineligible for registration, the
+          server MAY choose to omit the &lt;fee:infData&gt; element and return
+          an error instead.
+</p>
+<p>Example &lt;info&gt; response:
+</p><div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+S: &lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
+S: &lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+S:   &lt;response&gt;
+S:     &lt;result code="1000"&gt;
+S:       &lt;msg&gt;Command completed successfully&lt;/msg&gt;
+S:     &lt;/result&gt;
+S:     &lt;resData&gt;
+S:       &lt;domain:infData
+S:         xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+S:         &lt;domain:name&gt;example.com&lt;/domain:name&gt;
+S:         &lt;domain:roid&gt;EXAMPLE1-REP&lt;/domain:roid&gt;
+S:         &lt;domain:status s="ok" /&gt;
+S:         &lt;domain:registrant&gt;jd1234&lt;/domain:registrant&gt;
+S:         &lt;domain:contact type="admin"&gt;sh8013&lt;/domain:contact&gt;
+S:         &lt;domain:contact type="tech"&gt;sh8013&lt;/domain:contact&gt;
+S:         &lt;domain:ns&gt;
+S:           &lt;domain:hostObj&gt;ns1.example.com&lt;/domain:hostObj&gt;
+S:           &lt;domain:hostObj&gt;ns1.example.net&lt;/domain:hostObj&gt;
+S:         &lt;/domain:ns&gt;
+S:         &lt;domain:host&gt;ns1.example.com&lt;/domain:host&gt;
+S:         &lt;domain:host&gt;ns2.example.com&lt;/domain:host&gt;
+S:         &lt;domain:clID&gt;ClientX&lt;/domain:clID&gt;
+S:         &lt;domain:crID&gt;ClientY&lt;/domain:crID&gt;
+S:         &lt;domain:crDate&gt;1999-04-03T22:00:00.0Z&lt;/domain:crDate&gt;
+S:         &lt;domain:upID&gt;ClientX&lt;/domain:upID&gt;
+S:         &lt;domain:upDate&gt;1999-12-03T09:00:00.0Z&lt;/domain:upDate&gt;
+S:         &lt;domain:exDate&gt;2005-04-03T22:00:00.0Z&lt;/domain:exDate&gt;
+S:         &lt;domain:trDate&gt;2000-04-08T09:00:00.0Z&lt;/domain:trDate&gt;
+S:         &lt;domain:authInfo&gt;
+S:           &lt;domain:pw&gt;2fooBAR&lt;/domain:pw&gt;
+S:         &lt;/domain:authInfo&gt;
+S:       &lt;/domain:infData&gt;
+S:     &lt;/resData&gt;
+S:     &lt;extension&gt;
+S:       &lt;fee:infData xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"&gt;
+S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
+S:         &lt;fee:command phase="sunrise"&gt;create&lt;/fee:command&gt;
+S:         &lt;fee:period unit="y"&gt;1&lt;/fee:period&gt;
+S:         &lt;fee:fee refundable="1" grace-period="P5D"&gt;10.00&lt;/fee:fee&gt;
+S:         &lt;fee:class&gt;premium-tier1&lt;/fee:class&gt;
+S:       &lt;/fee:infData&gt;
+S:     &lt;/extension&gt;
+S:     &lt;trID&gt;
+S:       &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+S:       &lt;svTRID&gt;54322-XYZ&lt;/svTRID&gt;
+S:     &lt;/trID&gt;
+S:   &lt;/response&gt;
+S: &lt;/epp&gt;
+</pre></div>
+<p>Example &lt;info&gt; response where the domain name is not
+          registered:
+</p><div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+S: &lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
+S: &lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+S:   &lt;response&gt;
+S:     &lt;result code="2303"&gt;
+S:       &lt;msg&gt;Object does not exist.&lt;/msg&gt;
+S:     &lt;/result&gt;
+S:     &lt;extension&gt;
+S:       &lt;fee:infData
+S:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"&gt;
+S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
+S:         &lt;fee:command phase="sunrise"&gt;create&lt;/fee:command&gt;
+S:         &lt;fee:period unit="y"&gt;1&lt;/fee:period&gt;
+S:         &lt;fee:fee&gt;10.00&lt;/fee:fee&gt;
+S:       &lt;/fee:infData&gt;
+S:     &lt;/extension&gt;
+S:     &lt;trID&gt;
+S:       &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+S:       &lt;svTRID&gt;54322-XYZ&lt;/svTRID&gt;
+S:     &lt;/trID&gt;
+S:   &lt;/response&gt;
+S: &lt;/epp&gt;
+</pre></div>
+<a name="anchor16"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.3.1.3"></a><h3>3.1.3.&nbsp;
+EPP Transfer Query Command</h3>
+
+<p>This extension does not add any elements to the EPP
+          &lt;transfer&gt; query command, but does include elements in the
+          response, when the extension has been selected during a &lt;login&gt;
+          command.
+</p>
+<p>When the &lt;transfer&gt; query command has been processed
+          successfully, the client selected the extension when it logged in, and
+          the client is authorised by the server to view information about the
+          transfer, the server MAY include in the &lt;extension&gt; section of
+          the EPP response a &lt;fee:trnData&gt; element that contains the
+          following child elements:
+</p>
+<p></p>
+<ul class="text">
+<li>A &lt;fee:currency&gt; element.
+</li>
+<li>one or more &lt;fee:fee&gt; elements containing the fees
+            associated with the transfer.
+</li>
+</ul>
+
+<p>If no &lt;fee:trnData&gt; element is included in the
+          response, then no fee will be assessed by the server for the
+          transfer.
+</p>
+<p>Example &lt;transfer&gt; query response:
+</p><div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+S: &lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
+S: &lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+S:   &lt;response&gt;
+S:     &lt;result code="1001"&gt;
+S:       &lt;msg&gt;Command completed successfully; action pending&lt;/msg&gt;
+S:     &lt;/result&gt;
+S:     &lt;resData&gt;
+S:       &lt;domain:trnData
+S:         xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+S:         &lt;domain:name&gt;example.com&lt;/domain:name&gt;
+S:         &lt;domain:trStatus&gt;pending&lt;/domain:trStatus&gt;
+S:         &lt;domain:reID&gt;ClientX&lt;/domain:reID&gt;
+S:         &lt;domain:reDate&gt;2000-06-08T22:00:00.0Z&lt;/domain:reDate&gt;
+S:         &lt;domain:acID&gt;ClientY&lt;/domain:acID&gt;
+S:         &lt;domain:acDate&gt;2000-06-13T22:00:00.0Z&lt;/domain:acDate&gt;
+S:         &lt;domain:exDate&gt;2002-09-08T22:00:00.0Z&lt;/domain:exDate&gt;
+S:       &lt;/domain:trnData&gt;
+S:     &lt;/resData&gt;
+S:     &lt;extension&gt;
+S:       &lt;fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"&gt;
+S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
+S:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
+S:       &lt;/fee:trnData&gt;
+S:     &lt;/extension&gt;
+S:     &lt;trID&gt;
+S:       &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+S:       &lt;svTRID&gt;54322-XYZ&lt;/svTRID&gt;
+S:     &lt;/trID&gt;
+S:   &lt;/response&gt;
+S: &lt;/epp&gt;
+</pre></div>
+<a name="anchor17"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.3.2"></a><h3>3.2.&nbsp;
+EPP Transform Commands</h3>
+
+<a name="anchor18"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.3.2.1"></a><h3>3.2.1.&nbsp;
+EPP &lt;create&gt; Command</h3>
+
+<p>This extension adds elements to both the EPP &lt;create&gt; command
+          and response, when the extension has been selected during a
+          &lt;login&gt; command.
+</p>
+<p>When submitting a &lt;create&gt; command to the server, the client
+          MAY include in the &lt;extension&gt; element a &lt;fee:create&gt;
+          element which includes the following child elements:
+</p>
+<p></p>
+<ul class="text">
+<li>An OPTIONAL &lt;fee:currency&gt; element;
+</li>
+<li>One or more &lt;fee:fee&gt; elements.
+</li>
+</ul>
+
+<p>Depending on server policy, the server MAY choose to accept or
+          refuse the command depending on whether the currency and fees provided
+          by the client agrees with the server's own calculation of the fees. If
+          the server chooses to refuse the command due to incorrect fees, it
+          MUST respond with a 2004 "Parameter value range" error.
+</p>
+<p>A server MAY require the currency and fees to be provided for the
+          command. If the server chooses to refuse the command due to missing
+          fees, it MUST response with a 2003 "Required parameter missing"
+          error.
+</p>
+<p>When the &lt;create&gt; command has been processed successfully,
+          and the client selected the extension when it logged in, and a fee was
+          assessed by the server for the transaction, the server MUST include in
+          the &lt;extension&gt; section of the EPP response a
+          &lt;fee:creData&gt; element that contains the following child
+          elements:
+</p>
+<p></p>
+<ul class="text">
+<li>A &lt;fee:currency&gt; element;
+</li>
+<li>One or more &lt;fee:fee&gt; elements;
+</li>
+<li>An OPTIONAL &lt;fee:balance&gt; element;
+</li>
+<li>An OPTIONAL &lt;fee:creditLimit&gt; element.
+</li>
+</ul>
+
+<p>If no &lt;fee:creData&gt; element is included in the response, then
+          no fee has been assessed by the server for this transaction.
+</p>
+<p>Example &lt;create&gt; command:
+</p><div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+C: &lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
+C: &lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+C:   &lt;command&gt;
+C:     &lt;create&gt;
+C:       &lt;domain:create
+C:         xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+C:         &lt;domain:name&gt;example.com&lt;/domain:name&gt;
+C:         &lt;domain:period unit="y"&gt;2&lt;/domain:period&gt;
+C:         &lt;domain:ns&gt;
+C:           &lt;domain:hostObj&gt;ns1.example.net&lt;/domain:hostObj&gt;
+C:           &lt;domain:hostObj&gt;ns2.example.net&lt;/domain:hostObj&gt;
+C:         &lt;/domain:ns&gt;
+C:         &lt;domain:registrant&gt;jd1234&lt;/domain:registrant&gt;
+C:         &lt;domain:contact type="admin"&gt;sh8013&lt;/domain:contact&gt;
+C:         &lt;domain:contact type="tech"&gt;sh8013&lt;/domain:contact&gt;
+C:         &lt;domain:authInfo&gt;
+C:           &lt;domain:pw&gt;2fooBAR&lt;/domain:pw&gt;
+C:         &lt;/domain:authInfo&gt;
+C:       &lt;/domain:create&gt;
+C:     &lt;/create&gt;
+C:     &lt;extension&gt;
+C:       &lt;fee:create xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"&gt;
+C:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
+C:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
+C:       &lt;/fee:create&gt;
+C:     &lt;/extension&gt;
+C:     &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+C:   &lt;/command&gt;
+C: &lt;/epp&gt;
+</pre></div>
+<p>Example &lt;create&gt; response:
+</p><div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+S: &lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
+S: &lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+S:   &lt;response&gt;
+S:     &lt;result code="1000"&gt;
+S:       &lt;msg&gt;Command completed successfully&lt;/msg&gt;
+S:     &lt;/result&gt;
+S:     &lt;resData&gt;
+S:       &lt;domain:creData
+S:         xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+S:         &lt;domain:name&gt;example.com&lt;/domain:name&gt;
+S:         &lt;domain:crDate&gt;1999-04-03T22:00:00.0Z&lt;/domain:crDate&gt;
+S:         &lt;domain:exDate&gt;2001-04-03T22:00:00.0Z&lt;/domain:exDate&gt;
+S:       &lt;/domain:creData&gt;
+S:     &lt;/resData&gt;
+S:     &lt;extension&gt;
+S:       &lt;fee:creData xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"&gt;
+S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
+S:         &lt;fee:fee grace-period="P5D"&gt;5.00&lt;/fee:fee&gt;
+S:         &lt;fee:balance&gt;-5.00&lt;/fee:balance&gt;
+S:         &lt;fee:creditLimit&gt;1000.00&lt;/fee:creditLimit&gt;
+S:       &lt;/fee:creData&gt;
+S:     &lt;/extension&gt;
+S:     &lt;trID&gt;
+S:       &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+S:       &lt;svTRID&gt;54321-XYZ&lt;/svTRID&gt;
+S:     &lt;/trID&gt;
+S:   &lt;/response&gt;
+S: &lt;/epp&gt;
+</pre></div>
+<a name="anchor19"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.3.2.2"></a><h3>3.2.2.&nbsp;
+EPP &lt;delete&gt; Command</h3>
+
+<p>This extension does not add any elements to the EPP &lt;delete&gt;
+          command, but does include elements in the response, when the extension
+          has been selected during the &lt;login&gt; command.
+</p>
+<p>When the &lt;delete&gt; command has been processed successfully,
+          and the client selected the extension when it logged in, the server
+          MAY include in the &lt;extension&gt; section of the EPP response a
+          &lt;fee:delData&gt; element that contains the following child
+          elements:
+</p>
+<p></p>
+<ul class="text">
+<li>A &lt;fee:currency&gt; element;
+</li>
+<li>One or more &lt;fee:credit&gt; elements;
+</li>
+<li>An OPTIONAL &lt;fee:balance&gt; element;
+</li>
+<li>An OPTIONAL &lt;fee:creditLimit&gt; element.
+</li>
+</ul>
+
+<p>If no &lt;fee:delData&gt; element is included in the response, then
+          no credit has been assessed by the server for this transaction.
+</p>
+<p>Example &lt;delete&gt; response:
+</p><div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+S: &lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
+S: &lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+S:   &lt;response&gt;
+S:     &lt;result code="1000"&gt;
+S:       &lt;msg&gt;Command completed successfully&lt;/msg&gt;
+S:     &lt;/result&gt;
+S:     &lt;extension&gt;
+S:       &lt;fee:delData
+S:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"&gt;
+S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
+S:         &lt;fee:credit description="AGP Credit"&gt;-5.00&lt;/fee:credit&gt;
+S:         &lt;fee:balance&gt;1005.00&lt;/fee:balance&gt;
+S:       &lt;/fee:delData&gt;
+S:     &lt;/extension&gt;
+S:     &lt;trID&gt;
+S:       &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+S:       &lt;svTRID&gt;54321-XYZ&lt;/svTRID&gt;
+S:     &lt;/trID&gt;
+S:   &lt;/response&gt;
+S: &lt;/epp&gt;
+</pre></div>
+<a name="anchor20"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.3.2.3"></a><h3>3.2.3.&nbsp;
+EPP &lt;renew&gt; Command</h3>
+
+<p>This extension adds elements to both the EPP &lt;renew&gt; command
+          and response, when the extension has been selected during a
+          &lt;login&gt; command.
+</p>
+<p>When submitting a &lt;renew&gt; command to the server, the client
+          MAY include in the &lt;extension&gt; element a &lt;fee:renew&gt;
+          element which includes the following child elements:
+</p>
+<p></p>
+<ul class="text">
+<li>A &lt;fee:currency&gt; element;
+</li>
+<li>One or more &lt;fee:fee&gt; elements.
+</li>
+</ul>
+
+<p>Depending on server policy, the server MAY choose to accept or
+          refuse the command depending on whether the currency and fees provided
+          by the client agrees with the server's own calculation of the fees. If
+          the server chooses to refuse the command due to incorrect fees, it
+          MUST respond with a 2004 "Parameter value range error".
+</p>
+<p>A server MAY require the currency and fees to be provided for the
+          command. If the server chooses to refuse the command due to missing
+          fees, it MUST response with a 2003 "Required parameter missing"
+          error.
+</p>
+<p>When the &lt;renew&gt; command has been processed successfully,
+          and the client selected the extension when it logged in, the server
+          MAY include in the &lt;extension&gt; section of the EPP response a
+          &lt;fee:renData&gt; element that contains the following child
+          elements:
+</p>
+<p></p>
+<ul class="text">
+<li>A &lt;fee:currency&gt; element;
+</li>
+<li>One or more &lt;fee:fee&gt; elements;
+</li>
+<li>An OPTIONAL &lt;fee:balance&gt; element;
+</li>
+<li>An OPTIONAL &lt;fee:creditLimit&gt; element.
+</li>
+</ul>
+
+<p>If no &lt;fee:renData&gt; element is included in the response, then
+          no fee has been assessed by the server for this transaction.
+</p>
+<p>Example &lt;renew&gt; command:
+</p><div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+C: &lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
+C: &lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+C:   &lt;command&gt;
+C:     &lt;renew&gt;
+C:       &lt;domain:renew
+C:         xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+C:         &lt;domain:name&gt;example.com&lt;/domain:name&gt;
+C:         &lt;domain:curExpDate&gt;2000-04-03&lt;/domain:curExpDate&gt;
+C:         &lt;domain:period unit="y"&gt;5&lt;/domain:period&gt;
+C:       &lt;/domain:renew&gt;
+C:     &lt;/renew&gt;
+C:     &lt;extension&gt;
+C:       &lt;fee:renew xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"&gt;
+C:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
+C:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
+C:       &lt;/fee:renew&gt;
+C:     &lt;/extension&gt;
+C:     &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+C:   &lt;/command&gt;
+C: &lt;/epp&gt;
+</pre></div>
+<p>Example &lt;renew&gt; response:
+</p><div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+S: &lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
+S: &lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+S:   &lt;response&gt;
+S:     &lt;result code="1000"&gt;
+S:       &lt;msg&gt;Command completed successfully&lt;/msg&gt;
+S:     &lt;/result&gt;
+S:     &lt;resData&gt;
+S:       &lt;domain:renData
+S:         xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+S:         &lt;domain:name&gt;example.com&lt;/domain:name&gt;
+S:         &lt;domain:exDate&gt;2005-04-03T22:00:00.0Z&lt;/domain:exDate&gt;
+S:       &lt;/domain:renData&gt;
+S:     &lt;/resData&gt;
+S:     &lt;extension&gt;
+S:       &lt;fee:renData xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"&gt;
+S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
+S:         &lt;fee:fee grace-period="P5D"&gt;5.00&lt;/fee:fee&gt;
+S:         &lt;fee:balance&gt;1000.00&lt;/fee:balance&gt;
+S:       &lt;/fee:renData&gt;
+S:     &lt;/extension&gt;
+S:     &lt;trID&gt;
+S:       &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+S:       &lt;svTRID&gt;54322-XYZ&lt;/svTRID&gt;
+S:     &lt;/trID&gt;
+S:   &lt;/response&gt;
+S: &lt;/epp&gt;
+</pre></div>
+<a name="anchor21"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.3.2.4"></a><h3>3.2.4.&nbsp;
+EPP &lt;transfer&gt; Command</h3>
+
+<p>This extension adds elements to both the EPP &lt;transfer&gt;
+          command and response, when the value of the "op" attribute of the
+          &lt;transfer&gt; command element is "request", and the extension has
+          been selected during the &lt;login&gt; command.
+</p>
+<p>When submitting a &lt;transfer&gt; command to the server, the client
+          MAY include in the &lt;extension&gt; element a &lt;fee:transfer&gt;
+          element which includes the following child elements:
+</p>
+<p></p>
+<ul class="text">
+<li>A &lt;fee:currency&gt; element;
+</li>
+<li>One or more &lt;fee:fee&gt; elements.
+</li>
+</ul>
+
+<p>Depending on server policy, the server MAY choose to accept or
+          refuse the command depending on whether the currency and fees provided
+          by the client agrees with the server's own calculation of the fees. If
+          the server chooses to refuse the command due to incorrect fees, it
+          MUST respond with a 2004 "Parameter value range error".
+</p>
+<p>A server MAY require the currency and fees to be provided for the
+          command. If the server chooses to refuse the command due to missing
+          fees, it MUST response with a 2003 "Required parameter missing"
+          error.
+</p>
+<p>When the &lt;transfer&gt; command has been processed successfully,
+          and the client selected the extension when it logged in, the server
+          MAY include in the &lt;extension&gt; section of the EPP response a
+          &lt;fee:trnData&gt; element that contains the following child
+          elements:
+</p>
+<p></p>
+<ul class="text">
+<li>A &lt;fee:currency&gt; element;
+</li>
+<li>One or more &lt;fee:fee&gt; elements;
+</li>
+<li>An OPTIONAL &lt;fee:balance&gt; element;
+</li>
+<li>An OPTIONAL &lt;fee:creditLimit&gt; element.
+</li>
+</ul>
+
+<p>If no &lt;fee:transfData&gt; element is included in the response, then
+          no fee has been assessed by the server for this transaction.
+</p>
+<p>Example &lt;transfer&gt; command:
+</p><div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+C: &lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
+C: &lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+C:   &lt;command&gt;
+C:     &lt;transfer op="request"&gt;
+C:       &lt;domain:transfer
+C:         xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+C:         &lt;domain:name&gt;example.com&lt;/domain:name&gt;
+C:         &lt;domain:period unit="y"&gt;1&lt;/domain:period&gt;
+C:         &lt;domain:authInfo&gt;
+C:           &lt;domain:pw roid="JD1234-REP"&gt;2fooBAR&lt;/domain:pw&gt;
+C:         &lt;/domain:authInfo&gt;
+C:       &lt;/domain:transfer&gt;
+C:     &lt;/transfer&gt;
+C:     &lt;extension&gt;
+C:       &lt;fee:transfer xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"&gt;
+C:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
+C:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
+C:       &lt;/fee:transfer&gt;
+C:     &lt;/extension&gt;
+C:     &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+C:   &lt;/command&gt;
+C: &lt;/epp&gt;
+</pre></div>
+<p>Example &lt;transfer&gt; response:
+</p><div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+S: &lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
+S: &lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+S:   &lt;response&gt;
+S:     &lt;result code="1001"&gt;
+S:       &lt;msg&gt;Command completed successfully; action pending&lt;/msg&gt;
+S:     &lt;/result&gt;
+S:     &lt;resData&gt;
+S:       &lt;domain:trnData
+S:         xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+S:         &lt;domain:name&gt;example.com&lt;/domain:name&gt;
+S:         &lt;domain:trStatus&gt;pending&lt;/domain:trStatus&gt;
+S:         &lt;domain:reID&gt;ClientX&lt;/domain:reID&gt;
+S:         &lt;domain:reDate&gt;2000-06-08T22:00:00.0Z&lt;/domain:reDate&gt;
+S:         &lt;domain:acID&gt;ClientY&lt;/domain:acID&gt;
+S:         &lt;domain:acDate&gt;2000-06-13T22:00:00.0Z&lt;/domain:acDate&gt;
+S:         &lt;domain:exDate&gt;2002-09-08T22:00:00.0Z&lt;/domain:exDate&gt;
+S:       &lt;/domain:trnData&gt;
+S:     &lt;/resData&gt;
+S:     &lt;extension&gt;
+S:       &lt;fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"&gt;
+S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
+S:         &lt;fee:fee grace-period="P5D"&gt;5.00&lt;/fee:fee&gt;
+S:       &lt;/fee:trnData&gt;
+S:     &lt;/extension&gt;
+S:     &lt;trID&gt;
+S:       &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+S:       &lt;svTRID&gt;54322-XYZ&lt;/svTRID&gt;
+S:     &lt;/trID&gt;
+S:   &lt;/response&gt;
+S: &lt;/epp&gt;
+</pre></div>
+<a name="anchor22"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.3.2.5"></a><h3>3.2.5.&nbsp;
+EPP &lt;update&gt; Command</h3>
+
+<p>This extension adds elements to both the EPP &lt;update&gt; command
+          and response, when the extension has been selected during a
+          &lt;login&gt; has been selected during the &lt;login&gt; command.
+</p>
+<p>When submitting a &lt;update&gt; command to the server, the client
+          MAY include in the &lt;extension&gt; element a &lt;fee:update&gt;
+          element which includes the following child elements:
+</p>
+<p></p>
+<ul class="text">
+<li>A &lt;fee:currency&gt; element;
+</li>
+<li>One or more &lt;fee:fee&gt; elements.
+</li>
+</ul>
+
+<p>Depending on server policy, the server MAY choose to accept or
+          refuse the command depending on whether the currency and fees provided
+          by the client agrees with the server's own calculation of the fees. If
+          the server chooses to refuse the command due to incorrect fees, it
+          MUST respond with a 2004 "Parameter value range error".
+</p>
+<p>A server MAY require the currency and fees to be provided for the
+          command. If the server chooses to refuse the command due to missing
+          fees, it MUST response with a 2003 "Required parameter missing"
+          error.
+</p>
+<p>When the &lt;update&gt; command has been processed successfully,
+          and the client selected the extension when it logged in, the server
+          MAY include in the &lt;extension&gt; section of the EPP response a
+          &lt;fee:upData&gt; element that contains the following child
+          elements:
+</p>
+<p></p>
+<ul class="text">
+<li>A &lt;fee:currency&gt; element;
+</li>
+<li>One or more &lt;fee:fee&gt; elements;
+</li>
+<li>An OPTIONAL &lt;fee:balance&gt; element;
+</li>
+<li>An OPTIONAL &lt;fee:creditLimit&gt; element.
+</li>
+</ul>
+
+<p>If no &lt;fee:upData&gt; element is included in the response, then
+          no fee has been assessed by the server for this transaction.
+</p>
+<p>Example &lt;update&gt; command:
+</p><div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+C: &lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
+C: &lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+C:   &lt;command&gt;
+C:     &lt;update&gt;
+C:       &lt;domain:update
+C:         xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
+C:         &lt;domain:name&gt;example.com&lt;/domain:name&gt;
+C:         &lt;domain:chg&gt;
+C:           &lt;domain:registrant&gt;sh8013&lt;/domain:registrant&gt;
+C:         &lt;/domain:chg&gt;
+C:       &lt;/domain:update&gt;
+C:     &lt;/update&gt;
+C:     &lt;extension&gt;
+C:       &lt;fee:update xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"&gt;
+C:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
+C:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
+C:       &lt;/fee:update&gt;
+C:     &lt;/extension&gt;
+C:     &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+C:   &lt;/command&gt;
+C: &lt;/epp&gt;
+</pre></div>
+<p>Example &lt;update&gt; response:
+</p><div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+S: &lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
+S: &lt;epp xmlns="urn:ietf:params:xml:ns:epp-1.0"&gt;
+S:   &lt;response&gt;
+S:     &lt;result code="1000"&gt;
+S:       &lt;msg&gt;Command completed successfully&lt;/msg&gt;
+S:     &lt;/result&gt;
+S:     &lt;extension&gt;
+S:       &lt;fee:updData xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"&gt;
+S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
+S:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
+S:       &lt;/fee:updData&gt;
+S:     &lt;/extension&gt;
+S:     &lt;trID&gt;
+S:       &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
+S:       &lt;svTRID&gt;54321-XYZ&lt;/svTRID&gt;
+S:     &lt;/trID&gt;
+S:   &lt;/response&gt;
+S: &lt;/epp&gt;
+</pre></div>
+<a name="anchor23"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.3.3"></a><h3>3.3.&nbsp;
+Formal Syntax</h3>
+
+<p>An EPP object mapping is specified in XML Schema notation. The formal
+        syntax presented here is a complete schema representation of the object
+        mapping suitable for automated validation of EPP XML instances.
+</p>
+<p>Copyright (c) 2013 IETF Trust and the persons identified as authors
+      of the code. All rights reserved.
+</p>
+<p>Redistribution and use in source and binary forms, with or without
+      modification, are permitted provided that the following conditions are
+      met:
+</p>
+<p></p>
+<ul class="text">
+<li>Redistributions of source code must retain the above copyright
+          notice, this list of conditions and the following disclaimer.
+</li>
+<li>Redistributions in binary form must reproduce the above copyright
+          notice, this list of conditions and the following disclaimer in the
+          documentation and/or other materials provided with the
+          distribution.
+</li>
+<li>Neither the name of Internet Society, IETF or IETF Trust, nor the
+          names of specific contributors, may be used to endorse or promote
+          products derived from this software without specific prior written
+          permission.
+</li>
+</ul>
+
+<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+      "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+      LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+      PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER
+      OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+      EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+      PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+      PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+      LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+      NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+      SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+</p><div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+BEGIN
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;schema xmlns="http://www.w3.org/2001/XMLSchema"
+  xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"
+  xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
+  xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"
+  targetNamespace="urn:ietf:params:xml:ns:fee-0.5"
+  elementFormDefault="qualified"&gt;
+
+  &lt;import namespace="urn:ietf:params:xml:ns:eppcom-1.0" /&gt;
+  &lt;import namespace="urn:ietf:params:xml:ns:domain-1.0" /&gt;
+
+  &lt;annotation&gt;
+    &lt;documentation&gt;Extensible Provisioning Protocol
+    v1.0 domain name extension schema for
+    fee information.&lt;/documentation&gt;
+  &lt;/annotation&gt;
+
+  &lt;!--
+  Child elements found in EPP commands and responses
+  --&gt;
+  &lt;element name="check" type="fee:checkType" /&gt;
+  &lt;element name="chkData" type="fee:chkDataType" /&gt;
+  &lt;element name="info" type="fee:infoType" /&gt;
+  &lt;element name="infData" type="fee:infDataType" /&gt;
+  &lt;element name="create" type="fee:transformCommandType" /&gt;
+  &lt;element name="creData" type="fee:transformResultType" /&gt;
+  &lt;element name="renew" type="fee:transformCommandType" /&gt;
+  &lt;element name="renData" type="fee:transformResultType" /&gt;
+  &lt;element name="transfer" type="fee:transformCommandType" /&gt;
+  &lt;element name="trnData" type="fee:transformResultType" /&gt;
+  &lt;element name="update" type="fee:transformCommandType" /&gt;
+  &lt;element name="updData" type="fee:transformResultType" /&gt;
+  &lt;element name="delData" type="fee:deleteDataType" /&gt;
+
+  &lt;!--
+  client &lt;check&gt; command
+  --&gt;
+  &lt;complexType name="checkType"&gt;
+    &lt;sequence&gt;
+      &lt;element name="domain" type="fee:domainCheckType"
+        maxOccurs="unbounded" /&gt;
+    &lt;/sequence&gt;
+  &lt;/complexType&gt;
+
+  &lt;complexType name="domainCheckType"&gt;
+    &lt;sequence&gt;
+      &lt;element name="name" type="eppcom:labelType" /&gt;
+      &lt;element name="currency" type="fee:currencyType"
+        minOccurs="0" /&gt;
+      &lt;element name="command" type="fee:commandType" /&gt;
+      &lt;element name="period" type="domain:periodType"
+        minOccurs="0" /&gt;
+    &lt;/sequence&gt;
+  &lt;/complexType&gt;
+
+
+  &lt;!--
+  server &lt;check&gt; result
+  --&gt;
+  &lt;complexType name="chkDataType"&gt;
+    &lt;sequence&gt;
+      &lt;element name="cd" type="fee:domainCDType"
+        maxOccurs="unbounded" /&gt;
+    &lt;/sequence&gt;
+  &lt;/complexType&gt;
+
+  &lt;complexType name="domainCDType"&gt;
+    &lt;sequence&gt;
+      &lt;element name="name" type="eppcom:labelType" /&gt;
+      &lt;element name="currency" type="fee:currencyType" /&gt;
+      &lt;element name="command" type="fee:commandType" /&gt;
+      &lt;element name="period" type="domain:periodType" /&gt;
+      &lt;element name="fee" type="fee:feeType"
+        maxOccurs="unbounded" /&gt;
+      &lt;element name="class" type="token" minOccurs="0" /&gt;
+    &lt;/sequence&gt;
+  &lt;/complexType&gt;
+
+  &lt;!--
+    client &lt;info&gt; command
+  --&gt;
+  &lt;complexType name="infoType"&gt;
+    &lt;sequence&gt;
+      &lt;element name="currency" type="fee:currencyType" /&gt;
+      &lt;element name="command" type="fee:commandType" /&gt;
+      &lt;element name="period" type="domain:periodType" /&gt;
+    &lt;/sequence&gt;
+  &lt;/complexType&gt;
+
+  &lt;!--
+    server &lt;info&gt; result
+  --&gt;
+  &lt;complexType name="infDataType"&gt;
+    &lt;sequence&gt;
+      &lt;element name="currency" type="fee:currencyType" /&gt;
+      &lt;element name="command" type="fee:commandType" /&gt;
+      &lt;element name="period" type="domain:periodType" /&gt;
+      &lt;element name="fee" type="fee:feeType"
+        maxOccurs="unbounded" /&gt;
+      &lt;element name="class" type="token" minOccurs="0" /&gt;
+    &lt;/sequence&gt;
+  &lt;/complexType&gt;
+
+  &lt;!--
+    general transform (create, renew, update, transfer) command
+  --&gt;
+  &lt;complexType name="transformCommandType"&gt;
+    &lt;sequence&gt;
+      &lt;element name="currency" type="fee:currencyType" /&gt;
+      &lt;element name="fee" type="fee:feeType"
+        maxOccurs="unbounded" /&gt;
+    &lt;/sequence&gt;
+  &lt;/complexType&gt;
+
+  &lt;!--
+    general transform (create, renew, update, transfer) result
+  --&gt;
+  &lt;complexType name="transformResultType"&gt;
+    &lt;sequence&gt;
+      &lt;element name="currency" type="fee:currencyType" /&gt;
+      &lt;element name="fee" type="fee:feeType"
+        maxOccurs="unbounded" /&gt;
+      &lt;element name="balance" type="fee:balanceType"
+        minOccurs="0" /&gt;
+      &lt;element name="creditLimit" type="fee:creditLimitType"
+        minOccurs="0" /&gt;
+    &lt;/sequence&gt;
+  &lt;/complexType&gt;
+
+  &lt;!--
+    delete result
+  --&gt;
+  &lt;complexType name="deleteDataType"&gt;
+    &lt;sequence&gt;
+      &lt;element name="currency" type="fee:currencyType" /&gt;
+      &lt;element name="credit" type="fee:creditType"
+        maxOccurs="unbounded" /&gt;
+      &lt;element name="balance" type="fee:balanceType"
+        minOccurs="0" /&gt;
+      &lt;element name="creditLimit" type="fee:creditLimitType"
+        minOccurs="0" /&gt;
+    &lt;/sequence&gt;
+  &lt;/complexType&gt;
+
+  &lt;!--
+    common types
+  --&gt;
+  &lt;simpleType name="currencyType"&gt;
+    &lt;restriction base="string"&gt;
+      &lt;pattern value="[A-Z]{3}" /&gt;
+    &lt;/restriction&gt;
+  &lt;/simpleType&gt;
+
+  &lt;complexType name="commandType"&gt;
+    &lt;simpleContent&gt;
+      &lt;extension base="fee:commandTypeValue"&gt;
+        &lt;attribute name="phase" type="token" /&gt;
+        &lt;attribute name="subphase" type="token" /&gt;
+      &lt;/extension&gt;
+    &lt;/simpleContent&gt;
+  &lt;/complexType&gt;
+
+  &lt;simpleType name="commandTypeValue"&gt;
+    &lt;restriction base="token"&gt;
+      &lt;minLength value="3"/&gt;
+      &lt;maxLength value="16"/&gt;
+    &lt;/restriction&gt;
+  &lt;/simpleType&gt;
+
+  &lt;simpleType name="nonNegativeDecimal"&gt;
+    &lt;restriction base="decimal"&gt;
+      &lt;minInclusive value="0" /&gt;
+    &lt;/restriction&gt;
+  &lt;/simpleType&gt;
+
+  &lt;simpleType name="negativeDecimal"&gt;
+    &lt;restriction base="decimal"&gt;
+      &lt;maxInclusive value="0" /&gt;
+    &lt;/restriction&gt;
+  &lt;/simpleType&gt;
+
+  &lt;complexType name="feeType"&gt;
+    &lt;simpleContent&gt;
+      &lt;extension base="fee:nonNegativeDecimal"&gt;
+        &lt;attribute name="description"/&gt;
+        &lt;attribute name="refundable" type="boolean"
+          default="1" /&gt;
+        &lt;attribute name="grace-period" type="duration"
+          default="P0D" /&gt;
+      &lt;/extension&gt;
+    &lt;/simpleContent&gt;
+  &lt;/complexType&gt;
+
+  &lt;complexType name="creditType"&gt;
+    &lt;simpleContent&gt;
+      &lt;extension base="fee:negativeDecimal"&gt;
+        &lt;attribute name="description"/&gt;
+      &lt;/extension&gt;
+    &lt;/simpleContent&gt;
+  &lt;/complexType&gt;
+
+  &lt;simpleType name="balanceType"&gt;
+    &lt;restriction base="decimal" /&gt;
+  &lt;/simpleType&gt;
+
+  &lt;simpleType name="creditLimitType"&gt;
+    &lt;restriction base="decimal" /&gt;
+  &lt;/simpleType&gt;
+
+&lt;/schema&gt;
+
+END</pre></div>
+<a name="Security"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.4"></a><h3>4.&nbsp;
+Security Considerations</h3>
+
+<p>The mapping
+    extensions described in this document do not provide any security services
+    beyond those described by <a class='info' href='#RFC5730'>EPP<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP),&rdquo; August&nbsp;2009.</span><span>)</span></a> [RFC5730], the <a class='info' href='#RFC5731'>EPP domain name mapping<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Domain Name Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a> [RFC5731], and protocol layers used by
+    EPP. The security considerations described in these other specifications
+    apply to this specification as well.
+</p>
+<a name="IANA"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.5"></a><h3>5.&nbsp;
+IANA Considerations</h3>
+
+<p>This document uses URNs to describe XML namespaces and XML schemas
+      conforming to a registry mechanism described in <a class='info' href='#RFC3688'>[RFC3688]<span> (</span><span class='info'>Mealling, M., &ldquo;The IETF XML Registry,&rdquo; January&nbsp;2004.</span><span>)</span></a>.
+      Two URI assignments were requested and have been registered by the
+      IANA.
+</p>
+<p>Registration request for the digital signature namespace:
+</p>
+<p>URI: urn:ietf:params:xml:ns:fee-0.5
+</p>
+<p>Registrant Contact: See the "Author's Address" section of this
+      document.
+</p>
+<p>XML: None. Namespace URIs do not represent an XML specification.
+</p>
+<p>Registration request for the EPP fee XML schema:
+</p>
+<p>URI: urn:ietf:params:xml:ns:fee-0.5
+</p>
+<p>Registrant Contact: See the "Author's Address" section of this
+      document.
+</p>
+<p>XML: See the "Formal Syntax" section of this document.
+</p>
+<a name="anchor24"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.6"></a><h3>6.&nbsp;
+Acknowledgements</h3>
+
+<p>The author wishes to thank the following persons for their feedback and
+      suggestions:
+</p>
+<p></p>
+<ul class="text">
+<li>James Gould of Verisign
+</li>
+<li>Luis Mu&#241;oz of ISC
+</li>
+<li>Michael Young of Architelos
+</li>
+<li>Ben Levac and Jeff Eckhaus of Demand Media
+</li>
+<li>Seth Goldman of Google
+</li>
+<li>Klaus Malorny of Knipp
+</li>
+<li>Jody Kolker and Roger Carney of Go Daddy
+</li>
+</ul>
+
+<a name="anchor25"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.7"></a><h3>7.&nbsp;
+Change History</h3>
+
+<a name="anchor26"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.7.1"></a><h3>7.1.&nbsp;
+Changes from 00 to 01</h3>
+
+<p></p>
+<ol class="text">
+<li>Restore the &lt;check&gt; command extension; either &lt;check&gt;
+          or &lt;info&gt; can be used.
+</li>
+<li>added extension elements for &lt;create&gt;, &lt;renew&gt;,
+          &lt;transfer&gt; and &lt;update&gt; so that the server can reject the
+          command if the fee is incorrect.
+</li>
+</ol>
+
+<a name="anchor27"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.7.2"></a><h3>7.2.&nbsp;
+Changes from 01 to 02</h3>
+
+<p></p>
+<ol class="text">
+<li>Use Internet-Draft version number rather than XML namespace version
+            number in this section.
+</li>
+<li>Support for multiple &lt;fee:fee&gt; and &lt;fee:credit&gt;
+            elements.
+</li>
+<li>Added the "description" attribute to &lt;fee:fee&gt; and
+            &lt;fee:credit&gt; elements.
+</li>
+<li>Added the &lt;fee:balance&gt; element.
+</li>
+<li>added the &lt;fee:creditLimit&gt; element.
+</li>
+<li>Updated reference to
+            <a class='info' href='#draft-ietf-eppext-launchphase'>[draft&#8209;ietf&#8209;eppext&#8209;launchphase]<span> (</span><span class='info'>Gould, J., Tan, W., and G. Brown, &ldquo;Launch Phase Mapping for the  Extensible Provisioning               Protocol (EPP),&rdquo; 2014.</span><span>)</span></a>.
+</li>
+<li>Use &lt;fee:command&gt; instead of &lt;fee:action&gt;.
+</li>
+<li>Use a single child element of &lt;fee:chkData&gt; instead of multiple
+          elements for each domain. This also requires using a different name
+          (&lt;fee:name&gt;) for the domain name.
+</li>
+<li>Added the "refundable" attribute to &lt;fee:fee&gt; elements.
+</li>
+<li>Added the "grace-period" attribute to &lt;fee:fee&gt; elements.
+</li>
+</ol>
+
+<a name="rfc.references1"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<h3>8.&nbsp;Normative References</h3>
+<table width="99%" border="0">
+<tr><td class="author-text" valign="top"><a name="ISO4217">[ISO4217]</a></td>
+<td class="author-text">International Organization for
+                  Standardization, &ldquo;ISO 4217:2008, Codes for the representation of currencies
+              and funds,&rdquo; 2008 (<a href="http://www.currency-iso.org/dam/downloads/table_a1.xml">XML</a>, <a href="http://www.iso.org/iso/home/standards/currency_codes.htm">HTML</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC2119">[RFC2119]</a></td>
+<td class="author-text"><a href="mailto:sob@harvard.edu">Bradner, S.</a>, &ldquo;<a href="http://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>,&rdquo; BCP&nbsp;14, RFC&nbsp;2119, March&nbsp;1997 (<a href="http://www.rfc-editor.org/rfc/rfc2119.txt">TXT</a>, <a href="http://xml.resource.org/public/rfc/html/rfc2119.html">HTML</a>, <a href="http://xml.resource.org/public/rfc/xml/rfc2119.xml">XML</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC3688">[RFC3688]</a></td>
+<td class="author-text">Mealling, M., &ldquo;<a href="http://tools.ietf.org/html/rfc3688">The IETF XML Registry</a>,&rdquo; BCP&nbsp;81, RFC&nbsp;3688, January&nbsp;2004 (<a href="http://www.rfc-editor.org/rfc/rfc3688.txt">TXT</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC3915">[RFC3915]</a></td>
+<td class="author-text">Hollenbeck, S., &ldquo;<a href="http://tools.ietf.org/html/rfc3915">Domain Registry Grace Period Mapping for the Extensible Provisioning Protocol (EPP)</a>,&rdquo; RFC&nbsp;3915, September&nbsp;2004 (<a href="http://www.rfc-editor.org/rfc/rfc3915.txt">TXT</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC5730">[RFC5730]</a></td>
+<td class="author-text">Hollenbeck, S., &ldquo;<a href="http://tools.ietf.org/html/rfc5730">Extensible Provisioning Protocol (EPP)</a>,&rdquo; STD&nbsp;69, RFC&nbsp;5730, August&nbsp;2009 (<a href="http://www.rfc-editor.org/rfc/rfc5730.txt">TXT</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC5731">[RFC5731]</a></td>
+<td class="author-text">Hollenbeck, S., &ldquo;<a href="http://tools.ietf.org/html/rfc5731">Extensible Provisioning Protocol (EPP) Domain Name Mapping</a>,&rdquo; STD&nbsp;69, RFC&nbsp;5731, August&nbsp;2009 (<a href="http://www.rfc-editor.org/rfc/rfc5731.txt">TXT</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="draft-ietf-eppext-launchphase">[draft-ietf-eppext-launchphase]</a></td>
+<td class="author-text">Gould, J., Tan, W., and G. Brown, &ldquo;<a href="http://tools.ietf.org/html/draft-ietf-eppext-launchphase">Launch Phase Mapping for the  Extensible Provisioning
+              Protocol (EPP)</a>,&rdquo; 2014.</td></tr>
+</table>
+
+<a name="rfc.authors"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<h3>Author's Address</h3>
+<table width="99%" border="0" cellpadding="0" cellspacing="0">
+<tr><td class="author-text">&nbsp;</td>
+<td class="author-text">Gavin Brown</td></tr>
+<tr><td class="author-text">&nbsp;</td>
+<td class="author-text">CentralNic Group plc</td></tr>
+<tr><td class="author-text">&nbsp;</td>
+<td class="author-text">35-39 Moorgate</td></tr>
+<tr><td class="author-text">&nbsp;</td>
+<td class="author-text">London, England  EC2R 6AR</td></tr>
+<tr><td class="author-text">&nbsp;</td>
+<td class="author-text">GB</td></tr>
+<tr><td class="author" align="right">Phone:&nbsp;</td>
+<td class="author-text">+44 20 33 88 0600</td></tr>
+<tr><td class="author" align="right">Email:&nbsp;</td>
+<td class="author-text"><a href="mailto:gavin.brown@centralnic.com">gavin.brown@centralnic.com</a></td></tr>
+<tr><td class="author" align="right">URI:&nbsp;</td>
+<td class="author-text"><a href="https://www.centralnic.com">https://www.centralnic.com</a></td></tr>
+</table>
+</body></html>
