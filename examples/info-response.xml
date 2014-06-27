@@ -36,7 +36,8 @@
         <fee:currency>USD</fee:currency>
         <fee:command phase="sunrise">create</fee:command>
         <fee:period unit="y">1</fee:period>
-        <fee:fee>10.00</fee:fee>
+        <fee:fee refundable="1" grace-period="P5D">10.00</fee:fee>
+        <fee:class>premium-tier1</fee:class>
       </fee:infData>
     </extension>
     <trID>

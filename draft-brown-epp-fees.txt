@@ -66,30 +66,30 @@ Table of Contents
      2.2.  Currency Codes . . . . . . . . . . . . . . . . . . . . . .  4
      2.3.  Registration Periods . . . . . . . . . . . . . . . . . . .  4
      2.4.  Fees and Credits . . . . . . . . . . . . . . . . . . . . .  5
-     2.5.  Account Balance  . . . . . . . . . . . . . . . . . . . . .  5
+       2.4.1.  Grace Periods  . . . . . . . . . . . . . . . . . . . .  5
+     2.5.  Account Balance  . . . . . . . . . . . . . . . . . . . . .  6
      2.6.  Credit Limit . . . . . . . . . . . . . . . . . . . . . . .  6
-   3.  EPP Command Mapping  . . . . . . . . . . . . . . . . . . . . .  6
-     3.1.  EPP Query Commands . . . . . . . . . . . . . . . . . . . .  6
-       3.1.1.  EPP <check> Command  . . . . . . . . . . . . . . . . .  6
-       3.1.2.  EPP <info> Command . . . . . . . . . . . . . . . . . .  9
-       3.1.3.  EPP Transfer Query Command . . . . . . . . . . . . . . 13
-     3.2.  EPP Transform Commands . . . . . . . . . . . . . . . . . . 14
-       3.2.1.  EPP <create> Command . . . . . . . . . . . . . . . . . 14
-       3.2.2.  EPP <delete> Command . . . . . . . . . . . . . . . . . 17
-       3.2.3.  EPP <renew> Command  . . . . . . . . . . . . . . . . . 18
-       3.2.4.  EPP <transfer> Command . . . . . . . . . . . . . . . . 20
-       3.2.5.  EPP <update> Command . . . . . . . . . . . . . . . . . 22
-     3.3.  Formal Syntax  . . . . . . . . . . . . . . . . . . . . . . 24
-   4.  Security Considerations  . . . . . . . . . . . . . . . . . . . 29
-   5.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 29
-   6.  Acknowledgements . . . . . . . . . . . . . . . . . . . . . . . 30
-   7.  Change History . . . . . . . . . . . . . . . . . . . . . . . . 30
-     7.1.  Changes from 00 to 01  . . . . . . . . . . . . . . . . . . 30
-     7.2.  Changes from 01 to 02  . . . . . . . . . . . . . . . . . . 31
-   8.  Normative References . . . . . . . . . . . . . . . . . . . . . 31
-   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 32
-
-
+     2.7.  Classification of Domain Names . . . . . . . . . . . . . .  6
+   3.  EPP Command Mapping  . . . . . . . . . . . . . . . . . . . . .  7
+     3.1.  EPP Query Commands . . . . . . . . . . . . . . . . . . . .  7
+       3.1.1.  EPP <check> Command  . . . . . . . . . . . . . . . . .  7
+       3.1.2.  EPP <info> Command . . . . . . . . . . . . . . . . . . 11
+       3.1.3.  EPP Transfer Query Command . . . . . . . . . . . . . . 14
+     3.2.  EPP Transform Commands . . . . . . . . . . . . . . . . . . 15
+       3.2.1.  EPP <create> Command . . . . . . . . . . . . . . . . . 15
+       3.2.2.  EPP <delete> Command . . . . . . . . . . . . . . . . . 18
+       3.2.3.  EPP <renew> Command  . . . . . . . . . . . . . . . . . 19
+       3.2.4.  EPP <transfer> Command . . . . . . . . . . . . . . . . 21
+       3.2.5.  EPP <update> Command . . . . . . . . . . . . . . . . . 23
+     3.3.  Formal Syntax  . . . . . . . . . . . . . . . . . . . . . . 25
+   4.  Security Considerations  . . . . . . . . . . . . . . . . . . . 30
+   5.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 30
+   6.  Acknowledgements . . . . . . . . . . . . . . . . . . . . . . . 31
+   7.  Change History . . . . . . . . . . . . . . . . . . . . . . . . 31
+     7.1.  Changes from 00 to 01  . . . . . . . . . . . . . . . . . . 31
+     7.2.  Changes from 01 to 02  . . . . . . . . . . . . . . . . . . 32
+   8.  Normative References . . . . . . . . . . . . . . . . . . . . . 32
+   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 33
 
 
 
@@ -209,14 +209,14 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
    band channel.  However, <fee:currency> element MUST be present in
    response frames.
 
+   Servers SHOULD NOT perform a currency conversion if a client uses an
+   incorrect currency code.  Servers SHOULD return an error instead.
+
 2.3.  Registration Periods
 
    The <fee:period> element is used to indicate the units to be added to
    the registration period of domain names by the <create>, <renew> and
    <transfer> commands.  This element is derived from the <domain:
-   period> element described in [RFC5731].
-
-   The <fee:period> element is OPTIONAL in command frames: if ommitted,
 
 
 
@@ -225,6 +225,9 @@ Brown                   Expires November 2, 2014                [Page 4]
 Internet-Draft       Registry Fee Extension for EPP             May 2014
 
 
+   period> element described in [RFC5731].
+
+   The <fee:period> element is OPTIONAL in command frames: if ommitted,
    the server MUST determine the fee(s) using a validity period of 1
    year.  The <fee:period> element MUST be present in response frames.
 
@@ -241,14 +244,47 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
    non-negative value.  A <fee:credit> element MUST have a negative
    value.
 
-   <fee:fee> and <fee:credit> elements MAY have an OPTIONAL
-   "description" attribute which provides a human-readable description
-   of the fee.
-
    A server MAY respond with multiple <fee:fee> and <fee:credit>
    elements in the same response.  In such cases, the net fee or credit
    applicable to the transaction is the arithmetic sum of the values of
    each of the <fee:fee> or <fee:credit> elements.
+
+   <fee:fee> and <fee:credit> elements MAY have an OPTIONAL
+   "description" attribute which provides a human-readable description
+   of the fee.  Servers SHOULD provide documentation on the possible
+   values of this attribute, and their meanings.
+
+   <fee:fee> elements MAY have an OPTIONAL "refundable" attribute which
+   takes a boolean value.  Fees may be refunded under certain
+   circumstances, such as when a domain application is rejected (as
+   described in [draft-ietf-eppext-launchphase]) or when a domain name
+   is deleted during the relevant Grace Period (see below).  If the
+   "refundable" attribute is omitted, then the default value of "1"
+   should be assumed (i.e. the fee is refundable).
+
+2.4.1.  Grace Periods
+
+   [RFC3915] describes a system of "grace periods", which are time
+   periods following a billable transaction during which, if a domain
+   name is deleted, the client receives a refund.
+
+   The "grace-period" attribute MAY be used to indicate the relevant
+   grace period for a fee.  If a server implements the Registry Grace
+   Period Servers extension, it SHOULD specify the grace period for all
+   relevant transactions.  If no "grace-period" attribute value is
+   provided, then no grace period is applicable.
+
+
+
+Brown                   Expires November 2, 2014                [Page 5]
+
+Internet-Draft       Registry Fee Extension for EPP             May 2014
+
+
+   If a <fee:fee> element has a "grace-period" attribute then it MUST
+   also be refundable.  If the "refundable" attribute of a <fee:fee>
+   element evaluates to false then it MUST NOT have a "grace-period"
+   attribute.
 
 2.5.  Account Balance
 
@@ -260,8 +296,8 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
    Whether or not the <fee:balance> is included in response frames is a
    matter of server policy.  However, if a server chooses to offer
    support for this element, it MUST be included in responses to all
-   "transform" commands (ie <create>, <renew>, <update>, <delete>,
-   <transfer op="request">).
+   domain "transform" commands (ie <create>, <renew>, <update>,
+   <delete>, <transfer op="request">).
 
    The value of the <fee:balance> MAY be negative.  A negative balance
    indicates that the server has extended a line of credit to the client
@@ -269,17 +305,8 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
 
    When a server includes a <fee:balance> element in response to
    transform commands, the value of the element MUST reflect the
-   client's account balance after any fees associated with that command
-   have been deducted.
-
-
-
-
-
-Brown                   Expires November 2, 2014                [Page 5]
-
-Internet-Draft       Registry Fee Extension for EPP             May 2014
-
+   client's account balance after any fees or credits associated with
+   that command have been applied.
 
 2.6.  Credit Limit
 
@@ -291,11 +318,31 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
    the absolute value of the <fee:balance> is equal to or exceeds the
    value of the <fee:creditLimit> element.
 
-   Whether or not the < fee:creditLimit> is included in response frames
+   Whether or not the <fee:creditLimit> is included in response frames
    is a matter of server policy.  However, if a server chooses to offer
    support for this element, it MUST be included in responses to all
-   "transform" commands (ie <create>, <renew>, <update>, <delete>,
-   <transfer op="request">).
+   domain "transform" commands (ie <create>, <renew>, <update>,
+   <delete>, <transfer op="request">).
+
+2.7.  Classification of Domain Names
+
+   Domain names may be assigned to a particular class, category, or
+   tier, each of which has a particular fee or set of fess associated
+   with it.  The <fee:class> element which appears in <check> and <info>
+
+
+
+Brown                   Expires November 2, 2014                [Page 6]
+
+Internet-Draft       Registry Fee Extension for EPP             May 2014
+
+
+   responses is used to indicate the classification of a domain name.
+
+   If a server makes use of this element, it MUST provide clients with a
+   list of all the values that the element may take via an out-of-band
+   channel.  Servers MUST NOT use values which do not appear on this
+   list.
 
 
 3.  EPP Command Mapping
@@ -332,7 +379,16 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
 
 
 
-Brown                   Expires November 2, 2014                [Page 6]
+
+
+
+
+
+
+
+
+
+Brown                   Expires November 2, 2014                [Page 7]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2014
 
@@ -388,7 +444,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
 
 
 
-Brown                   Expires November 2, 2014                [Page 7]
+Brown                   Expires November 2, 2014                [Page 8]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2014
 
@@ -416,6 +472,8 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
 
    o  One or more <fee:fee> elements.
 
+   o  An OPTIONAL <fee:class> element.
+
    Example <check> response:
 
    S: <?xml version="1.0" encoding="utf-8" standalone="no"?>
@@ -439,16 +497,16 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
    S:           <domain:reason>In use</domain:reason>
    S:         </domain:cd>
    S:       </domain:chkData>
-   S:     </resData>
-   S:     <extension>
 
 
 
-Brown                   Expires November 2, 2014                [Page 8]
+Brown                   Expires November 2, 2014                [Page 9]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2014
 
 
+   S:     </resData>
+   S:     <extension>
    S:       <fee:chkData
    S:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.5">
    S:         <fee:cd>
@@ -456,8 +514,10 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
    S:           <fee:currency>USD</fee:currency>
    S:           <fee:command phase="sunrise">create</fee:command>
    S:           <fee:period unit="y">1</fee:period>
-   S:           <fee:fee description="Application Fee">5.00</fee:fee>
-   S:           <fee:fee description="Registration Fee">5.00</fee:fee>
+   S:           <fee:fee description="Application Fee"
+   S:             refundable="0">5.00</fee:fee>
+   S:           <fee:fee description="Registration Fee"
+   S:             refundable="1">5.00</fee:fee>
    S:         </fee:cd>
    S:         <fee:cd>
    S:           <fee:name>example.net</fee:name>
@@ -482,6 +542,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
    S:           <fee:period unit="y">1</fee:period>
    S:           <fee:fee description="Restore Fee">25</fee:fee>
    S:           <fee:fee description="Renewal Fee">5.00</fee:fee>
+   S:           <fee:class>premium-tier1</fee:class>
    S:         </fee:cd>
    S:       </fee:chkData>
    S:     </extension>
@@ -492,18 +553,18 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
    S:   </response>
    S: </epp>
 
+
+
+
+Brown                   Expires November 2, 2014               [Page 10]
+
+Internet-Draft       Registry Fee Extension for EPP             May 2014
+
+
 3.1.2.  EPP <info> Command
 
    This extension defines additional elements for the EPP <info>
    command.
-
-
-
-
-Brown                   Expires November 2, 2014                [Page 9]
-
-Internet-Draft       Registry Fee Extension for EPP             May 2014
-
 
    The command frame MAY contain an <extension> element which contains a
    <fee:info> element with the following child elements:
@@ -547,19 +608,20 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
       frame.  If no <fee:currency> element appeared in the command
       frame, then the client's default billing currency should be used.
 
+
+
+
+
+Brown                   Expires November 2, 2014               [Page 11]
+
+Internet-Draft       Registry Fee Extension for EPP             May 2014
+
+
    o  A <fee:command> element that contains same command that appeared
       in the <fee:command> element of the command frame.  This element
       MAY have the OPTIONAL "phase" and "subphase" elements, which MUST
       match the same attributes in the <fee:command> element of the
       command frame.
-
-
-
-
-Brown                   Expires November 2, 2014               [Page 10]
-
-Internet-Draft       Registry Fee Extension for EPP             May 2014
-
 
    o  A <fee:period> element that contains same unit that appeared in
       the corresponding <fee:period> element of the command frame.  If
@@ -567,6 +629,8 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
       MUST have a value of 1 year.
 
    o  One or more <fee:fee> elements.
+
+   o  An OPTIONAL <fee:class> element.
 
    If the domain name requested in the command is invalid, sponsored by
    another client, or otherwise ineligible for registration, the server
@@ -604,15 +668,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
 
 
 
-
-
-
-
-
-
-
-
-Brown                   Expires November 2, 2014               [Page 11]
+Brown                   Expires November 2, 2014               [Page 12]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2014
 
@@ -655,7 +711,8 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
    S:         <fee:currency>USD</fee:currency>
    S:         <fee:command phase="sunrise">create</fee:command>
    S:         <fee:period unit="y">1</fee:period>
-   S:         <fee:fee>10.00</fee:fee>
+   S:         <fee:fee refundable="1" grace-period="P5D">10.00</fee:fee>
+   S:         <fee:class>premium-tier1</fee:class>
    S:       </fee:infData>
    S:     </extension>
    S:     <trID>
@@ -667,8 +724,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
 
 
 
-
-Brown                   Expires November 2, 2014               [Page 12]
+Brown                   Expires November 2, 2014               [Page 13]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2014
 
@@ -724,7 +780,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
 
 
 
-Brown                   Expires November 2, 2014               [Page 13]
+Brown                   Expires November 2, 2014               [Page 14]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2014
 
@@ -780,7 +836,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
 
 
 
-Brown                   Expires November 2, 2014               [Page 14]
+Brown                   Expires November 2, 2014               [Page 15]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2014
 
@@ -836,7 +892,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
 
 
 
-Brown                   Expires November 2, 2014               [Page 15]
+Brown                   Expires November 2, 2014               [Page 16]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2014
 
@@ -892,7 +948,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
 
 
 
-Brown                   Expires November 2, 2014               [Page 16]
+Brown                   Expires November 2, 2014               [Page 17]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2014
 
@@ -914,7 +970,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
    S:     <extension>
    S:       <fee:creData xmlns:fee="urn:ietf:params:xml:ns:fee-0.5">
    S:         <fee:currency>USD</fee:currency>
-   S:         <fee:fee>5.00</fee:fee>
+   S:         <fee:fee grace-period="P5D">5.00</fee:fee>
    S:         <fee:balance>-5.00</fee:balance>
    S:         <fee:creditLimit>1000.00</fee:creditLimit>
    S:       </fee:creData>
@@ -948,7 +1004,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
 
 
 
-Brown                   Expires November 2, 2014               [Page 17]
+Brown                   Expires November 2, 2014               [Page 18]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2014
 
@@ -1004,7 +1060,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
 
 
 
-Brown                   Expires November 2, 2014               [Page 18]
+Brown                   Expires November 2, 2014               [Page 19]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2014
 
@@ -1060,7 +1116,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
 
 
 
-Brown                   Expires November 2, 2014               [Page 19]
+Brown                   Expires November 2, 2014               [Page 20]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2014
 
@@ -1081,7 +1137,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
    S:     <extension>
    S:       <fee:renData xmlns:fee="urn:ietf:params:xml:ns:fee-0.5">
    S:         <fee:currency>USD</fee:currency>
-   S:         <fee:fee>5.00</fee:fee>
+   S:         <fee:fee grace-period="P5D">5.00</fee:fee>
    S:         <fee:balance>1000.00</fee:balance>
    S:       </fee:renData>
    S:     </extension>
@@ -1116,7 +1172,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
 
 
 
-Brown                   Expires November 2, 2014               [Page 20]
+Brown                   Expires November 2, 2014               [Page 21]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2014
 
@@ -1172,7 +1228,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
 
 
 
-Brown                   Expires November 2, 2014               [Page 21]
+Brown                   Expires November 2, 2014               [Page 22]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2014
 
@@ -1198,7 +1254,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
    S:     <extension>
    S:       <fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.5">
    S:         <fee:currency>USD</fee:currency>
-   S:         <fee:fee>5.00</fee:fee>
+   S:         <fee:fee grace-period="P5D">5.00</fee:fee>
    S:       </fee:trnData>
    S:     </extension>
    S:     <trID>
@@ -1228,7 +1284,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
 
 
 
-Brown                   Expires November 2, 2014               [Page 22]
+Brown                   Expires November 2, 2014               [Page 23]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2014
 
@@ -1284,7 +1340,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
 
 
 
-Brown                   Expires November 2, 2014               [Page 23]
+Brown                   Expires November 2, 2014               [Page 24]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2014
 
@@ -1340,7 +1396,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
 
 
 
-Brown                   Expires November 2, 2014               [Page 24]
+Brown                   Expires November 2, 2014               [Page 25]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2014
 
@@ -1396,7 +1452,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
 
 
 
-Brown                   Expires November 2, 2014               [Page 25]
+Brown                   Expires November 2, 2014               [Page 26]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2014
 
@@ -1440,6 +1496,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
          <element name="period" type="domain:periodType" />
          <element name="fee" type="fee:feeType"
            maxOccurs="unbounded" />
+         <element name="class" type="token" minOccurs="0" />
        </sequence>
      </complexType>
 
@@ -1448,15 +1505,15 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
      -->
      <complexType name="infoType">
        <sequence>
-         <element name="currency" type="fee:currencyType" />
 
 
 
-Brown                   Expires November 2, 2014               [Page 26]
+Brown                   Expires November 2, 2014               [Page 27]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2014
 
 
+         <element name="currency" type="fee:currencyType" />
          <element name="command" type="fee:commandType" />
          <element name="period" type="domain:periodType" />
        </sequence>
@@ -1472,6 +1529,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
          <element name="period" type="domain:periodType" />
          <element name="fee" type="fee:feeType"
            maxOccurs="unbounded" />
+         <element name="class" type="token" minOccurs="0" />
        </sequence>
      </complexType>
 
@@ -1503,16 +1561,16 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
 
      <!--
        delete result
-     -->
-     <complexType name="deleteDataType">
 
 
 
-Brown                   Expires November 2, 2014               [Page 27]
+Brown                   Expires November 2, 2014               [Page 28]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2014
 
 
+     -->
+     <complexType name="deleteDataType">
        <sequence>
          <element name="currency" type="fee:currencyType" />
          <element name="credit" type="fee:creditType"
@@ -1559,20 +1617,24 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
        <restriction base="decimal">
          <maxInclusive value="0" />
        </restriction>
-     </simpleType>
 
 
 
-
-Brown                   Expires November 2, 2014               [Page 28]
+Brown                   Expires November 2, 2014               [Page 29]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2014
 
+
+     </simpleType>
 
      <complexType name="feeType">
        <simpleContent>
          <extension base="fee:nonNegativeDecimal">
            <attribute name="description"/>
+           <attribute name="refundable" type="boolean"
+             default="1" />
+           <attribute name="grace-period" type="duration"
+             default="P0D" />
          </extension>
        </simpleContent>
      </complexType>
@@ -1611,19 +1673,19 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
 
    This document uses URNs to describe XML namespaces and XML schemas
    conforming to a registry mechanism described in [RFC3688].  Two URI
+
+
+
+Brown                   Expires November 2, 2014               [Page 30]
+
+Internet-Draft       Registry Fee Extension for EPP             May 2014
+
+
    assignments were requested and have been registered by the IANA.
 
    Registration request for the digital signature namespace:
 
    URI: urn:ietf:params:xml:ns:fee-0.5
-
-
-
-
-Brown                   Expires November 2, 2014               [Page 29]
-
-Internet-Draft       Registry Fee Extension for EPP             May 2014
-
 
    Registrant Contact: See the "Author's Address" section of this
    document.
@@ -1667,41 +1729,43 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
    1.  Restore the <check> command extension; either <check> or <info>
        can be used.
 
-   2.  added extension elements for <create>, <renew>, <transfer> and
-       <update> so that the server can reject the command if the fee is
-       incorrect.
 
 
 
-
-
-
-Brown                   Expires November 2, 2014               [Page 30]
+Brown                   Expires November 2, 2014               [Page 31]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2014
 
 
+   2.  added extension elements for <create>, <renew>, <transfer> and
+       <update> so that the server can reject the command if the fee is
+       incorrect.
+
 7.2.  Changes from 01 to 02
 
-   1.  Use Internet-Draft version number rather than XML namespace
-       version number in this section.
+   1.   Use Internet-Draft version number rather than XML namespace
+        version number in this section.
 
-   2.  Support for multiple <fee:fee> and <fee:credit> elements.
+   2.   Support for multiple <fee:fee> and <fee:credit> elements.
 
-   3.  Added the "description" attribute to <fee:fee> and <fee:credit>
-       elements.
+   3.   Added the "description" attribute to <fee:fee> and <fee:credit>
+        elements.
 
-   4.  Added the <fee:balance> element.
+   4.   Added the <fee:balance> element.
 
-   5.  Updated reference to [draft-ietf-eppext-launchphase].
+   5.   added the <fee:creditLimit> element.
 
-   6.  Use <fee:command> instead of <fee:action>.
+   6.   Updated reference to [draft-ietf-eppext-launchphase].
 
-   7.  Use a single child element of <fee:chkData> instead of multiple
-       elements for each domain.  This also requires using a different
-       name (<fee:name>) for the domain name.
+   7.   Use <fee:command> instead of <fee:action>.
 
-   8.  added the <fee:creditLimit> element.
+   8.   Use a single child element of <fee:chkData> instead of multiple
+        elements for each domain.  This also requires using a different
+        name (<fee:name>) for the domain name.
+
+   9.   Added the "refundable" attribute to <fee:fee> elements.
+
+   10.  Added the "grace-period" attribute to <fee:fee> elements.
 
 
 8.  Normative References
@@ -1721,6 +1785,14 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
               September 2004.
 
    [RFC5730]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)",
+
+
+
+Brown                   Expires November 2, 2014               [Page 32]
+
+Internet-Draft       Registry Fee Extension for EPP             May 2014
+
+
               STD 69, RFC 5730, August 2009.
 
    [RFC5731]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)
@@ -1729,12 +1801,6 @@ Internet-Draft       Registry Fee Extension for EPP             May 2014
    [draft-ietf-eppext-launchphase]
               Gould, J., Tan, W., and G. Brown, "Launch Phase Mapping
               for the  Extensible Provisioning Protocol (EPP)", 2014.
-
-
-
-Brown                   Expires November 2, 2014               [Page 31]
-
-Internet-Draft       Registry Fee Extension for EPP             May 2014
 
 
 Author's Address
@@ -1778,15 +1844,5 @@ Author's Address
 
 
 
-
-
-
-
-
-
-
-
-
-
-Brown                   Expires November 2, 2014               [Page 32]
+Brown                   Expires November 2, 2014               [Page 33]
 
