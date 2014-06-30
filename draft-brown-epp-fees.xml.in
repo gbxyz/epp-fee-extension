@@ -5,10 +5,7 @@
   <!-- when the namespace version bumps, update this and it will update
     everywhere -->
 
-  <!ENTITY VERSION "0.5">
-
-  <!-- this is the version of the draft as published on the IETF
-    website -->
+  <!ENTITY VERSION "0.6">
 
   <!ENTITY I-D.narten-iana-considerations-rfc2434bis SYSTEM
     "http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.narten-iana-considerations-rfc2434bis.xml">
@@ -231,6 +228,18 @@
 	    "grace-period" attribute.</t>
 	  </section>
 
+	  <section title="Applicability">
+	    <t>Fees may be applied immediately upon receipt of a command from a
+	    client, or may only be applied once an out-of-band process (such as
+	    the processing of applications at the end of a launch phase) has
+	    taken place.</t>
+
+	    <t>The "applied" attribute of the &lt;fee:fee&gt; element allows
+	    servers to indicate whether a fee will be applied immediately, or
+	    whether it will be applied at some point in the future. This
+	    attribute takes two possible values: "immediate" (which is the
+	    default) or "delayed".</t>
+	  </section>
 	</section>
 
     <section title="Account Balance">
@@ -797,6 +806,7 @@ END</artwork></figure>
         <t>Seth Goldman of Google</t>
         <t>Klaus Malorny of Knipp</t>
         <t>Jody Kolker and Roger Carney of Go Daddy</t>
+        <t>Michael Holloway</t>
        </list></t>
     </section>
 
@@ -828,6 +838,11 @@ END</artwork></figure>
           (&lt;fee:name&gt;) for the domain name.</t>
           <t>Added the "refundable" attribute to &lt;fee:fee&gt; elements.</t>
           <t>Added the "grace-period" attribute to &lt;fee:fee&gt; elements.</t>
+        </list></t>
+      </section>
+      <section title="Changes from 02 to 03">
+        <t><list style="numbers">
+          <t>Added the "applied" attribute to to &lt;fee:fee&gt; elements.</t>
         </list></t>
       </section>
     </section>

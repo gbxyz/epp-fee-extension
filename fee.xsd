@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-  xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"
+  xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"
   xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
   xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"
-  targetNamespace="urn:ietf:params:xml:ns:fee-0.5"
+  targetNamespace="urn:ietf:params:xml:ns:fee-0.6"
   elementFormDefault="qualified">
 
   <import namespace="urn:ietf:params:xml:ns:eppcom-1.0" />
@@ -187,6 +187,14 @@
           default="1" />
         <attribute name="grace-period" type="duration"
           default="P0D" />
+        <attribute name="applied" default="immediate">
+          <simpleType>
+            <restriction base="token">
+              <enumeration value="immediate" />
+              <enumeration value="delayed" />
+            </restriction>
+          </simpleType>
+        </attribute>
       </extension>
     </simpleContent>
   </complexType>

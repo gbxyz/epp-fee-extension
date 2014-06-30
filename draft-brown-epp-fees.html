@@ -146,8 +146,8 @@
 <table summary="layout" width="66%" border="0" cellpadding="0" cellspacing="0"><tr><td><table summary="layout" width="100%" border="0" cellpadding="2" cellspacing="1">
 <tr><td class="header">Internet Engineering Task Force</td><td class="header">G. Brown</td></tr>
 <tr><td class="header">Internet-Draft</td><td class="header">CentralNic Group plc</td></tr>
-<tr><td class="header">Intended status: Experimental</td><td class="header">June 27, 2014</td></tr>
-<tr><td class="header">Expires: December 29, 2014</td><td class="header">&nbsp;</td></tr>
+<tr><td class="header">Intended status: Experimental</td><td class="header">June 30, 2014</td></tr>
+<tr><td class="header">Expires: January 1, 2015</td><td class="header">&nbsp;</td></tr>
 </table></td></tr></table>
 <h1><br />Registry Fee Extension for
     the Extensible Provisioning Protocol (EPP)<br />draft-brown-epp-fees-02</h1>
@@ -172,7 +172,7 @@ and may be updated, replaced, or obsoleted by other documents at any time.
 It is inappropriate to use Internet-Drafts as reference material or to cite
 them other than as &ldquo;work in progress.&rdquo;</p>
 <p>
-This Internet-Draft will expire on December 29, 2014.</p>
+This Internet-Draft will expire on January 1, 2015.</p>
 
 <h3>Copyright Notice</h3>
 <p>
@@ -207,48 +207,52 @@ Registration Periods<br />
 Fees and Credits<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor8">2.4.1.</a>&nbsp;
 Grace Periods<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor9">2.5.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor9">2.4.2.</a>&nbsp;
+Applicability<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor10">2.5.</a>&nbsp;
 Account Balance<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor10">2.6.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor11">2.6.</a>&nbsp;
 Credit Limit<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor11">2.7.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor12">2.7.</a>&nbsp;
 Classification of Domain Names<br />
-<a href="#anchor12">3.</a>&nbsp;
+<a href="#anchor13">3.</a>&nbsp;
 EPP Command Mapping<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor13">3.1.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor14">3.1.</a>&nbsp;
 EPP Query Commands<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor14">3.1.1.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor15">3.1.1.</a>&nbsp;
 EPP &lt;check&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor15">3.1.2.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor16">3.1.2.</a>&nbsp;
 EPP &lt;info&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor16">3.1.3.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor17">3.1.3.</a>&nbsp;
 EPP Transfer Query Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor17">3.2.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor18">3.2.</a>&nbsp;
 EPP Transform Commands<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor18">3.2.1.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor19">3.2.1.</a>&nbsp;
 EPP &lt;create&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor19">3.2.2.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor20">3.2.2.</a>&nbsp;
 EPP &lt;delete&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor20">3.2.3.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor21">3.2.3.</a>&nbsp;
 EPP &lt;renew&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor21">3.2.4.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor22">3.2.4.</a>&nbsp;
 EPP &lt;transfer&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor22">3.2.5.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor23">3.2.5.</a>&nbsp;
 EPP &lt;update&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor23">3.3.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor24">3.3.</a>&nbsp;
 Formal Syntax<br />
 <a href="#Security">4.</a>&nbsp;
 Security Considerations<br />
 <a href="#IANA">5.</a>&nbsp;
 IANA Considerations<br />
-<a href="#anchor24">6.</a>&nbsp;
+<a href="#anchor25">6.</a>&nbsp;
 Acknowledgements<br />
-<a href="#anchor25">7.</a>&nbsp;
+<a href="#anchor26">7.</a>&nbsp;
 Change History<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor26">7.1.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor27">7.1.</a>&nbsp;
 Changes from 00 to 01<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor27">7.2.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor28">7.2.</a>&nbsp;
 Changes from 01 to 02<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor29">7.3.</a>&nbsp;
+Changes from 02 to 03<br />
 <a href="#rfc.references1">8.</a>&nbsp;
 Normative References<br />
 <a href="#rfc.authors">&#167;</a>&nbsp;
@@ -296,13 +300,13 @@ Conventions Used in This Document</h3>
         implementation.
 </p>
 <p>"fee" is used as an abbreviation for
-        "urn:ietf:params:xml:ns:fee-0.5". The XML namespace prefix "fee"
+        "urn:ietf:params:xml:ns:fee-0.6". The XML namespace prefix "fee"
         is used, but implementations MUST NOT depend on it and instead employ a
         proper namespace-aware XML parser and serializer to interpret and output
         the XML documents.
 </p>
 <p>The XML namespace prefix above contains a version number,
-        specifically "0.5". This version number will increment with
+        specifically "0.6". This version number will increment with
         successive versions of this document, and will reach 1.0 if and when
         this document is published as an RFC. This permits clients to
         distinguish which version of the extension a server has implemented.
@@ -438,6 +442,22 @@ Grace Periods</h3>
 </p>
 <a name="anchor9"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.4.2"></a><h3>2.4.2.&nbsp;
+Applicability</h3>
+
+<p>Fees may be applied immediately upon receipt of a command from a
+	    client, or may only be applied once an out-of-band process (such as
+	    the processing of applications at the end of a launch phase) has
+	    taken place.
+</p>
+<p>The "applied" attribute of the &lt;fee:fee&gt; element allows
+	    servers to indicate whether a fee will be applied immediately, or
+	    whether it will be applied at some point in the future. This
+	    attribute takes two possible values: "immediate" (which is the
+	    default) or "delayed".
+</p>
+<a name="anchor10"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.2.5"></a><h3>2.5.&nbsp;
 Account Balance</h3>
 
@@ -461,7 +481,7 @@ Account Balance</h3>
       account balance after any fees or credits associated with that command
       have been applied.
 </p>
-<a name="anchor10"></a><br /><hr />
+<a name="anchor11"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.2.6"></a><h3>2.6.&nbsp;
 Credit Limit</h3>
@@ -480,7 +500,7 @@ Credit Limit</h3>
       to all domain "transform" commands (ie &lt;create&gt;, &lt;renew&gt;,
       &lt;update&gt;, &lt;delete&gt;, &lt;transfer op="request"&gt;).
 </p>
-<a name="anchor11"></a><br /><hr />
+<a name="anchor12"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.2.7"></a><h3>2.7.&nbsp;
 Classification of Domain Names</h3>
@@ -494,7 +514,7 @@ Classification of Domain Names</h3>
       list of all the values that the element may take via an out-of-band
       channel. Servers MUST NOT use values which do not appear on this list.
 </p>
-<a name="anchor12"></a><br /><hr />
+<a name="anchor13"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.3"></a><h3>3.&nbsp;
 EPP Command Mapping</h3>
@@ -502,7 +522,7 @@ EPP Command Mapping</h3>
 <p>A detailed description of the EPP syntax and semantics can be found in
       <a class='info' href='#RFC5730'>[RFC5730]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP),&rdquo; August&nbsp;2009.</span><span>)</span></a>.
 </p>
-<a name="anchor13"></a><br /><hr />
+<a name="anchor14"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.3.1"></a><h3>3.1.&nbsp;
 EPP Query Commands</h3>
@@ -510,7 +530,7 @@ EPP Query Commands</h3>
 <p>This extension does not add any elements to the EPP &lt;poll&gt;
         command or response.
 </p>
-<a name="anchor14"></a><br /><hr />
+<a name="anchor15"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.3.1.1"></a><h3>3.1.1.&nbsp;
 EPP &lt;check&gt; Command</h3>
@@ -552,7 +572,7 @@ C:       &lt;/domain:check&gt;
 C:     &lt;/check&gt;
 C:     &lt;extension&gt;
 C:       &lt;fee:check
-C:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"&gt;
+C:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"&gt;
 C:         &lt;fee:domain&gt;
 C:           &lt;fee:name&gt;example.com&lt;/fee:name&gt;
 C:           &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
@@ -645,7 +665,7 @@ S:       &lt;/domain:chkData&gt;
 S:     &lt;/resData&gt;
 S:     &lt;extension&gt;
 S:       &lt;fee:chkData
-S:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"&gt;
+S:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"&gt;
 S:         &lt;fee:cd&gt;
 S:           &lt;fee:name&gt;example.com&lt;/fee:name&gt;
 S:           &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
@@ -690,7 +710,7 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor15"></a><br /><hr />
+<a name="anchor16"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.3.1.2"></a><h3>3.1.2.&nbsp;
 EPP &lt;info&gt; Command</h3>
@@ -724,7 +744,7 @@ C:         &lt;domain:name hosts="all"&gt;example.com&lt;/domain:name&gt;
 C:       &lt;/domain:info&gt;
 C:     &lt;/info&gt;
 C:     &lt;extension&gt;
-C:       &lt;fee:info xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"&gt;
+C:       &lt;fee:info xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"&gt;
 C:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 C:         &lt;fee:command phase="sunrise"&gt;create&lt;/fee:command&gt;
 C:         &lt;fee:period unit="y"&gt;1&lt;/fee:period&gt;
@@ -806,7 +826,7 @@ S:         &lt;/domain:authInfo&gt;
 S:       &lt;/domain:infData&gt;
 S:     &lt;/resData&gt;
 S:     &lt;extension&gt;
-S:       &lt;fee:infData xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"&gt;
+S:       &lt;fee:infData xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"&gt;
 S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 S:         &lt;fee:command phase="sunrise"&gt;create&lt;/fee:command&gt;
 S:         &lt;fee:period unit="y"&gt;1&lt;/fee:period&gt;
@@ -832,7 +852,7 @@ S:       &lt;msg&gt;Object does not exist.&lt;/msg&gt;
 S:     &lt;/result&gt;
 S:     &lt;extension&gt;
 S:       &lt;fee:infData
-S:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"&gt;
+S:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"&gt;
 S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 S:         &lt;fee:command phase="sunrise"&gt;create&lt;/fee:command&gt;
 S:         &lt;fee:period unit="y"&gt;1&lt;/fee:period&gt;
@@ -846,7 +866,7 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor16"></a><br /><hr />
+<a name="anchor17"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.3.1.3"></a><h3>3.1.3.&nbsp;
 EPP Transfer Query Command</h3>
@@ -897,7 +917,7 @@ S:         &lt;domain:exDate&gt;2002-09-08T22:00:00.0Z&lt;/domain:exDate&gt;
 S:       &lt;/domain:trnData&gt;
 S:     &lt;/resData&gt;
 S:     &lt;extension&gt;
-S:       &lt;fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"&gt;
+S:       &lt;fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"&gt;
 S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 S:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
 S:       &lt;/fee:trnData&gt;
@@ -909,12 +929,12 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor17"></a><br /><hr />
+<a name="anchor18"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.3.2"></a><h3>3.2.&nbsp;
 EPP Transform Commands</h3>
 
-<a name="anchor18"></a><br /><hr />
+<a name="anchor19"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.3.2.1"></a><h3>3.2.1.&nbsp;
 EPP &lt;create&gt; Command</h3>
@@ -991,7 +1011,7 @@ C:         &lt;/domain:authInfo&gt;
 C:       &lt;/domain:create&gt;
 C:     &lt;/create&gt;
 C:     &lt;extension&gt;
-C:       &lt;fee:create xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"&gt;
+C:       &lt;fee:create xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"&gt;
 C:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 C:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
 C:       &lt;/fee:create&gt;
@@ -1017,7 +1037,7 @@ S:         &lt;domain:exDate&gt;2001-04-03T22:00:00.0Z&lt;/domain:exDate&gt;
 S:       &lt;/domain:creData&gt;
 S:     &lt;/resData&gt;
 S:     &lt;extension&gt;
-S:       &lt;fee:creData xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"&gt;
+S:       &lt;fee:creData xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"&gt;
 S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 S:         &lt;fee:fee grace-period="P5D"&gt;5.00&lt;/fee:fee&gt;
 S:         &lt;fee:balance&gt;-5.00&lt;/fee:balance&gt;
@@ -1031,7 +1051,7 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor19"></a><br /><hr />
+<a name="anchor20"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.3.2.2"></a><h3>3.2.2.&nbsp;
 EPP &lt;delete&gt; Command</h3>
@@ -1071,7 +1091,7 @@ S:       &lt;msg&gt;Command completed successfully&lt;/msg&gt;
 S:     &lt;/result&gt;
 S:     &lt;extension&gt;
 S:       &lt;fee:delData
-S:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"&gt;
+S:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"&gt;
 S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 S:         &lt;fee:credit description="AGP Credit"&gt;-5.00&lt;/fee:credit&gt;
 S:         &lt;fee:balance&gt;1005.00&lt;/fee:balance&gt;
@@ -1084,7 +1104,7 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor20"></a><br /><hr />
+<a name="anchor21"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.3.2.3"></a><h3>3.2.3.&nbsp;
 EPP &lt;renew&gt; Command</h3>
@@ -1151,7 +1171,7 @@ C:         &lt;domain:period unit="y"&gt;5&lt;/domain:period&gt;
 C:       &lt;/domain:renew&gt;
 C:     &lt;/renew&gt;
 C:     &lt;extension&gt;
-C:       &lt;fee:renew xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"&gt;
+C:       &lt;fee:renew xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"&gt;
 C:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 C:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
 C:       &lt;/fee:renew&gt;
@@ -1176,7 +1196,7 @@ S:         &lt;domain:exDate&gt;2005-04-03T22:00:00.0Z&lt;/domain:exDate&gt;
 S:       &lt;/domain:renData&gt;
 S:     &lt;/resData&gt;
 S:     &lt;extension&gt;
-S:       &lt;fee:renData xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"&gt;
+S:       &lt;fee:renData xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"&gt;
 S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 S:         &lt;fee:fee grace-period="P5D"&gt;5.00&lt;/fee:fee&gt;
 S:         &lt;fee:balance&gt;1000.00&lt;/fee:balance&gt;
@@ -1189,7 +1209,7 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor21"></a><br /><hr />
+<a name="anchor22"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.3.2.4"></a><h3>3.2.4.&nbsp;
 EPP &lt;transfer&gt; Command</h3>
@@ -1259,7 +1279,7 @@ C:         &lt;/domain:authInfo&gt;
 C:       &lt;/domain:transfer&gt;
 C:     &lt;/transfer&gt;
 C:     &lt;extension&gt;
-C:       &lt;fee:transfer xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"&gt;
+C:       &lt;fee:transfer xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"&gt;
 C:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 C:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
 C:       &lt;/fee:transfer&gt;
@@ -1289,7 +1309,7 @@ S:         &lt;domain:exDate&gt;2002-09-08T22:00:00.0Z&lt;/domain:exDate&gt;
 S:       &lt;/domain:trnData&gt;
 S:     &lt;/resData&gt;
 S:     &lt;extension&gt;
-S:       &lt;fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"&gt;
+S:       &lt;fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"&gt;
 S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 S:         &lt;fee:fee grace-period="P5D"&gt;5.00&lt;/fee:fee&gt;
 S:       &lt;/fee:trnData&gt;
@@ -1301,7 +1321,7 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor22"></a><br /><hr />
+<a name="anchor23"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.3.2.5"></a><h3>3.2.5.&nbsp;
 EPP &lt;update&gt; Command</h3>
@@ -1369,7 +1389,7 @@ C:         &lt;/domain:chg&gt;
 C:       &lt;/domain:update&gt;
 C:     &lt;/update&gt;
 C:     &lt;extension&gt;
-C:       &lt;fee:update xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"&gt;
+C:       &lt;fee:update xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"&gt;
 C:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 C:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
 C:       &lt;/fee:update&gt;
@@ -1387,7 +1407,7 @@ S:     &lt;result code="1000"&gt;
 S:       &lt;msg&gt;Command completed successfully&lt;/msg&gt;
 S:     &lt;/result&gt;
 S:     &lt;extension&gt;
-S:       &lt;fee:updData xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"&gt;
+S:       &lt;fee:updData xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"&gt;
 S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 S:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
 S:       &lt;/fee:updData&gt;
@@ -1399,7 +1419,7 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor23"></a><br /><hr />
+<a name="anchor24"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.3.3"></a><h3>3.3.&nbsp;
 Formal Syntax</h3>
@@ -1447,10 +1467,10 @@ Formal Syntax</h3>
 BEGIN
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;schema xmlns="http://www.w3.org/2001/XMLSchema"
-  xmlns:fee="urn:ietf:params:xml:ns:fee-0.5"
+  xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"
   xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
   xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"
-  targetNamespace="urn:ietf:params:xml:ns:fee-0.5"
+  targetNamespace="urn:ietf:params:xml:ns:fee-0.6"
   elementFormDefault="qualified"&gt;
 
   &lt;import namespace="urn:ietf:params:xml:ns:eppcom-1.0" /&gt;
@@ -1634,6 +1654,14 @@ BEGIN
           default="1" /&gt;
         &lt;attribute name="grace-period" type="duration"
           default="P0D" /&gt;
+        &lt;attribute name="applied" default="immediate"&gt;
+          &lt;simpleType&gt;
+            &lt;restriction base="token"&gt;
+              &lt;enumeration value="immediate" /&gt;
+              &lt;enumeration value="delayed" /&gt;
+            &lt;/restriction&gt;
+          &lt;/simpleType&gt;
+        &lt;/attribute&gt;
       &lt;/extension&gt;
     &lt;/simpleContent&gt;
   &lt;/complexType&gt;
@@ -1680,7 +1708,7 @@ IANA Considerations</h3>
 </p>
 <p>Registration request for the digital signature namespace:
 </p>
-<p>URI: urn:ietf:params:xml:ns:fee-0.5
+<p>URI: urn:ietf:params:xml:ns:fee-0.6
 </p>
 <p>Registrant Contact: See the "Author's Address" section of this
       document.
@@ -1689,14 +1717,14 @@ IANA Considerations</h3>
 </p>
 <p>Registration request for the EPP fee XML schema:
 </p>
-<p>URI: urn:ietf:params:xml:ns:fee-0.5
+<p>URI: urn:ietf:params:xml:ns:fee-0.6
 </p>
 <p>Registrant Contact: See the "Author's Address" section of this
       document.
 </p>
 <p>XML: See the "Formal Syntax" section of this document.
 </p>
-<a name="anchor24"></a><br /><hr />
+<a name="anchor25"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.6"></a><h3>6.&nbsp;
 Acknowledgements</h3>
@@ -1720,14 +1748,16 @@ Acknowledgements</h3>
 </li>
 <li>Jody Kolker and Roger Carney of Go Daddy
 </li>
+<li>Michael Holloway
+</li>
 </ul>
 
-<a name="anchor25"></a><br /><hr />
+<a name="anchor26"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.7"></a><h3>7.&nbsp;
 Change History</h3>
 
-<a name="anchor26"></a><br /><hr />
+<a name="anchor27"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.7.1"></a><h3>7.1.&nbsp;
 Changes from 00 to 01</h3>
@@ -1743,7 +1773,7 @@ Changes from 00 to 01</h3>
 </li>
 </ol>
 
-<a name="anchor27"></a><br /><hr />
+<a name="anchor28"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.7.2"></a><h3>7.2.&nbsp;
 Changes from 01 to 02</h3>
@@ -1775,6 +1805,17 @@ Changes from 01 to 02</h3>
 <li>Added the "refundable" attribute to &lt;fee:fee&gt; elements.
 </li>
 <li>Added the "grace-period" attribute to &lt;fee:fee&gt; elements.
+</li>
+</ol>
+
+<a name="anchor29"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.7.3"></a><h3>7.3.&nbsp;
+Changes from 02 to 03</h3>
+
+<p></p>
+<ol class="text">
+<li>Added the "applied" attribute to to &lt;fee:fee&gt; elements.
 </li>
 </ol>
 
