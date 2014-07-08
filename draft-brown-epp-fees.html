@@ -146,8 +146,8 @@
 <table summary="layout" width="66%" border="0" cellpadding="0" cellspacing="0"><tr><td><table summary="layout" width="100%" border="0" cellpadding="2" cellspacing="1">
 <tr><td class="header">Internet Engineering Task Force</td><td class="header">G. Brown</td></tr>
 <tr><td class="header">Internet-Draft</td><td class="header">CentralNic Group plc</td></tr>
-<tr><td class="header">Intended status: Experimental</td><td class="header">June 30, 2014</td></tr>
-<tr><td class="header">Expires: January 1, 2015</td><td class="header">&nbsp;</td></tr>
+<tr><td class="header">Intended status: Experimental</td><td class="header">June 2014</td></tr>
+<tr><td class="header">Expires: December 3, 2014</td><td class="header">&nbsp;</td></tr>
 </table></td></tr></table>
 <h1><br />Registry Fee Extension for
     the Extensible Provisioning Protocol (EPP)<br />draft-brown-epp-fees-02</h1>
@@ -172,7 +172,7 @@ and may be updated, replaced, or obsoleted by other documents at any time.
 It is inappropriate to use Internet-Drafts as reference material or to cite
 them other than as &ldquo;work in progress.&rdquo;</p>
 <p>
-This Internet-Draft will expire on January 1, 2015.</p>
+This Internet-Draft will expire on December 3, 2014.</p>
 
 <h3>Copyright Notice</h3>
 <p>
@@ -202,56 +202,58 @@ Client Commands<br />
 &nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor5">2.2.</a>&nbsp;
 Currency Codes<br />
 &nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor6">2.3.</a>&nbsp;
-Registration Periods<br />
+Validity Periods<br />
 &nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor7">2.4.</a>&nbsp;
 Fees and Credits<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor8">2.4.1.</a>&nbsp;
-Grace Periods<br />
+Refunds<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor9">2.4.2.</a>&nbsp;
+Grace Periods<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor10">2.4.3.</a>&nbsp;
 Applicability<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor10">2.5.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor11">2.5.</a>&nbsp;
 Account Balance<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor11">2.6.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor12">2.6.</a>&nbsp;
 Credit Limit<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor12">2.7.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor13">2.7.</a>&nbsp;
 Classification of Domain Names<br />
-<a href="#anchor13">3.</a>&nbsp;
+<a href="#anchor14">3.</a>&nbsp;
 EPP Command Mapping<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor14">3.1.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor15">3.1.</a>&nbsp;
 EPP Query Commands<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor15">3.1.1.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor16">3.1.1.</a>&nbsp;
 EPP &lt;check&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor16">3.1.2.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor17">3.1.2.</a>&nbsp;
 EPP &lt;info&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor17">3.1.3.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor18">3.1.3.</a>&nbsp;
 EPP Transfer Query Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor18">3.2.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor19">3.2.</a>&nbsp;
 EPP Transform Commands<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor19">3.2.1.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor20">3.2.1.</a>&nbsp;
 EPP &lt;create&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor20">3.2.2.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor21">3.2.2.</a>&nbsp;
 EPP &lt;delete&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor21">3.2.3.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor22">3.2.3.</a>&nbsp;
 EPP &lt;renew&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor22">3.2.4.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor23">3.2.4.</a>&nbsp;
 EPP &lt;transfer&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor23">3.2.5.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor24">3.2.5.</a>&nbsp;
 EPP &lt;update&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor24">3.3.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor25">3.3.</a>&nbsp;
 Formal Syntax<br />
 <a href="#Security">4.</a>&nbsp;
 Security Considerations<br />
 <a href="#IANA">5.</a>&nbsp;
 IANA Considerations<br />
-<a href="#anchor25">6.</a>&nbsp;
+<a href="#anchor26">6.</a>&nbsp;
 Acknowledgements<br />
-<a href="#anchor26">7.</a>&nbsp;
+<a href="#anchor27">7.</a>&nbsp;
 Change History<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor27">7.1.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor28">7.1.</a>&nbsp;
 Changes from 00 to 01<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor28">7.2.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor29">7.2.</a>&nbsp;
 Changes from 01 to 02<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor29">7.3.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor30">7.3.</a>&nbsp;
 Changes from 02 to 03<br />
 <a href="#rfc.references1">8.</a>&nbsp;
 Normative References<br />
@@ -322,11 +324,11 @@ Extension Elements</h3>
 Client Commands</h3>
 
 <p>The &lt;fee:command&gt; element is used in EPP &lt;check&gt; and
-      &lt;info&gt; commands to determine the fee which is applicable to the
-      given command.
+        &lt;info&gt; commands to determine the fee which is applicable to the
+        given command.
 </p>
 <p>The element values permitted by the server is a matter of repository
-      policy, but MUST include as a minimum the following values:
+        policy, but MUST include as a minimum the following values:
 
         </p>
 <ul class="text">
@@ -338,14 +340,14 @@ Client Commands</h3>
 </li>
 </ul><p>
 
-      If the server supports the <a class='info' href='#RFC3915'>Registry Grace Period
-      Mapping<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Domain Registry Grace Period Mapping for the Extensible Provisioning Protocol (EPP),&rdquo; September&nbsp;2004.</span><span>)</span></a> [RFC3915], then the server MUST also support the "restore" value.
+        If the server supports the <a class='info' href='#RFC3915'>Registry Grace Period
+        Mapping<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Domain Registry Grace Period Mapping for the Extensible Provisioning Protocol (EPP),&rdquo; September&nbsp;2004.</span><span>)</span></a> [RFC3915], then the server MUST also support the "restore" value.
 </p>
 <p>The &lt;fee:command&gt; element MAY have an OPTIONAL "phase" attribute
-      specifying a launch phase as described in
-      <a class='info' href='#draft-ietf-eppext-launchphase'>[draft&#8209;ietf&#8209;eppext&#8209;launchphase]<span> (</span><span class='info'>Gould, J., Tan, W., and G. Brown, &ldquo;Launch Phase Mapping for the  Extensible Provisioning               Protocol (EPP),&rdquo; 2014.</span><span>)</span></a>. It may also contain an
-      OPTIONAL "subphase" attribute identifying the custom or sub-phase as
-      described in <a class='info' href='#draft-ietf-eppext-launchphase'>[draft&#8209;ietf&#8209;eppext&#8209;launchphase]<span> (</span><span class='info'>Gould, J., Tan, W., and G. Brown, &ldquo;Launch Phase Mapping for the  Extensible Provisioning               Protocol (EPP),&rdquo; 2014.</span><span>)</span></a>.
+        specifying a launch phase as described in
+        <a class='info' href='#draft-ietf-eppext-launchphase'>[draft&#8209;ietf&#8209;eppext&#8209;launchphase]<span> (</span><span class='info'>Gould, J., Tan, W., and G. Brown, &ldquo;Launch Phase Mapping for the  Extensible Provisioning               Protocol (EPP),&rdquo; 2014.</span><span>)</span></a>. It may also contain an
+        OPTIONAL "subphase" attribute identifying the custom or sub-phase as
+        described in <a class='info' href='#draft-ietf-eppext-launchphase'>[draft&#8209;ietf&#8209;eppext&#8209;launchphase]<span> (</span><span class='info'>Gould, J., Tan, W., and G. Brown, &ldquo;Launch Phase Mapping for the  Extensible Provisioning               Protocol (EPP),&rdquo; 2014.</span><span>)</span></a>.
 </p>
 <a name="anchor5"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
@@ -353,38 +355,38 @@ Client Commands</h3>
 Currency Codes</h3>
 
 <p>The &lt;fee:currency&gt; element is used to indicate which currency
-      fees are charged in. This value of this element MUST be a three-character
-      currency code from <a class='info' href='#ISO4217'>[ISO4217]<span> (</span><span class='info'>International Organization for                   Standardization, &ldquo;ISO 4217:2008, Codes for the representation of currencies               and funds,&rdquo; 2008.</span><span>)</span></a>.
+        fees are charged in. This value of this element MUST be a three-character
+        currency code from <a class='info' href='#ISO4217'>[ISO4217]<span> (</span><span class='info'>International Organization for                   Standardization, &ldquo;ISO 4217:2008, Codes for the representation of currencies               and funds,&rdquo; 2008.</span><span>)</span></a>.
 </p>
 <p>Note that ISO 4217 provides the special "XXX" code, which MAY be used
-      if the server uses a non-currency based system for assessing fees, such as
-      a system of credits.
+        if the server uses a non-currency based system for assessing fees, such as
+        a system of credits.
 </p>
 <p>The use of &lt;fee:currency&gt; elements in command frames is OPTIONAL:
-      if a &lt;fee:currency&gt; element is not present in a command frame, the
-      server MUST determine the currency based on the client's account settings
-      which MUST be agreed by the client and server via an out-of-band
-      channel. However, &lt;fee:currency&gt; element MUST be present in
-      response frames.
+        if a &lt;fee:currency&gt; element is not present in a command frame, the
+        server MUST determine the currency based on the client's account settings
+        which MUST be agreed by the client and server via an out-of-band
+        channel. However, &lt;fee:currency&gt; element MUST be present in
+        response frames.
 </p>
 <p>Servers SHOULD NOT perform a currency conversion if a client uses an
-      incorrect currency code. Servers SHOULD return an error instead.
+        incorrect currency code. Servers SHOULD return an error instead.
 </p>
 <a name="anchor6"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.2.3"></a><h3>2.3.&nbsp;
-Registration Periods</h3>
+Validity Periods</h3>
 
 <p>The &lt;fee:period&gt; element is used to indicate the units to be
-	  added to the registration period of domain names by the &lt;create&gt;,
-	  &lt;renew&gt; and &lt;transfer&gt; commands. This element is derived from
-	  the &lt;domain:period&gt; element described in
-	  <a class='info' href='#RFC5731'>[RFC5731]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Domain Name Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a>.
+        added to the registration period of domain names by the &lt;create&gt;,
+        &lt;renew&gt; and &lt;transfer&gt; commands. This element is derived from
+        the &lt;domain:period&gt; element described in
+        <a class='info' href='#RFC5731'>[RFC5731]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Domain Name Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a>.
 </p>
 <p>The &lt;fee:period&gt; element is OPTIONAL in command frames: if
-	  ommitted, the server MUST determine the fee(s) using a validity period of
-	  1 year. The &lt;fee:period&gt; element MUST be present in response
-	  frames.
+        ommitted, the server MUST determine the fee(s) using a validity period of
+        1 year. The &lt;fee:period&gt; element MUST be present in response
+        frames.
 </p>
 <a name="anchor7"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
@@ -392,129 +394,134 @@ Registration Periods</h3>
 Fees and Credits</h3>
 
 <p>Servers which implement this extension will include elements in
-	  response frames which provide information about the fees and/or credits
-	  associated with a given billable transaction.
+        response frames which provide information about the fees and/or credits
+        associated with a given billable transaction.
 </p>
 <p>The &lt;fee:fee&gt; and &lt;fee:credit&gt; elements are used to provide
-	  this information. The presence of a &lt;fee:fee&gt; element in a response
-	  indicates a debit against the client's account balance; a
-	  &lt;fee:credit&gt; element indicates a credit. A &lt;fee:fee&gt; element
-	  MUST have a non-negative value. A &lt;fee:credit&gt; element MUST have a
-	  negative value.
+        this information. The presence of a &lt;fee:fee&gt; element in a response
+        indicates a debit against the client's account balance; a
+        &lt;fee:credit&gt; element indicates a credit. A &lt;fee:fee&gt; element
+        MUST have a non-negative value. A &lt;fee:credit&gt; element MUST have a
+        negative value.
 </p>
 <p>A server MAY respond with multiple &lt;fee:fee&gt; and
-	  &lt;fee:credit&gt; elements in the same response. In such cases, the net
-	  fee or credit applicable to the transaction is the arithmetic sum of the
-	  values of each of the &lt;fee:fee&gt; or &lt;fee:credit&gt; elements.
+        &lt;fee:credit&gt; elements in the same response. In such cases, the net
+        fee or credit applicable to the transaction is the arithmetic sum of the
+        values of each of the &lt;fee:fee&gt; or &lt;fee:credit&gt; elements.
 </p>
 <p>&lt;fee:fee&gt; and &lt;fee:credit&gt; elements MAY have an OPTIONAL
-	  "description" attribute which provides a human-readable description of the
-	  fee. Servers SHOULD provide documentation on the possible values of
-	  this attribute, and their meanings.
-</p>
-<p>&lt;fee:fee&gt; elements MAY have an OPTIONAL "refundable" attribute
-	  which takes a boolean value. Fees may be refunded under certain
-	  circumstances, such as when a domain application is rejected (as
-	  described in <a class='info' href='#draft-ietf-eppext-launchphase'>[draft&#8209;ietf&#8209;eppext&#8209;launchphase]<span> (</span><span class='info'>Gould, J., Tan, W., and G. Brown, &ldquo;Launch Phase Mapping for the  Extensible Provisioning               Protocol (EPP),&rdquo; 2014.</span><span>)</span></a>) or when a
-	  domain name is deleted during the relevant Grace Period (see below).
-	  If the "refundable" attribute is omitted, then the default value of
-	  "1" should be assumed (i.e. the fee is refundable).
+        "description" attribute which provides a human-readable description of the
+        fee. Servers SHOULD provide documentation on the possible values of
+        this attribute, and their meanings.
 </p>
 <a name="anchor8"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.2.4.1"></a><h3>2.4.1.&nbsp;
-Grace Periods</h3>
+Refunds</h3>
 
-<p><a class='info' href='#RFC3915'>[RFC3915]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Domain Registry Grace Period Mapping for the Extensible Provisioning Protocol (EPP),&rdquo; September&nbsp;2004.</span><span>)</span></a> describes a system of "grace periods",
-	    which are time periods following a billable transaction during which,
-	    if a domain name is deleted, the client receives a refund.
-</p>
-<p>The "grace-period" attribute MAY be used to indicate the relevant
-	    grace period for a fee. If a server implements the Registry Grace
-	    Period Servers extension, it SHOULD specify the grace period for
-	    all relevant transactions. If no "grace-period" attribute value is
-	    provided, then no grace period is applicable.
-</p>
-<p>If a &lt;fee:fee&gt; element has a "grace-period" attribute then
-	    it MUST also be refundable. If the "refundable" attribute of a
-	    &lt;fee:fee&gt; element evaluates to false then it MUST NOT have a
-	    "grace-period" attribute.
+<p>&lt;fee:fee&gt; elements MAY have an OPTIONAL "refundable" attribute
+          which takes a boolean value. Fees may be refunded under certain
+          circumstances, such as when a domain application is rejected (as
+          described in <a class='info' href='#draft-ietf-eppext-launchphase'>[draft&#8209;ietf&#8209;eppext&#8209;launchphase]<span> (</span><span class='info'>Gould, J., Tan, W., and G. Brown, &ldquo;Launch Phase Mapping for the  Extensible Provisioning               Protocol (EPP),&rdquo; 2014.</span><span>)</span></a>) or when
+          a domain name is deleted during the relevant Grace Period (see below).
+          If the "refundable" attribute is omitted, then the default value of
+          "1" should be assumed (i.e. the fee is refundable).
 </p>
 <a name="anchor9"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.2.4.2"></a><h3>2.4.2.&nbsp;
+Grace Periods</h3>
+
+<p><a class='info' href='#RFC3915'>[RFC3915]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Domain Registry Grace Period Mapping for the Extensible Provisioning Protocol (EPP),&rdquo; September&nbsp;2004.</span><span>)</span></a> describes a system of "grace periods",
+          which are time periods following a billable transaction during which,
+          if a domain name is deleted, the client receives a refund.
+</p>
+<p>The "grace-period" attribute MAY be used to indicate the relevant
+          grace period for a fee. If a server implements the Registry Grace
+          Period extension, it MUST specify the grace period for all relevant
+          transactions. If no "grace-period" attribute value is provided, then
+          no grace period is applicable.
+</p>
+<p>If a &lt;fee:fee&gt; element has a "grace-period" attribute then
+          it MUST also be refundable. If the "refundable" attribute of a
+          &lt;fee:fee&gt; element is false then it MUST NOT have a
+          "grace-period" attribute.
+</p>
+<a name="anchor10"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2.4.3"></a><h3>2.4.3.&nbsp;
 Applicability</h3>
 
 <p>Fees may be applied immediately upon receipt of a command from a
-	    client, or may only be applied once an out-of-band process (such as
-	    the processing of applications at the end of a launch phase) has
-	    taken place.
+          client, or may only be applied once an out-of-band process (such as
+          the processing of applications at the end of a launch phase) has
+          taken place.
 </p>
 <p>The "applied" attribute of the &lt;fee:fee&gt; element allows
-	    servers to indicate whether a fee will be applied immediately, or
-	    whether it will be applied at some point in the future. This
-	    attribute takes two possible values: "immediate" (which is the
-	    default) or "delayed".
+          servers to indicate whether a fee will be applied immediately, or
+          whether it will be applied at some point in the future. This
+          attribute takes two possible values: "immediate" (which is the
+          default) or "delayed".
 </p>
-<a name="anchor10"></a><br /><hr />
+<a name="anchor11"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.2.5"></a><h3>2.5.&nbsp;
 Account Balance</h3>
 
 <p>The &lt;fee:balance&gt; element is an OPTIONAL element which MAY
-      be included in server responses to transform commands. If present,
-      it can be used by the client to determine the remaining credit at
-      the server.
+        be included in server responses to transform commands. If present,
+        it can be used by the client to determine the remaining credit at
+        the server.
 </p>
 <p>Whether or not the &lt;fee:balance&gt; is included in response
-      frames is a matter of server policy. However, if a server chooses
-      to offer support for this element, it MUST be included in responses
-      to all domain "transform" commands (ie &lt;create&gt;, &lt;renew&gt;,
-      &lt;update&gt;, &lt;delete&gt;, &lt;transfer op="request"&gt;).
+        frames is a matter of server policy. However, if a server chooses
+        to offer support for this element, it MUST be included in responses
+        to all domain "transform" commands (ie &lt;create&gt;, &lt;renew&gt;,
+        &lt;update&gt;, &lt;delete&gt;, &lt;transfer op="request"&gt;).
 </p>
 <p>The value of the &lt;fee:balance&gt; MAY be negative. A negative
-      balance indicates that the server has extended a line of credit to the
-      client (see below).
+        balance indicates that the server has extended a line of credit to the
+        client (see below).
 </p>
 <p>When a server includes a &lt;fee:balance&gt; element in response to
-      transform commands, the value of the element MUST reflect the client's
-      account balance after any fees or credits associated with that command
-      have been applied.
+        transform commands, the value of the element MUST reflect the client's
+        account balance after any fees or credits associated with that command
+        have been applied.
 </p>
-<a name="anchor11"></a><br /><hr />
+<a name="anchor12"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.2.6"></a><h3>2.6.&nbsp;
 Credit Limit</h3>
 
 <p>As described above, if a server returns a response frame containing a
-      &lt;fee:balance&gt; with a negative value, then the server has extended a
-      line of credit to the client. A server MAY also include a
-      &lt;fee:creditLimit&gt; element in responses which indicates the maximum
-      credit available to a client. A server MAY reject certain transactions if
-      the absolute value of the &lt;fee:balance&gt; is equal to or exceeds the
-      value of the &lt;fee:creditLimit&gt; element.
+        &lt;fee:balance&gt; with a negative value, then the server has extended a
+        line of credit to the client. A server MAY also include a
+        &lt;fee:creditLimit&gt; element in responses which indicates the maximum
+        credit available to a client. A server MAY reject certain transactions if
+        the absolute value of the &lt;fee:balance&gt; is equal to or exceeds the
+        value of the &lt;fee:creditLimit&gt; element.
 </p>
 <p>Whether or not the &lt;fee:creditLimit&gt; is included in response
-      frames is a matter of server policy. However, if a server chooses
-      to offer support for this element, it MUST be included in responses
-      to all domain "transform" commands (ie &lt;create&gt;, &lt;renew&gt;,
-      &lt;update&gt;, &lt;delete&gt;, &lt;transfer op="request"&gt;).
+        frames is a matter of server policy. However, if a server chooses
+        to offer support for this element, it MUST be included in responses
+        to all domain "transform" commands (ie &lt;create&gt;, &lt;renew&gt;,
+        &lt;update&gt;, &lt;delete&gt;, &lt;transfer op="request"&gt;).
 </p>
-<a name="anchor12"></a><br /><hr />
+<a name="anchor13"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.2.7"></a><h3>2.7.&nbsp;
 Classification of Domain Names</h3>
 
 <p>Domain names may be assigned to a particular class, category, or tier,
-      each of which has a particular fee or set of fess associated with it. The
-      &lt;fee:class&gt; element which appears in &lt;check&gt; and &lt;info&gt;
-      responses is used to indicate the classification of a domain name.
+        each of which has a particular fee or set of fess associated with it. The
+        &lt;fee:class&gt; element which appears in &lt;check&gt; and &lt;info&gt;
+        responses is used to indicate the classification of a domain name.
 </p>
 <p>If a server makes use of this element, it MUST provide clients with a
-      list of all the values that the element may take via an out-of-band
-      channel. Servers MUST NOT use values which do not appear on this list.
+        list of all the values that the element may take via an out-of-band
+        channel. Servers MUST NOT use values which do not appear on this list.
 </p>
-<a name="anchor13"></a><br /><hr />
+<a name="anchor14"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.3"></a><h3>3.&nbsp;
 EPP Command Mapping</h3>
@@ -522,7 +529,7 @@ EPP Command Mapping</h3>
 <p>A detailed description of the EPP syntax and semantics can be found in
       <a class='info' href='#RFC5730'>[RFC5730]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP),&rdquo; August&nbsp;2009.</span><span>)</span></a>.
 </p>
-<a name="anchor14"></a><br /><hr />
+<a name="anchor15"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.3.1"></a><h3>3.1.&nbsp;
 EPP Query Commands</h3>
@@ -530,7 +537,7 @@ EPP Query Commands</h3>
 <p>This extension does not add any elements to the EPP &lt;poll&gt;
         command or response.
 </p>
-<a name="anchor15"></a><br /><hr />
+<a name="anchor16"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.3.1.1"></a><h3>3.1.1.&nbsp;
 EPP &lt;check&gt; Command</h3>
@@ -710,7 +717,7 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor16"></a><br /><hr />
+<a name="anchor17"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.3.1.2"></a><h3>3.1.2.&nbsp;
 EPP &lt;info&gt; Command</h3>
@@ -866,7 +873,7 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor17"></a><br /><hr />
+<a name="anchor18"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.3.1.3"></a><h3>3.1.3.&nbsp;
 EPP Transfer Query Command</h3>
@@ -929,12 +936,12 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor18"></a><br /><hr />
+<a name="anchor19"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.3.2"></a><h3>3.2.&nbsp;
 EPP Transform Commands</h3>
 
-<a name="anchor19"></a><br /><hr />
+<a name="anchor20"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.3.2.1"></a><h3>3.2.1.&nbsp;
 EPP &lt;create&gt; Command</h3>
@@ -1051,7 +1058,7 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor20"></a><br /><hr />
+<a name="anchor21"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.3.2.2"></a><h3>3.2.2.&nbsp;
 EPP &lt;delete&gt; Command</h3>
@@ -1104,7 +1111,7 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor21"></a><br /><hr />
+<a name="anchor22"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.3.2.3"></a><h3>3.2.3.&nbsp;
 EPP &lt;renew&gt; Command</h3>
@@ -1209,7 +1216,7 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor22"></a><br /><hr />
+<a name="anchor23"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.3.2.4"></a><h3>3.2.4.&nbsp;
 EPP &lt;transfer&gt; Command</h3>
@@ -1321,7 +1328,7 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor23"></a><br /><hr />
+<a name="anchor24"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.3.2.5"></a><h3>3.2.5.&nbsp;
 EPP &lt;update&gt; Command</h3>
@@ -1419,7 +1426,7 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor24"></a><br /><hr />
+<a name="anchor25"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.3.3"></a><h3>3.3.&nbsp;
 Formal Syntax</h3>
@@ -1428,12 +1435,12 @@ Formal Syntax</h3>
         syntax presented here is a complete schema representation of the object
         mapping suitable for automated validation of EPP XML instances.
 </p>
-<p>Copyright (c) 2013 IETF Trust and the persons identified as authors
-      of the code. All rights reserved.
+<p>Copyright (c) 2014 IETF Trust and the persons identified as authors
+        of the code. All rights reserved.
 </p>
 <p>Redistribution and use in source and binary forms, with or without
-      modification, are permitted provided that the following conditions are
-      met:
+        modification, are permitted provided that the following conditions are
+        met:
 </p>
 <p></p>
 <ul class="text">
@@ -1453,16 +1460,16 @@ Formal Syntax</h3>
 </ul>
 
 <p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-      "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-      LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
-      PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER
-      OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-      EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-      PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
-      PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-      LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-      NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-      SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+        "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+        LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+        PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER
+        OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+        EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+        PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+        PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+        LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+        NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+        SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 </p><div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
 BEGIN
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
@@ -1690,11 +1697,11 @@ END</pre></div>
 <a name="rfc.section.4"></a><h3>4.&nbsp;
 Security Considerations</h3>
 
-<p>The mapping
-    extensions described in this document do not provide any security services
-    beyond those described by <a class='info' href='#RFC5730'>EPP<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP),&rdquo; August&nbsp;2009.</span><span>)</span></a> [RFC5730], the <a class='info' href='#RFC5731'>EPP domain name mapping<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Domain Name Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a> [RFC5731], and protocol layers used by
-    EPP. The security considerations described in these other specifications
-    apply to this specification as well.
+<p>The mapping extensions described in this document do not provide any
+      security services beyond those described by <a class='info' href='#RFC5730'>EPP<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP),&rdquo; August&nbsp;2009.</span><span>)</span></a> [RFC5730],
+      the <a class='info' href='#RFC5731'>EPP domain name mapping<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Domain Name Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a> [RFC5731], and protocol
+      layers used by EPP. The security considerations described in these other
+      specifications apply to this specification as well.
 </p>
 <a name="IANA"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
@@ -1724,7 +1731,7 @@ IANA Considerations</h3>
 </p>
 <p>XML: See the "Formal Syntax" section of this document.
 </p>
-<a name="anchor25"></a><br /><hr />
+<a name="anchor26"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.6"></a><h3>6.&nbsp;
 Acknowledgements</h3>
@@ -1752,12 +1759,12 @@ Acknowledgements</h3>
 </li>
 </ul>
 
-<a name="anchor26"></a><br /><hr />
+<a name="anchor27"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.7"></a><h3>7.&nbsp;
 Change History</h3>
 
-<a name="anchor27"></a><br /><hr />
+<a name="anchor28"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.7.1"></a><h3>7.1.&nbsp;
 Changes from 00 to 01</h3>
@@ -1773,7 +1780,7 @@ Changes from 00 to 01</h3>
 </li>
 </ol>
 
-<a name="anchor28"></a><br /><hr />
+<a name="anchor29"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.7.2"></a><h3>7.2.&nbsp;
 Changes from 01 to 02</h3>
@@ -1808,7 +1815,7 @@ Changes from 01 to 02</h3>
 </li>
 </ol>
 
-<a name="anchor29"></a><br /><hr />
+<a name="anchor30"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.7.3"></a><h3>7.3.&nbsp;
 Changes from 02 to 03</h3>

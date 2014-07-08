@@ -122,13 +122,13 @@
 
     <section title="Extension Elements">
 
-   <section title="Client Commands">
-      <t>The &lt;fee:command&gt; element is used in EPP &lt;check&gt; and
-      &lt;info&gt; commands to determine the fee which is applicable to the
-      given command.</t>
+      <section title="Client Commands">
+        <t>The &lt;fee:command&gt; element is used in EPP &lt;check&gt; and
+        &lt;info&gt; commands to determine the fee which is applicable to the
+        given command.</t>
 
-      <t>The element values permitted by the server is a matter of repository
-      policy, but MUST include as a minimum the following values:
+        <t>The element values permitted by the server is a matter of repository
+        policy, but MUST include as a minimum the following values:
 
         <list style="symbols">
           <t>"create" indicating a &lt;domain:create&gt; command;</t>
@@ -136,161 +136,160 @@
           <t>"transfer" indicating a &lt;domain:transfer&gt; command;</t>
         </list>
 
-      If the server supports the <xref target="RFC3915">Registry Grace Period
-      Mapping</xref>, then the server MUST also support the "restore" value.</t>
+        If the server supports the <xref target="RFC3915">Registry Grace Period
+        Mapping</xref>, then the server MUST also support the "restore" value.</t>
 
-      <t>The &lt;fee:command&gt; element MAY have an OPTIONAL "phase" attribute
-      specifying a launch phase as described in
-      <xref target="draft-ietf-eppext-launchphase" />. It may also contain an
-      OPTIONAL "subphase" attribute identifying the custom or sub-phase as
-      described in <xref target="draft-ietf-eppext-launchphase" />.</t>
+        <t>The &lt;fee:command&gt; element MAY have an OPTIONAL "phase" attribute
+        specifying a launch phase as described in
+        <xref target="draft-ietf-eppext-launchphase" />. It may also contain an
+        OPTIONAL "subphase" attribute identifying the custom or sub-phase as
+        described in <xref target="draft-ietf-eppext-launchphase" />.</t>
+      </section>
 
-    </section>
+      <section title="Currency Codes">
+        <t>The &lt;fee:currency&gt; element is used to indicate which currency
+        fees are charged in. This value of this element MUST be a three-character
+        currency code from <xref target="ISO4217"/>.</t>
 
-    <section title="Currency Codes">
-      <t>The &lt;fee:currency&gt; element is used to indicate which currency
-      fees are charged in. This value of this element MUST be a three-character
-      currency code from <xref target="ISO4217"/>.</t>
+        <t>Note that ISO 4217 provides the special "XXX" code, which MAY be used
+        if the server uses a non-currency based system for assessing fees, such as
+        a system of credits.</t>
 
-      <t>Note that ISO 4217 provides the special "XXX" code, which MAY be used
-      if the server uses a non-currency based system for assessing fees, such as
-      a system of credits.</t>
+        <t>The use of &lt;fee:currency&gt; elements in command frames is OPTIONAL:
+        if a &lt;fee:currency&gt; element is not present in a command frame, the
+        server MUST determine the currency based on the client's account settings
+        which MUST be agreed by the client and server via an out-of-band
+        channel. However, &lt;fee:currency&gt; element MUST be present in
+        response frames.</t>
 
-      <t>The use of &lt;fee:currency&gt; elements in command frames is OPTIONAL:
-      if a &lt;fee:currency&gt; element is not present in a command frame, the
-      server MUST determine the currency based on the client's account settings
-      which MUST be agreed by the client and server via an out-of-band
-      channel. However, &lt;fee:currency&gt; element MUST be present in
-      response frames.</t>
+        <t>Servers SHOULD NOT perform a currency conversion if a client uses an
+        incorrect currency code. Servers SHOULD return an error instead.</t>
+      </section>
 
-      <t>Servers SHOULD NOT perform a currency conversion if a client uses an
-      incorrect currency code. Servers SHOULD return an error instead.</t>
+      <section title="Validity Periods">
+        <t>The &lt;fee:period&gt; element is used to indicate the units to be
+        added to the registration period of domain names by the &lt;create&gt;,
+        &lt;renew&gt; and &lt;transfer&gt; commands. This element is derived from
+        the &lt;domain:period&gt; element described in
+        <xref target="RFC5731"/>.</t>
 
-    </section>
+        <t>The &lt;fee:period&gt; element is OPTIONAL in command frames: if
+        ommitted, the server MUST determine the fee(s) using a validity period of
+        1 year. The &lt;fee:period&gt; element MUST be present in response
+        frames.</t>
+      </section>
 
-	<section title="Registration Periods">
-	  <t>The &lt;fee:period&gt; element is used to indicate the units to be
-	  added to the registration period of domain names by the &lt;create&gt;,
-	  &lt;renew&gt; and &lt;transfer&gt; commands. This element is derived from
-	  the &lt;domain:period&gt; element described in
-	  <xref target="RFC5731"/>.</t>
+      <section title="Fees and Credits">
+        <t>Servers which implement this extension will include elements in
+        response frames which provide information about the fees and/or credits
+        associated with a given billable transaction.</t>
 
-	  <t>The &lt;fee:period&gt; element is OPTIONAL in command frames: if
-	  ommitted, the server MUST determine the fee(s) using a validity period of
-	  1 year. The &lt;fee:period&gt; element MUST be present in response
-	  frames.</t>
-    </section>
+        <t>The &lt;fee:fee&gt; and &lt;fee:credit&gt; elements are used to provide
+        this information. The presence of a &lt;fee:fee&gt; element in a response
+        indicates a debit against the client's account balance; a
+        &lt;fee:credit&gt; element indicates a credit. A &lt;fee:fee&gt; element
+        MUST have a non-negative value. A &lt;fee:credit&gt; element MUST have a
+        negative value.</t>
 
-	<section title="Fees and Credits">
-	  <t>Servers which implement this extension will include elements in
-	  response frames which provide information about the fees and/or credits
-	  associated with a given billable transaction.</t>
+        <t>A server MAY respond with multiple &lt;fee:fee&gt; and
+        &lt;fee:credit&gt; elements in the same response. In such cases, the net
+        fee or credit applicable to the transaction is the arithmetic sum of the
+        values of each of the &lt;fee:fee&gt; or &lt;fee:credit&gt; elements.</t>
 
-	  <t>The &lt;fee:fee&gt; and &lt;fee:credit&gt; elements are used to provide
-	  this information. The presence of a &lt;fee:fee&gt; element in a response
-	  indicates a debit against the client's account balance; a
-	  &lt;fee:credit&gt; element indicates a credit. A &lt;fee:fee&gt; element
-	  MUST have a non-negative value. A &lt;fee:credit&gt; element MUST have a
-	  negative value.</t>
+        <t>&lt;fee:fee&gt; and &lt;fee:credit&gt; elements MAY have an OPTIONAL
+        "description" attribute which provides a human-readable description of the
+        fee. Servers SHOULD provide documentation on the possible values of
+        this attribute, and their meanings.</t>
 
-	  <t>A server MAY respond with multiple &lt;fee:fee&gt; and
-	  &lt;fee:credit&gt; elements in the same response. In such cases, the net
-	  fee or credit applicable to the transaction is the arithmetic sum of the
-	  values of each of the &lt;fee:fee&gt; or &lt;fee:credit&gt; elements.</t>
+        <section title="Refunds">
+          <t>&lt;fee:fee&gt; elements MAY have an OPTIONAL "refundable" attribute
+          which takes a boolean value. Fees may be refunded under certain
+          circumstances, such as when a domain application is rejected (as
+          described in <xref target="draft-ietf-eppext-launchphase" />) or when
+          a domain name is deleted during the relevant Grace Period (see below).
+          If the "refundable" attribute is omitted, then the default value of
+          "1" should be assumed (i.e. the fee is refundable).</t>
+        </section>
 
-	  <t>&lt;fee:fee&gt; and &lt;fee:credit&gt; elements MAY have an OPTIONAL
-	  "description" attribute which provides a human-readable description of the
-	  fee. Servers SHOULD provide documentation on the possible values of
-	  this attribute, and their meanings.</t>
+        <section title="Grace Periods">
+          <t><xref target="RFC3915" /> describes a system of "grace periods",
+          which are time periods following a billable transaction during which,
+          if a domain name is deleted, the client receives a refund.</t>
 
-	  <t>&lt;fee:fee&gt; elements MAY have an OPTIONAL "refundable" attribute
-	  which takes a boolean value. Fees may be refunded under certain
-	  circumstances, such as when a domain application is rejected (as
-	  described in <xref target="draft-ietf-eppext-launchphase" />) or when a
-	  domain name is deleted during the relevant Grace Period (see below).
-	  If the "refundable" attribute is omitted, then the default value of
-	  "1" should be assumed (i.e. the fee is refundable).</t>
+          <t>The "grace-period" attribute MAY be used to indicate the relevant
+          grace period for a fee. If a server implements the Registry Grace
+          Period extension, it MUST specify the grace period for all relevant
+          transactions. If no "grace-period" attribute value is provided, then
+          no grace period is applicable.</t>
 
-	  <section title="Grace Periods">
-	    <t><xref target="RFC3915" /> describes a system of "grace periods",
-	    which are time periods following a billable transaction during which,
-	    if a domain name is deleted, the client receives a refund.</t>
+          <t>If a &lt;fee:fee&gt; element has a "grace-period" attribute then
+          it MUST also be refundable. If the "refundable" attribute of a
+          &lt;fee:fee&gt; element is false then it MUST NOT have a
+          "grace-period" attribute.</t>
+        </section>
 
-	    <t>The "grace-period" attribute MAY be used to indicate the relevant
-	    grace period for a fee. If a server implements the Registry Grace
-	    Period Servers extension, it SHOULD specify the grace period for
-	    all relevant transactions. If no "grace-period" attribute value is
-	    provided, then no grace period is applicable.</t>
+        <section title="Applicability">
+          <t>Fees may be applied immediately upon receipt of a command from a
+          client, or may only be applied once an out-of-band process (such as
+          the processing of applications at the end of a launch phase) has
+          taken place.</t>
 
-	    <t>If a &lt;fee:fee&gt; element has a "grace-period" attribute then
-	    it MUST also be refundable. If the "refundable" attribute of a
-	    &lt;fee:fee&gt; element evaluates to false then it MUST NOT have a
-	    "grace-period" attribute.</t>
-	  </section>
+          <t>The "applied" attribute of the &lt;fee:fee&gt; element allows
+          servers to indicate whether a fee will be applied immediately, or
+          whether it will be applied at some point in the future. This
+          attribute takes two possible values: "immediate" (which is the
+          default) or "delayed".</t>
+        </section>
+      </section>
 
-	  <section title="Applicability">
-	    <t>Fees may be applied immediately upon receipt of a command from a
-	    client, or may only be applied once an out-of-band process (such as
-	    the processing of applications at the end of a launch phase) has
-	    taken place.</t>
+      <section title="Account Balance">
+        <t>The &lt;fee:balance&gt; element is an OPTIONAL element which MAY
+        be included in server responses to transform commands. If present,
+        it can be used by the client to determine the remaining credit at
+        the server.</t>
 
-	    <t>The "applied" attribute of the &lt;fee:fee&gt; element allows
-	    servers to indicate whether a fee will be applied immediately, or
-	    whether it will be applied at some point in the future. This
-	    attribute takes two possible values: "immediate" (which is the
-	    default) or "delayed".</t>
-	  </section>
-	</section>
+        <t>Whether or not the &lt;fee:balance&gt; is included in response
+        frames is a matter of server policy. However, if a server chooses
+        to offer support for this element, it MUST be included in responses
+        to all domain "transform" commands (ie &lt;create&gt;, &lt;renew&gt;,
+        &lt;update&gt;, &lt;delete&gt;, &lt;transfer op="request"&gt;).</t>
 
-    <section title="Account Balance">
-      <t>The &lt;fee:balance&gt; element is an OPTIONAL element which MAY
-      be included in server responses to transform commands. If present,
-      it can be used by the client to determine the remaining credit at
-      the server.</t>
+        <t>The value of the &lt;fee:balance&gt; MAY be negative. A negative
+        balance indicates that the server has extended a line of credit to the
+        client (see below).</t>
 
-      <t>Whether or not the &lt;fee:balance&gt; is included in response
-      frames is a matter of server policy. However, if a server chooses
-      to offer support for this element, it MUST be included in responses
-      to all domain "transform" commands (ie &lt;create&gt;, &lt;renew&gt;,
-      &lt;update&gt;, &lt;delete&gt;, &lt;transfer op="request"&gt;).</t>
+        <t>When a server includes a &lt;fee:balance&gt; element in response to
+        transform commands, the value of the element MUST reflect the client's
+        account balance after any fees or credits associated with that command
+        have been applied.</t>
+      </section>
 
-      <t>The value of the &lt;fee:balance&gt; MAY be negative. A negative
-      balance indicates that the server has extended a line of credit to the
-      client (see below).</t>
+      <section title="Credit Limit">
+        <t>As described above, if a server returns a response frame containing a
+        &lt;fee:balance&gt; with a negative value, then the server has extended a
+        line of credit to the client. A server MAY also include a
+        &lt;fee:creditLimit&gt; element in responses which indicates the maximum
+        credit available to a client. A server MAY reject certain transactions if
+        the absolute value of the &lt;fee:balance&gt; is equal to or exceeds the
+        value of the &lt;fee:creditLimit&gt; element.</t>
 
-      <t>When a server includes a &lt;fee:balance&gt; element in response to
-      transform commands, the value of the element MUST reflect the client's
-      account balance after any fees or credits associated with that command
-      have been applied.</t>
-    </section>
+        <t>Whether or not the &lt;fee:creditLimit&gt; is included in response
+        frames is a matter of server policy. However, if a server chooses
+        to offer support for this element, it MUST be included in responses
+        to all domain "transform" commands (ie &lt;create&gt;, &lt;renew&gt;,
+        &lt;update&gt;, &lt;delete&gt;, &lt;transfer op="request"&gt;).</t>
+      </section>
 
-    <section title="Credit Limit">
-      <t>As described above, if a server returns a response frame containing a
-      &lt;fee:balance&gt; with a negative value, then the server has extended a
-      line of credit to the client. A server MAY also include a
-      &lt;fee:creditLimit&gt; element in responses which indicates the maximum
-      credit available to a client. A server MAY reject certain transactions if
-      the absolute value of the &lt;fee:balance&gt; is equal to or exceeds the
-      value of the &lt;fee:creditLimit&gt; element.</t>
+      <section title="Classification of Domain Names">
+        <t>Domain names may be assigned to a particular class, category, or tier,
+        each of which has a particular fee or set of fess associated with it. The
+        &lt;fee:class&gt; element which appears in &lt;check&gt; and &lt;info&gt;
+        responses is used to indicate the classification of a domain name.</t>
 
-      <t>Whether or not the &lt;fee:creditLimit&gt; is included in response
-      frames is a matter of server policy. However, if a server chooses
-      to offer support for this element, it MUST be included in responses
-      to all domain "transform" commands (ie &lt;create&gt;, &lt;renew&gt;,
-      &lt;update&gt;, &lt;delete&gt;, &lt;transfer op="request"&gt;).</t>
-    </section>
-
-    <section title="Classification of Domain Names">
-      <t>Domain names may be assigned to a particular class, category, or tier,
-      each of which has a particular fee or set of fess associated with it. The
-      &lt;fee:class&gt; element which appears in &lt;check&gt; and &lt;info&gt;
-      responses is used to indicate the classification of a domain name.</t>
-
-      <t>If a server makes use of this element, it MUST provide clients with a
-      list of all the values that the element may take via an out-of-band
-      channel. Servers MUST NOT use values which do not appear on this list.</t>
-    </section>
-
+        <t>If a server makes use of this element, it MUST provide clients with a
+        list of all the values that the element may take via an out-of-band
+        channel. Servers MUST NOT use values which do not appear on this list.</t>
+      </section>
     </section>
 
     <section title="EPP Command Mapping">
@@ -369,7 +368,6 @@
           <figure><artwork>
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text"
    href="examples/check-response.txt" /></artwork></figure>
-
         </section>
 
         <section title="EPP &lt;info&gt; Command">
@@ -727,14 +725,14 @@
         syntax presented here is a complete schema representation of the object
         mapping suitable for automated validation of EPP XML instances.</t>
 
-      <t>Copyright (c) 2013 IETF Trust and the persons identified as authors
-      of the code. All rights reserved.</t>
+        <t>Copyright (c) 2014 IETF Trust and the persons identified as authors
+        of the code. All rights reserved.</t>
 
-      <t>Redistribution and use in source and binary forms, with or without
-      modification, are permitted provided that the following conditions are
-      met:</t>
+        <t>Redistribution and use in source and binary forms, with or without
+        modification, are permitted provided that the following conditions are
+        met:</t>
 
-      <t><list style="symbols">
+        <t><list style="symbols">
           <t>Redistributions of source code must retain the above copyright
           notice, this list of conditions and the following disclaimer.</t>
 
@@ -749,17 +747,17 @@
           permission.</t>
         </list></t>
 
-      <t>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-      "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-      LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
-      PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER
-      OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-      EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-      PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
-      PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-      LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-      NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-      SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</t>
+        <t>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+        "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+        LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+        PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER
+        OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+        EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+        PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+        PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+        LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+        NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+        SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</t>
 
 <figure><artwork>
 BEGIN
@@ -771,12 +769,12 @@ END</artwork></figure>
 
     </section>
 
-    <section anchor="Security" title="Security Considerations"><t>The mapping
-    extensions described in this document do not provide any security services
-    beyond those described by <xref target="RFC5730">EPP</xref>, the <xref
-    target="RFC5731">EPP domain name mapping</xref>, and protocol layers used by
-    EPP. The security considerations described in these other specifications
-    apply to this specification as well.</t></section>
+    <section anchor="Security" title="Security Considerations">
+      <t>The mapping extensions described in this document do not provide any
+      security services beyond those described by <xref target="RFC5730">EPP</xref>,
+      the <xref target="RFC5731">EPP domain name mapping</xref>, and protocol
+      layers used by EPP. The security considerations described in these other
+      specifications apply to this specification as well.</t></section>
 
     <section anchor="IANA" title="IANA Considerations">
       <t>This document uses URNs to describe XML namespaces and XML schemas
@@ -807,7 +805,7 @@ END</artwork></figure>
         <t>Klaus Malorny of Knipp</t>
         <t>Jody Kolker and Roger Carney of Go Daddy</t>
         <t>Michael Holloway</t>
-       </list></t>
+      </list></t>
     </section>
 
     <section title="Change History">
@@ -885,7 +883,6 @@ END</artwork></figure>
           <format type="HTML"
             target="http://tools.ietf.org/html/draft-ietf-eppext-launchphase" />
       </reference>
-
     </references>
   </back>
 </rfc>
