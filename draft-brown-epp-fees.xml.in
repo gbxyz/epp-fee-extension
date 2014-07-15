@@ -282,7 +282,7 @@
 
       <section title="Classification of Domain Names">
         <t>Domain names may be assigned to a particular class, category, or tier,
-        each of which has a particular fee or set of fess associated with it. The
+        each of which has a particular fee or set of fees associated with it. The
         &lt;fee:class&gt; element which appears in &lt;check&gt; and &lt;info&gt;
         responses is used to indicate the classification of a domain name.</t>
 
@@ -375,7 +375,7 @@
           &lt;info&gt; command.</t>
 
           <t>The command frame MAY contain an &lt;extension&gt; element which
-          contains a &lt;fee:info&gt; element with the following child
+          MAY contain a &lt;fee:info&gt; element with the following child
           elements:</t>
 
           <t><list style="symbols">
@@ -421,10 +421,9 @@
             <t>An OPTIONAL &lt;fee:class&gt; element.</t>
           </list></t>
 
-          <t>If the domain name requested in the command is invalid, sponsored
-          by another client, or otherwise ineligible for registration, the
-          server MAY choose to omit the &lt;fee:infData&gt; element and return
-          an error instead.</t>
+          <t>Depending on policy, the server MAY choose to omit the
+          &lt;fee:infData&gt; element and return a 2201 authorisation error
+          instead.</t>
 
           <t>Example &lt;info&gt; response:</t>
 
@@ -456,6 +455,8 @@
           
           <t><list style="symbols">
             <t>A &lt;fee:currency&gt; element.</t>
+
+            <t>A &lt;fee:period&gt; element.</t>
 
             <t>one or more &lt;fee:fee&gt; elements containing the fees
             associated with the transfer.</t>
@@ -649,7 +650,7 @@
           <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="xml"
             href="transform-response-elements.xml" />
 
-          <t>If no &lt;fee:transfData&gt; element is included in the response, then
+          <t>If no &lt;fee:trnData&gt; element is included in the response, then
           no fee has been assessed by the server for this transaction.</t>
 
           <t>Example &lt;transfer&gt; command:</t>
@@ -827,7 +828,7 @@ END</artwork></figure>
           <t>Added the "description" attribute to &lt;fee:fee&gt; and
             &lt;fee:credit&gt; elements.</t>
           <t>Added the &lt;fee:balance&gt; element.</t>
-          <t>added the &lt;fee:creditLimit&gt; element.</t>
+          <t>Added the &lt;fee:creditLimit&gt; element.</t>
           <t>Updated reference to
             <xref target="draft-ietf-eppext-launchphase"/>.</t>
           <t>Use &lt;fee:command&gt; instead of &lt;fee:action&gt;.</t>
@@ -841,6 +842,9 @@ END</artwork></figure>
       <section title="Changes from 02 to 03">
         <t><list style="numbers">
           <t>Added the "applied" attribute to to &lt;fee:fee&gt; elements.</t>
+          <t>Simplified the wording in relation to when a server can return an
+          error for extended &lt;info&gt; commands.</t>
+          <t>Added the &lt;fee:period&gt; element to transfer query responses.</t>
         </list></t>
       </section>
     </section>

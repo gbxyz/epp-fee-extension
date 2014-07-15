@@ -513,7 +513,7 @@ Credit Limit</h3>
 Classification of Domain Names</h3>
 
 <p>Domain names may be assigned to a particular class, category, or tier,
-        each of which has a particular fee or set of fess associated with it. The
+        each of which has a particular fee or set of fees associated with it. The
         &lt;fee:class&gt; element which appears in &lt;check&gt; and &lt;info&gt;
         responses is used to indicate the classification of a domain name.
 </p>
@@ -726,7 +726,7 @@ EPP &lt;info&gt; Command</h3>
           &lt;info&gt; command.
 </p>
 <p>The command frame MAY contain an &lt;extension&gt; element which
-          contains a &lt;fee:info&gt; element with the following child
+          MAY contain a &lt;fee:info&gt; element with the following child
           elements:
 </p>
 <p></p>
@@ -792,10 +792,9 @@ C: &lt;/epp&gt;
 </li>
 </ul>
 
-<p>If the domain name requested in the command is invalid, sponsored
-          by another client, or otherwise ineligible for registration, the
-          server MAY choose to omit the &lt;fee:infData&gt; element and return
-          an error instead.
+<p>Depending on policy, the server MAY choose to omit the
+          &lt;fee:infData&gt; element and return a 2201 authorisation error
+          instead.
 </p>
 <p>Example &lt;info&gt; response:
 </p><div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
@@ -894,6 +893,8 @@ EPP Transfer Query Command</h3>
 <ul class="text">
 <li>A &lt;fee:currency&gt; element.
 </li>
+<li>A &lt;fee:period&gt; element.
+</li>
 <li>one or more &lt;fee:fee&gt; elements containing the fees
             associated with the transfer.
 </li>
@@ -926,6 +927,7 @@ S:     &lt;/resData&gt;
 S:     &lt;extension&gt;
 S:       &lt;fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"&gt;
 S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
+S:         &lt;fee:period unit="y"&gt;1&lt;/fee:period&gt;
 S:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
 S:       &lt;/fee:trnData&gt;
 S:     &lt;/extension&gt;
@@ -1267,7 +1269,7 @@ EPP &lt;transfer&gt; Command</h3>
 </li>
 </ul>
 
-<p>If no &lt;fee:transfData&gt; element is included in the response, then
+<p>If no &lt;fee:trnData&gt; element is included in the response, then
           no fee has been assessed by the server for this transaction.
 </p>
 <p>Example &lt;transfer&gt; command:
@@ -1501,7 +1503,7 @@ BEGIN
   &lt;element name="renew" type="fee:transformCommandType" /&gt;
   &lt;element name="renData" type="fee:transformResultType" /&gt;
   &lt;element name="transfer" type="fee:transformCommandType" /&gt;
-  &lt;element name="trnData" type="fee:transformResultType" /&gt;
+  &lt;element name="trnData" type="fee:transferResultType" /&gt;
   &lt;element name="update" type="fee:transformCommandType" /&gt;
   &lt;element name="updData" type="fee:transformResultType" /&gt;
   &lt;element name="delData" type="fee:deleteDataType" /&gt;
@@ -1587,11 +1589,31 @@ BEGIN
   &lt;/complexType&gt;
 
   &lt;!--
-    general transform (create, renew, update, transfer) result
+    general transform (create, renew, update) result
   --&gt;
   &lt;complexType name="transformResultType"&gt;
     &lt;sequence&gt;
       &lt;element name="currency" type="fee:currencyType" /&gt;
+      &lt;element name="fee" type="fee:feeType"
+        maxOccurs="unbounded" /&gt;
+      &lt;element name="balance" type="fee:balanceType"
+        minOccurs="0" /&gt;
+      &lt;element name="creditLimit" type="fee:creditLimitType"
+        minOccurs="0" /&gt;
+    &lt;/sequence&gt;
+  &lt;/complexType&gt;
+
+  &lt;!--
+    transfer result
+  --&gt;
+  &lt;complexType name="transferResultType"&gt;
+    &lt;sequence&gt;
+      &lt;element name="currency" type="fee:currencyType" /&gt;
+
+      &lt;!-- only used op="query" responses --&gt;
+      &lt;element name="period" type="domain:periodType"
+        minOccurs="0" /&gt;
+
       &lt;element name="fee" type="fee:feeType"
         maxOccurs="unbounded" /&gt;
       &lt;element name="balance" type="fee:balanceType"
@@ -1798,7 +1820,7 @@ Changes from 01 to 02</h3>
 </li>
 <li>Added the &lt;fee:balance&gt; element.
 </li>
-<li>added the &lt;fee:creditLimit&gt; element.
+<li>Added the &lt;fee:creditLimit&gt; element.
 </li>
 <li>Updated reference to
             <a class='info' href='#draft-ietf-eppext-launchphase'>[draft&#8209;ietf&#8209;eppext&#8209;launchphase]<span> (</span><span class='info'>Gould, J., Tan, W., and G. Brown, &ldquo;Launch Phase Mapping for the  Extensible Provisioning               Protocol (EPP),&rdquo; 2014.</span><span>)</span></a>.
@@ -1823,6 +1845,11 @@ Changes from 02 to 03</h3>
 <p></p>
 <ol class="text">
 <li>Added the "applied" attribute to to &lt;fee:fee&gt; elements.
+</li>
+<li>Simplified the wording in relation to when a server can return an
+          error for extended &lt;info&gt; commands.
+</li>
+<li>Added the &lt;fee:period&gt; element to transfer query responses.
 </li>
 </ol>
 
