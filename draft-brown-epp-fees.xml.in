@@ -177,6 +177,7 @@
         ommitted, the server MUST determine the fee(s) using a validity period of
         1 year. The &lt;fee:period&gt; element MUST be present in response
         frames.</t>
+
       </section>
 
       <section title="Fees and Credits">
@@ -194,7 +195,9 @@
         <t>A server MAY respond with multiple &lt;fee:fee&gt; and
         &lt;fee:credit&gt; elements in the same response. In such cases, the net
         fee or credit applicable to the transaction is the arithmetic sum of the
-        values of each of the &lt;fee:fee&gt; or &lt;fee:credit&gt; elements.</t>
+        values of each of the &lt;fee:fee&gt; or &lt;fee:credit&gt; elements. This
+        amount applies to the total additional validity period applied to the
+        domain (where applicable) rather than to any incremental unit.</t>
 
         <t>&lt;fee:fee&gt; and &lt;fee:credit&gt; elements MAY have an OPTIONAL
         "description" attribute which provides a human-readable description of the
