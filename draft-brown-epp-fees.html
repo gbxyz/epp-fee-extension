@@ -218,44 +218,46 @@ Credit Limit<br />
 &nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor13">2.7.</a>&nbsp;
 Classification of Domain Names<br />
 <a href="#anchor14">3.</a>&nbsp;
+Server Handling of Fee Information<br />
+<a href="#anchor15">4.</a>&nbsp;
 EPP Command Mapping<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor15">3.1.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor16">4.1.</a>&nbsp;
 EPP Query Commands<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor16">3.1.1.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor17">4.1.1.</a>&nbsp;
 EPP &lt;check&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor17">3.1.2.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor18">4.1.2.</a>&nbsp;
 EPP &lt;info&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor18">3.1.3.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor19">4.1.3.</a>&nbsp;
 EPP Transfer Query Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor19">3.2.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor20">4.2.</a>&nbsp;
 EPP Transform Commands<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor20">3.2.1.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor21">4.2.1.</a>&nbsp;
 EPP &lt;create&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor21">3.2.2.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor22">4.2.2.</a>&nbsp;
 EPP &lt;delete&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor22">3.2.3.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor23">4.2.3.</a>&nbsp;
 EPP &lt;renew&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor23">3.2.4.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor24">4.2.4.</a>&nbsp;
 EPP &lt;transfer&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor24">3.2.5.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor25">4.2.5.</a>&nbsp;
 EPP &lt;update&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor25">3.3.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor26">4.3.</a>&nbsp;
 Formal Syntax<br />
-<a href="#Security">4.</a>&nbsp;
+<a href="#Security">5.</a>&nbsp;
 Security Considerations<br />
-<a href="#IANA">5.</a>&nbsp;
+<a href="#IANA">6.</a>&nbsp;
 IANA Considerations<br />
-<a href="#anchor26">6.</a>&nbsp;
-Acknowledgements<br />
 <a href="#anchor27">7.</a>&nbsp;
+Acknowledgements<br />
+<a href="#anchor28">8.</a>&nbsp;
 Change History<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor28">7.1.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor29">8.1.</a>&nbsp;
 Changes from 00 to 01<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor29">7.2.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor30">8.2.</a>&nbsp;
 Changes from 01 to 02<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor30">7.3.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor31">8.3.</a>&nbsp;
 Changes from 02 to 03<br />
-<a href="#rfc.references1">8.</a>&nbsp;
+<a href="#rfc.references1">9.</a>&nbsp;
 Normative References<br />
 <a href="#rfc.authors">&#167;</a>&nbsp;
 Author's Address<br />
@@ -526,22 +528,51 @@ Classification of Domain Names</h3>
 <a name="anchor14"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.3"></a><h3>3.&nbsp;
+Server Handling of Fee Information</h3>
+
+<p>Depending on server policy, a client MAY be required to include the
+      extension elements described in this document for certain transform
+      commands. Servers MUST provide clear documentation to clients about the
+      circumstances in which this extension must be used.
+</p>
+<p>If a server receives a command from a client which does not include
+      the extension elements required by the server for that command, then
+      it MUST response with a 2003 "Required parameter missing" error.
+</p>
+<p>If the currency and total fee provided by the client do not agree
+      with the server's own calculation of the fee for that command, then the
+      server SHOULD respond in one of the following ways:
+</p>
+<p></p>
+<ul class="text">
+<li>Reject the command with a 2004 "Parameter value range" error; or
+</li>
+<li>Accept the command, but return a 1001 "Action Pending" response,
+        and queue the requested command for offline review. If the server
+        chooses this option, it MUST provide notification of the result of
+        the review using the EPP message queue.
+</li>
+</ul>
+
+<a name="anchor15"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.4"></a><h3>4.&nbsp;
 EPP Command Mapping</h3>
 
 <p>A detailed description of the EPP syntax and semantics can be found in
       <a class='info' href='#RFC5730'>[RFC5730]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP),&rdquo; August&nbsp;2009.</span><span>)</span></a>.
 </p>
-<a name="anchor15"></a><br /><hr />
+<a name="anchor16"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
-<a name="rfc.section.3.1"></a><h3>3.1.&nbsp;
+<a name="rfc.section.4.1"></a><h3>4.1.&nbsp;
 EPP Query Commands</h3>
 
 <p>This extension does not add any elements to the EPP &lt;poll&gt;
         command or response.
 </p>
-<a name="anchor16"></a><br /><hr />
+<a name="anchor17"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
-<a name="rfc.section.3.1.1"></a><h3>3.1.1.&nbsp;
+<a name="rfc.section.4.1.1"></a><h3>4.1.1.&nbsp;
 EPP &lt;check&gt; Command</h3>
 
 <p>This extension defines additional elements for the EPP
@@ -719,9 +750,9 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor17"></a><br /><hr />
+<a name="anchor18"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
-<a name="rfc.section.3.1.2"></a><h3>3.1.2.&nbsp;
+<a name="rfc.section.4.1.2"></a><h3>4.1.2.&nbsp;
 EPP &lt;info&gt; Command</h3>
 
 <p>This extension defines additional elements for the EPP
@@ -874,9 +905,9 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor18"></a><br /><hr />
+<a name="anchor19"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
-<a name="rfc.section.3.1.3"></a><h3>3.1.3.&nbsp;
+<a name="rfc.section.4.1.3"></a><h3>4.1.3.&nbsp;
 EPP Transfer Query Command</h3>
 
 <p>This extension does not add any elements to the EPP
@@ -940,14 +971,14 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor19"></a><br /><hr />
-<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
-<a name="rfc.section.3.2"></a><h3>3.2.&nbsp;
-EPP Transform Commands</h3>
-
 <a name="anchor20"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
-<a name="rfc.section.3.2.1"></a><h3>3.2.1.&nbsp;
+<a name="rfc.section.4.2"></a><h3>4.2.&nbsp;
+EPP Transform Commands</h3>
+
+<a name="anchor21"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.4.2.1"></a><h3>4.2.1.&nbsp;
 EPP &lt;create&gt; Command</h3>
 
 <p>This extension adds elements to both the EPP &lt;create&gt; command
@@ -966,17 +997,6 @@ EPP &lt;create&gt; Command</h3>
 </li>
 </ul>
 
-<p>Depending on server policy, the server MAY choose to accept or
-          refuse the command depending on whether the currency and fees provided
-          by the client agrees with the server's own calculation of the fees. If
-          the server chooses to refuse the command due to incorrect fees, it
-          MUST respond with a 2004 "Parameter value range" error.
-</p>
-<p>A server MAY require the currency and fees to be provided for the
-          command. If the server chooses to refuse the command due to missing
-          fees, it MUST response with a 2003 "Required parameter missing"
-          error.
-</p>
 <p>When the &lt;create&gt; command has been processed successfully,
           and the client selected the extension when it logged in, and a fee was
           assessed by the server for the transaction, the server MUST include in
@@ -1062,9 +1082,9 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor21"></a><br /><hr />
+<a name="anchor22"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
-<a name="rfc.section.3.2.2"></a><h3>3.2.2.&nbsp;
+<a name="rfc.section.4.2.2"></a><h3>4.2.2.&nbsp;
 EPP &lt;delete&gt; Command</h3>
 
 <p>This extension does not add any elements to the EPP &lt;delete&gt;
@@ -1115,9 +1135,9 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor22"></a><br /><hr />
+<a name="anchor23"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
-<a name="rfc.section.3.2.3"></a><h3>3.2.3.&nbsp;
+<a name="rfc.section.4.2.3"></a><h3>4.2.3.&nbsp;
 EPP &lt;renew&gt; Command</h3>
 
 <p>This extension adds elements to both the EPP &lt;renew&gt; command
@@ -1136,17 +1156,6 @@ EPP &lt;renew&gt; Command</h3>
 </li>
 </ul>
 
-<p>Depending on server policy, the server MAY choose to accept or
-          refuse the command depending on whether the currency and fees provided
-          by the client agrees with the server's own calculation of the fees. If
-          the server chooses to refuse the command due to incorrect fees, it
-          MUST respond with a 2004 "Parameter value range error".
-</p>
-<p>A server MAY require the currency and fees to be provided for the
-          command. If the server chooses to refuse the command due to missing
-          fees, it MUST response with a 2003 "Required parameter missing"
-          error.
-</p>
 <p>When the &lt;renew&gt; command has been processed successfully,
           and the client selected the extension when it logged in, the server
           MAY include in the &lt;extension&gt; section of the EPP response a
@@ -1220,9 +1229,9 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor23"></a><br /><hr />
+<a name="anchor24"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
-<a name="rfc.section.3.2.4"></a><h3>3.2.4.&nbsp;
+<a name="rfc.section.4.2.4"></a><h3>4.2.4.&nbsp;
 EPP &lt;transfer&gt; Command</h3>
 
 <p>This extension adds elements to both the EPP &lt;transfer&gt;
@@ -1242,17 +1251,6 @@ EPP &lt;transfer&gt; Command</h3>
 </li>
 </ul>
 
-<p>Depending on server policy, the server MAY choose to accept or
-          refuse the command depending on whether the currency and fees provided
-          by the client agrees with the server's own calculation of the fees. If
-          the server chooses to refuse the command due to incorrect fees, it
-          MUST respond with a 2004 "Parameter value range error".
-</p>
-<p>A server MAY require the currency and fees to be provided for the
-          command. If the server chooses to refuse the command due to missing
-          fees, it MUST response with a 2003 "Required parameter missing"
-          error.
-</p>
 <p>When the &lt;transfer&gt; command has been processed successfully,
           and the client selected the extension when it logged in, the server
           MAY include in the &lt;extension&gt; section of the EPP response a
@@ -1332,9 +1330,9 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor24"></a><br /><hr />
+<a name="anchor25"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
-<a name="rfc.section.3.2.5"></a><h3>3.2.5.&nbsp;
+<a name="rfc.section.4.2.5"></a><h3>4.2.5.&nbsp;
 EPP &lt;update&gt; Command</h3>
 
 <p>This extension adds elements to both the EPP &lt;update&gt; command
@@ -1353,17 +1351,6 @@ EPP &lt;update&gt; Command</h3>
 </li>
 </ul>
 
-<p>Depending on server policy, the server MAY choose to accept or
-          refuse the command depending on whether the currency and fees provided
-          by the client agrees with the server's own calculation of the fees. If
-          the server chooses to refuse the command due to incorrect fees, it
-          MUST respond with a 2004 "Parameter value range error".
-</p>
-<p>A server MAY require the currency and fees to be provided for the
-          command. If the server chooses to refuse the command due to missing
-          fees, it MUST response with a 2003 "Required parameter missing"
-          error.
-</p>
 <p>When the &lt;update&gt; command has been processed successfully,
           and the client selected the extension when it logged in, the server
           MAY include in the &lt;extension&gt; section of the EPP response a
@@ -1430,9 +1417,9 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor25"></a><br /><hr />
+<a name="anchor26"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
-<a name="rfc.section.3.3"></a><h3>3.3.&nbsp;
+<a name="rfc.section.4.3"></a><h3>4.3.&nbsp;
 Formal Syntax</h3>
 
 <p>An EPP object mapping is specified in XML Schema notation. The formal
@@ -1718,7 +1705,7 @@ BEGIN
 END</pre></div>
 <a name="Security"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
-<a name="rfc.section.4"></a><h3>4.&nbsp;
+<a name="rfc.section.5"></a><h3>5.&nbsp;
 Security Considerations</h3>
 
 <p>The mapping extensions described in this document do not provide any
@@ -1729,7 +1716,7 @@ Security Considerations</h3>
 </p>
 <a name="IANA"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
-<a name="rfc.section.5"></a><h3>5.&nbsp;
+<a name="rfc.section.6"></a><h3>6.&nbsp;
 IANA Considerations</h3>
 
 <p>This document uses URNs to describe XML namespaces and XML schemas
@@ -1755,9 +1742,9 @@ IANA Considerations</h3>
 </p>
 <p>XML: See the "Formal Syntax" section of this document.
 </p>
-<a name="anchor26"></a><br /><hr />
+<a name="anchor27"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
-<a name="rfc.section.6"></a><h3>6.&nbsp;
+<a name="rfc.section.7"></a><h3>7.&nbsp;
 Acknowledgements</h3>
 
 <p>The author wishes to thank the following persons for their feedback and
@@ -1783,14 +1770,14 @@ Acknowledgements</h3>
 </li>
 </ul>
 
-<a name="anchor27"></a><br /><hr />
-<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
-<a name="rfc.section.7"></a><h3>7.&nbsp;
-Change History</h3>
-
 <a name="anchor28"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
-<a name="rfc.section.7.1"></a><h3>7.1.&nbsp;
+<a name="rfc.section.8"></a><h3>8.&nbsp;
+Change History</h3>
+
+<a name="anchor29"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.8.1"></a><h3>8.1.&nbsp;
 Changes from 00 to 01</h3>
 
 <p></p>
@@ -1804,9 +1791,9 @@ Changes from 00 to 01</h3>
 </li>
 </ol>
 
-<a name="anchor29"></a><br /><hr />
+<a name="anchor30"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
-<a name="rfc.section.7.2"></a><h3>7.2.&nbsp;
+<a name="rfc.section.8.2"></a><h3>8.2.&nbsp;
 Changes from 01 to 02</h3>
 
 <p></p>
@@ -1839,9 +1826,9 @@ Changes from 01 to 02</h3>
 </li>
 </ol>
 
-<a name="anchor30"></a><br /><hr />
+<a name="anchor31"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
-<a name="rfc.section.7.3"></a><h3>7.3.&nbsp;
+<a name="rfc.section.8.3"></a><h3>8.3.&nbsp;
 Changes from 02 to 03</h3>
 
 <p></p>
@@ -1857,7 +1844,7 @@ Changes from 02 to 03</h3>
 
 <a name="rfc.references1"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
-<h3>8.&nbsp;Normative References</h3>
+<h3>9.&nbsp;Normative References</h3>
 <table width="99%" border="0">
 <tr><td class="author-text" valign="top"><a name="ISO4217">[ISO4217]</a></td>
 <td class="author-text">International Organization for

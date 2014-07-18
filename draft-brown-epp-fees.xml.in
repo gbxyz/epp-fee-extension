@@ -295,6 +295,31 @@
       </section>
     </section>
 
+    <section title="Server Handling of Fee Information">
+
+      <t>Depending on server policy, a client MAY be required to include the
+      extension elements described in this document for certain transform
+      commands. Servers MUST provide clear documentation to clients about the
+      circumstances in which this extension must be used.</t>
+
+      <t>If a server receives a command from a client which does not include
+      the extension elements required by the server for that command, then
+      it MUST response with a 2003 "Required parameter missing" error.</t>
+
+      <t>If the currency and total fee provided by the client do not agree
+      with the server's own calculation of the fee for that command, then the
+      server SHOULD respond in one of the following ways:</t>
+
+      <t><list style="symbols">
+        <t>Reject the command with a 2004 "Parameter value range" error; or</t>
+        <t>Accept the command, but return a 1001 "Action Pending" response,
+        and queue the requested command for offline review. If the server
+        chooses this option, it MUST provide notification of the result of
+        the review using the EPP message queue.</t>
+      </list></t>
+
+    </section>
+
     <section title="EPP Command Mapping">
 
       <t>A detailed description of the EPP syntax and semantics can be found in
@@ -496,17 +521,6 @@
             <t>One or more &lt;fee:fee&gt; elements.</t>
           </list></t>
 
-          <t>Depending on server policy, the server MAY choose to accept or
-          refuse the command depending on whether the currency and fees provided
-          by the client agrees with the server's own calculation of the fees. If
-          the server chooses to refuse the command due to incorrect fees, it
-          MUST respond with a 2004 "Parameter value range" error.</t>
-
-          <t>A server MAY require the currency and fees to be provided for the
-          command. If the server chooses to refuse the command due to missing
-          fees, it MUST response with a 2003 "Required parameter missing"
-          error.</t>
-
           <t>When the &lt;create&gt; command has been processed successfully,
           and the client selected the extension when it logged in, and a fee was
           assessed by the server for the transaction, the server MUST include in
@@ -580,17 +594,6 @@
             <t>One or more &lt;fee:fee&gt; elements.</t>
           </list></t>
 
-          <t>Depending on server policy, the server MAY choose to accept or
-          refuse the command depending on whether the currency and fees provided
-          by the client agrees with the server's own calculation of the fees. If
-          the server chooses to refuse the command due to incorrect fees, it
-          MUST respond with a 2004 "Parameter value range error".</t>
-
-          <t>A server MAY require the currency and fees to be provided for the
-          command. If the server chooses to refuse the command due to missing
-          fees, it MUST response with a 2003 "Required parameter missing"
-          error.</t>
-
           <t>When the &lt;renew&gt; command has been processed successfully,
           and the client selected the extension when it logged in, the server
           MAY include in the &lt;extension&gt; section of the EPP response a
@@ -633,17 +636,6 @@
             <t>One or more &lt;fee:fee&gt; elements.</t>
           </list></t>
 
-          <t>Depending on server policy, the server MAY choose to accept or
-          refuse the command depending on whether the currency and fees provided
-          by the client agrees with the server's own calculation of the fees. If
-          the server chooses to refuse the command due to incorrect fees, it
-          MUST respond with a 2004 "Parameter value range error".</t>
-
-          <t>A server MAY require the currency and fees to be provided for the
-          command. If the server chooses to refuse the command due to missing
-          fees, it MUST response with a 2003 "Required parameter missing"
-          error.</t>
-
           <t>When the &lt;transfer&gt; command has been processed successfully,
           and the client selected the extension when it logged in, the server
           MAY include in the &lt;extension&gt; section of the EPP response a
@@ -684,17 +676,6 @@
 
             <t>One or more &lt;fee:fee&gt; elements.</t>
           </list></t>
-
-          <t>Depending on server policy, the server MAY choose to accept or
-          refuse the command depending on whether the currency and fees provided
-          by the client agrees with the server's own calculation of the fees. If
-          the server chooses to refuse the command due to incorrect fees, it
-          MUST respond with a 2004 "Parameter value range error".</t>
-
-          <t>A server MAY require the currency and fees to be provided for the
-          command. If the server chooses to refuse the command due to missing
-          fees, it MUST response with a 2003 "Required parameter missing"
-          error.</t>
 
           <t>When the &lt;update&gt; command has been processed successfully,
           and the client selected the extension when it logged in, the server
@@ -848,6 +829,9 @@ END</artwork></figure>
           <t>Simplified the wording in relation to when a server can return an
           error for extended &lt;info&gt; commands.</t>
           <t>Added the &lt;fee:period&gt; element to transfer query responses.</t>
+          <t>Removed wording about how servers behave when receiving incorrect
+          fee information from transform commands, and put it into a single
+          section at the top of the document.</t>
         </list></t>
       </section>
     </section>
