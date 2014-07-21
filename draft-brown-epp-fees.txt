@@ -374,7 +374,7 @@ Internet-Draft       Registry Fee Extension for EPP            June 2014
 
    If the currency and total fee provided by the client do not agree
    with the server's own calculation of the fee for that command, then
-   the server SHOULD respond in one of the following ways:
+   the server MUST respond in one of the following ways:
 
    o  Reject the command with a 2004 "Parameter value range" error; or
 
@@ -1814,6 +1814,10 @@ Internet-Draft       Registry Fee Extension for EPP            June 2014
 
    3.  Added the <fee:period> element to transfer query responses.
 
+   4.  Removed wording about how servers behave when receiving incorrect
+       fee information from transform commands, and put it into a single
+       section at the top of the document.
+
 
 9.  Normative References
 
@@ -1837,16 +1841,17 @@ Internet-Draft       Registry Fee Extension for EPP            June 2014
    [RFC5731]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)
               Domain Name Mapping", STD 69, RFC 5731, August 2009.
 
-   [draft-ietf-eppext-launchphase]
-              Gould, J., Tan, W., and G. Brown, "Launch Phase Mapping
-              for the  Extensible Provisioning Protocol (EPP)", 2014.
-
 
 
 
 Brown                   Expires December 3, 2014               [Page 33]
 
 Internet-Draft       Registry Fee Extension for EPP            June 2014
+
+
+   [draft-ietf-eppext-launchphase]
+              Gould, J., Tan, W., and G. Brown, "Launch Phase Mapping
+              for the  Extensible Provisioning Protocol (EPP)", 2014.
 
 
 Author's Address
@@ -1860,11 +1865,6 @@ Author's Address
    Phone: +44 20 33 88 0600
    Email: gavin.brown@centralnic.com
    URI:   https://www.centralnic.com
-
-
-
-
-
 
 
 

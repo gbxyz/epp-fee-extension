@@ -308,7 +308,7 @@
 
       <t>If the currency and total fee provided by the client do not agree
       with the server's own calculation of the fee for that command, then the
-      server SHOULD respond in one of the following ways:</t>
+      server MUST respond in one of the following ways:</t>
 
       <t><list style="symbols">
         <t>Reject the command with a 2004 "Parameter value range" error; or</t>

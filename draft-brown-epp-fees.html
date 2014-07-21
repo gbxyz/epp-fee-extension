@@ -541,7 +541,7 @@ Server Handling of Fee Information</h3>
 </p>
 <p>If the currency and total fee provided by the client do not agree
       with the server's own calculation of the fee for that command, then the
-      server SHOULD respond in one of the following ways:
+      server MUST respond in one of the following ways:
 </p>
 <p></p>
 <ul class="text">
@@ -1839,6 +1839,10 @@ Changes from 02 to 03</h3>
           error for extended &lt;info&gt; commands.
 </li>
 <li>Added the &lt;fee:period&gt; element to transfer query responses.
+</li>
+<li>Removed wording about how servers behave when receiving incorrect
+          fee information from transform commands, and put it into a single
+          section at the top of the document.
 </li>
 </ol>
 
