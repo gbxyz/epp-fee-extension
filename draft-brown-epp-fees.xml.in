@@ -357,12 +357,12 @@
    href="examples/check-command.txt" /></artwork></figure>
 
           <t>When the server receives a &lt;check&gt; command that includes the
-          extension elements described above, its response MUST contain an
-          &lt;extension&gt; element, which MUST contain a child
-          &lt;fee:chkData&gt; element. The &lt;fee:chkData&gt; element MUST
-          contain a &lt;fee:cd&gt; element for each &lt;fee:check&gt; element
-          contained in the command. The &lt;fee:cd&gt; MUST contain the
-          following child elements:</t>
+          extension elements described above, its response MUST (subject to the
+          exceptions described below) contain an &lt;extension&gt; element,
+          which MUST contain a child &lt;fee:chkData&gt; element. The
+          &lt;fee:chkData&gt; element MUST contain a &lt;fee:cd&gt; element for
+          each &lt;fee:check&gt; element contained in the command. The
+          &lt;fee:cd&gt; MUST contain the following child elements:</t>
 
           <t><list style="symbols">
             <t>A &lt;fee:name&gt; element that contains a domain name which
@@ -390,6 +390,10 @@
 
             <t>An OPTIONAL &lt;fee:class&gt; element.</t>
           </list></t>
+
+          <t>Depending on policy, the server MAY choose to omit the
+          &lt;fee:chkData&gt; element and return a 2201 authorisation error
+          instead.</t>
 
           <t>Example &lt;check&gt; response:</t>
 
@@ -789,7 +793,7 @@ END</artwork></figure>
         <t>Seth Goldman of Google</t>
         <t>Klaus Malorny of Knipp</t>
         <t>Jody Kolker and Roger Carney of Go Daddy</t>
-        <t>Michael Holloway</t>
+        <t>Michael Holloway of Com Laude</t>
       </list></t>
     </section>
 
@@ -832,6 +836,8 @@ END</artwork></figure>
           <t>Removed wording about how servers behave when receiving incorrect
           fee information from transform commands, and put it into a single
           section at the top of the document.</t>
+          <t>Allow servers to reject &lt;check&gt; commands if the client is
+          not authorised.</t>
         </list></t>
       </section>
     </section>
