@@ -493,10 +493,10 @@ Internet-Draft       Registry Fee Extension for EPP            June 2014
    C: </epp>
 
    When the server receives a <check> command that includes the
-   extension elements described above, its response MUST contain an
-   <extension> element, which MUST contain a child <fee:chkData>
-   element.  The <fee:chkData> element MUST contain a <fee:cd> element
-   for each <fee:check> element contained in the command.  The <fee:cd>
+   extension elements described above, its response MUST (subject to the
+   exceptions described below) contain an <extension> element, which
+   MUST contain a child <fee:chkData> element.  The <fee:chkData>
+   element MUST contain a <fee:cd> element for each <fee:check> element
 
 
 
@@ -505,7 +505,8 @@ Brown                   Expires December 3, 2014                [Page 9]
 Internet-Draft       Registry Fee Extension for EPP            June 2014
 
 
-   MUST contain the following child elements:
+   contained in the command.  The <fee:cd> MUST contain the following
+   child elements:
 
    o  A <fee:name> element that contains a domain name which matches the
       name in the corresponding <fee:check> element.
@@ -530,6 +531,9 @@ Internet-Draft       Registry Fee Extension for EPP            June 2014
 
    o  An OPTIONAL <fee:class> element.
 
+   Depending on policy, the server MAY choose to omit the <fee:chkData>
+   element and return a 2201 authorisation error instead.
+
    Example <check> response:
 
    S: <?xml version="1.0" encoding="utf-8" standalone="no"?>
@@ -549,10 +553,6 @@ Internet-Draft       Registry Fee Extension for EPP            June 2014
    S:           <domain:reason>In use</domain:reason>
    S:         </domain:cd>
    S:         <domain:cd>
-   S:           <domain:name avail="0">example.org</domain:name>
-   S:           <domain:reason>In use</domain:reason>
-   S:         </domain:cd>
-   S:       </domain:chkData>
 
 
 
@@ -561,6 +561,10 @@ Brown                   Expires December 3, 2014               [Page 10]
 Internet-Draft       Registry Fee Extension for EPP            June 2014
 
 
+   S:           <domain:name avail="0">example.org</domain:name>
+   S:           <domain:reason>In use</domain:reason>
+   S:         </domain:cd>
+   S:       </domain:chkData>
    S:     </resData>
    S:     <extension>
    S:       <fee:chkData
@@ -605,10 +609,6 @@ Internet-Draft       Registry Fee Extension for EPP            June 2014
    S:     <trID>
    S:       <clTRID>ABC-12345</clTRID>
    S:       <svTRID>54322-XYZ</svTRID>
-   S:     </trID>
-   S:   </response>
-   S: </epp>
-
 
 
 
@@ -616,6 +616,10 @@ Brown                   Expires December 3, 2014               [Page 11]
 
 Internet-Draft       Registry Fee Extension for EPP            June 2014
 
+
+   S:     </trID>
+   S:   </response>
+   S: </epp>
 
 4.1.2.  EPP <info> Command
 
@@ -659,10 +663,6 @@ Internet-Draft       Registry Fee Extension for EPP            June 2014
    MUST contain a child <fee:infData> element.  The <fee:infData> MUST
    contain the following child elements:
 
-   o  A <fee:currency> element that contains same currency code that
-      appeared in the <fee:currency> element element of the command
-      frame.  If no <fee:currency> element appeared in the command
-      frame, then the client's default billing currency should be used.
 
 
 
@@ -672,6 +672,11 @@ Brown                   Expires December 3, 2014               [Page 12]
 
 Internet-Draft       Registry Fee Extension for EPP            June 2014
 
+
+   o  A <fee:currency> element that contains same currency code that
+      appeared in the <fee:currency> element element of the command
+      frame.  If no <fee:currency> element appeared in the command
+      frame, then the client's default billing currency should be used.
 
    o  A <fee:command> element that contains same command that appeared
       in the <fee:command> element of the command frame.  This element
@@ -692,11 +697,6 @@ Internet-Draft       Registry Fee Extension for EPP            June 2014
    element and return a 2201 authorisation error instead.
 
    Example <info> response:
-
-
-
-
-
 
 
 
@@ -1756,7 +1756,7 @@ Internet-Draft       Registry Fee Extension for EPP            June 2014
 
    o  Jody Kolker and Roger Carney of Go Daddy
 
-   o  Michael Holloway
+   o  Michael Holloway of Com Laude
 
 
 8.  Change History
@@ -1818,6 +1818,9 @@ Internet-Draft       Registry Fee Extension for EPP            June 2014
        fee information from transform commands, and put it into a single
        section at the top of the document.
 
+   5.  Allow servers to reject <check> commands if the client is not
+       authorised.
+
 
 9.  Normative References
 
@@ -1838,9 +1841,6 @@ Internet-Draft       Registry Fee Extension for EPP            June 2014
    [RFC5730]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)",
               STD 69, RFC 5730, August 2009.
 
-   [RFC5731]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)
-              Domain Name Mapping", STD 69, RFC 5731, August 2009.
-
 
 
 
@@ -1848,6 +1848,9 @@ Brown                   Expires December 3, 2014               [Page 33]
 
 Internet-Draft       Registry Fee Extension for EPP            June 2014
 
+
+   [RFC5731]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)
+              Domain Name Mapping", STD 69, RFC 5731, August 2009.
 
    [draft-ietf-eppext-launchphase]
               Gould, J., Tan, W., and G. Brown, "Launch Phase Mapping
@@ -1865,9 +1868,6 @@ Author's Address
    Phone: +44 20 33 88 0600
    Email: gavin.brown@centralnic.com
    URI:   https://www.centralnic.com
-
-
-
 
 
 

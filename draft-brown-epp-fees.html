@@ -643,12 +643,12 @@ C:   &lt;/command&gt;
 C: &lt;/epp&gt;
 </pre></div>
 <p>When the server receives a &lt;check&gt; command that includes the
-          extension elements described above, its response MUST contain an
-          &lt;extension&gt; element, which MUST contain a child
-          &lt;fee:chkData&gt; element. The &lt;fee:chkData&gt; element MUST
-          contain a &lt;fee:cd&gt; element for each &lt;fee:check&gt; element
-          contained in the command. The &lt;fee:cd&gt; MUST contain the
-          following child elements:
+          extension elements described above, its response MUST (subject to the
+          exceptions described below) contain an &lt;extension&gt; element,
+          which MUST contain a child &lt;fee:chkData&gt; element. The
+          &lt;fee:chkData&gt; element MUST contain a &lt;fee:cd&gt; element for
+          each &lt;fee:check&gt; element contained in the command. The
+          &lt;fee:cd&gt; MUST contain the following child elements:
 </p>
 <p></p>
 <ul class="text">
@@ -679,6 +679,10 @@ C: &lt;/epp&gt;
 </li>
 </ul>
 
+<p>Depending on policy, the server MAY choose to omit the
+          &lt;fee:chkData&gt; element and return a 2201 authorisation error
+          instead.
+</p>
 <p>Example &lt;check&gt; response:
 </p><div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
 S: &lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
@@ -1766,7 +1770,7 @@ Acknowledgements</h3>
 </li>
 <li>Jody Kolker and Roger Carney of Go Daddy
 </li>
-<li>Michael Holloway
+<li>Michael Holloway of Com Laude
 </li>
 </ul>
 
@@ -1843,6 +1847,9 @@ Changes from 02 to 03</h3>
 <li>Removed wording about how servers behave when receiving incorrect
           fee information from transform commands, and put it into a single
           section at the top of the document.
+</li>
+<li>Allow servers to reject &lt;check&gt; commands if the client is
+          not authorised.
 </li>
 </ol>
 
