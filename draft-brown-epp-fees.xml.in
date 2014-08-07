@@ -358,7 +358,7 @@
 
           <t>When the server receives a &lt;check&gt; command that includes the
           extension elements described above, its response MUST (subject to the
-          exceptions described below) contain an &lt;extension&gt; element,
+          exception described below) contain an &lt;extension&gt; element,
           which MUST contain a child &lt;fee:chkData&gt; element. The
           &lt;fee:chkData&gt; element MUST contain a &lt;fee:cd&gt; element for
           each &lt;fee:check&gt; element contained in the command. The
@@ -426,7 +426,7 @@
 
           <t>When the server receives an &lt;info&gt; command that includes the
           extension element described above, its response MUST (subject to the
-          exceptions described below) contain an &lt;extension&gt; element,
+          exception described below) contain an &lt;extension&gt; element,
           which MUST contain a child &lt;fee:infData&gt; element. The
           &lt;fee:infData&gt; MUST contain the following child elements:</t>
 

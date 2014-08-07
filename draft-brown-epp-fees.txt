@@ -494,9 +494,9 @@ Internet-Draft       Registry Fee Extension for EPP            June 2014
 
    When the server receives a <check> command that includes the
    extension elements described above, its response MUST (subject to the
-   exceptions described below) contain an <extension> element, which
-   MUST contain a child <fee:chkData> element.  The <fee:chkData>
-   element MUST contain a <fee:cd> element for each <fee:check> element
+   exception described below) contain an <extension> element, which MUST
+   contain a child <fee:chkData> element.  The <fee:chkData> element
+   MUST contain a <fee:cd> element for each <fee:check> element
 
 
 
@@ -659,8 +659,8 @@ Internet-Draft       Registry Fee Extension for EPP            June 2014
 
    When the server receives an <info> command that includes the
    extension element described above, its response MUST (subject to the
-   exceptions described below) contain an <extension> element, which
-   MUST contain a child <fee:infData> element.  The <fee:infData> MUST
+   exception described below) contain an <extension> element, which MUST
+   contain a child <fee:infData> element.  The <fee:infData> MUST
    contain the following child elements:
 
 
