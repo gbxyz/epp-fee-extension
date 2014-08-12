@@ -146,7 +146,7 @@
         described in <xref target="draft-ietf-eppext-launchphase" />.</t>
       </section>
 
-      <section title="Currency Codes">
+      <section title="Currency Codes" anchor="currency-codes">
         <t>The &lt;fee:currency&gt; element is used to indicate which currency
         fees are charged in. This value of this element MUST be a three-character
         currency code from <xref target="ISO4217"/>.</t>
@@ -155,34 +155,33 @@
         if the server uses a non-currency based system for assessing fees, such as
         a system of credits.</t>
 
-        <t>The use of &lt;fee:currency&gt; elements in command frames is OPTIONAL:
-        if a &lt;fee:currency&gt; element is not present in a command frame, the
+        <t>The use of &lt;fee:currency&gt; elements in commands is OPTIONAL:
+        if a &lt;fee:currency&gt; element is not present in a command, the
         server MUST determine the currency based on the client's account settings
         which MUST be agreed by the client and server via an out-of-band
         channel. However, &lt;fee:currency&gt; element MUST be present in
-        response frames.</t>
+        responses.</t>
 
         <t>Servers SHOULD NOT perform a currency conversion if a client uses an
-        incorrect currency code. Servers SHOULD return an error instead.</t>
+        incorrect currency code. Servers SHOULD return a 2003 error instead.</t>
       </section>
 
-      <section title="Validity Periods">
+      <section title="Validity Periods" anchor="validity-periods">
         <t>The &lt;fee:period&gt; element is used to indicate the units to be
         added to the registration period of domain names by the &lt;create&gt;,
         &lt;renew&gt; and &lt;transfer&gt; commands. This element is derived from
         the &lt;domain:period&gt; element described in
         <xref target="RFC5731"/>.</t>
 
-        <t>The &lt;fee:period&gt; element is OPTIONAL in command frames: if
+        <t>The &lt;fee:period&gt; element is OPTIONAL in commands: if
         ommitted, the server MUST determine the fee(s) using a validity period of
-        1 year. The &lt;fee:period&gt; element MUST be present in response
-        frames.</t>
+        1 year. The &lt;fee:period&gt; element MUST be present in responses.</t>
 
       </section>
 
-      <section title="Fees and Credits">
+      <section title="Fees and Credits" anchor="fees-and-credits">
         <t>Servers which implement this extension will include elements in
-        response frames which provide information about the fees and/or credits
+        responses which provide information about the fees and/or credits
         associated with a given billable transaction.</t>
 
         <t>The &lt;fee:fee&gt; and &lt;fee:credit&gt; elements are used to provide
@@ -245,14 +244,14 @@
         </section>
       </section>
 
-      <section title="Account Balance">
+      <section title="Account Balance" anchor="account-balance">
         <t>The &lt;fee:balance&gt; element is an OPTIONAL element which MAY
         be included in server responses to transform commands. If present,
         it can be used by the client to determine the remaining credit at
         the server.</t>
 
-        <t>Whether or not the &lt;fee:balance&gt; is included in response
-        frames is a matter of server policy. However, if a server chooses
+        <t>Whether or not the &lt;fee:balance&gt; is included in responses is a
+        matter of server policy. However, if a server chooses
         to offer support for this element, it MUST be included in responses
         to all domain "transform" commands (ie &lt;create&gt;, &lt;renew&gt;,
         &lt;update&gt;, &lt;delete&gt;, &lt;transfer op="request"&gt;).</t>
@@ -267,8 +266,8 @@
         have been applied.</t>
       </section>
 
-      <section title="Credit Limit">
-        <t>As described above, if a server returns a response frame containing a
+      <section title="Credit Limit" anchor="credit-limit">
+        <t>As described above, if a server returns a response containing a
         &lt;fee:balance&gt; with a negative value, then the server has extended a
         line of credit to the client. A server MAY also include a
         &lt;fee:creditLimit&gt; element in responses which indicates the maximum
@@ -276,14 +275,14 @@
         the absolute value of the &lt;fee:balance&gt; is equal to or exceeds the
         value of the &lt;fee:creditLimit&gt; element.</t>
 
-        <t>Whether or not the &lt;fee:creditLimit&gt; is included in response
-        frames is a matter of server policy. However, if a server chooses
+        <t>Whether or not the &lt;fee:creditLimit&gt; is included in responses
+        is a matter of server policy. However, if a server chooses
         to offer support for this element, it MUST be included in responses
         to all domain "transform" commands (ie &lt;create&gt;, &lt;renew&gt;,
         &lt;update&gt;, &lt;delete&gt;, &lt;transfer op="request"&gt;).</t>
       </section>
 
-      <section title="Classification of Domain Names">
+      <section title="Classification of Domain Names" anchor="classification">
         <t>Domain names may be assigned to a particular class, category, or tier,
         each of which has a particular fee or set of fees associated with it. The
         &lt;fee:class&gt; element which appears in &lt;check&gt; and &lt;info&gt;
@@ -333,7 +332,7 @@
           <t>This extension defines additional elements for the EPP
           &lt;check&gt; command.</t>
 
-          <t>The command frame MAY contain an &lt;extension&gt; element which
+          <t>The command MAY contain an &lt;extension&gt; element which
           MAY contain a &lt;fee:check&gt; element. The &lt;fee:check&gt; element
           MUST contain at least one &lt;fee:domain&gt; element, with the
           following child elements:</t>
@@ -386,14 +385,18 @@
             &lt;fee:check&gt; element, then this element MUST have a value of
             1 year.</t>
 
-            <t>One or more &lt;fee:fee&gt; elements.</t>
+            <t>Zero or more &lt;fee:fee&gt; elements.</t>
 
             <t>An OPTIONAL &lt;fee:class&gt; element.</t>
           </list></t>
 
-          <t>Depending on policy, the server MAY choose to omit the
-          &lt;fee:chkData&gt; element and return a 2201 authorisation error
-          instead.</t>
+          <t>If no &lt;fee:fee&gt; elements are present in a &lt;fee:cd&gt;
+          element, this indicates that the requested command is not permitted by
+          server policy.</t>
+
+          <t>The presence of a &lt;fee:fee&gt; with a value of "0.00" (ie a zero
+          amount) in a &lt;fee:cd&gt; element indicates that no fee will be
+          assessed by the server for this command.</t>
 
           <t>Example &lt;check&gt; response:</t>
 
@@ -406,7 +409,7 @@
           <t>This extension defines additional elements for the EPP
           &lt;info&gt; command.</t>
 
-          <t>The command frame MAY contain an &lt;extension&gt; element which
+          <t>The command MAY contain an &lt;extension&gt; element which
           MAY contain a &lt;fee:info&gt; element with the following child
           elements:</t>
 
@@ -433,20 +436,20 @@
           <t><list style="symbols">
             <t>A &lt;fee:currency&gt; element that contains same currency code
             that appeared in the &lt;fee:currency&gt; element element of the
-            command frame. If no &lt;fee:currency&gt; element appeared in the
-            command frame, then the client's default billing currency should be
+            command. If no &lt;fee:currency&gt; element appeared in the
+            command, then the client's default billing currency should be
             used.</t>
 
             <t>A &lt;fee:command&gt; element that contains same command
-            that appeared in the &lt;fee:command&gt; element of the command
-            frame. This element MAY have the OPTIONAL "phase" and "subphase"
+            that appeared in the &lt;fee:command&gt; element of the command.
+            This element MAY have the OPTIONAL "phase" and "subphase"
             elements, which MUST match the same attributes in the
-            &lt;fee:command&gt; element of the command frame.</t>
+            &lt;fee:command&gt; element of the command.</t>
 
             <t>A &lt;fee:period&gt; element that contains same unit
             that appeared in the corresponding &lt;fee:period&gt; element of the
-            command frame. If no &lt;fee:period&gt; appeared in the command
-            frame, then this element MUST have a value of 1 year.</t>
+            command. If no &lt;fee:period&gt; appeared in the command, then this
+            element MUST have a value of 1 year.</t>
 
             <t>One or more &lt;fee:fee&gt; elements.</t>
 
@@ -836,8 +839,8 @@ END</artwork></figure>
           <t>Removed wording about how servers behave when receiving incorrect
           fee information from transform commands, and put it into a single
           section at the top of the document.</t>
-          <t>Allow servers to reject &lt;check&gt; commands if the client is
-          not authorised.</t>
+          <t>Allow servers to omit &lt;fee:fee&gt; elements from &lt;fee:cd&gt;
+          elements if the command specified by the client is forbidden.</t>
         </list></t>
       </section>
     </section>

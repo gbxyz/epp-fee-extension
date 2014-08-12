@@ -202,21 +202,21 @@ Internet-Draft       Registry Fee Extension for EPP            June 2014
    if the server uses a non-currency based system for assessing fees,
    such as a system of credits.
 
-   The use of <fee:currency> elements in command frames is OPTIONAL: if
-   a <fee:currency> element is not present in a command frame, the
-   server MUST determine the currency based on the client's account
-   settings which MUST be agreed by the client and server via an out-of-
-   band channel.  However, <fee:currency> element MUST be present in
-   response frames.
+   The use of <fee:currency> elements in commands is OPTIONAL: if a
+   <fee:currency> element is not present in a command, the server MUST
+   determine the currency based on the client's account settings which
+   MUST be agreed by the client and server via an out-of-band channel.
+   However, <fee:currency> element MUST be present in responses.
 
    Servers SHOULD NOT perform a currency conversion if a client uses an
-   incorrect currency code.  Servers SHOULD return an error instead.
+   incorrect currency code.  Servers SHOULD return a 2003 error instead.
 
 2.3.  Validity Periods
 
    The <fee:period> element is used to indicate the units to be added to
    the registration period of domain names by the <create>, <renew> and
    <transfer> commands.  This element is derived from the <domain:
+   period> element described in [RFC5731].
 
 
 
@@ -225,17 +225,15 @@ Brown                   Expires December 3, 2014                [Page 4]
 Internet-Draft       Registry Fee Extension for EPP            June 2014
 
 
-   period> element described in [RFC5731].
-
-   The <fee:period> element is OPTIONAL in command frames: if ommitted,
-   the server MUST determine the fee(s) using a validity period of 1
-   year.  The <fee:period> element MUST be present in response frames.
+   The <fee:period> element is OPTIONAL in commands: if ommitted, the
+   server MUST determine the fee(s) using a validity period of 1 year.
+   The <fee:period> element MUST be present in responses.
 
 2.4.  Fees and Credits
 
    Servers which implement this extension will include elements in
-   response frames which provide information about the fees and/or
-   credits associated with a given billable transaction.
+   responses which provide information about the fees and/or credits
+   associated with a given billable transaction.
 
    The <fee:fee> and <fee:credit> elements are used to provide this
    information.  The presence of a <fee:fee> element in a response
@@ -273,6 +271,8 @@ Internet-Draft       Registry Fee Extension for EPP            June 2014
    name is deleted, the client receives a refund.
 
    The "grace-period" attribute MAY be used to indicate the relevant
+   grace period for a fee.  If a server implements the Registry Grace
+   Period extension, it MUST specify the grace period for all relevant
 
 
 
@@ -281,8 +281,6 @@ Brown                   Expires December 3, 2014                [Page 5]
 Internet-Draft       Registry Fee Extension for EPP            June 2014
 
 
-   grace period for a fee.  If a server implements the Registry Grace
-   Period extension, it MUST specify the grace period for all relevant
    transactions.  If no "grace-period" attribute value is provided, then
    no grace period is applicable.
 
@@ -309,11 +307,11 @@ Internet-Draft       Registry Fee Extension for EPP            June 2014
    can be used by the client to determine the remaining credit at the
    server.
 
-   Whether or not the <fee:balance> is included in response frames is a
-   matter of server policy.  However, if a server chooses to offer
-   support for this element, it MUST be included in responses to all
-   domain "transform" commands (ie <create>, <renew>, <update>,
-   <delete>, <transfer op="request">).
+   Whether or not the <fee:balance> is included in responses is a matter
+   of server policy.  However, if a server chooses to offer support for
+   this element, it MUST be included in responses to all domain
+   "transform" commands (ie <create>, <renew>, <update>, <delete>,
+   <transfer op="request">).
 
    The value of the <fee:balance> MAY be negative.  A negative balance
    indicates that the server has extended a line of credit to the client
@@ -326,9 +324,11 @@ Internet-Draft       Registry Fee Extension for EPP            June 2014
 
 2.6.  Credit Limit
 
-   As described above, if a server returns a response frame containing a
-   <fee:balance> with a negative value, then the server has extended a
-   line of credit to the client.  A server MAY also include a <fee:
+   As described above, if a server returns a response containing a <fee:
+   balance> with a negative value, then the server has extended a line
+   of credit to the client.  A server MAY also include a <fee:
+   creditLimit> element in responses which indicates the maximum credit
+   available to a client.  A server MAY reject certain transactions if
 
 
 
@@ -337,13 +337,11 @@ Brown                   Expires December 3, 2014                [Page 6]
 Internet-Draft       Registry Fee Extension for EPP            June 2014
 
 
-   creditLimit> element in responses which indicates the maximum credit
-   available to a client.  A server MAY reject certain transactions if
    the absolute value of the <fee:balance> is equal to or exceeds the
    value of the <fee:creditLimit> element.
 
-   Whether or not the <fee:creditLimit> is included in response frames
-   is a matter of server policy.  However, if a server chooses to offer
+   Whether or not the <fee:creditLimit> is included in responses is a
+   matter of server policy.  However, if a server chooses to offer
    support for this element, it MUST be included in responses to all
    domain "transform" commands (ie <create>, <renew>, <update>,
    <delete>, <transfer op="request">).
@@ -388,6 +386,8 @@ Internet-Draft       Registry Fee Extension for EPP            June 2014
 
 
 
+
+
 Brown                   Expires December 3, 2014                [Page 7]
 
 Internet-Draft       Registry Fee Extension for EPP            June 2014
@@ -408,9 +408,9 @@ Internet-Draft       Registry Fee Extension for EPP            June 2014
    This extension defines additional elements for the EPP <check>
    command.
 
-   The command frame MAY contain an <extension> element which MAY
-   contain a <fee:check> element.  The <fee:check> element MUST contain
-   at least one <fee:domain> element, with the following child elements:
+   The command MAY contain an <extension> element which MAY contain a
+   <fee:check> element.  The <fee:check> element MUST contain at least
+   one <fee:domain> element, with the following child elements:
 
    o  A <fee:name> element.  The domain name need not correspond to a
       <domain:name> element that appears in the <domain:check> element
@@ -527,12 +527,17 @@ Internet-Draft       Registry Fee Extension for EPP            June 2014
       appeared in the corresponding <fee:check> element, then this
       element MUST have a value of 1 year.
 
-   o  One or more <fee:fee> elements.
+   o  Zero or more <fee:fee> elements.
 
    o  An OPTIONAL <fee:class> element.
 
-   Depending on policy, the server MAY choose to omit the <fee:chkData>
-   element and return a 2201 authorisation error instead.
+   If no <fee:fee> elements are present in a <fee:cd> element, this
+   indicates that the requested command is not permitted by server
+   policy.
+
+   The presence of a <fee:fee> with a value of "0.00" (ie a zero amount)
+   in a <fee:cd> element indicates that no fee will be assessed by the
+   server for this command.
 
    Example <check> response:
 
@@ -548,11 +553,6 @@ Internet-Draft       Registry Fee Extension for EPP            June 2014
    S:         <domain:cd>
    S:           <domain:name avail="1">example.com</domain:name>
    S:         </domain:cd>
-   S:         <domain:cd>
-   S:           <domain:name avail="0">example.net</domain:name>
-   S:           <domain:reason>In use</domain:reason>
-   S:         </domain:cd>
-   S:         <domain:cd>
 
 
 
@@ -561,6 +561,11 @@ Brown                   Expires December 3, 2014               [Page 10]
 Internet-Draft       Registry Fee Extension for EPP            June 2014
 
 
+   S:         <domain:cd>
+   S:           <domain:name avail="0">example.net</domain:name>
+   S:           <domain:reason>In use</domain:reason>
+   S:         </domain:cd>
+   S:         <domain:cd>
    S:           <domain:name avail="0">example.org</domain:name>
    S:           <domain:reason>In use</domain:reason>
    S:         </domain:cd>
@@ -604,11 +609,6 @@ Internet-Draft       Registry Fee Extension for EPP            June 2014
    S:           <fee:fee description="Renewal Fee">5.00</fee:fee>
    S:           <fee:class>premium-tier1</fee:class>
    S:         </fee:cd>
-   S:       </fee:chkData>
-   S:     </extension>
-   S:     <trID>
-   S:       <clTRID>ABC-12345</clTRID>
-   S:       <svTRID>54322-XYZ</svTRID>
 
 
 
@@ -617,6 +617,11 @@ Brown                   Expires December 3, 2014               [Page 11]
 Internet-Draft       Registry Fee Extension for EPP            June 2014
 
 
+   S:       </fee:chkData>
+   S:     </extension>
+   S:     <trID>
+   S:       <clTRID>ABC-12345</clTRID>
+   S:       <svTRID>54322-XYZ</svTRID>
    S:     </trID>
    S:   </response>
    S: </epp>
@@ -626,8 +631,8 @@ Internet-Draft       Registry Fee Extension for EPP            June 2014
    This extension defines additional elements for the EPP <info>
    command.
 
-   The command frame MAY contain an <extension> element which MAY
-   contain a <fee:info> element with the following child elements:
+   The command MAY contain an <extension> element which MAY contain a
+   <fee:info> element with the following child elements:
 
    o  An OPTIONAL <fee:currency> element;
 
@@ -660,11 +665,6 @@ Internet-Draft       Registry Fee Extension for EPP            June 2014
    When the server receives an <info> command that includes the
    extension element described above, its response MUST (subject to the
    exception described below) contain an <extension> element, which MUST
-   contain a child <fee:infData> element.  The <fee:infData> MUST
-   contain the following child elements:
-
-
-
 
 
 
@@ -673,21 +673,24 @@ Brown                   Expires December 3, 2014               [Page 12]
 Internet-Draft       Registry Fee Extension for EPP            June 2014
 
 
+   contain a child <fee:infData> element.  The <fee:infData> MUST
+   contain the following child elements:
+
    o  A <fee:currency> element that contains same currency code that
-      appeared in the <fee:currency> element element of the command
-      frame.  If no <fee:currency> element appeared in the command
-      frame, then the client's default billing currency should be used.
+      appeared in the <fee:currency> element element of the command.  If
+      no <fee:currency> element appeared in the command, then the
+      client's default billing currency should be used.
 
    o  A <fee:command> element that contains same command that appeared
-      in the <fee:command> element of the command frame.  This element
-      MAY have the OPTIONAL "phase" and "subphase" elements, which MUST
+      in the <fee:command> element of the command.  This element MAY
+      have the OPTIONAL "phase" and "subphase" elements, which MUST
       match the same attributes in the <fee:command> element of the
-      command frame.
+      command.
 
    o  A <fee:period> element that contains same unit that appeared in
-      the corresponding <fee:period> element of the command frame.  If
-      no <fee:period> appeared in the command frame, then this element
-      MUST have a value of 1 year.
+      the corresponding <fee:period> element of the command.  If no
+      <fee:period> appeared in the command, then this element MUST have
+      a value of 1 year.
 
    o  One or more <fee:fee> elements.
 
@@ -697,9 +700,6 @@ Internet-Draft       Registry Fee Extension for EPP            June 2014
    element and return a 2201 authorisation error instead.
 
    Example <info> response:
-
-
-
 
 
 
@@ -1493,7 +1493,7 @@ Internet-Draft       Registry Fee Extension for EPP            June 2014
          <element name="command" type="fee:commandType" />
          <element name="period" type="domain:periodType" />
          <element name="fee" type="fee:feeType"
-           maxOccurs="unbounded" />
+            minOccurs="0" maxOccurs="unbounded" />
          <element name="class" type="token" minOccurs="0" />
        </sequence>
      </complexType>
@@ -1818,8 +1818,8 @@ Internet-Draft       Registry Fee Extension for EPP            June 2014
        fee information from transform commands, and put it into a single
        section at the top of the document.
 
-   5.  Allow servers to reject <check> commands if the client is not
-       authorised.
+   5.  Allow servers to omit <fee:fee> elements from <fee:cd> elements
+       if the command specified by the client is forbidden.
 
 
 9.  Normative References
