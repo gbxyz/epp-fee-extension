@@ -1553,9 +1553,11 @@ BEGIN
   --&gt;
   &lt;complexType name="infoType"&gt;
     &lt;sequence&gt;
-      &lt;element name="currency" type="fee:currencyType" /&gt;
+      &lt;element name="currency" type="fee:currencyType"
+        minOccurs="0" /&gt;
       &lt;element name="command" type="fee:commandType" /&gt;
-      &lt;element name="period" type="domain:periodType" /&gt;
+      &lt;element name="period" type="domain:periodType"
+        minOccurs="0" /&gt;
     &lt;/sequence&gt;
   &lt;/complexType&gt;
 
