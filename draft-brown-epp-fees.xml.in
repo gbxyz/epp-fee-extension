@@ -38,7 +38,7 @@
 <?rfc comments="yes" ?>
 <?rfc inline="yes" ?>
 
-<rfc category="exp" docName="draft-brown-epp-fees-02" ipr="trust200902">
+<rfc category="exp" docName="draft-brown-epp-fees-03" ipr="trust200902">
 
   <front>
     <title abbrev="Registry Fee Extension for EPP">Registry Fee Extension for
@@ -60,7 +60,7 @@
       </address>
     </author>
 
-    <date month="June" year="2014" />
+    <date month="September" year="2014" />
 
     <area>Applications</area>
     <workgroup>Internet Engineering Task Force</workgroup>
@@ -174,7 +174,7 @@
         <xref target="RFC5731"/>.</t>
 
         <t>The &lt;fee:period&gt; element is OPTIONAL in commands: if
-        ommitted, the server MUST determine the fee(s) using a validity period of
+        omitted, the server MUST determine the fee(s) using a validity period of
         1 year. The &lt;fee:period&gt; element MUST be present in responses.</t>
 
       </section>
