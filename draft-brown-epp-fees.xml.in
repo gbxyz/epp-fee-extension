@@ -163,7 +163,7 @@
         responses.</t>
 
         <t>Servers SHOULD NOT perform a currency conversion if a client uses an
-        incorrect currency code. Servers SHOULD return a 2003 error instead.</t>
+        incorrect currency code. Servers SHOULD return a 2004 error instead.</t>
       </section>
 
       <section title="Validity Periods" anchor="validity-periods">
@@ -360,29 +360,31 @@
           exception described below) contain an &lt;extension&gt; element,
           which MUST contain a child &lt;fee:chkData&gt; element. The
           &lt;fee:chkData&gt; element MUST contain a &lt;fee:cd&gt; element for
-          each &lt;fee:check&gt; element contained in the command. The
+          each &lt;fee:domain&gt; element contained in the command. The
           &lt;fee:cd&gt; MUST contain the following child elements:</t>
 
           <t><list style="symbols">
             <t>A &lt;fee:name&gt; element that contains a domain name which
-            matches the name in the corresponding &lt;fee:check&gt; element.</t>
+            matches the name in the corresponding &lt;fee:domain&gt; element.</t>
 
             <t>A &lt;fee:currency&gt; element that contains same currency code
-            that appeared in the corresponding &lt;fee:check&gt; element. If no
+            that appeared in the corresponding &lt;fee:domain&gt; element. If no
             &lt;fee:currency&gt; element appeared in the corresponding
-            &lt;fee:check&gt; element, then the client's default billing
+            &lt;fee:domain&gt; element, then the client's default billing
             currency should be used.</t>
 
             <t>A &lt;fee:command&gt; element that contains same command
-            that appeared in the corresponding &lt;fee:check&gt; element. This
+            that appeared in the corresponding &lt;fee:domain&gt; element. This
             element MAY have the OPTIONAL "phase" and "subphase" elements, 
             which MUST match the same attributes in the corresponding
-            &lt;fee:check&gt; element.</t>
+            &lt;fee:domain&gt; element.</t>
 
-            <t>A &lt;fee:period&gt; element that contains same unit
-            that appeared in the corresponding &lt;fee:check&gt; element. If
+            <t>An OPTIONAL &lt;fee:period&gt; element that contains same unit
+            that appeared in the corresponding &lt;fee:domain&gt; element. If
+            the value of the preceeding &lt;fee:command&gt; element is "restore",
+            this element MUST NOT be included. Otherwise it MUST be included. If
             no &lt;fee:period&gt; appeared in the corresponding
-            &lt;fee:check&gt; element, then this element MUST have a value of
+            &lt;fee:domain&gt; element, then this element MUST have a value of
             1 year.</t>
 
             <t>Zero or more &lt;fee:fee&gt; elements.</t>
@@ -446,10 +448,13 @@
             elements, which MUST match the same attributes in the
             &lt;fee:command&gt; element of the command.</t>
 
-            <t>A &lt;fee:period&gt; element that contains same unit
+            <t>An OPTIONAL &lt;fee:period&gt; element that contains same unit
             that appeared in the corresponding &lt;fee:period&gt; element of the
-            command. If no &lt;fee:period&gt; appeared in the command, then this
-            element MUST have a value of 1 year.</t>
+            command. If the value of the preceeding &lt;fee:command&gt; element
+            is "restore", this element MUST NOT be included. Otherwise it MUST
+            be included. If no &lt;fee:period&gt; appeared in the corresponding
+            &lt;fee:domain&gt; element, then this element MUST have a value of
+            1 year.</t>
 
             <t>One or more &lt;fee:fee&gt; elements.</t>
 
@@ -794,7 +799,7 @@ END</artwork></figure>
         <t>Michael Young of Architelos</t>
         <t>Ben Levac and Jeff Eckhaus of Demand Media</t>
         <t>Seth Goldman of Google</t>
-        <t>Klaus Malorny of Knipp</t>
+        <t>Klaus Malorny and Michael Bauland of Knipp</t>
         <t>Jody Kolker and Roger Carney of Go Daddy</t>
         <t>Michael Holloway of Com Laude</t>
       </list></t>

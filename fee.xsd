@@ -69,7 +69,8 @@
       <element name="name" type="eppcom:labelType" />
       <element name="currency" type="fee:currencyType" />
       <element name="command" type="fee:commandType" />
-      <element name="period" type="domain:periodType" />
+      <element name="period" type="domain:periodType"
+        minOccurs="0" maxOccurs="1" />
       <element name="fee" type="fee:feeType"
          minOccurs="0" maxOccurs="unbounded" />
       <element name="class" type="token" minOccurs="0" />
@@ -96,7 +97,8 @@
     <sequence>
       <element name="currency" type="fee:currencyType" />
       <element name="command" type="fee:commandType" />
-      <element name="period" type="domain:periodType" />
+      <element name="period" type="domain:periodType"
+        minOccurs="0" maxOccurs="1" />
       <element name="fee" type="fee:feeType"
         maxOccurs="unbounded" />
       <element name="class" type="token" minOccurs="0" />

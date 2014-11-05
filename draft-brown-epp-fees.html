@@ -146,8 +146,8 @@
 <table summary="layout" width="66%" border="0" cellpadding="0" cellspacing="0"><tr><td><table summary="layout" width="100%" border="0" cellpadding="2" cellspacing="1">
 <tr><td class="header">Internet Engineering Task Force</td><td class="header">G. Brown</td></tr>
 <tr><td class="header">Internet-Draft</td><td class="header">CentralNic Group plc</td></tr>
-<tr><td class="header">Intended status: Experimental</td><td class="header">September 29, 2014</td></tr>
-<tr><td class="header">Expires: April 2, 2015</td><td class="header">&nbsp;</td></tr>
+<tr><td class="header">Intended status: Experimental</td><td class="header">September 2014</td></tr>
+<tr><td class="header">Expires: March 5, 2015</td><td class="header">&nbsp;</td></tr>
 </table></td></tr></table>
 <h1><br />Registry Fee Extension for
     the Extensible Provisioning Protocol (EPP)<br />draft-brown-epp-fees-03</h1>
@@ -172,7 +172,7 @@ and may be updated, replaced, or obsoleted by other documents at any time.
 It is inappropriate to use Internet-Drafts as reference material or to cite
 them other than as &ldquo;work in progress.&rdquo;</p>
 <p>
-This Internet-Draft will expire on April 2, 2015.</p>
+This Internet-Draft will expire on March 5, 2015.</p>
 
 <h3>Copyright Notice</h3>
 <p>
@@ -372,7 +372,7 @@ Currency Codes</h3>
         responses.
 </p>
 <p>Servers SHOULD NOT perform a currency conversion if a client uses an
-        incorrect currency code. Servers SHOULD return a 2003 error instead.
+        incorrect currency code. Servers SHOULD return a 2004 error instead.
 </p>
 <a name="validity-periods"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
@@ -646,30 +646,32 @@ C: &lt;/epp&gt;
           exception described below) contain an &lt;extension&gt; element,
           which MUST contain a child &lt;fee:chkData&gt; element. The
           &lt;fee:chkData&gt; element MUST contain a &lt;fee:cd&gt; element for
-          each &lt;fee:check&gt; element contained in the command. The
+          each &lt;fee:domain&gt; element contained in the command. The
           &lt;fee:cd&gt; MUST contain the following child elements:
 </p>
 <p></p>
 <ul class="text">
 <li>A &lt;fee:name&gt; element that contains a domain name which
-            matches the name in the corresponding &lt;fee:check&gt; element.
+            matches the name in the corresponding &lt;fee:domain&gt; element.
 </li>
 <li>A &lt;fee:currency&gt; element that contains same currency code
-            that appeared in the corresponding &lt;fee:check&gt; element. If no
+            that appeared in the corresponding &lt;fee:domain&gt; element. If no
             &lt;fee:currency&gt; element appeared in the corresponding
-            &lt;fee:check&gt; element, then the client's default billing
+            &lt;fee:domain&gt; element, then the client's default billing
             currency should be used.
 </li>
 <li>A &lt;fee:command&gt; element that contains same command
-            that appeared in the corresponding &lt;fee:check&gt; element. This
+            that appeared in the corresponding &lt;fee:domain&gt; element. This
             element MAY have the OPTIONAL "phase" and "subphase" elements, 
             which MUST match the same attributes in the corresponding
-            &lt;fee:check&gt; element.
+            &lt;fee:domain&gt; element.
 </li>
-<li>A &lt;fee:period&gt; element that contains same unit
-            that appeared in the corresponding &lt;fee:check&gt; element. If
+<li>An OPTIONAL &lt;fee:period&gt; element that contains same unit
+            that appeared in the corresponding &lt;fee:domain&gt; element. If
+            the value of the preceeding &lt;fee:command&gt; element is "restore",
+            this element MUST NOT be included. Otherwise it MUST be included. If
             no &lt;fee:period&gt; appeared in the corresponding
-            &lt;fee:check&gt; element, then this element MUST have a value of
+            &lt;fee:domain&gt; element, then this element MUST have a value of
             1 year.
 </li>
 <li>Zero or more &lt;fee:fee&gt; elements.
@@ -821,10 +823,13 @@ C: &lt;/epp&gt;
             elements, which MUST match the same attributes in the
             &lt;fee:command&gt; element of the command.
 </li>
-<li>A &lt;fee:period&gt; element that contains same unit
+<li>An OPTIONAL &lt;fee:period&gt; element that contains same unit
             that appeared in the corresponding &lt;fee:period&gt; element of the
-            command. If no &lt;fee:period&gt; appeared in the command, then this
-            element MUST have a value of 1 year.
+            command. If the value of the preceeding &lt;fee:command&gt; element
+            is "restore", this element MUST NOT be included. Otherwise it MUST
+            be included. If no &lt;fee:period&gt; appeared in the corresponding
+            &lt;fee:domain&gt; element, then this element MUST have a value of
+            1 year.
 </li>
 <li>One or more &lt;fee:fee&gt; elements.
 </li>
@@ -1541,7 +1546,8 @@ BEGIN
       &lt;element name="name" type="eppcom:labelType" /&gt;
       &lt;element name="currency" type="fee:currencyType" /&gt;
       &lt;element name="command" type="fee:commandType" /&gt;
-      &lt;element name="period" type="domain:periodType" /&gt;
+      &lt;element name="period" type="domain:periodType"
+        minOccurs="0" maxOccurs="1" /&gt;
       &lt;element name="fee" type="fee:feeType"
          minOccurs="0" maxOccurs="unbounded" /&gt;
       &lt;element name="class" type="token" minOccurs="0" /&gt;
@@ -1568,7 +1574,8 @@ BEGIN
     &lt;sequence&gt;
       &lt;element name="currency" type="fee:currencyType" /&gt;
       &lt;element name="command" type="fee:commandType" /&gt;
-      &lt;element name="period" type="domain:periodType" /&gt;
+      &lt;element name="period" type="domain:periodType"
+        minOccurs="0" maxOccurs="1" /&gt;
       &lt;element name="fee" type="fee:feeType"
         maxOccurs="unbounded" /&gt;
       &lt;element name="class" type="token" minOccurs="0" /&gt;
@@ -1771,7 +1778,7 @@ Acknowledgements</h3>
 </li>
 <li>Seth Goldman of Google
 </li>
-<li>Klaus Malorny of Knipp
+<li>Klaus Malorny and Michael Bauland of Knipp
 </li>
 <li>Jody Kolker and Roger Carney of Go Daddy
 </li>
