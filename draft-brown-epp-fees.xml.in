@@ -848,6 +848,14 @@ END</artwork></figure>
           elements if the command specified by the client is forbidden.</t>
         </list></t>
       </section>
+      <section title="Changes from 03 to 04">
+        <t><list style="numbers">
+          <t>As per suggestion from Michael Bauland, the &lt;fee:period&gt;
+          element is no longer included in &lt;check&gt; and &lt;info&gt;
+          responses for "restore" commands. It's still mandatory for all other
+          commands.</t>
+        </list></t>
+      </section>
     </section>
 
   </middle>

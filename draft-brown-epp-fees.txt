@@ -92,9 +92,9 @@ Table of Contents
      8.1.  Changes from 00 to 01  . . . . . . . . . . . . . . . . . . 32
      8.2.  Changes from 01 to 02  . . . . . . . . . . . . . . . . . . 32
      8.3.  Changes from 02 to 03  . . . . . . . . . . . . . . . . . . 33
+     8.4.  Changes from 03 to 04  . . . . . . . . . . . . . . . . . . 33
    9.  Normative References . . . . . . . . . . . . . . . . . . . . . 33
    Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 34
-
 
 
 
@@ -1823,6 +1823,12 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    5.  Allow servers to omit <fee:fee> elements from <fee:cd> elements
        if the command specified by the client is forbidden.
 
+8.4.  Changes from 03 to 04
+
+   1.  As per suggestion from Michael Bauland, the <fee:period> element
+       is no longer included in <check> and <info> responses for
+       "restore" commands.  It's still mandatory for all other commands.
+
 
 9.  Normative References
 
@@ -1836,12 +1842,6 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    [RFC3688]  Mealling, M., "The IETF XML Registry", BCP 81, RFC 3688,
               January 2004.
 
-   [RFC3915]  Hollenbeck, S., "Domain Registry Grace Period Mapping for
-              the Extensible Provisioning Protocol (EPP)", RFC 3915,
-              September 2004.
-
-   [RFC5730]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)",
-
 
 
 Brown                     Expires March 5, 2015                [Page 33]
@@ -1849,6 +1849,11 @@ Brown                     Expires March 5, 2015                [Page 33]
 Internet-Draft       Registry Fee Extension for EPP       September 2014
 
 
+   [RFC3915]  Hollenbeck, S., "Domain Registry Grace Period Mapping for
+              the Extensible Provisioning Protocol (EPP)", RFC 3915,
+              September 2004.
+
+   [RFC5730]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)",
               STD 69, RFC 5730, August 2009.
 
    [RFC5731]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)
@@ -1870,11 +1875,6 @@ Author's Address
    Phone: +44 20 33 88 0600
    Email: gavin.brown@centralnic.com
    URI:   https://www.centralnic.com
-
-
-
-
-
 
 
 
