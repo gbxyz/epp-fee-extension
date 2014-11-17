@@ -305,17 +305,10 @@
       the extension elements required by the server for that command, then
       it MUST response with a 2003 "Required parameter missing" error.</t>
 
-      <t>If the currency and total fee provided by the client do not agree
+      <t>If the currency or total fee provided by the client do not agree
       with the server's own calculation of the fee for that command, then the
-      server MUST respond in one of the following ways:</t>
-
-      <t><list style="symbols">
-        <t>Reject the command with a 2004 "Parameter value range" error; or</t>
-        <t>Accept the command, but return a 1001 "Action Pending" response,
-        and queue the requested command for offline review. If the server
-        chooses this option, it MUST provide notification of the result of
-        the review using the EPP message queue.</t>
-      </list></t>
+      server MUST reject the command with a 2004 "Parameter value range"
+      error.</t>
 
     </section>
 
