@@ -73,7 +73,7 @@ Table of Contents
      2.6.  Credit Limit . . . . . . . . . . . . . . . . . . . . . . .  6
      2.7.  Classification of Domain Names . . . . . . . . . . . . . .  7
    3.  Server Handling of Fee Information . . . . . . . . . . . . . .  7
-   4.  EPP Command Mapping  . . . . . . . . . . . . . . . . . . . . .  8
+   4.  EPP Command Mapping  . . . . . . . . . . . . . . . . . . . . .  7
      4.1.  EPP Query Commands . . . . . . . . . . . . . . . . . . . .  8
        4.1.1.  EPP <check> Command  . . . . . . . . . . . . . . . . .  8
        4.1.2.  EPP <info> Command . . . . . . . . . . . . . . . . . . 12
@@ -213,10 +213,10 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
 
 2.3.  Validity Periods
 
-   The <fee:period> element is used to indicate the units to be added to
-   the registration period of domain names by the <create>, <renew> and
-   <transfer> commands.  This element is derived from the <domain:
-   period> element described in [RFC5731].
+   When querying for fee information using the <check> or <info>
+   commands, the <fee:period> element is used to indicate the units to
+   be added to the registration period of domain names by the <create>,
+   <renew> and <transfer> commands.  This element is derived from the
 
 
 
@@ -225,9 +225,12 @@ Brown                     Expires March 5, 2015                 [Page 4]
 Internet-Draft       Registry Fee Extension for EPP       September 2014
 
 
-   The <fee:period> element is OPTIONAL in commands: if omitted, the
-   server MUST determine the fee(s) using a validity period of 1 year.
-   The <fee:period> element MUST be present in responses.
+   <domain:period> element described in[RFC5731].
+
+   The <fee:period> element is OPTIONAL in <check> and <info>
+   commandscommands: if omitted, the server MUST determine the fee(s)
+   using a validity period of 1 year.  The <fee:period> element MUST be
+   present in <check> and <info> commandsresponses.
 
 2.4.  Fees and Credits
 
@@ -270,9 +273,6 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    periods following a billable transaction during which, if a domain
    name is deleted, the client receives a refund.
 
-   The "grace-period" attribute MAY be used to indicate the relevant
-   grace period for a fee.  If a server implements the Registry Grace
-   Period extension, it MUST specify the grace period for all relevant
 
 
 
@@ -281,6 +281,9 @@ Brown                     Expires March 5, 2015                 [Page 5]
 Internet-Draft       Registry Fee Extension for EPP       September 2014
 
 
+   The "grace-period" attribute MAY be used to indicate the relevant
+   grace period for a fee.  If a server implements the Registry Grace
+   Period extension, it MUST specify the grace period for all relevant
    transactions.  If no "grace-period" attribute value is provided, then
    no grace period is applicable.
 
@@ -326,9 +329,6 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
 
    As described above, if a server returns a response containing a <fee:
    balance> with a negative value, then the server has extended a line
-   of credit to the client.  A server MAY also include a <fee:
-   creditLimit> element in responses which indicates the maximum credit
-   available to a client.  A server MAY reject certain transactions if
 
 
 
@@ -337,6 +337,9 @@ Brown                     Expires March 5, 2015                 [Page 6]
 Internet-Draft       Registry Fee Extension for EPP       September 2014
 
 
+   of credit to the client.  A server MAY also include a <fee:
+   creditLimit> element in responses which indicates the maximum credit
+   available to a client.  A server MAY reject certain transactions if
    the absolute value of the <fee:balance> is equal to or exceeds the
    value of the <fee:creditLimit> element.
 
@@ -370,19 +373,16 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    the extension elements required by the server for that command, then
    it MUST response with a 2003 "Required parameter missing" error.
 
-   If the currency and total fee provided by the client do not agree
-   with the server's own calculation of the fee for that command, then
-   the server MUST respond in one of the following ways:
-
-   o  Reject the command with a 2004 "Parameter value range" error; or
-
-   o  Accept the command, but return a 1001 "Action Pending" response,
-      and queue the requested command for offline review.  If the server
-      chooses this option, it MUST provide notification of the result of
-      the review using the EPP message queue.
+   If the currency or total fee provided by the client do not agree with
+   the server's own calculation of the fee for that command, then the
+   server MUST reject the command with a 2004 "Parameter value range"
+   error.
 
 
+4.  EPP Command Mapping
 
+   A detailed description of the EPP syntax and semantics can be found
+   in [RFC5730].
 
 
 
@@ -392,11 +392,6 @@ Brown                     Expires March 5, 2015                 [Page 7]
 
 Internet-Draft       Registry Fee Extension for EPP       September 2014
 
-
-4.  EPP Command Mapping
-
-   A detailed description of the EPP syntax and semantics can be found
-   in [RFC5730].
 
 4.1.  EPP Query Commands
 
@@ -423,6 +418,11 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    o  An OPTIONAL <fee:period> element.
 
    Example <check> command:
+
+
+
+
+
 
 
 
@@ -1761,6 +1761,8 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
 
    o  Michael Holloway of Com Laude
 
+   o  Santosh Kalsangrah of Impetus Infotech
+
 
 8.  Change History
 
@@ -1783,8 +1785,6 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    3.   Added the "description" attribute to <fee:fee> and <fee:credit>
         elements.
 
-   4.   Added the <fee:balance> element.
-
 
 
 
@@ -1792,6 +1792,8 @@ Brown                     Expires March 5, 2015                [Page 32]
 
 Internet-Draft       Registry Fee Extension for EPP       September 2014
 
+
+   4.   Added the <fee:balance> element.
 
    5.   Added the <fee:creditLimit> element.
 
@@ -1839,8 +1841,6 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119, March 1997.
 
-   [RFC3688]  Mealling, M., "The IETF XML Registry", BCP 81, RFC 3688,
-              January 2004.
 
 
 
@@ -1848,6 +1848,9 @@ Brown                     Expires March 5, 2015                [Page 33]
 
 Internet-Draft       Registry Fee Extension for EPP       September 2014
 
+
+   [RFC3688]  Mealling, M., "The IETF XML Registry", BCP 81, RFC 3688,
+              January 2004.
 
    [RFC3915]  Hollenbeck, S., "Domain Registry Grace Period Mapping for
               the Extensible Provisioning Protocol (EPP)", RFC 3915,
@@ -1875,9 +1878,6 @@ Author's Address
    Phone: +44 20 33 88 0600
    Email: gavin.brown@centralnic.com
    URI:   https://www.centralnic.com
-
-
-
 
 
 

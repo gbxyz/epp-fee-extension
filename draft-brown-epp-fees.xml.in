@@ -167,15 +167,17 @@
       </section>
 
       <section title="Validity Periods" anchor="validity-periods">
-        <t>The &lt;fee:period&gt; element is used to indicate the units to be
-        added to the registration period of domain names by the &lt;create&gt;,
-        &lt;renew&gt; and &lt;transfer&gt; commands. This element is derived from
-        the &lt;domain:period&gt; element described in
-        <xref target="RFC5731"/>.</t>
+        <t>When querying for fee information using the &lt;check&gt; or
+	&lt;info&gt; commands, the &lt;fee:period&gt; element is used to
+	indicate the units to be added to the registration period of domain
+	names by the &lt;create&gt;, &lt;renew&gt; and &lt;transfer&gt;
+	commands. This element is derived from the &lt;domain:period&gt; element
+	described in<xref target="RFC5731"/>.</t>
 
-        <t>The &lt;fee:period&gt; element is OPTIONAL in commands: if
-        omitted, the server MUST determine the fee(s) using a validity period of
-        1 year. The &lt;fee:period&gt; element MUST be present in responses.</t>
+        <t>The &lt;fee:period&gt; element is OPTIONAL in &lt;check&gt; and
+	&lt;info&gt; commandscommands: if omitted, the server MUST determine the
+	fee(s) using a validity period of 1 year. The &lt;fee:period&gt; element
+	MUST be present in &lt;check&gt; and &lt;info&gt; commandsresponses.</t>
 
       </section>
 
@@ -795,6 +797,7 @@ END</artwork></figure>
         <t>Klaus Malorny and Michael Bauland of Knipp</t>
         <t>Jody Kolker and Roger Carney of Go Daddy</t>
         <t>Michael Holloway of Com Laude</t>
+	<t>Santosh Kalsangrah of Impetus Infotech</t>
       </list></t>
     </section>
 
