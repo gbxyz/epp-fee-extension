@@ -225,12 +225,12 @@ Brown                     Expires March 5, 2015                 [Page 4]
 Internet-Draft       Registry Fee Extension for EPP       September 2014
 
 
-   <domain:period> element described in[RFC5731].
+   <domain:period> element described in [RFC5731].
 
    The <fee:period> element is OPTIONAL in <check> and <info>
    commandscommands: if omitted, the server MUST determine the fee(s)
    using a validity period of 1 year.  The <fee:period> element MUST be
-   present in <check> and <info> commandsresponses.
+   present in <check> and <info> commands and responses.
 
 2.4.  Fees and Credits
 

@@ -172,12 +172,13 @@
 	indicate the units to be added to the registration period of domain
 	names by the &lt;create&gt;, &lt;renew&gt; and &lt;transfer&gt;
 	commands. This element is derived from the &lt;domain:period&gt; element
-	described in<xref target="RFC5731"/>.</t>
+	described in <xref target="RFC5731"/>.</t>
 
         <t>The &lt;fee:period&gt; element is OPTIONAL in &lt;check&gt; and
-	&lt;info&gt; commandscommands: if omitted, the server MUST determine the
+	&lt;info&gt; commands: if omitted, the server MUST determine the
 	fee(s) using a validity period of 1 year. The &lt;fee:period&gt; element
-	MUST be present in &lt;check&gt; and &lt;info&gt; commandsresponses.</t>
+	MUST be present in &lt;check&gt; and &lt;info&gt; commands and
+	responses.</t>
 
       </section>
 
