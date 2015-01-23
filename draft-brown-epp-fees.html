@@ -389,7 +389,7 @@ Validity Periods</h3>
 	described in <a class='info' href='#RFC5731'>[RFC5731]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Domain Name Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a>.
 </p>
 <p>The &lt;fee:period&gt; element is OPTIONAL in &lt;check&gt; and
-	&lt;info&gt; commandscommands: if omitted, the server MUST determine the
+	&lt;info&gt; commands: if omitted, the server MUST determine the
 	fee(s) using a validity period of 1 year. The &lt;fee:period&gt; element
 	MUST be present in &lt;check&gt; and &lt;info&gt; commands and
 	responses.
@@ -1582,7 +1582,8 @@ BEGIN
   --&gt;
   &lt;complexType name="transformCommandType"&gt;
     &lt;sequence&gt;
-      &lt;element name="currency" type="fee:currencyType" /&gt;
+      &lt;element name="currency" type="fee:currencyType"
+        minOccurs="0" /&gt;
       &lt;element name="fee" type="fee:feeType"
         maxOccurs="unbounded" /&gt;
     &lt;/sequence&gt;

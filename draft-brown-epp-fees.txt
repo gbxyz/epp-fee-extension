@@ -227,10 +227,10 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
 
    <domain:period> element described in [RFC5731].
 
-   The <fee:period> element is OPTIONAL in <check> and <info>
-   commandscommands: if omitted, the server MUST determine the fee(s)
-   using a validity period of 1 year.  The <fee:period> element MUST be
-   present in <check> and <info> commands and responses.
+   The <fee:period> element is OPTIONAL in <check> and <info> commands:
+   if omitted, the server MUST determine the fee(s) using a validity
+   period of 1 year.  The <fee:period> element MUST be present in
+   <check> and <info> commands and responses.
 
 2.4.  Fees and Credits
 
@@ -1540,7 +1540,8 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
      -->
      <complexType name="transformCommandType">
        <sequence>
-         <element name="currency" type="fee:currencyType" />
+         <element name="currency" type="fee:currencyType"
+           minOccurs="0" />
          <element name="fee" type="fee:feeType"
            maxOccurs="unbounded" />
        </sequence>
@@ -1560,7 +1561,6 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
            minOccurs="0" />
        </sequence>
      </complexType>
-
 
 
 

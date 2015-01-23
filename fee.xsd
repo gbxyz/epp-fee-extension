@@ -110,7 +110,8 @@
   -->
   <complexType name="transformCommandType">
     <sequence>
-      <element name="currency" type="fee:currencyType" />
+      <element name="currency" type="fee:currencyType"
+        minOccurs="0" />
       <element name="fee" type="fee:feeType"
         maxOccurs="unbounded" />
     </sequence>
