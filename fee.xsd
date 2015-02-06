@@ -210,8 +210,7 @@
         <attribute name="description"/>
         <attribute name="refundable" type="boolean"
           default="1" />
-        <attribute name="grace-period" type="duration"
-          default="P0D" />
+        <attribute name="grace-period" type="duration" />
         <attribute name="applied" default="immediate">
           <simpleType>
             <restriction base="token">

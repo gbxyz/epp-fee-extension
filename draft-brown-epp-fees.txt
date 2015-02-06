@@ -1655,8 +1655,7 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
            <attribute name="description"/>
            <attribute name="refundable" type="boolean"
              default="1" />
-           <attribute name="grace-period" type="duration"
-             default="P0D" />
+           <attribute name="grace-period" type="duration" />
            <attribute name="applied" default="immediate">
              <simpleType>
                <restriction base="token">
@@ -1673,6 +1672,7 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
        <simpleContent>
          <extension base="fee:negativeDecimal">
            <attribute name="description"/>
+         </extension>
 
 
 
@@ -1681,7 +1681,6 @@ Brown                     Expires March 5, 2015                [Page 30]
 Internet-Draft       Registry Fee Extension for EPP       September 2014
 
 
-         </extension>
        </simpleContent>
      </complexType>
 
@@ -1729,15 +1728,13 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    Registrant Contact: See the "Author's Address" section of this
    document.
 
+   XML: See the "Formal Syntax" section of this document.
 
 
 
 Brown                     Expires March 5, 2015                [Page 31]
 
 Internet-Draft       Registry Fee Extension for EPP       September 2014
-
-
-   XML: See the "Formal Syntax" section of this document.
 
 
 7.  Acknowledgements
@@ -1785,6 +1782,9 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    3.   Added the "description" attribute to <fee:fee> and <fee:credit>
         elements.
 
+   4.   Added the <fee:balance> element.
+
+
 
 
 
@@ -1792,8 +1792,6 @@ Brown                     Expires March 5, 2015                [Page 32]
 
 Internet-Draft       Registry Fee Extension for EPP       September 2014
 
-
-   4.   Added the <fee:balance> element.
 
    5.   Added the <fee:creditLimit> element.
 
@@ -1841,6 +1839,8 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119, March 1997.
 
+   [RFC3688]  Mealling, M., "The IETF XML Registry", BCP 81, RFC 3688,
+              January 2004.
 
 
 
@@ -1848,9 +1848,6 @@ Brown                     Expires March 5, 2015                [Page 33]
 
 Internet-Draft       Registry Fee Extension for EPP       September 2014
 
-
-   [RFC3688]  Mealling, M., "The IETF XML Registry", BCP 81, RFC 3688,
-              January 2004.
 
    [RFC3915]  Hollenbeck, S., "Domain Registry Grace Period Mapping for
               the Extensible Provisioning Protocol (EPP)", RFC 3915,
@@ -1878,6 +1875,9 @@ Author's Address
    Phone: +44 20 33 88 0600
    Email: gavin.brown@centralnic.com
    URI:   https://www.centralnic.com
+
+
+
 
 
 
