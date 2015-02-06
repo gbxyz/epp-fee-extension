@@ -606,7 +606,7 @@ C:       &lt;/domain:check&gt;
 C:     &lt;/check&gt;
 C:     &lt;extension&gt;
 C:       &lt;fee:check
-C:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"&gt;
+C:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.7"&gt;
 C:         &lt;fee:domain&gt;
 C:           &lt;fee:name&gt;example.com&lt;/fee:name&gt;
 C:           &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
@@ -709,7 +709,7 @@ S:       &lt;/domain:chkData&gt;
 S:     &lt;/resData&gt;
 S:     &lt;extension&gt;
 S:       &lt;fee:chkData
-S:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"&gt;
+S:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.7"&gt;
 S:         &lt;fee:cd&gt;
 S:           &lt;fee:name&gt;example.com&lt;/fee:name&gt;
 S:           &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
@@ -788,7 +788,7 @@ C:         &lt;domain:name hosts="all"&gt;example.com&lt;/domain:name&gt;
 C:       &lt;/domain:info&gt;
 C:     &lt;/info&gt;
 C:     &lt;extension&gt;
-C:       &lt;fee:info xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"&gt;
+C:       &lt;fee:info xmlns:fee="urn:ietf:params:xml:ns:fee-0.7"&gt;
 C:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 C:         &lt;fee:command phase="sunrise"&gt;create&lt;/fee:command&gt;
 C:         &lt;fee:period unit="y"&gt;1&lt;/fee:period&gt;
@@ -872,7 +872,7 @@ S:         &lt;/domain:authInfo&gt;
 S:       &lt;/domain:infData&gt;
 S:     &lt;/resData&gt;
 S:     &lt;extension&gt;
-S:       &lt;fee:infData xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"&gt;
+S:       &lt;fee:infData xmlns:fee="urn:ietf:params:xml:ns:fee-0.7"&gt;
 S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 S:         &lt;fee:command phase="sunrise"&gt;create&lt;/fee:command&gt;
 S:         &lt;fee:period unit="y"&gt;1&lt;/fee:period&gt;
@@ -898,7 +898,7 @@ S:       &lt;msg&gt;Object does not exist.&lt;/msg&gt;
 S:     &lt;/result&gt;
 S:     &lt;extension&gt;
 S:       &lt;fee:infData
-S:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"&gt;
+S:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.7"&gt;
 S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 S:         &lt;fee:command phase="sunrise"&gt;create&lt;/fee:command&gt;
 S:         &lt;fee:period unit="y"&gt;1&lt;/fee:period&gt;
@@ -965,7 +965,7 @@ S:         &lt;domain:exDate&gt;2002-09-08T22:00:00.0Z&lt;/domain:exDate&gt;
 S:       &lt;/domain:trnData&gt;
 S:     &lt;/resData&gt;
 S:     &lt;extension&gt;
-S:       &lt;fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"&gt;
+S:       &lt;fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.7"&gt;
 S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 S:         &lt;fee:period unit="y"&gt;1&lt;/fee:period&gt;
 S:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
@@ -1049,7 +1049,7 @@ C:         &lt;/domain:authInfo&gt;
 C:       &lt;/domain:create&gt;
 C:     &lt;/create&gt;
 C:     &lt;extension&gt;
-C:       &lt;fee:create xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"&gt;
+C:       &lt;fee:create xmlns:fee="urn:ietf:params:xml:ns:fee-0.7"&gt;
 C:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 C:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
 C:       &lt;/fee:create&gt;
@@ -1075,7 +1075,7 @@ S:         &lt;domain:exDate&gt;2001-04-03T22:00:00.0Z&lt;/domain:exDate&gt;
 S:       &lt;/domain:creData&gt;
 S:     &lt;/resData&gt;
 S:     &lt;extension&gt;
-S:       &lt;fee:creData xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"&gt;
+S:       &lt;fee:creData xmlns:fee="urn:ietf:params:xml:ns:fee-0.7"&gt;
 S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 S:         &lt;fee:fee grace-period="P5D"&gt;5.00&lt;/fee:fee&gt;
 S:         &lt;fee:balance&gt;-5.00&lt;/fee:balance&gt;
@@ -1129,7 +1129,7 @@ S:       &lt;msg&gt;Command completed successfully&lt;/msg&gt;
 S:     &lt;/result&gt;
 S:     &lt;extension&gt;
 S:       &lt;fee:delData
-S:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"&gt;
+S:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.7"&gt;
 S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 S:         &lt;fee:credit description="AGP Credit"&gt;-5.00&lt;/fee:credit&gt;
 S:         &lt;fee:balance&gt;1005.00&lt;/fee:balance&gt;
@@ -1198,7 +1198,7 @@ C:         &lt;domain:period unit="y"&gt;5&lt;/domain:period&gt;
 C:       &lt;/domain:renew&gt;
 C:     &lt;/renew&gt;
 C:     &lt;extension&gt;
-C:       &lt;fee:renew xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"&gt;
+C:       &lt;fee:renew xmlns:fee="urn:ietf:params:xml:ns:fee-0.7"&gt;
 C:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 C:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
 C:       &lt;/fee:renew&gt;
@@ -1223,7 +1223,7 @@ S:         &lt;domain:exDate&gt;2005-04-03T22:00:00.0Z&lt;/domain:exDate&gt;
 S:       &lt;/domain:renData&gt;
 S:     &lt;/resData&gt;
 S:     &lt;extension&gt;
-S:       &lt;fee:renData xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"&gt;
+S:       &lt;fee:renData xmlns:fee="urn:ietf:params:xml:ns:fee-0.7"&gt;
 S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 S:         &lt;fee:fee grace-period="P5D"&gt;5.00&lt;/fee:fee&gt;
 S:         &lt;fee:balance&gt;1000.00&lt;/fee:balance&gt;
@@ -1295,7 +1295,7 @@ C:         &lt;/domain:authInfo&gt;
 C:       &lt;/domain:transfer&gt;
 C:     &lt;/transfer&gt;
 C:     &lt;extension&gt;
-C:       &lt;fee:transfer xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"&gt;
+C:       &lt;fee:transfer xmlns:fee="urn:ietf:params:xml:ns:fee-0.7"&gt;
 C:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 C:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
 C:       &lt;/fee:transfer&gt;
@@ -1325,7 +1325,7 @@ S:         &lt;domain:exDate&gt;2002-09-08T22:00:00.0Z&lt;/domain:exDate&gt;
 S:       &lt;/domain:trnData&gt;
 S:     &lt;/resData&gt;
 S:     &lt;extension&gt;
-S:       &lt;fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"&gt;
+S:       &lt;fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.7"&gt;
 S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 S:         &lt;fee:fee grace-period="P5D"&gt;5.00&lt;/fee:fee&gt;
 S:       &lt;/fee:trnData&gt;
@@ -1394,7 +1394,7 @@ C:         &lt;/domain:chg&gt;
 C:       &lt;/domain:update&gt;
 C:     &lt;/update&gt;
 C:     &lt;extension&gt;
-C:       &lt;fee:update xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"&gt;
+C:       &lt;fee:update xmlns:fee="urn:ietf:params:xml:ns:fee-0.7"&gt;
 C:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 C:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
 C:       &lt;/fee:update&gt;
@@ -1412,7 +1412,7 @@ S:     &lt;result code="1000"&gt;
 S:       &lt;msg&gt;Command completed successfully&lt;/msg&gt;
 S:     &lt;/result&gt;
 S:     &lt;extension&gt;
-S:       &lt;fee:updData xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"&gt;
+S:       &lt;fee:updData xmlns:fee="urn:ietf:params:xml:ns:fee-0.7"&gt;
 S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 S:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
 S:       &lt;/fee:updData&gt;
@@ -1472,10 +1472,10 @@ Formal Syntax</h3>
 BEGIN
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;schema xmlns="http://www.w3.org/2001/XMLSchema"
-  xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"
+  xmlns:fee="urn:ietf:params:xml:ns:fee-0.7"
   xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
   xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"
-  targetNamespace="urn:ietf:params:xml:ns:fee-0.6"
+  targetNamespace="urn:ietf:params:xml:ns:fee-0.7"
   elementFormDefault="qualified"&gt;
 
   &lt;import namespace="urn:ietf:params:xml:ns:eppcom-1.0" /&gt;

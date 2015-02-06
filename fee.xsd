@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-  xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"
+  xmlns:fee="urn:ietf:params:xml:ns:fee-0.7"
   xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
   xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"
-  targetNamespace="urn:ietf:params:xml:ns:fee-0.6"
+  targetNamespace="urn:ietf:params:xml:ns:fee-0.7"
   elementFormDefault="qualified">
 
   <import namespace="urn:ietf:params:xml:ns:eppcom-1.0" />

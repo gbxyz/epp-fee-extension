@@ -32,7 +32,7 @@
       </domain:infData>
     </resData>
     <extension>
-      <fee:infData xmlns:fee="urn:ietf:params:xml:ns:fee-0.6">
+      <fee:infData xmlns:fee="urn:ietf:params:xml:ns:fee-0.7">
         <fee:currency>USD</fee:currency>
         <fee:command phase="sunrise">create</fee:command>
         <fee:period unit="y">1</fee:period>

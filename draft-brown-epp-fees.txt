@@ -462,7 +462,7 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    C:     </check>
    C:     <extension>
    C:       <fee:check
-   C:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.6">
+   C:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.7">
    C:         <fee:domain>
    C:           <fee:name>example.com</fee:name>
    C:           <fee:currency>USD</fee:currency>
@@ -575,7 +575,7 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    S:     </resData>
    S:     <extension>
    S:       <fee:chkData
-   S:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.6">
+   S:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.7">
    S:         <fee:cd>
    S:           <fee:name>example.com</fee:name>
    S:           <fee:currency>USD</fee:currency>
@@ -654,7 +654,7 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    C:       </domain:info>
    C:     </info>
    C:     <extension>
-   C:       <fee:info xmlns:fee="urn:ietf:params:xml:ns:fee-0.6">
+   C:       <fee:info xmlns:fee="urn:ietf:params:xml:ns:fee-0.7">
    C:         <fee:currency>USD</fee:currency>
    C:         <fee:command phase="sunrise">create</fee:command>
    C:         <fee:period unit="y">1</fee:period>
@@ -763,7 +763,7 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    S:       </domain:infData>
    S:     </resData>
    S:     <extension>
-   S:       <fee:infData xmlns:fee="urn:ietf:params:xml:ns:fee-0.6">
+   S:       <fee:infData xmlns:fee="urn:ietf:params:xml:ns:fee-0.7">
    S:         <fee:currency>USD</fee:currency>
    S:         <fee:command phase="sunrise">create</fee:command>
    S:         <fee:period unit="y">1</fee:period>
@@ -795,7 +795,7 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    S:     </result>
    S:     <extension>
    S:       <fee:infData
-   S:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.6">
+   S:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.7">
    S:         <fee:currency>USD</fee:currency>
    S:         <fee:command phase="sunrise">create</fee:command>
    S:         <fee:period unit="y">1</fee:period>
@@ -860,7 +860,7 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    S:       </domain:trnData>
    S:     </resData>
    S:     <extension>
-   S:       <fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.6">
+   S:       <fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.7">
    S:         <fee:currency>USD</fee:currency>
    S:         <fee:period unit="y">1</fee:period>
    S:         <fee:fee>5.00</fee:fee>
@@ -937,7 +937,7 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    C:       </domain:create>
    C:     </create>
    C:     <extension>
-   C:       <fee:create xmlns:fee="urn:ietf:params:xml:ns:fee-0.6">
+   C:       <fee:create xmlns:fee="urn:ietf:params:xml:ns:fee-0.7">
    C:         <fee:currency>USD</fee:currency>
    C:         <fee:fee>5.00</fee:fee>
    C:       </fee:create>
@@ -970,7 +970,7 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    S:       </domain:creData>
    S:     </resData>
    S:     <extension>
-   S:       <fee:creData xmlns:fee="urn:ietf:params:xml:ns:fee-0.6">
+   S:       <fee:creData xmlns:fee="urn:ietf:params:xml:ns:fee-0.7">
    S:         <fee:currency>USD</fee:currency>
    S:         <fee:fee grace-period="P5D">5.00</fee:fee>
    S:         <fee:balance>-5.00</fee:balance>
@@ -1024,7 +1024,7 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    S:     </result>
    S:     <extension>
    S:       <fee:delData
-   S:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.6">
+   S:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.7">
    S:         <fee:currency>USD</fee:currency>
    S:         <fee:credit description="AGP Credit">-5.00</fee:credit>
    S:         <fee:balance>1005.00</fee:balance>
@@ -1090,7 +1090,7 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    C:       </domain:renew>
    C:     </renew>
    C:     <extension>
-   C:       <fee:renew xmlns:fee="urn:ietf:params:xml:ns:fee-0.6">
+   C:       <fee:renew xmlns:fee="urn:ietf:params:xml:ns:fee-0.7">
    C:         <fee:currency>USD</fee:currency>
    C:         <fee:fee>5.00</fee:fee>
    C:       </fee:renew>
@@ -1135,7 +1135,7 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    S:       </domain:renData>
    S:     </resData>
    S:     <extension>
-   S:       <fee:renData xmlns:fee="urn:ietf:params:xml:ns:fee-0.6">
+   S:       <fee:renData xmlns:fee="urn:ietf:params:xml:ns:fee-0.7">
    S:         <fee:currency>USD</fee:currency>
    S:         <fee:fee grace-period="P5D">5.00</fee:fee>
    S:         <fee:balance>1000.00</fee:balance>
@@ -1204,7 +1204,7 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    C:       </domain:transfer>
    C:     </transfer>
    C:     <extension>
-   C:       <fee:transfer xmlns:fee="urn:ietf:params:xml:ns:fee-0.6">
+   C:       <fee:transfer xmlns:fee="urn:ietf:params:xml:ns:fee-0.7">
    C:         <fee:currency>USD</fee:currency>
    C:         <fee:fee>5.00</fee:fee>
    C:       </fee:transfer>
@@ -1252,7 +1252,7 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    S:       </domain:trnData>
    S:     </resData>
    S:     <extension>
-   S:       <fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.6">
+   S:       <fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.7">
    S:         <fee:currency>USD</fee:currency>
    S:         <fee:fee grace-period="P5D">5.00</fee:fee>
    S:       </fee:trnData>
@@ -1317,7 +1317,7 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    C:       </domain:update>
    C:     </update>
    C:     <extension>
-   C:       <fee:update xmlns:fee="urn:ietf:params:xml:ns:fee-0.6">
+   C:       <fee:update xmlns:fee="urn:ietf:params:xml:ns:fee-0.7">
    C:         <fee:currency>USD</fee:currency>
    C:         <fee:fee>5.00</fee:fee>
    C:       </fee:update>
@@ -1352,7 +1352,7 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    S:       <msg>Command completed successfully</msg>
    S:     </result>
    S:     <extension>
-   S:       <fee:updData xmlns:fee="urn:ietf:params:xml:ns:fee-0.6">
+   S:       <fee:updData xmlns:fee="urn:ietf:params:xml:ns:fee-0.7">
    S:         <fee:currency>USD</fee:currency>
    S:         <fee:fee>5.00</fee:fee>
    S:       </fee:updData>
@@ -1414,10 +1414,10 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    BEGIN
    <?xml version="1.0" encoding="utf-8"?>
    <schema xmlns="http://www.w3.org/2001/XMLSchema"
-     xmlns:fee="urn:ietf:params:xml:ns:fee-0.6"
+     xmlns:fee="urn:ietf:params:xml:ns:fee-0.7"
      xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
      xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"
-     targetNamespace="urn:ietf:params:xml:ns:fee-0.6"
+     targetNamespace="urn:ietf:params:xml:ns:fee-0.7"
      elementFormDefault="qualified">
 
      <import namespace="urn:ietf:params:xml:ns:eppcom-1.0" />
