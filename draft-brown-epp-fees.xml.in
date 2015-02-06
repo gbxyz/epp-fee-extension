@@ -568,7 +568,7 @@
           elements:</t>
 
           <t><list style="symbols">
-            <t>A &lt;fee:currency&gt; element;</t>
+            <t>An OPTIONAL &lt;fee:currency&gt; element;</t>
 
             <t>One or more &lt;fee:credit&gt; elements;</t>
 
@@ -597,7 +597,7 @@
           element which includes the following child elements:</t>
 
           <t><list style="symbols">
-            <t>A &lt;fee:currency&gt; element;</t>
+            <t>An OPTIONAL &lt;fee:currency&gt; element;</t>
 
             <t>One or more &lt;fee:fee&gt; elements.</t>
           </list></t>
@@ -639,7 +639,7 @@
           element which includes the following child elements:</t>
 
           <t><list style="symbols">
-            <t>A &lt;fee:currency&gt; element;</t>
+            <t>An OPTIONAL &lt;fee:currency&gt; element;</t>
 
             <t>One or more &lt;fee:fee&gt; elements.</t>
           </list></t>
@@ -680,7 +680,7 @@
           element which includes the following child elements:</t>
 
           <t><list style="symbols">
-            <t>A &lt;fee:currency&gt; element;</t>
+            <t>An OPTIONAL &lt;fee:currency&gt; element;</t>
 
             <t>One or more &lt;fee:fee&gt; elements.</t>
           </list></t>

@@ -995,7 +995,7 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    include in the <extension> section of the EPP response a <fee:
    delData> element that contains the following child elements:
 
-   o  A <fee:currency> element;
+   o  An OPTIONAL <fee:currency> element;
 
    o  One or more <fee:credit> elements;
 
@@ -1047,7 +1047,7 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    include in the <extension> element a <fee:renew> element which
    includes the following child elements:
 
-   o  A <fee:currency> element;
+   o  An OPTIONAL <fee:currency> element;
 
    o  One or more <fee:fee> elements.
 
@@ -1159,7 +1159,7 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    include in the <extension> element a <fee:transfer> element which
    includes the following child elements:
 
-   o  A <fee:currency> element;
+   o  An OPTIONAL <fee:currency> element;
 
    o  One or more <fee:fee> elements.
 
@@ -1274,7 +1274,7 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    include in the <extension> element a <fee:update> element which
    includes the following child elements:
 
-   o  A <fee:currency> element;
+   o  An OPTIONAL <fee:currency> element;
 
    o  One or more <fee:fee> elements.
 
