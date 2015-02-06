@@ -66,14 +66,14 @@ Table of Contents
      2.2.  Currency Codes . . . . . . . . . . . . . . . . . . . . . .  4
      2.3.  Validity Periods . . . . . . . . . . . . . . . . . . . . .  4
      2.4.  Fees and Credits . . . . . . . . . . . . . . . . . . . . .  5
-       2.4.1.  Refunds  . . . . . . . . . . . . . . . . . . . . . . .  5
-       2.4.2.  Grace Periods  . . . . . . . . . . . . . . . . . . . .  5
+       2.4.1.  Refunds  . . . . . . . . . . . . . . . . . . . . . . .  6
+       2.4.2.  Grace Periods  . . . . . . . . . . . . . . . . . . . .  6
        2.4.3.  Applicability  . . . . . . . . . . . . . . . . . . . .  6
      2.5.  Account Balance  . . . . . . . . . . . . . . . . . . . . .  6
-     2.6.  Credit Limit . . . . . . . . . . . . . . . . . . . . . . .  6
+     2.6.  Credit Limit . . . . . . . . . . . . . . . . . . . . . . .  7
      2.7.  Classification of Domain Names . . . . . . . . . . . . . .  7
    3.  Server Handling of Fee Information . . . . . . . . . . . . . .  7
-   4.  EPP Command Mapping  . . . . . . . . . . . . . . . . . . . . .  7
+   4.  EPP Command Mapping  . . . . . . . . . . . . . . . . . . . . .  8
      4.1.  EPP Query Commands . . . . . . . . . . . . . . . . . . . .  8
        4.1.1.  EPP <check> Command  . . . . . . . . . . . . . . . . .  8
        4.1.2.  EPP <info> Command . . . . . . . . . . . . . . . . . . 12
@@ -252,10 +252,34 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    to the total additional validity period applied to the domain (where
    applicable) rather than to any incremental unit.
 
-   <fee:fee> and <fee:credit> elements MAY have an OPTIONAL
-   "description" attribute which provides a human-readable description
-   of the fee.  Servers SHOULD provide documentation on the possible
-   values of this attribute, and their meanings.
+   The following attributes are defined for the <fee:fee> element.
+   These are described in detail below:
+
+   description:  an OPTIONAL attribute which provides a human- readable
+      description of the fee.  Servers SHOULD provide documentation on
+      the possible values of this attribute, and their meanings.
+
+   refundable:  an OPTIONAL boolean attribute indicating whether the fee
+      is refundable if the domain name is deleted.
+
+   grace-period:  an OPTIONAL attribute which provides the time period
+      during which the fee is refundable.
+
+   applied:  an OPTIONAL attribute indicating when the fee will be
+      deducted from the client's account.
+
+   The <fee:credit> element can take a "description" attribute as
+   described above.  No other attributes are defined for this element.
+
+
+
+
+
+
+Brown                     Expires March 5, 2015                 [Page 5]
+
+Internet-Draft       Registry Fee Extension for EPP       September 2014
+
 
 2.4.1.  Refunds
 
@@ -272,14 +296,6 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    [RFC3915] describes a system of "grace periods", which are time
    periods following a billable transaction during which, if a domain
    name is deleted, the client receives a refund.
-
-
-
-
-Brown                     Expires March 5, 2015                 [Page 5]
-
-Internet-Draft       Registry Fee Extension for EPP       September 2014
-
 
    The "grace-period" attribute MAY be used to indicate the relevant
    grace period for a fee.  If a server implements the Registry Grace
@@ -313,6 +329,14 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    Whether or not the <fee:balance> is included in responses is a matter
    of server policy.  However, if a server chooses to offer support for
    this element, it MUST be included in responses to all domain
+
+
+
+Brown                     Expires March 5, 2015                 [Page 6]
+
+Internet-Draft       Registry Fee Extension for EPP       September 2014
+
+
    "transform" commands (ie <create>, <renew>, <update>, <delete>,
    <transfer op="request">).
 
@@ -329,14 +353,6 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
 
    As described above, if a server returns a response containing a <fee:
    balance> with a negative value, then the server has extended a line
-
-
-
-Brown                     Expires March 5, 2015                 [Page 6]
-
-Internet-Draft       Registry Fee Extension for EPP       September 2014
-
-
    of credit to the client.  A server MAY also include a <fee:
    creditLimit> element in responses which indicates the maximum credit
    available to a client.  A server MAY reject certain transactions if
@@ -369,6 +385,14 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    commands.  Servers MUST provide clear documentation to clients about
    the circumstances in which this extension must be used.
 
+
+
+
+Brown                     Expires March 5, 2015                 [Page 7]
+
+Internet-Draft       Registry Fee Extension for EPP       September 2014
+
+
    If a server receives a command from a client which does not include
    the extension elements required by the server for that command, then
    it MUST response with a 2003 "Required parameter missing" error.
@@ -383,15 +407,6 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
 
    A detailed description of the EPP syntax and semantics can be found
    in [RFC5730].
-
-
-
-
-
-Brown                     Expires March 5, 2015                 [Page 7]
-
-Internet-Draft       Registry Fee Extension for EPP       September 2014
-
 
 4.1.  EPP Query Commands
 
@@ -418,21 +433,6 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    o  An OPTIONAL <fee:period> element.
 
    Example <check> command:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

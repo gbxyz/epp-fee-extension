@@ -417,10 +417,33 @@ Fees and Credits</h3>
         amount applies to the total additional validity period applied to the
         domain (where applicable) rather than to any incremental unit.
 </p>
-<p>&lt;fee:fee&gt; and &lt;fee:credit&gt; elements MAY have an OPTIONAL
-        "description" attribute which provides a human-readable description of the
-        fee. Servers SHOULD provide documentation on the possible values of
-        this attribute, and their meanings.
+<p>The following attributes are defined for the &lt;fee:fee&gt; element.
+        These are described in detail below:
+</p>
+<p></p>
+<blockquote class="text"><dl>
+<dt>description:</dt>
+<dd>an OPTIONAL attribute which provides a human-
+            readable description of the fee. Servers SHOULD provide documentation
+            on the possible values of this attribute, and their meanings.
+</dd>
+<dt>refundable:</dt>
+<dd>an OPTIONAL boolean attribute indicating
+            whether the fee is refundable if the domain name is deleted.
+</dd>
+<dt>grace-period:</dt>
+<dd>an OPTIONAL attribute which provides the
+            time period during which the fee is refundable.
+</dd>
+<dt>applied:</dt>
+<dd>an OPTIONAL attribute indicating when the
+	    fee will be deducted from the client's account.
+</dd>
+</dl></blockquote>
+
+<p>The &lt;fee:credit&gt; element can take a "description" attribute
+	  as described above. No other attributes are defined for this
+	  element.
 </p>
 <a name="anchor5"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>

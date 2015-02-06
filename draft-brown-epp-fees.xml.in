@@ -201,10 +201,24 @@
         amount applies to the total additional validity period applied to the
         domain (where applicable) rather than to any incremental unit.</t>
 
-        <t>&lt;fee:fee&gt; and &lt;fee:credit&gt; elements MAY have an OPTIONAL
-        "description" attribute which provides a human-readable description of the
-        fee. Servers SHOULD provide documentation on the possible values of
-        this attribute, and their meanings.</t>
+        <t>The following attributes are defined for the &lt;fee:fee&gt; element.
+        These are described in detail below:</t>
+
+        <t><list style="hanging">
+      	  <t hangText="description:">an OPTIONAL attribute which provides a human-
+            readable description of the fee. Servers SHOULD provide documentation
+            on the possible values of this attribute, and their meanings.</t>
+	  <t hangText="refundable:">an OPTIONAL boolean attribute indicating
+            whether the fee is refundable if the domain name is deleted.</t>
+	  <t hangText="grace-period:">an OPTIONAL attribute which provides the
+            time period during which the fee is refundable.</t>
+	  <t hangText="applied:">an OPTIONAL attribute indicating when the
+	    fee will be deducted from the client's account.</t>
+        </list></t>
+
+        <t>The &lt;fee:credit&gt; element can take a "description" attribute
+	  as described above. No other attributes are defined for this
+	  element.</t>
 
         <section title="Refunds">
           <t>&lt;fee:fee&gt; elements MAY have an OPTIONAL "refundable" attribute
