@@ -3,7 +3,7 @@
 
 Internet Engineering Task Force                                 G. Brown
 Internet-Draft                                      CentralNic Group plc
-Intended status: Experimental                             September 2014
+Intended status: Standards Track                          September 2014
 Expires: March 5, 2015
 
 
