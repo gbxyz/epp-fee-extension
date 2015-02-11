@@ -64,7 +64,7 @@
       </address>
     </author>
 
-    <date month="September" year="2014" />
+    <date month="February" year="2015" />
 
     <area>Applications</area>
     <workgroup>Internet Engineering Task Force</workgroup>
@@ -894,6 +894,15 @@ END</artwork></figure>
           element is no longer included in &lt;check&gt; and &lt;info&gt;
           responses for "restore" commands. It's still mandatory for all other
           commands.</t>
+	  <t>Added summary of the attributes for the &lt;fee:fee&gt; element.</t>
+	  <t>Removed the option of returning a 1001 response when the fee is
+	  incorrect.</t>
+	  <t>Forbid the inclusion of extension elements in transform responses
+	  if no fee/credit has been assessed.</t>
+	  <t>Make the &lt;fee:currency&gt; element optional in transform
+	  commands.</t>
+	  <t>Amended XML Namespace section of IANA Considerations, added
+	  EPP Extension Registry section.</t>
         </list></t>
       </section>
     </section>
