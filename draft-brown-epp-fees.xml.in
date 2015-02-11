@@ -908,6 +908,18 @@ END</artwork></figure>
       </section>
     </section>
 
+    <section title="TODO">
+      <t>(Note to RFC Editor: remove this section before publication as an
+      RFC.)</t>
+
+      <t><list style="numbers">
+        <t>Make the extension object-agnostic so it can be used with other
+	objects, not just vanilla domains.</t>
+	<t>Change the &lt;check&gt; command so that availability data is
+	not returned.</t>
+      </list></t>
+    </section>
+
   </middle>
 
   <back>

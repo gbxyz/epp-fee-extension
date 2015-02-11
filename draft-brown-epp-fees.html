@@ -265,7 +265,9 @@ Changes from 01 to 02<br />
 Changes from 02 to 03<br />
 &nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor29">9.4.</a>&nbsp;
 Changes from 03 to 04<br />
-<a href="#rfc.references1">10.</a>&nbsp;
+<a href="#anchor30">10.</a>&nbsp;
+TODO<br />
+<a href="#rfc.references1">11.</a>&nbsp;
 Normative References<br />
 <a href="#rfc.authors">&#167;</a>&nbsp;
 Author's Address<br />
@@ -1948,16 +1950,50 @@ Changes from 03 to 04</h3>
 
 <p></p>
 <ol class="text">
+<li>Change Intended Status to Standards Track.
+</li>
 <li>As per suggestion from Michael Bauland, the &lt;fee:period&gt;
           element is no longer included in &lt;check&gt; and &lt;info&gt;
           responses for "restore" commands. It's still mandatory for all other
           commands.
 </li>
+<li>Added summary of the attributes for the &lt;fee:fee&gt; element.
+</li>
+<li>Removed the option of returning a 1001 response when the fee is
+	  incorrect.
+</li>
+<li>Forbid the inclusion of extension elements in transform responses
+	  if no fee/credit has been assessed.
+</li>
+<li>Make the &lt;fee:currency&gt; element optional in transform
+	  commands.
+</li>
+<li>Amended XML Namespace section of IANA Considerations, added
+	  EPP Extension Registry section.
+</li>
+</ol>
+
+<a name="anchor30"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.10"></a><h3>10.&nbsp;
+TODO</h3>
+
+<p>(Note to RFC Editor: remove this section before publication as an
+      RFC.)
+</p>
+<p></p>
+<ol class="text">
+<li>Make the extension object-agnostic so it can be used with other
+	objects, not just vanilla domains.
+</li>
+<li>Change the &lt;check&gt; command so that availability data is
+	not returned.
+</li>
 </ol>
 
 <a name="rfc.references1"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
-<h3>10.&nbsp;Normative References</h3>
+<h3>11.&nbsp;Normative References</h3>
 <table width="99%" border="0">
 <tr><td class="author-text" valign="top"><a name="ISO4217">[ISO4217]</a></td>
 <td class="author-text">International Organization for

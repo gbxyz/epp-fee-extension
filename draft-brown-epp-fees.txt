@@ -96,9 +96,9 @@ Table of Contents
      9.2.  Changes from 01 to 02  . . . . . . . . . . . . . . . . . . 34
      9.3.  Changes from 02 to 03  . . . . . . . . . . . . . . . . . . 34
      9.4.  Changes from 03 to 04  . . . . . . . . . . . . . . . . . . 35
-   10. Normative References . . . . . . . . . . . . . . . . . . . . . 35
-   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 35
-
+   10. TODO . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 35
+   11. Normative References . . . . . . . . . . . . . . . . . . . . . 35
+   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 36
 
 
 
@@ -1916,16 +1916,50 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 9.4.  Changes from 03 to 04
 
-   1.  As per suggestion from Michael Bauland, the <fee:period> element
+   1.  Change Intended Status to Standards Track.
+
+   2.  As per suggestion from Michael Bauland, the <fee:period> element
        is no longer included in <check> and <info> responses for
        "restore" commands.  It's still mandatory for all other commands.
 
+   3.  Added summary of the attributes for the <fee:fee> element.
 
-10.  Normative References
+   4.  Removed the option of returning a 1001 response when the fee is
+       incorrect.
+
+   5.  Forbid the inclusion of extension elements in transform responses
+       if no fee/credit has been assessed.
+
+   6.  Make the <fee:currency> element optional in transform commands.
+
+   7.  Amended XML Namespace section of IANA Considerations, added EPP
+       Extension Registry section.
+
+
+10.  TODO
+
+   (Note to RFC Editor: remove this section before publication as an
+   RFC.)
+
+   1.  Make the extension object-agnostic so it can be used with other
+       objects, not just vanilla domains.
+
+   2.  Change the <check> command so that availability data is not
+       returned.
+
+
+11.  Normative References
 
    [ISO4217]  International Organization for Standardization, "ISO 4217:
               2008, Codes for the representation of currencies and
               funds", 2008.
+
+
+
+Brown                    Expires August 15, 2015               [Page 35]
+
+Internet-Draft       Registry Fee Extension for EPP        February 2015
+
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119, March 1997.
@@ -1951,16 +1985,6 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
               for the  Extensible Provisioning Protocol (EPP)", 2014.
 
 
-
-
-
-
-
-Brown                    Expires August 15, 2015               [Page 35]
-
-Internet-Draft       Registry Fee Extension for EPP        February 2015
-
-
 Author's Address
 
    Gavin Brown
@@ -1972,30 +1996,6 @@ Author's Address
    Phone: +44 20 33 88 0600
    Email: gavin.brown@centralnic.com
    URI:   https://www.centralnic.com
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
