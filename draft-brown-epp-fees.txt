@@ -146,13 +146,13 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
    implementation.
 
    "fee" is used as an abbreviation for
-   "urn:ietf:params:xml:ns:fee-0.6".  The XML namespace prefix "fee" is
+   "urn:ietf:params:xml:ns:fee-0.7".  The XML namespace prefix "fee" is
    used, but implementations MUST NOT depend on it and instead employ a
    proper namespace-aware XML parser and serializer to interpret and
    output the XML documents.
 
    The XML namespace prefix above contains a version number,
-   specifically "0.6".  This version number will increment with
+   specifically "0.7".  This version number will increment with
    successive versions of this document, and will reach 1.0 if and when
    this document is published as an RFC.  This permits clients to
    distinguish which version of the extension a server has implemented.
@@ -1781,7 +1781,7 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
    conforming to a registry mechanism described in [RFC3688].  The
    folllowing URI assignment is requested of the IANA:
 
-   URI: urn:ietf:params:xml:ns:fee-0.6
+   URI: urn:ietf:params:xml:ns:fee-0.7
 
    Registrant Contact: See the "Author's Address" section of this
    document.
