@@ -573,8 +573,8 @@
           <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="xml"
             href="transform-response-elements.xml" />
 
-          <t>If no &lt;fee:creData&gt; element is included in the response, then
-          no fee has been assessed by the server for this transaction.</t>
+	  <t>If no fee has been assessed by the server for this transaction,
+          a &lt;fee:creData&gt; element MUST NOT be included in the response.</t>
 
           <t>Example &lt;create&gt; command:</t>
 
@@ -611,8 +611,8 @@
             <t>An OPTIONAL &lt;fee:creditLimit&gt; element.</t>
           </list></t>
 
-          <t>If no &lt;fee:delData&gt; element is included in the response, then
-          no credit has been assessed by the server for this transaction.</t>
+	  <t>If no credit has been assessed by the server for this transaction,
+          a &lt;fee:delData&gt; element MUST NOT be included in the response.</t>
 
           <t>Example &lt;delete&gt; response:</t>
 
@@ -645,8 +645,8 @@
           <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="xml"
             href="transform-response-elements.xml" />
 
-          <t>If no &lt;fee:renData&gt; element is included in the response, then
-          no fee has been assessed by the server for this transaction.</t>
+  	  <t>If no fee has been assessed by the server for this transaction,
+          a &lt;fee:renData&gt; element MUST NOT be included in the response.</t>
 
           <t>Example &lt;renew&gt; command:</t>
 
@@ -687,8 +687,8 @@
           <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="xml"
             href="transform-response-elements.xml" />
 
-          <t>If no &lt;fee:trnData&gt; element is included in the response, then
-          no fee has been assessed by the server for this transaction.</t>
+  	  <t>If no fee has been assessed by the server for this transaction,
+          a &lt;fee:trnData&gt; element MUST NOT be included in the response.</t>
 
           <t>Example &lt;transfer&gt; command:</t>
 
@@ -728,8 +728,8 @@
           <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="xml"
             href="transform-response-elements.xml" />
 
-          <t>If no &lt;fee:upData&gt; element is included in the response, then
-          no fee has been assessed by the server for this transaction.</t>
+  	  <t>If no fee has been assessed by the server for this transaction,
+          a &lt;fee:upData&gt; element MUST NOT be included in the response.</t>
 
           <t>Example &lt;update&gt; command:</t>
 

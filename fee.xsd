@@ -73,6 +73,8 @@
         minOccurs="0" maxOccurs="1" />
       <element name="fee" type="fee:feeType"
          minOccurs="0" maxOccurs="unbounded" />
+      <element name="credit" type="fee:creditType"
+         minOccurs="0" maxOccurs="unbounded" />
       <element name="class" type="token" minOccurs="0" />
     </sequence>
   </complexType>
@@ -101,6 +103,8 @@
         minOccurs="0" maxOccurs="1" />
       <element name="fee" type="fee:feeType"
         maxOccurs="unbounded" />
+      <element name="credit" type="fee:creditType"
+        minOccurs="0" maxOccurs="unbounded" />
       <element name="class" type="token" minOccurs="0" />
     </sequence>
   </complexType>
@@ -114,6 +118,8 @@
         minOccurs="0" />
       <element name="fee" type="fee:feeType"
         maxOccurs="unbounded" />
+      <element name="credit" type="fee:creditType"
+        minOccurs="0" maxOccurs="unbounded" />
     </sequence>
   </complexType>
 
@@ -125,6 +131,8 @@
       <element name="currency" type="fee:currencyType" />
       <element name="fee" type="fee:feeType"
         maxOccurs="unbounded" />
+      <element name="credit" type="fee:creditType"
+        minOccurs="0" maxOccurs="unbounded" />
       <element name="balance" type="fee:balanceType"
         minOccurs="0" />
       <element name="creditLimit" type="fee:creditLimitType"
@@ -145,6 +153,8 @@
 
       <element name="fee" type="fee:feeType"
         maxOccurs="unbounded" />
+      <element name="credit" type="fee:creditType"
+        minOccurs="0" maxOccurs="unbounded" />
       <element name="balance" type="fee:balanceType"
         minOccurs="0" />
       <element name="creditLimit" type="fee:creditLimitType"

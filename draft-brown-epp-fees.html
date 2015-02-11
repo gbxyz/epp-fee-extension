@@ -1074,8 +1074,8 @@ EPP &lt;create&gt; Command</h3>
 </li>
 </ul>
 
-<p>If no &lt;fee:creData&gt; element is included in the response, then
-          no fee has been assessed by the server for this transaction.
+<p>If no fee has been assessed by the server for this transaction,
+          a &lt;fee:creData&gt; element MUST NOT be included in the response.
 </p>
 <p>Example &lt;create&gt; command:
 </p><div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
@@ -1167,8 +1167,8 @@ EPP &lt;delete&gt; Command</h3>
 </li>
 </ul>
 
-<p>If no &lt;fee:delData&gt; element is included in the response, then
-          no credit has been assessed by the server for this transaction.
+<p>If no credit has been assessed by the server for this transaction,
+          a &lt;fee:delData&gt; element MUST NOT be included in the response.
 </p>
 <p>Example &lt;delete&gt; response:
 </p><div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
@@ -1232,8 +1232,8 @@ EPP &lt;renew&gt; Command</h3>
 </li>
 </ul>
 
-<p>If no &lt;fee:renData&gt; element is included in the response, then
-          no fee has been assessed by the server for this transaction.
+<p>If no fee has been assessed by the server for this transaction,
+          a &lt;fee:renData&gt; element MUST NOT be included in the response.
 </p>
 <p>Example &lt;renew&gt; command:
 </p><div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
@@ -1327,8 +1327,8 @@ EPP &lt;transfer&gt; Command</h3>
 </li>
 </ul>
 
-<p>If no &lt;fee:trnData&gt; element is included in the response, then
-          no fee has been assessed by the server for this transaction.
+<p>If no fee has been assessed by the server for this transaction,
+          a &lt;fee:trnData&gt; element MUST NOT be included in the response.
 </p>
 <p>Example &lt;transfer&gt; command:
 </p><div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
@@ -1427,8 +1427,8 @@ EPP &lt;update&gt; Command</h3>
 </li>
 </ul>
 
-<p>If no &lt;fee:upData&gt; element is included in the response, then
-          no fee has been assessed by the server for this transaction.
+<p>If no fee has been assessed by the server for this transaction,
+          a &lt;fee:upData&gt; element MUST NOT be included in the response.
 </p>
 <p>Example &lt;update&gt; command:
 </p><div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
@@ -1596,6 +1596,8 @@ BEGIN
         minOccurs="0" maxOccurs="1" /&gt;
       &lt;element name="fee" type="fee:feeType"
          minOccurs="0" maxOccurs="unbounded" /&gt;
+      &lt;element name="credit" type="fee:creditType"
+         minOccurs="0" maxOccurs="unbounded" /&gt;
       &lt;element name="class" type="token" minOccurs="0" /&gt;
     &lt;/sequence&gt;
   &lt;/complexType&gt;
@@ -1624,6 +1626,8 @@ BEGIN
         minOccurs="0" maxOccurs="1" /&gt;
       &lt;element name="fee" type="fee:feeType"
         maxOccurs="unbounded" /&gt;
+      &lt;element name="credit" type="fee:creditType"
+        minOccurs="0" maxOccurs="unbounded" /&gt;
       &lt;element name="class" type="token" minOccurs="0" /&gt;
     &lt;/sequence&gt;
   &lt;/complexType&gt;
@@ -1637,6 +1641,8 @@ BEGIN
         minOccurs="0" /&gt;
       &lt;element name="fee" type="fee:feeType"
         maxOccurs="unbounded" /&gt;
+      &lt;element name="credit" type="fee:creditType"
+        minOccurs="0" maxOccurs="unbounded" /&gt;
     &lt;/sequence&gt;
   &lt;/complexType&gt;
 
@@ -1648,6 +1654,8 @@ BEGIN
       &lt;element name="currency" type="fee:currencyType" /&gt;
       &lt;element name="fee" type="fee:feeType"
         maxOccurs="unbounded" /&gt;
+      &lt;element name="credit" type="fee:creditType"
+        minOccurs="0" maxOccurs="unbounded" /&gt;
       &lt;element name="balance" type="fee:balanceType"
         minOccurs="0" /&gt;
       &lt;element name="creditLimit" type="fee:creditLimitType"
@@ -1668,6 +1676,8 @@ BEGIN
 
       &lt;element name="fee" type="fee:feeType"
         maxOccurs="unbounded" /&gt;
+      &lt;element name="credit" type="fee:creditType"
+        minOccurs="0" maxOccurs="unbounded" /&gt;
       &lt;element name="balance" type="fee:balanceType"
         minOccurs="0" /&gt;
       &lt;element name="creditLimit" type="fee:creditLimitType"
