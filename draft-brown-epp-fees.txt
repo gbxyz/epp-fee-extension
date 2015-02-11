@@ -267,9 +267,9 @@ Internet-Draft       Registry Fee Extension for EPP       September 2014
    A server MAY respond with multiple <fee:fee> and <fee:credit>
    elements in the same response.  In such cases, the net fee or credit
    applicable to the transaction is the arithmetic sum of the values of
-   each of the <fee:fee> or <fee:credit> elements.  This amount applies
-   to the total additional validity period applied to the domain (where
-   applicable) rather than to any incremental unit.
+   each of the <fee:fee> and/or <fee:credit> elements.  This amount
+   applies to the total additional validity period applied to the domain
+   (where applicable) rather than to any incremental unit.
 
    The following attributes are defined for the <fee:fee> element.
    These are described in detail below:

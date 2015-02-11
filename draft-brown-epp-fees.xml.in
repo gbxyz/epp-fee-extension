@@ -217,8 +217,8 @@
         <t>A server MAY respond with multiple &lt;fee:fee&gt; and
         &lt;fee:credit&gt; elements in the same response. In such cases, the net
         fee or credit applicable to the transaction is the arithmetic sum of the
-        values of each of the &lt;fee:fee&gt; or &lt;fee:credit&gt; elements. This
-        amount applies to the total additional validity period applied to the
+        values of each of the &lt;fee:fee&gt; and/or &lt;fee:credit&gt; elements.
+	This amount applies to the total additional validity period applied to the
         domain (where applicable) rather than to any incremental unit.</t>
 
         <t>The following attributes are defined for the &lt;fee:fee&gt; element.
