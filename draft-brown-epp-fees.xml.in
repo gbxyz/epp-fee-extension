@@ -890,6 +890,7 @@ END</artwork></figure>
       </section>
       <section title="Changes from 03 to 04">
         <t><list style="numbers">
+          <t>Change Intended Status to Standards Track.</t>
           <t>As per suggestion from Michael Bauland, the &lt;fee:period&gt;
           element is no longer included in &lt;check&gt; and &lt;info&gt;
           responses for "restore" commands. It's still mandatory for all other
