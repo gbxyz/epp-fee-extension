@@ -127,7 +127,7 @@
       </section>
     </section>
 
-    <section title="Migrating Between Versions of This Extension">
+    <section title="Migrating to Newer Versions of This Extension">
       <t>(Note to RFC Editor: remove this section before publication as an
       RFC.)</t>
       <t>Servers which implement this extension SHOULD provide a
@@ -137,10 +137,13 @@
       older versions of the extension in parallel to the newest version, and
       allow clients to select their preferred version via the
       &lt;svcExtension&gt; element of the &lt;login&gt; command.</t>
-      <t>If a client requests multiple versions of the extension at login, then
-      the server SHOULD prefer the newest (as indicated by the version number
-      in the XML namespace) version of the extension, and SHOULD ignore extension
-      elements in commands that not in the namespace of the newest extension.</t>
+      <t>If a client requests multiple versions of the extension at login, then,
+      when preparing responses to commands which do not include extension elements,
+      the server SHOULD only include extension elements in the namespace of the newest
+      version of the extension requested by the client.</t>
+      <t>When preparing responses to commands which do include extension elements, the
+      server SHOULD only include extension elements for the extension versions present
+      in the command.</t>
     </section>
 
     <section title="Extension Elements">

@@ -196,7 +196,7 @@ Introduction<br />
 &nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor2">1.1.</a>&nbsp;
 Conventions Used in This Document<br />
 <a href="#anchor3">2.</a>&nbsp;
-Migrating Between Versions of This Extension<br />
+Migrating to Newer Versions of This Extension<br />
 <a href="#anchor4">3.</a>&nbsp;
 Extension Elements<br />
 &nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor5">3.1.</a>&nbsp;
@@ -331,7 +331,7 @@ Conventions Used in This Document</h3>
 <a name="anchor3"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.2"></a><h3>2.&nbsp;
-Migrating Between Versions of This Extension</h3>
+Migrating to Newer Versions of This Extension</h3>
 
 <p>(Note to RFC Editor: remove this section before publication as an
       RFC.)
@@ -345,10 +345,14 @@ Migrating Between Versions of This Extension</h3>
       allow clients to select their preferred version via the
       &lt;svcExtension&gt; element of the &lt;login&gt; command.
 </p>
-<p>If a client requests multiple versions of the extension at login, then
-      the server SHOULD prefer the newest (as indicated by the version number
-      in the XML namespace) version of the extension, and SHOULD ignore extension
-      elements in commands that not in the namespace of the newest extension.
+<p>If a client requests multiple versions of the extension at login, then,
+      when preparing responses to commands which do not include extension elements,
+      the server SHOULD only include extension elements in the namespace of the newest
+      version of the extension requested by the client.
+</p>
+<p>When preparing responses to commands which do include extension elements, the
+      server SHOULD only include extension elements for the extension versions present
+      in the command.
 </p>
 <a name="anchor4"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
