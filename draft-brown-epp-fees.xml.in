@@ -115,6 +115,9 @@
         proper namespace-aware XML parser and serializer to interpret and output
         the XML documents.</t>
 
+        <t>(Note to RFC Editor: remove the following paragraph before publication
+	as an RFC.)</t>
+
         <t>The XML namespace prefix above contains a version number,
         specifically "&VERSION;". This version number will increment with
         successive versions of this document, and will reach 1.0 if and when

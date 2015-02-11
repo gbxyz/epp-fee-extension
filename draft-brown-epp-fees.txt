@@ -61,18 +61,18 @@ Table of Contents
 
    1.  Introduction . . . . . . . . . . . . . . . . . . . . . . . . .  3
      1.1.  Conventions Used in This Document  . . . . . . . . . . . .  3
-   2.  Migrating Between Versions of This Extension . . . . . . . . .  3
+   2.  Migrating Between Versions of This Extension . . . . . . . . .  4
    3.  Extension Elements . . . . . . . . . . . . . . . . . . . . . .  4
      3.1.  Client Commands  . . . . . . . . . . . . . . . . . . . . .  4
-     3.2.  Currency Codes . . . . . . . . . . . . . . . . . . . . . .  4
+     3.2.  Currency Codes . . . . . . . . . . . . . . . . . . . . . .  5
      3.3.  Validity Periods . . . . . . . . . . . . . . . . . . . . .  5
      3.4.  Fees and Credits . . . . . . . . . . . . . . . . . . . . .  5
        3.4.1.  Refunds  . . . . . . . . . . . . . . . . . . . . . . .  6
        3.4.2.  Grace Periods  . . . . . . . . . . . . . . . . . . . .  6
-       3.4.3.  Applicability  . . . . . . . . . . . . . . . . . . . .  6
+       3.4.3.  Applicability  . . . . . . . . . . . . . . . . . . . .  7
      3.5.  Account Balance  . . . . . . . . . . . . . . . . . . . . .  7
      3.6.  Credit Limit . . . . . . . . . . . . . . . . . . . . . . .  7
-     3.7.  Classification of Domain Names . . . . . . . . . . . . . .  7
+     3.7.  Classification of Domain Names . . . . . . . . . . . . . .  8
    4.  Server Handling of Fee Information . . . . . . . . . . . . . .  8
    5.  EPP Command Mapping  . . . . . . . . . . . . . . . . . . . . .  8
      5.1.  EPP Query Commands . . . . . . . . . . . . . . . . . . . .  8
@@ -151,6 +151,9 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
    proper namespace-aware XML parser and serializer to interpret and
    output the XML documents.
 
+   (Note to RFC Editor: remove the following paragraph before
+   publication as an RFC.)
+
    The XML namespace prefix above contains a version number,
    specifically "0.7".  This version number will increment with
    successive versions of this document, and will reach 1.0 if and when
@@ -158,9 +161,6 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
    distinguish which version of the extension a server has implemented.
 
 
-2.  Migrating Between Versions of This Extension
-
-   (Note to RFC Editor: remove this section before publication as an
 
 
 
@@ -169,6 +169,9 @@ Brown                    Expires August 15, 2015                [Page 3]
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
+2.  Migrating Between Versions of This Extension
+
+   (Note to RFC Editor: remove this section before publication as an
    RFC.)
 
    Servers which implement this extension SHOULD provide a way for
@@ -212,11 +215,8 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
    "subphase" attribute identifying the custom or sub-phase as described
    in [draft-ietf-eppext-launchphase].
 
-3.2.  Currency Codes
 
-   The <fee:currency> element is used to indicate which currency fees
-   are charged in.  This value of this element MUST be a three-character
-   currency code from [ISO4217].
+
 
 
 
@@ -224,6 +224,12 @@ Brown                    Expires August 15, 2015                [Page 4]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
+
+3.2.  Currency Codes
+
+   The <fee:currency> element is used to indicate which currency fees
+   are charged in.  This value of this element MUST be a three-character
+   currency code from [ISO4217].
 
    Note that ISO 4217 provides the special "XXX" code, which MAY be used
    if the server uses a non-currency based system for assessing fees,
@@ -267,12 +273,6 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
    A server MAY respond with multiple <fee:fee> and <fee:credit>
    elements in the same response.  In such cases, the net fee or credit
    applicable to the transaction is the arithmetic sum of the values of
-   each of the <fee:fee> and/or <fee:credit> elements.  This amount
-   applies to the total additional validity period applied to the domain
-   (where applicable) rather than to any incremental unit.
-
-   The following attributes are defined for the <fee:fee> element.
-   These are described in detail below:
 
 
 
@@ -280,6 +280,13 @@ Brown                    Expires August 15, 2015                [Page 5]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
+
+   each of the <fee:fee> and/or <fee:credit> elements.  This amount
+   applies to the total additional validity period applied to the domain
+   (where applicable) rather than to any incremental unit.
+
+   The following attributes are defined for the <fee:fee> element.
+   These are described in detail below:
 
    description:  an OPTIONAL attribute which provides a human- readable
       description of the fee.  Servers SHOULD provide documentation on
@@ -323,19 +330,19 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
    also be refundable.  If the "refundable" attribute of a <fee:fee>
    element is false then it MUST NOT have a "grace-period" attribute.
 
-3.4.3.  Applicability
-
-   Fees may be applied immediately upon receipt of a command from a
-   client, or may only be applied once an out-of-band process (such as
-   the processing of applications at the end of a launch phase) has
-   taken place.
-
 
 
 Brown                    Expires August 15, 2015                [Page 6]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
+
+3.4.3.  Applicability
+
+   Fees may be applied immediately upon receipt of a command from a
+   client, or may only be applied once an out-of-band process (such as
+   the processing of applications at the end of a launch phase) has
+   taken place.
 
    The "applied" attribute of the <fee:fee> element allows servers to
    indicate whether a fee will be applied immediately, or whether it
@@ -378,13 +385,6 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
    matter of server policy.  However, if a server chooses to offer
    support for this element, it MUST be included in responses to all
    domain "transform" commands (ie <create>, <renew>, <update>,
-   <delete>, <transfer op="request">).
-
-3.7.  Classification of Domain Names
-
-   Domain names may be assigned to a particular class, category, or
-   tier, each of which has a particular fee or set of fees associated
-   with it.  The <fee:class> element which appears in <check> and <info>
 
 
 
@@ -393,6 +393,13 @@ Brown                    Expires August 15, 2015                [Page 7]
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
+   <delete>, <transfer op="request">).
+
+3.7.  Classification of Domain Names
+
+   Domain names may be assigned to a particular class, category, or
+   tier, each of which has a particular fee or set of fees associated
+   with it.  The <fee:class> element which appears in <check> and <info>
    responses is used to indicate the classification of a domain name.
 
    If a server makes use of this element, it MUST provide clients with a
@@ -434,13 +441,6 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
    command.
 
    The command MAY contain an <extension> element which MAY contain a
-   <fee:check> element.  The <fee:check> element MUST contain at least
-   one <fee:domain> element, with the following child elements:
-
-   o  A <fee:name> element.  The domain name need not correspond to a
-      <domain:name> element that appears in the <domain:check> element
-      of the main body of the frame.
-
 
 
 
@@ -449,6 +449,13 @@ Brown                    Expires August 15, 2015                [Page 8]
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
+   <fee:check> element.  The <fee:check> element MUST contain at least
+   one <fee:domain> element, with the following child elements:
+
+   o  A <fee:name> element.  The domain name need not correspond to a
+      <domain:name> element that appears in the <domain:check> element
+      of the main body of the frame.
+
    o  An OPTIONAL <fee:currency> element;
 
    o  A <fee:command> element;
@@ -456,13 +463,6 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
    o  An OPTIONAL <fee:period> element.
 
    Example <check> command:
-
-
-
-
-
-
-
 
 
 
