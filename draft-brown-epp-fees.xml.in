@@ -24,6 +24,10 @@
 
   <!ENTITY RFC5731 SYSTEM
     "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.5731.xml">
+
+  <!ENTITY RFC7451 SYSTEM
+    "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.7451.xml">
+
 ]>
 
 <?xml-stylesheet type="text/xsl" href="rfc2629.xslt" ?>
@@ -118,6 +122,22 @@
         distinguish which version of the extension a server has implemented.</t>
 
       </section>
+    </section>
+
+    <section title="Migrating Between Versions of This Extension">
+      <t>(Note to RFC Editor: remove this section before publication as an
+      RFC.)</t>
+      <t>Servers which implement this extension SHOULD provide a
+      way for clients to progressively update their implementations
+      when a new version of the extension is deployed.</t>
+      <t>Servers SHOULD (for a temporary migration period) provide support for
+      older versions of the extension in parallel to the newest version, and
+      allow clients to select their preferred version via the
+      &lt;svcExtension&gt; element of the &lt;login&gt; command.</t>
+      <t>If a client requests multiple versions of the extension at login, then
+      the server SHOULD prefer the newest (as indicated by the version number
+      in the XML namespace) version of the extension, and SHOULD ignore extension
+      elements in commands that not in the namespace of the newest extension.</t>
     </section>
 
     <section title="Extension Elements">
@@ -784,20 +804,29 @@ END</artwork></figure>
       specifications apply to this specification as well.</t></section>
 
     <section anchor="IANA" title="IANA Considerations">
-      <t>This document uses URNs to describe XML namespaces and XML schemas
-      conforming to a registry mechanism described in <xref target="RFC3688" />.
-      Two URI assignments were requested and have been registered by the
-      IANA.</t>
-      <t>Registration request for the digital signature namespace:</t>
-      <t>URI: urn:ietf:params:xml:ns:fee-&VERSION;</t>
-      <t>Registrant Contact: See the "Author's Address" section of this
-      document.</t>
-      <t>XML: None. Namespace URIs do not represent an XML specification.</t>
-      <t>Registration request for the EPP fee XML schema:</t>
-      <t>URI: urn:ietf:params:xml:ns:fee-&VERSION;</t>
-      <t>Registrant Contact: See the "Author's Address" section of this
-      document.</t>
-      <t>XML: See the "Formal Syntax" section of this document.</t>
+      <section title="XML Namespace">
+        <t>This document uses URNs to describe XML namespaces and XML schemas
+        conforming to a registry mechanism described in <xref target="RFC3688" />.
+        The folllowing URI assignment is requested of the IANA:</t>
+        <t>URI: urn:ietf:params:xml:ns:fee-&VERSION;</t>
+        <t>Registrant Contact: See the "Author's Address" section of this
+        document.</t>
+        <t>XML: See the "Formal Syntax" section of this document.</t>
+      </section>
+      <section title="EPP Extension Registry">
+	<t>The EPP extension described in this document should be registered
+	by the IANA in the EPP Extension Registry described in <xref
+	target="RFC7451"/>. The details of the registration are as follows:</t>
+	<t>Name of Extension: EPP Fee Extension</t>
+	<t>Document status: Standards Track</t>
+	<t>Reference: (insert reference to RFC version of this document)</t>
+	<t>Registrant Name and Email Address: See the "Author's Address" section
+	of this document.</t>
+	<t>TLDs: any</t>
+	<t>IPR Disclosure: none</t>
+	<t>Status: active</t>
+	<t>Notes: none</t>
+      </section>
     </section>
 
     <section title="Acknowledgements">
@@ -878,6 +907,7 @@ END</artwork></figure>
       &RFC3915;
       &RFC5730;
       &RFC5731;
+      &RFC7451;
 
       <reference anchor="ISO4217">
           <front>
