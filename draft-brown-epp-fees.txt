@@ -8,7 +8,7 @@ Expires: August 15, 2015
 
 
  Registry Fee Extension for the Extensible Provisioning Protocol (EPP)
-                        draft-brown-epp-fees-03
+                        draft-brown-epp-fees-04
 
 Abstract
 
