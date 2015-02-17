@@ -231,9 +231,10 @@
         These are described in detail below:</t>
 
         <t><list style="hanging">
-      	  <t hangText="description:">an OPTIONAL attribute which provides a human-
-            readable description of the fee. Servers SHOULD provide documentation
-            on the possible values of this attribute, and their meanings.</t>
+      	  <t hangText="description:">an OPTIONAL attribute which provides a
+	    human-readable description of the fee. Servers SHOULD provide
+	    documentation on the possible values of this attribute, and their
+	    meanings.</t>
 	  <t hangText="refundable:">an OPTIONAL boolean attribute indicating
             whether the fee is refundable if the domain name is deleted.</t>
 	  <t hangText="grace-period:">an OPTIONAL attribute which provides the
@@ -896,17 +897,20 @@ END</artwork></figure>
       </section>
       <section title="Changes from 03 to 04">
         <t><list style="numbers">
-          <t>Change Intended Status to Standards Track.</t>
+          <t>Changed Intended Status to Standards Track.</t>
           <t>As per suggestion from Michael Bauland, the &lt;fee:period&gt;
           element is no longer included in &lt;check&gt; and &lt;info&gt;
           responses for "restore" commands. It's still mandatory for all other
           commands.</t>
 	  <t>Added summary of the attributes for the &lt;fee:fee&gt; element.</t>
+	  <t>Clarified that the "refundable" and "grace-period" attributes of
+	  the &lt;fee&gt; fee elements are dependant on each other and cannot
+	  appear on their own.</t>
 	  <t>Removed the option of returning a 1001 response when the fee is
 	  incorrect.</t>
-	  <t>Forbid the inclusion of extension elements in transform responses
+	  <t>Forbidden the inclusion of extension elements in transform responses
 	  if no fee/credit has been assessed.</t>
-	  <t>Make the &lt;fee:currency&gt; element optional in transform
+	  <t>Made the &lt;fee:currency&gt; element optional in transform
 	  commands.</t>
 	  <t>Amended XML Namespace section of IANA Considerations, added
 	  EPP Extension Registry section.</t>
