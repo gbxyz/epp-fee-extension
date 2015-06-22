@@ -31,7 +31,8 @@
           <fee:fee description="Application Fee"
             refundable="0">5.00</fee:fee>
           <fee:fee description="Registration Fee"
-            refundable="1">5.00</fee:fee>
+            refundable="1"
+	    grace-period="P5D">5.00</fee:fee>
         </fee:cd>
         <fee:cd>
           <fee:name>example.net</fee:name>
@@ -46,16 +47,22 @@
           <fee:currency>EUR</fee:currency>
           <fee:command>transfer</fee:command>
           <fee:period unit="y">2</fee:period>
-          <fee:fee description="Transfer Fee">2.50</fee:fee>
-          <fee:fee description="Renewal Fee">10.00</fee:fee>
+          <fee:fee description="Transfer Fee"
+            refundable="0">2.50</fee:fee>
+          <fee:fee description="Renewal Fee"
+            refundable="1"
+	    grace-period="P5D">10.00</fee:fee>
         </fee:cd>
         <fee:cd>
           <fee:name>example.xyz</fee:name>
           <fee:currency>GBP</fee:currency>
           <fee:command>restore</fee:command>
           <fee:period unit="y">1</fee:period>
-          <fee:fee description="Restore Fee">25</fee:fee>
-          <fee:fee description="Renewal Fee">5.00</fee:fee>
+          <fee:fee description="Restore Fee"
+            refundable="0">25</fee:fee>
+          <fee:fee description="Renewal Fee"
+            refundable="1"
+	    grace-period="P5D">5.00</fee:fee>
           <fee:class>premium-tier1</fee:class>
         </fee:cd>
       </fee:chkData>

@@ -3,8 +3,8 @@
 
 Internet Engineering Task Force                                 G. Brown
 Internet-Draft                                      CentralNic Group plc
-Intended status: Standards Track                       February 17, 2015
-Expires: August 21, 2015
+Intended status: Standards Track                           February 2015
+Expires: August 5, 2015
 
 
  Registry Fee Extension for the Extensible Provisioning Protocol (EPP)
@@ -30,7 +30,7 @@ Status of this Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on August 21, 2015.
+   This Internet-Draft will expire on August 5, 2015.
 
 Copyright Notice
 
@@ -52,7 +52,7 @@ Copyright Notice
 
 
 
-Brown                    Expires August 21, 2015                [Page 1]
+Brown                    Expires August 5, 2015                 [Page 1]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
@@ -78,27 +78,27 @@ Table of Contents
      5.1.  EPP Query Commands . . . . . . . . . . . . . . . . . . . .  8
        5.1.1.  EPP <check> Command  . . . . . . . . . . . . . . . . .  9
        5.1.2.  EPP <info> Command . . . . . . . . . . . . . . . . . . 13
-       5.1.3.  EPP Transfer Query Command . . . . . . . . . . . . . . 16
-     5.2.  EPP Transform Commands . . . . . . . . . . . . . . . . . . 17
-       5.2.1.  EPP <create> Command . . . . . . . . . . . . . . . . . 17
-       5.2.2.  EPP <delete> Command . . . . . . . . . . . . . . . . . 19
-       5.2.3.  EPP <renew> Command  . . . . . . . . . . . . . . . . . 20
-       5.2.4.  EPP <transfer> Command . . . . . . . . . . . . . . . . 22
-       5.2.5.  EPP <update> Command . . . . . . . . . . . . . . . . . 24
-     5.3.  Formal Syntax  . . . . . . . . . . . . . . . . . . . . . . 26
-   6.  Security Considerations  . . . . . . . . . . . . . . . . . . . 32
-   7.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 32
-     7.1.  XML Namespace  . . . . . . . . . . . . . . . . . . . . . . 32
-     7.2.  EPP Extension Registry . . . . . . . . . . . . . . . . . . 33
-   8.  Acknowledgements . . . . . . . . . . . . . . . . . . . . . . . 33
-   9.  Change History . . . . . . . . . . . . . . . . . . . . . . . . 34
-     9.1.  Changes from 00 to 01  . . . . . . . . . . . . . . . . . . 34
-     9.2.  Changes from 01 to 02  . . . . . . . . . . . . . . . . . . 34
-     9.3.  Changes from 02 to 03  . . . . . . . . . . . . . . . . . . 34
-     9.4.  Changes from 03 to 04  . . . . . . . . . . . . . . . . . . 35
-   10. TODO . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 35
-   11. Normative References . . . . . . . . . . . . . . . . . . . . . 35
-   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 36
+       5.1.3.  EPP Transfer Query Command . . . . . . . . . . . . . . 17
+     5.2.  EPP Transform Commands . . . . . . . . . . . . . . . . . . 18
+       5.2.1.  EPP <create> Command . . . . . . . . . . . . . . . . . 18
+       5.2.2.  EPP <delete> Command . . . . . . . . . . . . . . . . . 20
+       5.2.3.  EPP <renew> Command  . . . . . . . . . . . . . . . . . 21
+       5.2.4.  EPP <transfer> Command . . . . . . . . . . . . . . . . 23
+       5.2.5.  EPP <update> Command . . . . . . . . . . . . . . . . . 25
+     5.3.  Formal Syntax  . . . . . . . . . . . . . . . . . . . . . . 27
+   6.  Security Considerations  . . . . . . . . . . . . . . . . . . . 33
+   7.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 33
+     7.1.  XML Namespace  . . . . . . . . . . . . . . . . . . . . . . 33
+     7.2.  EPP Extension Registry . . . . . . . . . . . . . . . . . . 34
+   8.  Acknowledgements . . . . . . . . . . . . . . . . . . . . . . . 34
+   9.  Change History . . . . . . . . . . . . . . . . . . . . . . . . 35
+     9.1.  Changes from 00 to 01  . . . . . . . . . . . . . . . . . . 35
+     9.2.  Changes from 01 to 02  . . . . . . . . . . . . . . . . . . 35
+     9.3.  Changes from 02 to 03  . . . . . . . . . . . . . . . . . . 35
+     9.4.  Changes from 03 to 04  . . . . . . . . . . . . . . . . . . 36
+   10. TODO . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 36
+   11. Normative References . . . . . . . . . . . . . . . . . . . . . 37
+   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 37
 
 
 
@@ -108,7 +108,7 @@ Table of Contents
 
 
 
-Brown                    Expires August 21, 2015                [Page 2]
+Brown                    Expires August 5, 2015                 [Page 2]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
@@ -164,7 +164,7 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
 
-Brown                    Expires August 21, 2015                [Page 3]
+Brown                    Expires August 5, 2015                 [Page 3]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
@@ -220,7 +220,7 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
 
-Brown                    Expires August 21, 2015                [Page 4]
+Brown                    Expires August 5, 2015                 [Page 4]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
@@ -276,7 +276,7 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
 
-Brown                    Expires August 21, 2015                [Page 5]
+Brown                    Expires August 5, 2015                 [Page 5]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
@@ -332,7 +332,7 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
 
-Brown                    Expires August 21, 2015                [Page 6]
+Brown                    Expires August 5, 2015                 [Page 6]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
@@ -388,7 +388,7 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
 
-Brown                    Expires August 21, 2015                [Page 7]
+Brown                    Expires August 5, 2015                 [Page 7]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
@@ -444,7 +444,7 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
 
-Brown                    Expires August 21, 2015                [Page 8]
+Brown                    Expires August 5, 2015                 [Page 8]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
@@ -500,7 +500,7 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
 
-Brown                    Expires August 21, 2015                [Page 9]
+Brown                    Expires August 5, 2015                 [Page 9]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
@@ -556,7 +556,7 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
 
-Brown                    Expires August 21, 2015               [Page 10]
+Brown                    Expires August 5, 2015                [Page 10]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
@@ -612,7 +612,7 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
 
-Brown                    Expires August 21, 2015               [Page 11]
+Brown                    Expires August 5, 2015                [Page 11]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
@@ -640,7 +640,8 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
    S:           <fee:fee description="Application Fee"
    S:             refundable="0">5.00</fee:fee>
    S:           <fee:fee description="Registration Fee"
-   S:             refundable="1">5.00</fee:fee>
+   S:             refundable="1"
+   S:          grace-period="P5D">5.00</fee:fee>
    S:         </fee:cd>
    S:         <fee:cd>
    S:           <fee:name>example.net</fee:name>
@@ -655,24 +656,30 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
    S:           <fee:currency>EUR</fee:currency>
    S:           <fee:command>transfer</fee:command>
    S:           <fee:period unit="y">2</fee:period>
-   S:           <fee:fee description="Transfer Fee">2.50</fee:fee>
-   S:           <fee:fee description="Renewal Fee">10.00</fee:fee>
+   S:           <fee:fee description="Transfer Fee"
+   S:             refundable="0">2.50</fee:fee>
+   S:           <fee:fee description="Renewal Fee"
+   S:             refundable="1"
+   S:          grace-period="P5D">10.00</fee:fee>
    S:         </fee:cd>
    S:         <fee:cd>
    S:           <fee:name>example.xyz</fee:name>
    S:           <fee:currency>GBP</fee:currency>
-   S:           <fee:command>restore</fee:command>
-   S:           <fee:period unit="y">1</fee:period>
-   S:           <fee:fee description="Restore Fee">25</fee:fee>
-   S:           <fee:fee description="Renewal Fee">5.00</fee:fee>
 
 
 
-Brown                    Expires August 21, 2015               [Page 12]
+Brown                    Expires August 5, 2015                [Page 12]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
+   S:           <fee:command>restore</fee:command>
+   S:           <fee:period unit="y">1</fee:period>
+   S:           <fee:fee description="Restore Fee"
+   S:             refundable="0">25</fee:fee>
+   S:           <fee:fee description="Renewal Fee"
+   S:             refundable="1"
+   S:          grace-period="P5D">5.00</fee:fee>
    S:           <fee:class>premium-tier1</fee:class>
    S:         </fee:cd>
    S:       </fee:chkData>
@@ -700,6 +707,28 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
    Example <info> command:
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Brown                    Expires August 5, 2015                [Page 13]
+
+Internet-Draft       Registry Fee Extension for EPP        February 2015
+
+
    C: <?xml version="1.0" encoding="utf-8" standalone="no"?>
    C: <epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
    C:   <command>
@@ -721,14 +750,6 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
    C: </epp>
 
    When the server receives an <info> command that includes the
-
-
-
-Brown                    Expires August 21, 2015               [Page 13]
-
-Internet-Draft       Registry Fee Extension for EPP        February 2015
-
-
    extension element described above, its response MUST (subject to the
    exception described below) contain an <extension> element, which MUST
    contain a child <fee:infData> element.  The <fee:infData> MUST
@@ -756,6 +777,14 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
    o  An OPTIONAL <fee:class> element.
 
+
+
+
+Brown                    Expires August 5, 2015                [Page 14]
+
+Internet-Draft       Registry Fee Extension for EPP        February 2015
+
+
    Depending on policy, the server MAY choose to omit the <fee:infData>
    element and return a 2201 authorisation error instead.
 
@@ -780,7 +809,34 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
 
-Brown                    Expires August 21, 2015               [Page 14]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Brown                    Expires August 5, 2015                [Page 15]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
@@ -836,7 +892,7 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
 
-Brown                    Expires August 21, 2015               [Page 15]
+Brown                    Expires August 5, 2015                [Page 16]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
@@ -892,7 +948,7 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
 
-Brown                    Expires August 21, 2015               [Page 16]
+Brown                    Expires August 5, 2015                [Page 17]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
@@ -948,7 +1004,7 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
 
-Brown                    Expires August 21, 2015               [Page 17]
+Brown                    Expires August 5, 2015                [Page 18]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
@@ -1004,7 +1060,7 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
 
-Brown                    Expires August 21, 2015               [Page 18]
+Brown                    Expires August 5, 2015                [Page 19]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
@@ -1060,7 +1116,7 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
 
-Brown                    Expires August 21, 2015               [Page 19]
+Brown                    Expires August 5, 2015                [Page 20]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
@@ -1116,7 +1172,7 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
 
-Brown                    Expires August 21, 2015               [Page 20]
+Brown                    Expires August 5, 2015                [Page 21]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
@@ -1172,7 +1228,7 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
 
-Brown                    Expires August 21, 2015               [Page 21]
+Brown                    Expires August 5, 2015                [Page 22]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
@@ -1228,7 +1284,7 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
 
-Brown                    Expires August 21, 2015               [Page 22]
+Brown                    Expires August 5, 2015                [Page 23]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
@@ -1284,7 +1340,7 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
 
-Brown                    Expires August 21, 2015               [Page 23]
+Brown                    Expires August 5, 2015                [Page 24]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
@@ -1340,7 +1396,7 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
 
-Brown                    Expires August 21, 2015               [Page 24]
+Brown                    Expires August 5, 2015                [Page 25]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
@@ -1396,7 +1452,7 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
 
-Brown                    Expires August 21, 2015               [Page 25]
+Brown                    Expires August 5, 2015                [Page 26]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
@@ -1452,7 +1508,7 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
 
-Brown                    Expires August 21, 2015               [Page 26]
+Brown                    Expires August 5, 2015                [Page 27]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
@@ -1508,7 +1564,7 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
 
-Brown                    Expires August 21, 2015               [Page 27]
+Brown                    Expires August 5, 2015                [Page 28]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
@@ -1564,7 +1620,7 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
 
-Brown                    Expires August 21, 2015               [Page 28]
+Brown                    Expires August 5, 2015                [Page 29]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
@@ -1620,7 +1676,7 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
 
-Brown                    Expires August 21, 2015               [Page 29]
+Brown                    Expires August 5, 2015                [Page 30]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
@@ -1676,7 +1732,7 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
 
-Brown                    Expires August 21, 2015               [Page 30]
+Brown                    Expires August 5, 2015                [Page 31]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
@@ -1732,7 +1788,7 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
 
-Brown                    Expires August 21, 2015               [Page 31]
+Brown                    Expires August 5, 2015                [Page 32]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
@@ -1788,7 +1844,7 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
 
-Brown                    Expires August 21, 2015               [Page 32]
+Brown                    Expires August 5, 2015                [Page 33]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
@@ -1844,7 +1900,7 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
 
-Brown                    Expires August 21, 2015               [Page 33]
+Brown                    Expires August 5, 2015                [Page 34]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
@@ -1900,7 +1956,7 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 
 
-Brown                    Expires August 21, 2015               [Page 34]
+Brown                    Expires August 5, 2015                [Page 35]
 
 Internet-Draft       Registry Fee Extension for EPP        February 2015
 
@@ -1916,7 +1972,7 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
 9.4.  Changes from 03 to 04
 
-   1.  Change Intended Status to Standards Track.
+   1.  Changed Intended Status to Standards Track.
 
    2.  As per suggestion from Michael Bauland, the <fee:period> element
        is no longer included in <check> and <info> responses for
@@ -1924,15 +1980,19 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
    3.  Added summary of the attributes for the <fee:fee> element.
 
-   4.  Removed the option of returning a 1001 response when the fee is
+   4.  Clarified that the "refundable" and "grace-period" attributes of
+       the <fee> fee elements are dependant on each other and cannot
+       appear on their own.
+
+   5.  Removed the option of returning a 1001 response when the fee is
        incorrect.
 
-   5.  Forbid the inclusion of extension elements in transform responses
-       if no fee/credit has been assessed.
+   6.  Forbidden the inclusion of extension elements in transform
+       responses if no fee/credit has been assessed.
 
-   6.  Make the <fee:currency> element optional in transform commands.
+   7.  Made the <fee:currency> element optional in transform commands.
 
-   7.  Amended XML Namespace section of IANA Considerations, added EPP
+   8.  Amended XML Namespace section of IANA Considerations, added EPP
        Extension Registry section.
 
 
@@ -1948,18 +2008,20 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
        returned.
 
 
+
+
+
+
+Brown                    Expires August 5, 2015                [Page 36]
+
+Internet-Draft       Registry Fee Extension for EPP        February 2015
+
+
 11.  Normative References
 
    [ISO4217]  International Organization for Standardization, "ISO 4217:
               2008, Codes for the representation of currencies and
               funds", 2008.
-
-
-
-Brown                    Expires August 21, 2015               [Page 35]
-
-Internet-Draft       Registry Fee Extension for EPP        February 2015
-
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119, March 1997.
@@ -2006,11 +2068,5 @@ Author's Address
 
 
 
-
-
-
-
-
-
-Brown                    Expires August 21, 2015               [Page 36]
+Brown                    Expires August 5, 2015                [Page 37]
 

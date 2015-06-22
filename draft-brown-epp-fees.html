@@ -146,8 +146,8 @@
 <table summary="layout" width="66%" border="0" cellpadding="0" cellspacing="0"><tr><td><table summary="layout" width="100%" border="0" cellpadding="2" cellspacing="1">
 <tr><td class="header">Internet Engineering Task Force</td><td class="header">G. Brown</td></tr>
 <tr><td class="header">Internet-Draft</td><td class="header">CentralNic Group plc</td></tr>
-<tr><td class="header">Intended status: Standards Track</td><td class="header">February 17, 2015</td></tr>
-<tr><td class="header">Expires: August 21, 2015</td><td class="header">&nbsp;</td></tr>
+<tr><td class="header">Intended status: Standards Track</td><td class="header">February 2015</td></tr>
+<tr><td class="header">Expires: August 5, 2015</td><td class="header">&nbsp;</td></tr>
 </table></td></tr></table>
 <h1><br />Registry Fee Extension for
     the Extensible Provisioning Protocol (EPP)<br />draft-brown-epp-fees-04</h1>
@@ -172,7 +172,7 @@ and may be updated, replaced, or obsoleted by other documents at any time.
 It is inappropriate to use Internet-Drafts as reference material or to cite
 them other than as &ldquo;work in progress.&rdquo;</p>
 <p>
-This Internet-Draft will expire on August 21, 2015.</p>
+This Internet-Draft will expire on August 5, 2015.</p>
 
 <h3>Copyright Notice</h3>
 <p>
@@ -779,7 +779,8 @@ S:           &lt;fee:period unit="y"&gt;1&lt;/fee:period&gt;
 S:           &lt;fee:fee description="Application Fee"
 S:             refundable="0"&gt;5.00&lt;/fee:fee&gt;
 S:           &lt;fee:fee description="Registration Fee"
-S:             refundable="1"&gt;5.00&lt;/fee:fee&gt;
+S:             refundable="1"
+S: 	    grace-period="P5D"&gt;5.00&lt;/fee:fee&gt;
 S:         &lt;/fee:cd&gt;
 S:         &lt;fee:cd&gt;
 S:           &lt;fee:name&gt;example.net&lt;/fee:name&gt;
@@ -794,16 +795,22 @@ S:           &lt;fee:name&gt;example.org&lt;/fee:name&gt;
 S:           &lt;fee:currency&gt;EUR&lt;/fee:currency&gt;
 S:           &lt;fee:command&gt;transfer&lt;/fee:command&gt;
 S:           &lt;fee:period unit="y"&gt;2&lt;/fee:period&gt;
-S:           &lt;fee:fee description="Transfer Fee"&gt;2.50&lt;/fee:fee&gt;
-S:           &lt;fee:fee description="Renewal Fee"&gt;10.00&lt;/fee:fee&gt;
+S:           &lt;fee:fee description="Transfer Fee"
+S:             refundable="0"&gt;2.50&lt;/fee:fee&gt;
+S:           &lt;fee:fee description="Renewal Fee"
+S:             refundable="1"
+S: 	    grace-period="P5D"&gt;10.00&lt;/fee:fee&gt;
 S:         &lt;/fee:cd&gt;
 S:         &lt;fee:cd&gt;
 S:           &lt;fee:name&gt;example.xyz&lt;/fee:name&gt;
 S:           &lt;fee:currency&gt;GBP&lt;/fee:currency&gt;
 S:           &lt;fee:command&gt;restore&lt;/fee:command&gt;
 S:           &lt;fee:period unit="y"&gt;1&lt;/fee:period&gt;
-S:           &lt;fee:fee description="Restore Fee"&gt;25&lt;/fee:fee&gt;
-S:           &lt;fee:fee description="Renewal Fee"&gt;5.00&lt;/fee:fee&gt;
+S:           &lt;fee:fee description="Restore Fee"
+S:             refundable="0"&gt;25&lt;/fee:fee&gt;
+S:           &lt;fee:fee description="Renewal Fee"
+S:             refundable="1"
+S: 	    grace-period="P5D"&gt;5.00&lt;/fee:fee&gt;
 S:           &lt;fee:class&gt;premium-tier1&lt;/fee:class&gt;
 S:         &lt;/fee:cd&gt;
 S:       &lt;/fee:chkData&gt;
@@ -1958,7 +1965,7 @@ Changes from 03 to 04</h3>
 
 <p></p>
 <ol class="text">
-<li>Change Intended Status to Standards Track.
+<li>Changed Intended Status to Standards Track.
 </li>
 <li>As per suggestion from Michael Bauland, the &lt;fee:period&gt;
           element is no longer included in &lt;check&gt; and &lt;info&gt;
@@ -1967,13 +1974,17 @@ Changes from 03 to 04</h3>
 </li>
 <li>Added summary of the attributes for the &lt;fee:fee&gt; element.
 </li>
+<li>Clarified that the "refundable" and "grace-period" attributes of
+	  the &lt;fee&gt; fee elements are dependant on each other and cannot
+	  appear on their own.
+</li>
 <li>Removed the option of returning a 1001 response when the fee is
 	  incorrect.
 </li>
-<li>Forbid the inclusion of extension elements in transform responses
+<li>Forbidden the inclusion of extension elements in transform responses
 	  if no fee/credit has been assessed.
 </li>
-<li>Make the &lt;fee:currency&gt; element optional in transform
+<li>Made the &lt;fee:currency&gt; element optional in transform
 	  commands.
 </li>
 <li>Amended XML Namespace section of IANA Considerations, added
