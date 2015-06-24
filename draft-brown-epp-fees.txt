@@ -420,7 +420,7 @@ Internet-Draft       Registry Fee Extension for EPP        February 2015
 
    If a server receives a command from a client which does not include
    the extension elements required by the server for that command, then
-   it MUST response with a 2003 "Required parameter missing" error.
+   it MUST respond with a 2003 "Required parameter missing" error.
 
    If the currency or total fee provided by the client do not agree with
    the server's own calculation of the fee for that command, then the
