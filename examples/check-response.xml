@@ -22,7 +22,7 @@
     </resData>
     <extension>
       <fee:chkData
-        xmlns:fee="urn:ietf:params:xml:ns:fee-0.7">
+        xmlns:fee="urn:ietf:params:xml:ns:fee-0.8">
         <fee:cd>
           <fee:name>example.com</fee:name>
           <fee:currency>USD</fee:currency>

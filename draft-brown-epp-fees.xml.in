@@ -5,7 +5,7 @@
   <!-- when the namespace version bumps, update this and it will update
     everywhere -->
 
-  <!ENTITY VERSION "0.7">
+  <!ENTITY VERSION "0.8">
 
   <!ENTITY I-D.narten-iana-considerations-rfc2434bis SYSTEM
     "http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.narten-iana-considerations-rfc2434bis.xml">
@@ -86,7 +86,7 @@
       obtain details of these fees out-of-band by contacting the server
       operators.</t>
 
-      <t>Given the present expansion of the DNS namespace, and the proliferation
+      <t>Given the recent expansion of the DNS namespace, and the proliferation
       of novel business models, it is now desirable to provide a method for EPP
       clients to query EPP servers for the fees and credits associated with
       certain commands and specific objects.</t>
