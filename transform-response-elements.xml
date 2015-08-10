@@ -3,6 +3,8 @@
 
   <t>One or more &lt;fee:fee&gt; elements;</t>
 
+  <t>Zero or more &lt;fee:credit&gt; elements;</t>
+
   <t>An OPTIONAL &lt;fee:balance&gt; element;</t>
 
   <t>An OPTIONAL &lt;fee:creditLimit&gt; element.</t>
