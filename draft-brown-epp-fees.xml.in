@@ -466,10 +466,21 @@
 
             <t>A &lt;fee:period&gt; element.</t>
 
-            <t>one or more &lt;fee:fee&gt; elements containing the fees
-            associated with the transfer.</t>
+            <t>Zero or more &lt;fee:fee&gt; elements containing the fees
+            that will be charged to the gaining client.</t>
+
+            <t>Zero or more &lt;fee:credit&gt; elements containing the credits
+            that will be refunded to the losing client.</t>
+
+            <t>An OPTIONAL &lt;fee:balance&gt; element.</t>
+
+            <t>An OPTIONAL &lt;fee:creditLimit&gt; element.</t>
           </list></t>
-         
+
+          <t>Servers SHOULD omit &lt;fee:credit&gt; when returning a response
+          to the gaining client, and omit &lt;fee:fee&gt; elements
+          when returning a response to the losing client.</t>
+
           <t>If no &lt;fee:trnData&gt; element is included in the
           response, then no fee will be assessed by the server for the
           transfer.</t>
