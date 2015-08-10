@@ -42,7 +42,7 @@
 <?rfc comments="yes" ?>
 <?rfc inline="yes" ?>
 
-<rfc category="std" docName="draft-brown-epp-fees-04" ipr="trust200902">
+<rfc category="std" docName="draft-brown-epp-fees-05" ipr="trust200902">
 
   <front>
     <title abbrev="Registry Fee Extension for EPP">Registry Fee Extension for
@@ -64,7 +64,7 @@
       </address>
     </author>
 
-    <date month="February" year="2015" />
+    <date month="August" year="2015" />
 
     <area>Applications</area>
     <workgroup>Internet Engineering Task Force</workgroup>
@@ -361,8 +361,8 @@
       <xref target="RFC5730" />.</t>
 
       <section title="EPP Query Commands">
-        <t>This extension does not add any elements to the EPP &lt;poll&gt;
-        command or response.</t>
+        <t>This extension does not add any elements to the EPP &lt;poll&gt; or
+	&lt;info&gt; commands or responses.</t>
 
         <section title="EPP &lt;check&gt; Command">
           <t>This extension defines additional elements for the EPP
@@ -446,79 +446,6 @@
           <figure><artwork>
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text"
    href="examples/check-response.txt" /></artwork></figure>
-        </section>
-
-        <section title="EPP &lt;info&gt; Command">
-          <t>This extension defines additional elements for the EPP
-          &lt;info&gt; command.</t>
-
-          <t>The command MAY contain an &lt;extension&gt; element which
-          MAY contain a &lt;fee:info&gt; element with the following child
-          elements:</t>
-
-          <t><list style="symbols">
-            <t>An OPTIONAL &lt;fee:currency&gt; element;</t>
-
-            <t>A &lt;fee:command&gt; element;</t>
-
-            <t>An OPTIONAL &lt;fee:period&gt; element.</t>
-          </list></t>
-
-          <t>Example &lt;info&gt; command:</t>
-
-          <figure><artwork>
-<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text"
-   href="examples/info-command.txt" /></artwork></figure>
-
-          <t>When the server receives an &lt;info&gt; command that includes the
-          extension element described above, its response MUST (subject to the
-          exception described below) contain an &lt;extension&gt; element,
-          which MUST contain a child &lt;fee:infData&gt; element. The
-          &lt;fee:infData&gt; MUST contain the following child elements:</t>
-
-          <t><list style="symbols">
-            <t>A &lt;fee:currency&gt; element that contains same currency code
-            that appeared in the &lt;fee:currency&gt; element element of the
-            command. If no &lt;fee:currency&gt; element appeared in the
-            command, then the client's default billing currency should be
-            used.</t>
-
-            <t>A &lt;fee:command&gt; element that contains same command
-            that appeared in the &lt;fee:command&gt; element of the command.
-            This element MAY have the OPTIONAL "phase" and "subphase"
-            elements, which MUST match the same attributes in the
-            &lt;fee:command&gt; element of the command.</t>
-
-            <t>An OPTIONAL &lt;fee:period&gt; element that contains same unit
-            that appeared in the corresponding &lt;fee:period&gt; element of the
-            command. If the value of the preceeding &lt;fee:command&gt; element
-            is "restore", this element MUST NOT be included. Otherwise it MUST
-            be included. If no &lt;fee:period&gt; appeared in the corresponding
-            &lt;fee:domain&gt; element, then this element MUST have a value of
-            1 year.</t>
-
-            <t>One or more &lt;fee:fee&gt; elements.</t>
-
-            <t>An OPTIONAL &lt;fee:class&gt; element.</t>
-          </list></t>
-
-          <t>Depending on policy, the server MAY choose to omit the
-          &lt;fee:infData&gt; element and return a 2201 authorisation error
-          instead.</t>
-
-          <t>Example &lt;info&gt; response:</t>
-
-          <figure><artwork>
-<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text"
-   href="examples/info-response.txt" /></artwork></figure>
-
-          <t>Example &lt;info&gt; response where the domain name is not
-          registered:</t>
-
-          <figure><artwork>
-<xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text"
-   href="examples/info-response-notregistered.txt" /></artwork></figure>
-
         </section>
 
         <section title="EPP Transfer Query Command">
@@ -918,6 +845,12 @@ END</artwork></figure>
 	  commands.</t>
 	  <t>Amended XML Namespace section of IANA Considerations, added
 	  EPP Extension Registry section.</t>
+        </list></t>
+      </section>
+      <section title="Changes from 04 to 05">
+        <t><list style="numbers">
+          <t>Removed the extended &lt;info&gt; command. The &lt;check&gt; command
+          is the only command that can be used now.</t>
         </list></t>
       </section>
     </section>
