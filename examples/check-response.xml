@@ -57,12 +57,8 @@
           <fee:name>example.xyz</fee:name>
           <fee:currency>GBP</fee:currency>
           <fee:command>restore</fee:command>
-          <fee:period unit="y">1</fee:period>
           <fee:fee description="Restore Fee"
             refundable="0">25</fee:fee>
-          <fee:fee description="Renewal Fee"
-            refundable="1"
-	    grace-period="P5D">5.00</fee:fee>
           <fee:class>premium-tier1</fee:class>
         </fee:cd>
       </fee:chkData>

@@ -33,7 +33,6 @@
         <fee:domain>
           <fee:name>example.xyz</fee:name>
           <fee:command>restore</fee:command>
-          <fee:period unit="y">1</fee:period>
         </fee:domain>
       </fee:check>
     </extension>
