@@ -334,6 +334,9 @@
         <t>If a server makes use of this element, it MUST provide clients with a
         list of all the values that the element may take via an out-of-band
         channel. Servers MUST NOT use values which do not appear on this list.</t>
+
+        <t>Servers MUST use a &lt;fee:class&gt; element with the value "standard"
+        for all objects that are subject to the standard or default price.</t>
       </section>
     </section>
 
