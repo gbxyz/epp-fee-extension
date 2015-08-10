@@ -203,8 +203,7 @@
         <t>The &lt;fee:period&gt; element is OPTIONAL in &lt;check&gt; and
 	&lt;info&gt; commands: if omitted, the server MUST determine the
 	fee(s) using a validity period of 1 year. The &lt;fee:period&gt; element
-	MUST be present in &lt;check&gt; and &lt;info&gt; commands and
-	responses.</t>
+	MUST be present in &lt;check&gt; and &lt;info&gt; responses.</t>
 
       </section>
 
@@ -427,13 +426,18 @@
             <t>Zero or more &lt;fee:fee&gt; elements.</t>
 
             <t>An OPTIONAL &lt;fee:class&gt; element.</t>
+
+            <t>An OPTIONAL &lt;fee:balance&gt; element.</t>
+
+            <t>An OPTIONAL &lt;fee:creditLimit&gt; element.</t>
+
           </list></t>
 
           <t>If no &lt;fee:fee&gt; elements are present in a &lt;fee:cd&gt;
           element, this indicates that the requested command is not permitted by
           server policy.</t>
 
-          <t>The presence of a &lt;fee:fee&gt; with a value of "0.00" (ie a zero
+          <t>The presence of &lt;fee:fee&gt; elements with a total value of "0.00" (ie a zero
           amount) in a &lt;fee:cd&gt; element indicates that no fee will be
           assessed by the server for this command.</t>
 
