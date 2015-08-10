@@ -116,7 +116,7 @@
         the XML documents.</t>
 
         <t>(Note to RFC Editor: remove the following paragraph before publication
-	as an RFC.)</t>
+        as an RFC.)</t>
 
         <t>The XML namespace prefix above contains a version number,
         specifically "&VERSION;". This version number will increment with
@@ -194,16 +194,16 @@
 
       <section title="Validity Periods" anchor="validity-periods">
         <t>When querying for fee information using the &lt;check&gt; or
-	&lt;info&gt; commands, the &lt;fee:period&gt; element is used to
-	indicate the units to be added to the registration period of domain
-	names by the &lt;create&gt;, &lt;renew&gt; and &lt;transfer&gt;
-	commands. This element is derived from the &lt;domain:period&gt; element
-	described in <xref target="RFC5731"/>.</t>
+        &lt;info&gt; commands, the &lt;fee:period&gt; element is used to
+        indicate the units to be added to the registration period of domain
+        names by the &lt;create&gt;, &lt;renew&gt; and &lt;transfer&gt;
+        commands. This element is derived from the &lt;domain:period&gt; element
+        described in <xref target="RFC5731"/>.</t>
 
         <t>The &lt;fee:period&gt; element is OPTIONAL in &lt;check&gt; and
-	&lt;info&gt; commands: if omitted, the server MUST determine the
-	fee(s) using a validity period of 1 year. The &lt;fee:period&gt; element
-	MUST be present in &lt;check&gt; and &lt;info&gt; responses.</t>
+        &lt;info&gt; commands: if omitted, the server MUST determine the
+        fee(s) using a validity period of 1 year. The &lt;fee:period&gt; element
+        MUST be present in &lt;check&gt; and &lt;info&gt; responses.</t>
 
       </section>
 
@@ -223,7 +223,7 @@
         &lt;fee:credit&gt; elements in the same response. In such cases, the net
         fee or credit applicable to the transaction is the arithmetic sum of the
         values of each of the &lt;fee:fee&gt; and/or &lt;fee:credit&gt; elements.
-	This amount applies to the total additional validity period applied to the
+        This amount applies to the total additional validity period applied to the
         domain (where applicable) rather than to any incremental unit.</t>
 
         <t>The following attributes are defined for the &lt;fee:fee&gt; element.
@@ -231,25 +231,25 @@
 
         <t><list style="hanging">
       	  <t hangText="description:">an OPTIONAL attribute which provides a
-	    human-readable description of the fee. Servers SHOULD provide
-	    documentation on the possible values of this attribute, and their
-	    meanings.</t>
-	  <t hangText="refundable:">an OPTIONAL boolean attribute indicating
+            human-readable description of the fee. Servers SHOULD provide
+            documentation on the possible values of this attribute, and their
+            meanings.</t>
+          <t hangText="refundable:">an OPTIONAL boolean attribute indicating
             whether the fee is refundable if the domain name is deleted.</t>
-	  <t hangText="grace-period:">an OPTIONAL attribute which provides the
+          <t hangText="grace-period:">an OPTIONAL attribute which provides the
             time period during which the fee is refundable.</t>
-	  <t hangText="applied:">an OPTIONAL attribute indicating when the
-	    fee will be deducted from the client's account.</t>
+          <t hangText="applied:">an OPTIONAL attribute indicating when the
+            fee will be deducted from the client's account.</t>
         </list></t>
 
         <t>The &lt;fee:credit&gt; element can take a "description" attribute
-	  as described above. No other attributes are defined for this
-	  element.</t>
+          as described above. No other attributes are defined for this
+          element.</t>
 
         <t>Clients MAY include these attributes in the &lt;fee:fee&gt; and
         &lt;fee:credit&gt; elements in commands. Servers SHOULD ignore the
-	values of these attributes when validating the command before performing
-	the requested action.</t>
+        values of these attributes when validating the command before performing
+        the requested action.</t>
 
         <section title="Refunds">
           <t>&lt;fee:fee&gt; elements MAY have an OPTIONAL "refundable" attribute
@@ -370,7 +370,7 @@
 
       <section title="EPP Query Commands">
         <t>This extension does not add any elements to the EPP &lt;poll&gt; or
-	&lt;info&gt; commands or responses.</t>
+        &lt;info&gt; commands or responses.</t>
 
         <section title="EPP &lt;check&gt; Command">
           <t>This extension defines additional elements for the EPP
@@ -530,7 +530,7 @@
           <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="xml"
             href="transform-response-elements.xml" />
 
-	  <t>If no fee or credit has been assessed by the server for this transaction,
+          <t>If no fee or credit has been assessed by the server for this transaction,
           a &lt;fee:creData&gt; element MUST NOT be included in the response.</t>
 
           <t>Example &lt;create&gt; command:</t>
@@ -568,7 +568,7 @@
             <t>An OPTIONAL &lt;fee:creditLimit&gt; element.</t>
           </list></t>
 
-	  <t>If no credit has been assessed by the server for this transaction,
+          <t>If no credit has been assessed by the server for this transaction,
           a &lt;fee:delData&gt; element MUST NOT be included in the response.</t>
 
           <t>Example &lt;delete&gt; response:</t>
@@ -771,18 +771,18 @@ END</artwork></figure>
         <t>XML: See the "Formal Syntax" section of this document.</t>
       </section>
       <section title="EPP Extension Registry">
-	<t>The EPP extension described in this document should be registered
-	by the IANA in the EPP Extension Registry described in <xref
-	target="RFC7451"/>. The details of the registration are as follows:</t>
-	<t>Name of Extension: EPP Fee Extension</t>
-	<t>Document status: Standards Track</t>
-	<t>Reference: (insert reference to RFC version of this document)</t>
-	<t>Registrant Name and Email Address: See the "Author's Address" section
-	of this document.</t>
-	<t>TLDs: any</t>
-	<t>IPR Disclosure: none</t>
-	<t>Status: active</t>
-	<t>Notes: none</t>
+        <t>The EPP extension described in this document should be registered
+        by the IANA in the EPP Extension Registry described in <xref
+        target="RFC7451"/>. The details of the registration are as follows:</t>
+        <t>Name of Extension: EPP Fee Extension</t>
+        <t>Document status: Standards Track</t>
+        <t>Reference: (insert reference to RFC version of this document)</t>
+        <t>Registrant Name and Email Address: See the "Author's Address" section
+        of this document.</t>
+        <t>TLDs: any</t>
+        <t>IPR Disclosure: none</t>
+        <t>Status: active</t>
+        <t>Notes: none</t>
       </section>
     </section>
 
@@ -798,7 +798,7 @@ END</artwork></figure>
         <t>Klaus Malorny and Michael Bauland of Knipp</t>
         <t>Jody Kolker and Roger Carney of Go Daddy</t>
         <t>Michael Holloway of Com Laude</t>
-	<t>Santosh Kalsangrah of Impetus Infotech</t>
+        <t>Santosh Kalsangrah of Impetus Infotech</t>
       </list></t>
     </section>
 
@@ -852,24 +852,27 @@ END</artwork></figure>
           element is no longer included in &lt;check&gt; and &lt;info&gt;
           responses for "restore" commands. It's still mandatory for all other
           commands.</t>
-	  <t>Added summary of the attributes for the &lt;fee:fee&gt; element.</t>
-	  <t>Clarified that the "refundable" and "grace-period" attributes of
-	  the &lt;fee&gt; fee elements are dependant on each other and cannot
-	  appear on their own.</t>
-	  <t>Removed the option of returning a 1001 response when the fee is
-	  incorrect.</t>
-	  <t>Forbidden the inclusion of extension elements in transform responses
-	  if no fee/credit has been assessed.</t>
-	  <t>Made the &lt;fee:currency&gt; element optional in transform
-	  commands.</t>
-	  <t>Amended XML Namespace section of IANA Considerations, added
-	  EPP Extension Registry section.</t>
+          <t>Added summary of the attributes for the &lt;fee:fee&gt; element.</t>
+          <t>Clarified that the "refundable" and "grace-period" attributes of
+          the &lt;fee&gt; fee elements are dependant on each other and cannot
+          appear on their own.</t>
+          <t>Removed the option of returning a 1001 response when the fee is
+          incorrect.</t>
+          <t>Forbidden the inclusion of extension elements in transform responses
+          if no fee/credit has been assessed.</t>
+          <t>Made the &lt;fee:currency&gt; element optional in transform
+          commands.</t>
+          <t>Amended XML Namespace section of IANA Considerations, added
+          EPP Extension Registry section.</t>
         </list></t>
       </section>
       <section title="Changes from 04 to 05">
         <t><list style="numbers">
           <t>Removed the extended &lt;info&gt; command. The &lt;check&gt; command
           is the only command that can be used now.</t>
+          <t>The decision was made to keep availability info in &lt;check&gt; responses
+          as registrars have indicated that it is very useful as it avoids unnecessary
+          round trips to the server.</t>
         </list></t>
       </section>
     </section>
@@ -880,9 +883,7 @@ END</artwork></figure>
 
       <t><list style="numbers">
         <t>Make the extension object-agnostic so it can be used with other
-	objects, not just vanilla domains.</t>
-	<t>Change the &lt;check&gt; command so that availability data is
-	not returned.</t>
+        objects, not just vanilla domains.</t>
       </list></t>
     </section>
 
