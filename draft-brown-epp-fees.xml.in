@@ -551,7 +551,7 @@
           elements:</t>
 
           <t><list style="symbols">
-            <t>An OPTIONAL &lt;fee:currency&gt; element;</t>
+            <t>A &lt;fee:currency&gt; element;</t>
 
             <t>One or more &lt;fee:credit&gt; elements;</t>
 
