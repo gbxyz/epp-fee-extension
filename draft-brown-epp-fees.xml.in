@@ -425,7 +425,7 @@
 
             <t>An OPTIONAL &lt;fee:period&gt; element that contains same unit
             that appeared in the corresponding &lt;fee:domain&gt; element. If
-            the value of the preceeding &lt;fee:command&gt; element is "restore",
+            the value of the preceding &lt;fee:command&gt; element is "restore",
             this element MUST NOT be included. Otherwise it MUST be included. If
             no &lt;fee:period&gt; appeared in the corresponding
             &lt;fee:domain&gt; element, then this element MUST have a value of
