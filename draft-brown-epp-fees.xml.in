@@ -814,7 +814,7 @@ END</artwork></figure>
       <section title="XML Namespace">
         <t>This document uses URNs to describe XML namespaces and XML schemas
         conforming to a registry mechanism described in <xref target="RFC3688" />.
-        The folllowing URI assignment is requested of the IANA:</t>
+        The following URI assignment is requested of IANA:</t>
         <t>URI: urn:ietf:params:xml:ns:fee-&VERSION;</t>
         <t>Registrant Contact: See the "Author's Address" section of this
         document.</t>
