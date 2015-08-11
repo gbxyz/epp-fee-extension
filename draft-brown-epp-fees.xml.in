@@ -852,7 +852,7 @@ END</artwork></figure>
           commands.</t>
           <t>Added summary of the attributes for the &lt;fee:fee&gt; element.</t>
           <t>Clarified that the "refundable" and "grace-period" attributes of
-          the &lt;fee&gt; fee elements are dependant on each other and cannot
+          the &lt;fee:fee&gt; elements are dependant on each other and cannot
           appear on their own.</t>
           <t>Removed the option of returning a 1001 response when the fee is
           incorrect.</t>
@@ -871,6 +871,8 @@ END</artwork></figure>
           <t>The decision was made to keep availability info in &lt;check&gt; responses
           as registrars have indicated that it is very useful as it avoids unnecessary
           round trips to the server.</t>
+          <t>Allow the number of &lt;fee:fee&gt; which can appear in transform responses
+          to be zero.</t>
         </list></t>
       </section>
     </section>
