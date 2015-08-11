@@ -246,11 +246,6 @@
           as described above. No other attributes are defined for this
           element.</t>
 
-        <t>Clients MAY include these attributes in the &lt;fee:fee&gt; and
-        &lt;fee:credit&gt; elements in commands. Servers SHOULD ignore the
-        values of these attributes when validating the command before performing
-        the requested action.</t>
-
         <section title="Refunds">
           <t>&lt;fee:fee&gt; elements MAY have an OPTIONAL "refundable" attribute
           which takes a boolean value. Fees may be refunded under certain
@@ -340,8 +335,9 @@
         list of all the values that the element may take via an out-of-band
         channel. Servers MUST NOT use values which do not appear on this list.</t>
 
-        <t>Servers MUST use a &lt;fee:class&gt; element with the value "standard"
-        for all domains that are subject to the standard or default price.</t>
+        <t>Servers which make use of this element MUST use a &lt;fee:class&gt;
+        element with the value "standard" for all domains that are subject to the
+        standard or default price.</t>
       </section>
     </section>
 
