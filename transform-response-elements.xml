@@ -1,7 +1,7 @@
 <t><list style="symbols">
   <t>A &lt;fee:currency&gt; element;</t>
 
-  <t>One or more &lt;fee:fee&gt; elements;</t>
+  <t>Zero or more &lt;fee:fee&gt; elements;</t>
 
   <t>Zero or more &lt;fee:credit&gt; elements;</t>
 

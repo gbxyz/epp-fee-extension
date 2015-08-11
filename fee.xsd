@@ -98,7 +98,7 @@
     <sequence>
       <element name="currency" type="fee:currencyType" />
       <element name="fee" type="fee:feeType"
-        maxOccurs="unbounded" />
+        minOccurs="0" maxOccurs="unbounded" />
       <element name="credit" type="fee:creditType"
         minOccurs="0" maxOccurs="unbounded" />
       <element name="balance" type="fee:balanceType"
