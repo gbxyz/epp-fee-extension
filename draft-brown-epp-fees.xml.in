@@ -432,11 +432,6 @@
             <t>Zero or more &lt;fee:credit&gt; elements.</t>
 
             <t>An OPTIONAL &lt;fee:class&gt; element.</t>
-
-            <t>An OPTIONAL &lt;fee:balance&gt; element.</t>
-
-            <t>An OPTIONAL &lt;fee:creditLimit&gt; element.</t>
-
           </list></t>
 
           <t>If no &lt;fee:fee&gt; elements are present in a &lt;fee:cd&gt;
@@ -868,9 +863,13 @@ END</artwork></figure>
         <t><list style="numbers">
           <t>Removed the extended &lt;info&gt; command. The &lt;check&gt; command
           is the only command that can be used now.</t>
+	  <t>Introduced a mandatory-to-implement "standard" class for non-premium
+          domains.</t>
           <t>The decision was made to keep availability info in &lt;check&gt; responses
           as registrars have indicated that it is very useful as it avoids unnecessary
           round trips to the server.</t>
+          <t>Allow &lt;fee:credit&gt; elements to be present in &lt;check&gt;
+          responses.</t>
           <t>Allow the number of &lt;fee:fee&gt; which can appear in transform responses
           to be zero.</t>
         </list></t>
