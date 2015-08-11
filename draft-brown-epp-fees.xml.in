@@ -424,10 +424,12 @@
             the value of the preceding &lt;fee:command&gt; element is "restore",
             this element MUST NOT be included. Otherwise it MUST be included. If
             no &lt;fee:period&gt; appeared in the corresponding
-            &lt;fee:domain&gt; element, then this element MUST have a value of
-            1 year.</t>
+            &lt;fee:domain&gt; element (and the command is not "restore") then
+	    this element MUST have a value of 1 year.</t>
 
             <t>Zero or more &lt;fee:fee&gt; elements.</t>
+
+            <t>Zero or more &lt;fee:credit&gt; elements.</t>
 
             <t>An OPTIONAL &lt;fee:class&gt; element.</t>
 
