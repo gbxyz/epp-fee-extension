@@ -425,7 +425,7 @@
             this element MUST NOT be included. Otherwise it MUST be included. If
             no &lt;fee:period&gt; appeared in the corresponding
             &lt;fee:domain&gt; element (and the command is not "restore") then
-	    this element MUST have a value of 1 year.</t>
+            this element MUST have a value of 1 year.</t>
 
             <t>Zero or more &lt;fee:fee&gt; elements.</t>
 
@@ -438,9 +438,10 @@
           element, this indicates that the requested command is not permitted by
           server policy.</t>
 
-          <t>The presence of &lt;fee:fee&gt; elements with a total value of "0.00" (ie a zero
-          amount) in a &lt;fee:cd&gt; element indicates that no fee will be
-          assessed by the server for this command.</t>
+          <t>The presence of one or more &lt;fee:fee&gt; and &lt;fee:credit&gt;
+          elements with a total value of "0.00" (ie a zero amount) in a
+          &lt;fee:cd&gt; element indicates that no fee will be assessed by the
+          server for this command.</t>
 
           <t>Example &lt;check&gt; response:</t>
 
@@ -779,6 +780,43 @@ END</artwork></figure>
       </section>
     </section>
 
+    <section anchor="impl" title="Implementation Status">
+      <t>Note to RFC Editor: Please remove this section and the reference to
+      <xref target="RFC6982"/> before publication.</t>
+
+      <t>This section records the status of known implementations of the
+      protocol defined by this specification at the time of posting of this
+      Internet-Draft, and is based on a proposal described in <xref target="RFC6982"/>.
+      The description of implementations in this section is
+      intended to assist the IETF in its decision processes in progressing
+      drafts to RFCs. Please note that the listing of any individual
+      implementation here does not imply endorsement by the IETF.
+      Furthermore, no effort has been spent to verify the information
+      presented here that was supplied by IETF contributors. This is not
+      intended as, and must not be construed to be, a catalog of available
+      implementations or their features. Readers are advised to note that
+      other implementations may exist.</t>
+
+      <t>According to <xref target="RFC6982"/>, "this will allow reviewers and
+      working groups to assign due consideration to documents that have the
+      benefit of running code, which may serve as evidence of valuable
+      experimentation and feedback that have made the implemented protocols
+      more mature. It is up to the individual working groups to use this
+      information as they see fit".</t>
+
+      <section title="RegistryEngine EPP Service">
+        <t>Organization: CentralNic</t>
+        <t>Name: RegistryEngine EPP Service</t>
+        <t>Description: Generic high-volume EPP service for gTLDs, ccTLDs and SLDs</t>
+        <t>Level of maturity: Deployed in CentralNic's production environment as well
+        as two other gTLD registry systems, and two ccTLD registry systems.</t>
+        <t>Coverage: All aspects of the protocol are implemented.</t>
+        <t>Licensing: Proprietary In-House software</t>
+        <t>Contact: epp@centralnic.com</t>
+        <t>URL: https://www.centralnic.com</t>
+      </section>
+    </section>
+
     <section title="Acknowledgements">
       <t>The author wishes to thank the following persons for their feedback and
       suggestions:</t>
@@ -863,7 +901,7 @@ END</artwork></figure>
         <t><list style="numbers">
           <t>Removed the extended &lt;info&gt; command. The &lt;check&gt; command
           is the only command that can be used now.</t>
-	  <t>Introduced a mandatory-to-implement "standard" class for non-premium
+          <t>Introduced a mandatory-to-implement "standard" class for non-premium
           domains.</t>
           <t>The decision was made to keep availability info in &lt;check&gt; responses
           as registrars have indicated that it is very useful as it avoids unnecessary
