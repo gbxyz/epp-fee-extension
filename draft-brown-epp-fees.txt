@@ -1866,6 +1866,8 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
    5.  Allow the number of <fee:fee> which can appear in transform
        responses to be zero.
 
+   6.  Added Implementation Status section.
+
 
 11.  TODO
 
@@ -1896,8 +1898,6 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
               DOI 10.17487/RFC3915, September 2004,
               <http://www.rfc-editor.org/info/rfc3915>.
 
-   [RFC5730]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)",
-
 
 
 Brown                   Expires February 13, 2016              [Page 34]
@@ -1905,6 +1905,7 @@ Brown                   Expires February 13, 2016              [Page 34]
 Internet-Draft       Registry Fee Extension for EPP          August 2015
 
 
+   [RFC5730]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)",
               STD 69, RFC 5730, DOI 10.17487/RFC5730, August 2009,
               <http://www.rfc-editor.org/info/rfc5730>.
 
@@ -1938,7 +1939,6 @@ Author's Address
    Phone: +44 20 33 88 0600
    Email: gavin.brown@centralnic.com
    URI:   https://www.centralnic.com
-
 
 
 
