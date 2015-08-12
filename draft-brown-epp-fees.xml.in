@@ -476,10 +476,6 @@
 
             <t>Zero or more &lt;fee:credit&gt; elements containing the credits
             that will be refunded to the losing client.</t>
-
-            <t>An OPTIONAL &lt;fee:balance&gt; element.</t>
-
-            <t>An OPTIONAL &lt;fee:creditLimit&gt; element.</t>
           </list></t>
 
           <t>Servers SHOULD omit &lt;fee:credit&gt; when returning a response
@@ -913,7 +909,11 @@ END</artwork></figure>
           responses.</t>
           <t>Allow the number of &lt;fee:fee&gt; which can appear in transform responses
           to be zero.</t>
-	  <t>Added Implementation Status section.</t>
+          <t>Removed the &lt;fee:balance&gt; and &lt;fee:creditLimit&gt; elements from
+          transfer query responses. The reason is that these elements are defined
+          as containing the values after the transform command has taken place - which
+          means that it is not appropriate to include them in a query response.</t>
+          <t>Added Implementation Status section.</t>
         </list></t>
       </section>
     </section>

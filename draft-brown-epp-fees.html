@@ -856,10 +856,6 @@ EPP Transfer Query Command</h3>
 <li>Zero or more &lt;fee:credit&gt; elements containing the credits
             that will be refunded to the losing client.
 </li>
-<li>An OPTIONAL &lt;fee:balance&gt; element.
-</li>
-<li>An OPTIONAL &lt;fee:creditLimit&gt; element.
-</li>
 </ul>
 
 <p>Servers SHOULD omit &lt;fee:credit&gt; when returning a response
@@ -1529,10 +1525,6 @@ BEGIN
         maxOccurs="unbounded" /&gt;
       &lt;element name="credit" type="fee:creditType"
         minOccurs="0" maxOccurs="unbounded" /&gt;
-      &lt;element name="balance" type="fee:balanceType"
-        minOccurs="0" /&gt;
-      &lt;element name="creditLimit" type="fee:creditLimitType"
-        minOccurs="0" /&gt;
     &lt;/sequence&gt;
   &lt;/complexType&gt;
 
@@ -1898,6 +1890,11 @@ Changes from 04 to 05</h3>
 </li>
 <li>Allow the number of &lt;fee:fee&gt; which can appear in transform responses
           to be zero.
+</li>
+<li>Removed the &lt;fee:balance&gt; and &lt;fee:creditLimit&gt; elements from
+          transfer query responses. The reason is that these elements are defined
+          as containing the values after the transform command has taken place - which
+          means that it is not appropriate to include them in a query response.
 </li>
 <li>Added Implementation Status section.
 </li>

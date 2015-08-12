@@ -712,15 +712,15 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
    o  Zero or more <fee:credit> elements containing the credits that
       will be refunded to the losing client.
 
-   o  An OPTIONAL <fee:balance> element.
-
-   o  An OPTIONAL <fee:creditLimit> element.
-
    Servers SHOULD omit <fee:credit> when returning a response to the
    gaining client, and omit <fee:fee> elements when returning a response
    to the losing client.
 
    If no <fee:trnData> element is included in the response, then no fee
+   will be assessed by the server for the transfer.
+
+   Example <transfer> query response:
+
 
 
 
@@ -728,10 +728,6 @@ Brown                   Expires February 13, 2016              [Page 13]
 
 Internet-Draft       Registry Fee Extension for EPP          August 2015
 
-
-   will be assessed by the server for the transfer.
-
-   Example <transfer> query response:
 
    S: <?xml version="1.0" encoding="utf-8" standalone="no"?>
    S: <epp xmlns="urn:ietf:params:xml:ns:epp-1.0">
@@ -777,6 +773,10 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
    include in the <extension> element a <fee:create> element which
    includes the following child elements:
 
+   o  An OPTIONAL <fee:currency> element;
+
+   o  One or more <fee:fee> elements.
+
 
 
 
@@ -784,10 +784,6 @@ Brown                   Expires February 13, 2016              [Page 14]
 
 Internet-Draft       Registry Fee Extension for EPP          August 2015
 
-
-   o  An OPTIONAL <fee:currency> element;
-
-   o  One or more <fee:fee> elements.
 
    When the <create> command has been processed successfully, and the
    client selected the extension when it logged in, and a fee was
@@ -810,6 +806,10 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
    response.
 
    Example <create> command:
+
+
+
+
 
 
 
@@ -1497,14 +1497,14 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
            maxOccurs="unbounded" />
          <element name="credit" type="fee:creditType"
            minOccurs="0" maxOccurs="unbounded" />
-         <element name="balance" type="fee:balanceType"
-           minOccurs="0" />
-         <element name="creditLimit" type="fee:creditLimitType"
-           minOccurs="0" />
        </sequence>
      </complexType>
 
      <!--
+       delete result
+     -->
+     <complexType name="deleteDataType">
+       <sequence>
 
 
 
@@ -1513,10 +1513,6 @@ Brown                   Expires February 13, 2016              [Page 27]
 Internet-Draft       Registry Fee Extension for EPP          August 2015
 
 
-       delete result
-     -->
-     <complexType name="deleteDataType">
-       <sequence>
          <element name="currency" type="fee:currencyType" />
          <element name="credit" type="fee:creditType"
            minOccurs="0" maxOccurs="unbounded" />
@@ -1561,6 +1557,10 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
      <simpleType name="negativeDecimal">
        <restriction base="decimal">
          <maxInclusive value="0" />
+       </restriction>
+     </simpleType>
+
+     <complexType name="feeType">
 
 
 
@@ -1569,10 +1569,6 @@ Brown                   Expires February 13, 2016              [Page 28]
 Internet-Draft       Registry Fee Extension for EPP          August 2015
 
 
-       </restriction>
-     </simpleType>
-
-     <complexType name="feeType">
        <simpleContent>
          <extension base="fee:nonNegativeDecimal">
            <attribute name="description"/>
@@ -1617,16 +1613,16 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
    The mapping extensions described in this document do not provide any
    security services beyond those described by EPP [RFC5730], the EPP
    domain name mapping [RFC5731], and protocol layers used by EPP.  The
+   security considerations described in these other specifications apply
+   to this specification as well.
+
+
 
 
 
 Brown                   Expires February 13, 2016              [Page 29]
 
 Internet-Draft       Registry Fee Extension for EPP          August 2015
-
-
-   security considerations described in these other specifications apply
-   to this specification as well.
 
 
 7.  IANA Considerations
@@ -1673,6 +1669,10 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
    Note to RFC Editor: Please remove this section and the reference to
    [RFC6982] before publication.
 
+   This section records the status of known implementations of the
+   protocol defined by this specification at the time of posting of this
+   Internet-Draft, and is based on a proposal described in [RFC6982].
+   The description of implementations in this section is intended to
 
 
 
@@ -1681,10 +1681,6 @@ Brown                   Expires February 13, 2016              [Page 30]
 Internet-Draft       Registry Fee Extension for EPP          August 2015
 
 
-   This section records the status of known implementations of the
-   protocol defined by this specification at the time of posting of this
-   Internet-Draft, and is based on a proposal described in [RFC6982].
-   The description of implementations in this section is intended to
    assist the IETF in its decision processes in progressing drafts to
    RFCs.  Please note that the listing of any individual implementation
    here does not imply endorsement by the IETF.  Furthermore, no effort
@@ -1728,6 +1724,10 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
    The author wishes to thank the following persons for their feedback
    and suggestions:
 
+   o  James Gould of Verisign
+
+   o  Luis Munoz of ISC
+
 
 
 
@@ -1736,10 +1736,6 @@ Brown                   Expires February 13, 2016              [Page 31]
 
 Internet-Draft       Registry Fee Extension for EPP          August 2015
 
-
-   o  James Gould of Verisign
-
-   o  Luis Munoz of ISC
 
    o  Michael Young of Architelos
 
@@ -1785,6 +1781,10 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
 
    7.   Use <fee:command> instead of <fee:action>.
 
+   8.   Use a single child element of <fee:chkData> instead of multiple
+        elements for each domain.  This also requires using a different
+        name (<fee:name>) for the domain name.
+
 
 
 
@@ -1792,10 +1792,6 @@ Brown                   Expires February 13, 2016              [Page 32]
 
 Internet-Draft       Registry Fee Extension for EPP          August 2015
 
-
-   8.   Use a single child element of <fee:chkData> instead of multiple
-        elements for each domain.  This also requires using a different
-        name (<fee:name>) for the domain name.
 
    9.   Added the "refundable" attribute to <fee:fee> elements.
 
@@ -1844,6 +1840,10 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
 
 
 
+
+
+
+
 Brown                   Expires February 13, 2016              [Page 33]
 
 Internet-Draft       Registry Fee Extension for EPP          August 2015
@@ -1866,7 +1866,13 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
    5.  Allow the number of <fee:fee> which can appear in transform
        responses to be zero.
 
-   6.  Added Implementation Status section.
+   6.  Removed the <fee:balance> and <fee:creditLimit> elements from
+       transfer query responses.  The reason is that these elements are
+       defined as containing the values after the transform command has
+       taken place - which means that it is not appropriate to include
+       them in a query response.
+
+   7.  Added Implementation Status section.
 
 
 11.  TODO
@@ -1891,12 +1897,6 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
 
    [RFC3688]  Mealling, M., "The IETF XML Registry", BCP 81, RFC 3688,
               DOI 10.17487/RFC3688, January 2004,
-              <http://www.rfc-editor.org/info/rfc3688>.
-
-   [RFC3915]  Hollenbeck, S., "Domain Registry Grace Period Mapping for
-              the Extensible Provisioning Protocol (EPP)", RFC 3915,
-              DOI 10.17487/RFC3915, September 2004,
-              <http://www.rfc-editor.org/info/rfc3915>.
 
 
 
@@ -1904,6 +1904,13 @@ Brown                   Expires February 13, 2016              [Page 34]
 
 Internet-Draft       Registry Fee Extension for EPP          August 2015
 
+
+              <http://www.rfc-editor.org/info/rfc3688>.
+
+   [RFC3915]  Hollenbeck, S., "Domain Registry Grace Period Mapping for
+              the Extensible Provisioning Protocol (EPP)", RFC 3915,
+              DOI 10.17487/RFC3915, September 2004,
+              <http://www.rfc-editor.org/info/rfc3915>.
 
    [RFC5730]  Hollenbeck, S., "Extensible Provisioning Protocol (EPP)",
               STD 69, RFC 5730, DOI 10.17487/RFC5730, August 2009,
@@ -1939,13 +1946,6 @@ Author's Address
    Phone: +44 20 33 88 0600
    Email: gavin.brown@centralnic.com
    URI:   https://www.centralnic.com
-
-
-
-
-
-
-
 
 
 
