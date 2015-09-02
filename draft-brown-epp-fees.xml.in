@@ -340,7 +340,7 @@
 
         <t>Servers which make use of this element MUST use a &lt;fee:class&gt;
         element with the value "standard" for all domains that are subject to the
-        standard or default price.</t>
+        standard or default fee.</t>
       </section>
     </section>
 
