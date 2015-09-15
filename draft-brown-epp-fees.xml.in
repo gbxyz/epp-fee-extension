@@ -918,6 +918,10 @@ END</artwork></figure>
           <t>Added Implementation Status section.</t>
         </list></t>
       </section>
+      <section title="Changes from 05 to 06">
+        <t><list style="numbers">
+        </list></t>
+      </section>
     </section>
 
     <section title="TODO">
