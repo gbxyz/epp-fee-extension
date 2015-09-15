@@ -146,11 +146,11 @@
 <table summary="layout" width="66%" border="0" cellpadding="0" cellspacing="0"><tr><td><table summary="layout" width="100%" border="0" cellpadding="2" cellspacing="1">
 <tr><td class="header">Internet Engineering Task Force</td><td class="header">G. Brown</td></tr>
 <tr><td class="header">Internet-Draft</td><td class="header">CentralNic Group plc</td></tr>
-<tr><td class="header">Intended status: Standards Track</td><td class="header">August 12, 2015</td></tr>
-<tr><td class="header">Expires: February 13, 2016</td><td class="header">&nbsp;</td></tr>
+<tr><td class="header">Intended status: Standards Track</td><td class="header">August 2015</td></tr>
+<tr><td class="header">Expires: February 2, 2016</td><td class="header">&nbsp;</td></tr>
 </table></td></tr></table>
 <h1><br />Registry Fee Extension for
-    the Extensible Provisioning Protocol (EPP)<br />draft-brown-epp-fees-05</h1>
+    the Extensible Provisioning Protocol (EPP)<br />draft-brown-epp-fees-06</h1>
 
 <h3>Abstract</h3>
 
@@ -172,7 +172,7 @@ and may be updated, replaced, or obsoleted by other documents at any time.
 It is inappropriate to use Internet-Drafts as reference material or to cite
 them other than as &ldquo;work in progress.&rdquo;</p>
 <p>
-This Internet-Draft will expire on February 13, 2016.</p>
+This Internet-Draft will expire on February 2, 2016.</p>
 
 <h3>Copyright Notice</h3>
 <p>
@@ -212,6 +212,8 @@ Refunds<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor7">3.4.2.</a>&nbsp;
 Grace Periods<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor8">3.4.3.</a>&nbsp;
+Correlation between Refundability and Grace Periods<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor9">3.4.4.</a>&nbsp;
 Applicability<br />
 &nbsp;&nbsp;&nbsp;&nbsp;<a href="#account-balance">3.5.</a>&nbsp;
 Account Balance<br />
@@ -219,57 +221,59 @@ Account Balance<br />
 Credit Limit<br />
 &nbsp;&nbsp;&nbsp;&nbsp;<a href="#classification">3.7.</a>&nbsp;
 Classification of Domain Names<br />
-<a href="#anchor9">4.</a>&nbsp;
+<a href="#anchor10">4.</a>&nbsp;
 Server Handling of Fee Information<br />
-<a href="#anchor10">5.</a>&nbsp;
+<a href="#anchor11">5.</a>&nbsp;
 EPP Command Mapping<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor11">5.1.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor12">5.1.</a>&nbsp;
 EPP Query Commands<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor12">5.1.1.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor13">5.1.1.</a>&nbsp;
 EPP &lt;check&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor13">5.1.2.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor14">5.1.2.</a>&nbsp;
 EPP Transfer Query Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor14">5.2.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor15">5.2.</a>&nbsp;
 EPP Transform Commands<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor15">5.2.1.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor16">5.2.1.</a>&nbsp;
 EPP &lt;create&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor16">5.2.2.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor17">5.2.2.</a>&nbsp;
 EPP &lt;delete&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor17">5.2.3.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor18">5.2.3.</a>&nbsp;
 EPP &lt;renew&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor18">5.2.4.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor19">5.2.4.</a>&nbsp;
 EPP &lt;transfer&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor19">5.2.5.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor20">5.2.5.</a>&nbsp;
 EPP &lt;update&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor20">5.3.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor21">5.3.</a>&nbsp;
 Formal Syntax<br />
 <a href="#Security">6.</a>&nbsp;
 Security Considerations<br />
 <a href="#IANA">7.</a>&nbsp;
 IANA Considerations<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor21">7.1.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor22">7.1.</a>&nbsp;
 XML Namespace<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor22">7.2.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor23">7.2.</a>&nbsp;
 EPP Extension Registry<br />
 <a href="#impl">8.</a>&nbsp;
 Implementation Status<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor23">8.1.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor24">8.1.</a>&nbsp;
 RegistryEngine EPP Service<br />
-<a href="#anchor24">9.</a>&nbsp;
+<a href="#anchor25">9.</a>&nbsp;
 Acknowledgements<br />
-<a href="#anchor25">10.</a>&nbsp;
+<a href="#anchor26">10.</a>&nbsp;
 Change History<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor26">10.1.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor27">10.1.</a>&nbsp;
 Changes from 00 to 01<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor27">10.2.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor28">10.2.</a>&nbsp;
 Changes from 01 to 02<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor28">10.3.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor29">10.3.</a>&nbsp;
 Changes from 02 to 03<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor29">10.4.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor30">10.4.</a>&nbsp;
 Changes from 03 to 04<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor30">10.5.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor31">10.5.</a>&nbsp;
 Changes from 04 to 05<br />
-<a href="#anchor31">11.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor32">10.6.</a>&nbsp;
+Changes from 05 to 06<br />
+<a href="#anchor33">11.</a>&nbsp;
 TODO<br />
 <a href="#rfc.references1">12.</a>&nbsp;
 Normative References<br />
@@ -318,7 +322,7 @@ Conventions Used in This Document</h3>
         implementation.
 </p>
 <p>"fee" is used as an abbreviation for
-        "urn:ietf:params:xml:ns:fee-0.8". The XML namespace prefix "fee"
+        "urn:ietf:params:xml:ns:fee-0.9". The XML namespace prefix "fee"
         is used, but implementations MUST NOT depend on it and instead employ a
         proper namespace-aware XML parser and serializer to interpret and output
         the XML documents.
@@ -327,7 +331,7 @@ Conventions Used in This Document</h3>
         as an RFC.)
 </p>
 <p>The XML namespace prefix above contains a version number,
-        specifically "0.8". This version number will increment with
+        specifically "0.9". This version number will increment with
         successive versions of this document, and will reach 1.0 if and when
         this document is published as an RFC. This permits clients to
         distinguish which version of the extension a server has implemented.
@@ -368,9 +372,8 @@ Extension Elements</h3>
 <a name="rfc.section.3.1"></a><h3>3.1.&nbsp;
 Client Commands</h3>
 
-<p>The &lt;fee:command&gt; element is used in EPP &lt;check&gt; and
-        &lt;info&gt; commands to determine the fee which is applicable to the
-        given command.
+<p>The &lt;fee:command&gt; element is used in the EPP &lt;check&gt; command to
+        determine the fee which is applicable to the given command.
 </p>
 <p>The element values permitted by the server is a matter of repository
         policy, but MUST include as a minimum the following values:
@@ -411,7 +414,7 @@ Currency Codes</h3>
         if a &lt;fee:currency&gt; element is not present in a command, the
         server MUST determine the currency based on the client's account settings
         which MUST be agreed by the client and server via an out-of-band
-        channel. However, &lt;fee:currency&gt; element MUST be present in
+        channel. However, the &lt;fee:currency&gt; element MUST be present in
         responses.
 </p>
 <p>Servers SHOULD NOT perform a currency conversion if a client uses an
@@ -422,17 +425,16 @@ Currency Codes</h3>
 <a name="rfc.section.3.3"></a><h3>3.3.&nbsp;
 Validity Periods</h3>
 
-<p>When querying for fee information using the &lt;check&gt; or
-        &lt;info&gt; commands, the &lt;fee:period&gt; element is used to
-        indicate the units to be added to the registration period of domain
-        names by the &lt;create&gt;, &lt;renew&gt; and &lt;transfer&gt;
-        commands. This element is derived from the &lt;domain:period&gt; element
-        described in <a class='info' href='#RFC5731'>[RFC5731]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Domain Name Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a>.
+<p>When querying for fee information using the &lt;check&gt; command,
+        the &lt;fee:period&gt; element is used to indicate the units to be added
+        to the registration period of domain names by the &lt;create&gt;,
+        &lt;renew&gt; and &lt;transfer&gt; commands. This element is derived
+        from the &lt;domain:period&gt; element described in <a class='info' href='#RFC5731'>[RFC5731]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Domain Name Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a>.
 </p>
-<p>The &lt;fee:period&gt; element is OPTIONAL in &lt;check&gt; and
-        &lt;info&gt; commands: if omitted, the server MUST determine the
-        fee(s) using a validity period of 1 year. The &lt;fee:period&gt; element
-        MUST be present in &lt;check&gt; and &lt;info&gt; responses.
+<p>The &lt;fee:period&gt; element is OPTIONAL in &lt;check&gt; commands:
+        if omitted, the server MUST determine the fee(s) using a validity period
+        of 1 year. The &lt;fee:period&gt; element MUST be present in &lt;check&gt;
+        responses.
 </p>
 <a name="fees-and-credits"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
@@ -464,13 +466,13 @@ Fees and Credits</h3>
 <blockquote class="text"><dl>
 <dt>description:</dt>
 <dd>an OPTIONAL attribute which provides a
-            human-readable description of the fee. Servers SHOULD provide
+            human-readable description of the fee. Servers should provide
             documentation on the possible values of this attribute, and their
             meanings.
 </dd>
 <dt>refundable:</dt>
 <dd>an OPTIONAL boolean attribute indicating
-            whether the fee is refundable if the domain name is deleted.
+              whether the fee is refundable if the domain name is deleted.
 </dd>
 <dt>grace-period:</dt>
 <dd>an OPTIONAL attribute which provides the
@@ -496,8 +498,8 @@ Refunds</h3>
           circumstances, such as when a domain application is rejected (as
           described in <a class='info' href='#draft-ietf-eppext-launchphase'>[draft&#8209;ietf&#8209;eppext&#8209;launchphase]<span> (</span><span class='info'>Gould, J., Tan, W., and G. Brown, &ldquo;Launch Phase Mapping for the  Extensible Provisioning               Protocol (EPP),&rdquo; 2014.</span><span>)</span></a>) or when
           a domain name is deleted during the relevant Grace Period (see below).
-          If the "refundable" attribute is omitted, then the default value of
-          "1" should be assumed (i.e. the fee is refundable).
+          If the "refundable" attribute is omitted, then clients SHOULD NOT make
+          any assumption about the refundability of the fee.
 </p>
 <a name="anchor7"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
@@ -511,17 +513,22 @@ Grace Periods</h3>
 <p>The "grace-period" attribute MAY be used to indicate the relevant
           grace period for a fee. If a server implements the Registry Grace
           Period extension, it MUST specify the grace period for all relevant
-          transactions. If no "grace-period" attribute value is provided, then
-          no grace period is applicable.
+          transactions. If the "grace-period" attribute is omitted, then clients
+          SHOULD NOT make any assumption about the grace period of the fee.
 </p>
+<a name="anchor8"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.3.4.3"></a><h3>3.4.3.&nbsp;
+Correlation between Refundability and Grace Periods</h3>
+
 <p>If a &lt;fee:fee&gt; element has a "grace-period" attribute then
           it MUST also be refundable. If the "refundable" attribute of a
           &lt;fee:fee&gt; element is false then it MUST NOT have a
           "grace-period" attribute.
 </p>
-<a name="anchor8"></a><br /><hr />
+<a name="anchor9"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
-<a name="rfc.section.3.4.3"></a><h3>3.4.3.&nbsp;
+<a name="rfc.section.3.4.4"></a><h3>3.4.4.&nbsp;
 Applicability</h3>
 
 <p>Fees may be applied immediately upon receipt of a command from a
@@ -586,8 +593,8 @@ Classification of Domain Names</h3>
 
 <p>Domain names may be assigned to a particular class, category, or tier,
         each of which has a particular fee or set of fees associated with it. The
-        &lt;fee:class&gt; element which appears in &lt;check&gt; and &lt;info&gt;
-        responses is used to indicate the classification of a domain name.
+        &lt;fee:class&gt; element which appears in &lt;check&gt; responses is
+        used to indicate the classification of a domain name.
 </p>
 <p>If a server makes use of this element, it MUST provide clients with a
         list of all the values that the element may take via an out-of-band
@@ -595,16 +602,16 @@ Classification of Domain Names</h3>
 </p>
 <p>Servers which make use of this element MUST use a &lt;fee:class&gt;
         element with the value "standard" for all domains that are subject to the
-        standard or default price.
+        standard or default fee.
 </p>
-<a name="anchor9"></a><br /><hr />
+<a name="anchor10"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.4"></a><h3>4.&nbsp;
 Server Handling of Fee Information</h3>
 
 <p>Depending on server policy, a client MAY be required to include the
       extension elements described in this document for certain transform
-      commands. Servers MUST provide clear documentation to clients about the
+      commands. Servers must provide clear documentation to clients about the
       circumstances in which this extension must be used.
 </p>
 <p>If a server receives a command from a client which does not include
@@ -616,7 +623,7 @@ Server Handling of Fee Information</h3>
       server MUST reject the command with a 2004 "Parameter value range"
       error.
 </p>
-<a name="anchor10"></a><br /><hr />
+<a name="anchor11"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.5"></a><h3>5.&nbsp;
 EPP Command Mapping</h3>
@@ -624,7 +631,7 @@ EPP Command Mapping</h3>
 <p>A detailed description of the EPP syntax and semantics can be found in
       <a class='info' href='#RFC5730'>[RFC5730]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP),&rdquo; August&nbsp;2009.</span><span>)</span></a>.
 </p>
-<a name="anchor11"></a><br /><hr />
+<a name="anchor12"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.5.1"></a><h3>5.1.&nbsp;
 EPP Query Commands</h3>
@@ -632,7 +639,7 @@ EPP Query Commands</h3>
 <p>This extension does not add any elements to the EPP &lt;poll&gt; or
         &lt;info&gt; commands or responses.
 </p>
-<a name="anchor12"></a><br /><hr />
+<a name="anchor13"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.5.1.1"></a><h3>5.1.1.&nbsp;
 EPP &lt;check&gt; Command</h3>
@@ -674,7 +681,7 @@ C:       &lt;/domain:check&gt;
 C:     &lt;/check&gt;
 C:     &lt;extension&gt;
 C:       &lt;fee:check
-C:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.8"&gt;
+C:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.9"&gt;
 C:         &lt;fee:domain&gt;
 C:           &lt;fee:name&gt;example.com&lt;/fee:name&gt;
 C:           &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
@@ -779,7 +786,7 @@ S:       &lt;/domain:chkData&gt;
 S:     &lt;/resData&gt;
 S:     &lt;extension&gt;
 S:       &lt;fee:chkData
-S:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.8"&gt;
+S:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.9"&gt;
 S:         &lt;fee:cd&gt;
 S:           &lt;fee:name&gt;example.com&lt;/fee:name&gt;
 S:           &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
@@ -789,7 +796,7 @@ S:           &lt;fee:fee description="Application Fee"
 S:             refundable="0"&gt;5.00&lt;/fee:fee&gt;
 S:           &lt;fee:fee description="Registration Fee"
 S:             refundable="1"
-S: 	    grace-period="P5D"&gt;5.00&lt;/fee:fee&gt;
+S:             grace-period="P5D"&gt;5.00&lt;/fee:fee&gt;
 S:         &lt;/fee:cd&gt;
 S:         &lt;fee:cd&gt;
 S:           &lt;fee:name&gt;example.net&lt;/fee:name&gt;
@@ -808,7 +815,7 @@ S:           &lt;fee:fee description="Transfer Fee"
 S:             refundable="0"&gt;2.50&lt;/fee:fee&gt;
 S:           &lt;fee:fee description="Renewal Fee"
 S:             refundable="1"
-S: 	    grace-period="P5D"&gt;10.00&lt;/fee:fee&gt;
+S:             grace-period="P5D"&gt;10.00&lt;/fee:fee&gt;
 S:         &lt;/fee:cd&gt;
 S:         &lt;fee:cd&gt;
 S:           &lt;fee:name&gt;example.xyz&lt;/fee:name&gt;
@@ -827,7 +834,7 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor13"></a><br /><hr />
+<a name="anchor14"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.5.1.2"></a><h3>5.1.2.&nbsp;
 EPP Transfer Query Command</h3>
@@ -887,7 +894,7 @@ S:         &lt;domain:exDate&gt;2002-09-08T22:00:00.0Z&lt;/domain:exDate&gt;
 S:       &lt;/domain:trnData&gt;
 S:     &lt;/resData&gt;
 S:     &lt;extension&gt;
-S:       &lt;fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.8"&gt;
+S:       &lt;fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.9"&gt;
 S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 S:         &lt;fee:period unit="y"&gt;1&lt;/fee:period&gt;
 S:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
@@ -900,12 +907,12 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor14"></a><br /><hr />
+<a name="anchor15"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.5.2"></a><h3>5.2.&nbsp;
 EPP Transform Commands</h3>
 
-<a name="anchor15"></a><br /><hr />
+<a name="anchor16"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.5.2.1"></a><h3>5.2.1.&nbsp;
 EPP &lt;create&gt; Command</h3>
@@ -973,7 +980,7 @@ C:         &lt;/domain:authInfo&gt;
 C:       &lt;/domain:create&gt;
 C:     &lt;/create&gt;
 C:     &lt;extension&gt;
-C:       &lt;fee:create xmlns:fee="urn:ietf:params:xml:ns:fee-0.8"&gt;
+C:       &lt;fee:create xmlns:fee="urn:ietf:params:xml:ns:fee-0.9"&gt;
 C:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 C:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
 C:       &lt;/fee:create&gt;
@@ -999,7 +1006,7 @@ S:         &lt;domain:exDate&gt;2001-04-03T22:00:00.0Z&lt;/domain:exDate&gt;
 S:       &lt;/domain:creData&gt;
 S:     &lt;/resData&gt;
 S:     &lt;extension&gt;
-S:       &lt;fee:creData xmlns:fee="urn:ietf:params:xml:ns:fee-0.8"&gt;
+S:       &lt;fee:creData xmlns:fee="urn:ietf:params:xml:ns:fee-0.9"&gt;
 S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 S:         &lt;fee:fee grace-period="P5D"&gt;5.00&lt;/fee:fee&gt;
 S:         &lt;fee:balance&gt;-5.00&lt;/fee:balance&gt;
@@ -1013,7 +1020,7 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor16"></a><br /><hr />
+<a name="anchor17"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.5.2.2"></a><h3>5.2.2.&nbsp;
 EPP &lt;delete&gt; Command</h3>
@@ -1053,7 +1060,7 @@ S:       &lt;msg&gt;Command completed successfully&lt;/msg&gt;
 S:     &lt;/result&gt;
 S:     &lt;extension&gt;
 S:       &lt;fee:delData
-S:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.8"&gt;
+S:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.9"&gt;
 S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 S:         &lt;fee:credit description="AGP Credit"&gt;-5.00&lt;/fee:credit&gt;
 S:         &lt;fee:balance&gt;1005.00&lt;/fee:balance&gt;
@@ -1066,7 +1073,7 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor17"></a><br /><hr />
+<a name="anchor18"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.5.2.3"></a><h3>5.2.3.&nbsp;
 EPP &lt;renew&gt; Command</h3>
@@ -1124,7 +1131,7 @@ C:         &lt;domain:period unit="y"&gt;5&lt;/domain:period&gt;
 C:       &lt;/domain:renew&gt;
 C:     &lt;/renew&gt;
 C:     &lt;extension&gt;
-C:       &lt;fee:renew xmlns:fee="urn:ietf:params:xml:ns:fee-0.8"&gt;
+C:       &lt;fee:renew xmlns:fee="urn:ietf:params:xml:ns:fee-0.9"&gt;
 C:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 C:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
 C:       &lt;/fee:renew&gt;
@@ -1149,7 +1156,7 @@ S:         &lt;domain:exDate&gt;2005-04-03T22:00:00.0Z&lt;/domain:exDate&gt;
 S:       &lt;/domain:renData&gt;
 S:     &lt;/resData&gt;
 S:     &lt;extension&gt;
-S:       &lt;fee:renData xmlns:fee="urn:ietf:params:xml:ns:fee-0.8"&gt;
+S:       &lt;fee:renData xmlns:fee="urn:ietf:params:xml:ns:fee-0.9"&gt;
 S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 S:         &lt;fee:fee grace-period="P5D"&gt;5.00&lt;/fee:fee&gt;
 S:         &lt;fee:balance&gt;1000.00&lt;/fee:balance&gt;
@@ -1162,7 +1169,7 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor18"></a><br /><hr />
+<a name="anchor19"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.5.2.4"></a><h3>5.2.4.&nbsp;
 EPP &lt;transfer&gt; Command</h3>
@@ -1223,7 +1230,7 @@ C:         &lt;/domain:authInfo&gt;
 C:       &lt;/domain:transfer&gt;
 C:     &lt;/transfer&gt;
 C:     &lt;extension&gt;
-C:       &lt;fee:transfer xmlns:fee="urn:ietf:params:xml:ns:fee-0.8"&gt;
+C:       &lt;fee:transfer xmlns:fee="urn:ietf:params:xml:ns:fee-0.9"&gt;
 C:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 C:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
 C:       &lt;/fee:transfer&gt;
@@ -1253,7 +1260,7 @@ S:         &lt;domain:exDate&gt;2002-09-08T22:00:00.0Z&lt;/domain:exDate&gt;
 S:       &lt;/domain:trnData&gt;
 S:     &lt;/resData&gt;
 S:     &lt;extension&gt;
-S:       &lt;fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.8"&gt;
+S:       &lt;fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.9"&gt;
 S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 S:         &lt;fee:fee grace-period="P5D"&gt;5.00&lt;/fee:fee&gt;
 S:       &lt;/fee:trnData&gt;
@@ -1265,7 +1272,7 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor19"></a><br /><hr />
+<a name="anchor20"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.5.2.5"></a><h3>5.2.5.&nbsp;
 EPP &lt;update&gt; Command</h3>
@@ -1324,7 +1331,7 @@ C:         &lt;/domain:chg&gt;
 C:       &lt;/domain:update&gt;
 C:     &lt;/update&gt;
 C:     &lt;extension&gt;
-C:       &lt;fee:update xmlns:fee="urn:ietf:params:xml:ns:fee-0.8"&gt;
+C:       &lt;fee:update xmlns:fee="urn:ietf:params:xml:ns:fee-0.9"&gt;
 C:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 C:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
 C:       &lt;/fee:update&gt;
@@ -1342,7 +1349,7 @@ S:     &lt;result code="1000"&gt;
 S:       &lt;msg&gt;Command completed successfully&lt;/msg&gt;
 S:     &lt;/result&gt;
 S:     &lt;extension&gt;
-S:       &lt;fee:updData xmlns:fee="urn:ietf:params:xml:ns:fee-0.8"&gt;
+S:       &lt;fee:updData xmlns:fee="urn:ietf:params:xml:ns:fee-0.9"&gt;
 S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 S:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
 S:       &lt;/fee:updData&gt;
@@ -1354,7 +1361,7 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor20"></a><br /><hr />
+<a name="anchor21"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.5.3"></a><h3>5.3.&nbsp;
 Formal Syntax</h3>
@@ -1402,10 +1409,10 @@ Formal Syntax</h3>
 BEGIN
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;schema xmlns="http://www.w3.org/2001/XMLSchema"
-  xmlns:fee="urn:ietf:params:xml:ns:fee-0.8"
+  xmlns:fee="urn:ietf:params:xml:ns:fee-0.9"
   xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
   xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"
-  targetNamespace="urn:ietf:params:xml:ns:fee-0.8"
+  targetNamespace="urn:ietf:params:xml:ns:fee-0.9"
   elementFormDefault="qualified"&gt;
 
   &lt;import namespace="urn:ietf:params:xml:ns:eppcom-1.0" /&gt;
@@ -1584,8 +1591,7 @@ BEGIN
     &lt;simpleContent&gt;
       &lt;extension base="fee:nonNegativeDecimal"&gt;
         &lt;attribute name="description"/&gt;
-        &lt;attribute name="refundable" type="boolean"
-          default="1" /&gt;
+        &lt;attribute name="refundable" type="boolean" /&gt;
         &lt;attribute name="grace-period" type="duration" /&gt;
         &lt;attribute name="applied" default="immediate"&gt;
           &lt;simpleType&gt;
@@ -1634,7 +1640,7 @@ Security Considerations</h3>
 <a name="rfc.section.7"></a><h3>7.&nbsp;
 IANA Considerations</h3>
 
-<a name="anchor21"></a><br /><hr />
+<a name="anchor22"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.7.1"></a><h3>7.1.&nbsp;
 XML Namespace</h3>
@@ -1643,14 +1649,14 @@ XML Namespace</h3>
         conforming to a registry mechanism described in <a class='info' href='#RFC3688'>[RFC3688]<span> (</span><span class='info'>Mealling, M., &ldquo;The IETF XML Registry,&rdquo; January&nbsp;2004.</span><span>)</span></a>.
         The following URI assignment is requested of IANA:
 </p>
-<p>URI: urn:ietf:params:xml:ns:fee-0.8
+<p>URI: urn:ietf:params:xml:ns:fee-0.9
 </p>
 <p>Registrant Contact: See the "Author's Address" section of this
         document.
 </p>
 <p>XML: See the "Formal Syntax" section of this document.
 </p>
-<a name="anchor22"></a><br /><hr />
+<a name="anchor23"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.7.2"></a><h3>7.2.&nbsp;
 EPP Extension Registry</h3>
@@ -1703,7 +1709,7 @@ Implementation Status</h3>
       more mature. It is up to the individual working groups to use this
       information as they see fit".
 </p>
-<a name="anchor23"></a><br /><hr />
+<a name="anchor24"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.8.1"></a><h3>8.1.&nbsp;
 RegistryEngine EPP Service</h3>
@@ -1725,7 +1731,7 @@ RegistryEngine EPP Service</h3>
 </p>
 <p>URL: https://www.centralnic.com
 </p>
-<a name="anchor24"></a><br /><hr />
+<a name="anchor25"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.9"></a><h3>9.&nbsp;
 Acknowledgements</h3>
@@ -1753,14 +1759,16 @@ Acknowledgements</h3>
 </li>
 <li>Santosh Kalsangrah of Impetus Infotech
 </li>
+<li>Alex Mayrhofer of Nic.at
+</li>
 </ul>
 
-<a name="anchor25"></a><br /><hr />
+<a name="anchor26"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.10"></a><h3>10.&nbsp;
 Change History</h3>
 
-<a name="anchor26"></a><br /><hr />
+<a name="anchor27"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.10.1"></a><h3>10.1.&nbsp;
 Changes from 00 to 01</h3>
@@ -1776,7 +1784,7 @@ Changes from 00 to 01</h3>
 </li>
 </ol>
 
-<a name="anchor27"></a><br /><hr />
+<a name="anchor28"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.10.2"></a><h3>10.2.&nbsp;
 Changes from 01 to 02</h3>
@@ -1811,7 +1819,7 @@ Changes from 01 to 02</h3>
 </li>
 </ol>
 
-<a name="anchor28"></a><br /><hr />
+<a name="anchor29"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.10.3"></a><h3>10.3.&nbsp;
 Changes from 02 to 03</h3>
@@ -1834,7 +1842,7 @@ Changes from 02 to 03</h3>
 </li>
 </ol>
 
-<a name="anchor29"></a><br /><hr />
+<a name="anchor30"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.10.4"></a><h3>10.4.&nbsp;
 Changes from 03 to 04</h3>
@@ -1868,7 +1876,7 @@ Changes from 03 to 04</h3>
 </li>
 </ol>
 
-<a name="anchor30"></a><br /><hr />
+<a name="anchor31"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.10.5"></a><h3>10.5.&nbsp;
 Changes from 04 to 05</h3>
@@ -1900,7 +1908,27 @@ Changes from 04 to 05</h3>
 </li>
 </ol>
 
-<a name="anchor31"></a><br /><hr />
+<a name="anchor32"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.10.6"></a><h3>10.6.&nbsp;
+Changes from 05 to 06</h3>
+
+<p></p>
+<ol class="text">
+<li>Removed the default value for the "refundable" attribute of &lt;fee:fee&gt;
+          elements, and added text about how clients should handle such cases. Added similar
+          text to the documentation of the "grace-period" attribute.
+</li>
+<li>Removed references to the defunct &lt;info&gt; command syntax.
+</li>
+<li>"MUST" requirements regarding documentatio have been changed to "must".
+</li>
+<li>Created separate "Correlation between Refundability and Grace Periods" section
+          describing how the "refundable" and "grace-period" attributes work together.
+</li>
+</ol>
+
+<a name="anchor33"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.11"></a><h3>11.&nbsp;
 TODO</h3>
