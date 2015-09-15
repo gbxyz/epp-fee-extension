@@ -238,9 +238,7 @@
             documentation on the possible values of this attribute, and their
             meanings.</t>
             <t hangText="refundable:">an OPTIONAL boolean attribute indicating
-              whether the fee is refundable if the domain name is deleted. If this
-  	    attribute is not included, then clients SHOULD NOT make any assumption
-  	    about the refundability of the fee.</t>
+              whether the fee is refundable if the domain name is deleted.</t>
           <t hangText="grace-period:">an OPTIONAL attribute which provides the
             time period during which the fee is refundable.</t>
           <t hangText="applied:">an OPTIONAL attribute indicating when the
@@ -257,8 +255,8 @@
           circumstances, such as when a domain application is rejected (as
           described in <xref target="draft-ietf-eppext-launchphase" />) or when
           a domain name is deleted during the relevant Grace Period (see below).
-          If the "refundable" attribute is omitted, then the default value of
-          "1" should be assumed (i.e. the fee is refundable).</t>
+          If the "refundable" attribute is omitted, then clients SHOULD NOT make
+	  any assumption about the refundability of the fee.</t>
         </section>
 
         <section title="Grace Periods">
