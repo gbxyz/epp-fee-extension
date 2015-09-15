@@ -153,7 +153,7 @@
 
       <section title="Client Commands">
         <t>The &lt;fee:command&gt; element is used in the EPP &lt;check&gt; command to
-	determine the fee which is applicable to the given command.</t>
+        determine the fee which is applicable to the given command.</t>
 
         <t>The element values permitted by the server is a matter of repository
         policy, but MUST include as a minimum the following values:
@@ -255,7 +255,7 @@
           described in <xref target="draft-ietf-eppext-launchphase" />) or when
           a domain name is deleted during the relevant Grace Period (see below).
           If the "refundable" attribute is omitted, then clients SHOULD NOT make
-	  any assumption about the refundability of the fee.</t>
+          any assumption about the refundability of the fee.</t>
         </section>
 
         <section title="Grace Periods">
@@ -267,7 +267,7 @@
           grace period for a fee. If a server implements the Registry Grace
           Period extension, it MUST specify the grace period for all relevant
           transactions. If the "grace-period" attribute is omitted, then clients
-	  SHOULD NOT make any assumption about the grace period of the fee.</t>
+          SHOULD NOT make any assumption about the grace period of the fee.</t>
         </section>
 
         <section title="Correlation between Refundability and Grace Periods">
@@ -830,7 +830,7 @@ END</artwork></figure>
         <t>Jody Kolker and Roger Carney of Go Daddy</t>
         <t>Michael Holloway of Com Laude</t>
         <t>Santosh Kalsangrah of Impetus Infotech</t>
-	<t>Alex Mayrhofer of Nic.at</t>
+        <t>Alex Mayrhofer of Nic.at</t>
       </list></t>
     </section>
 
@@ -920,6 +920,13 @@ END</artwork></figure>
       </section>
       <section title="Changes from 05 to 06">
         <t><list style="numbers">
+          <t>Removed the default value for the "refundable" attribute of &lt;fee:fee&gt;
+          elements, and added text about how clients should handle such cases. Added similar
+          text to the documentation of the "grace-period" attribute.</t>
+          <t>Removed references to the defunct &lt;info&gt; command syntax.</t>
+          <t>"MUST" requirements regarding documentatio have been changed to "must".</t>
+          <t>Created separate "Correlation between Refundability and Grace Periods" section
+          describing how the "refundable" and "grace-period" attributes work together.</t>
         </list></t>
       </section>
     </section>
