@@ -267,9 +267,11 @@
           <t>The "grace-period" attribute MAY be used to indicate the relevant
           grace period for a fee. If a server implements the Registry Grace
           Period extension, it MUST specify the grace period for all relevant
-          transactions. If no "grace-period" attribute value is provided, then
-          no grace period is applicable.</t>
+          transactions. If the "grace-period" attribute is omitted, then clients
+	  SHOULD NOT make any assumption about the grace period of the fee.</t>
+        </section>
 
+        <section title="Correlation between Refundability and Grace Periods">
           <t>If a &lt;fee:fee&gt; element has a "grace-period" attribute then
           it MUST also be refundable. If the "refundable" attribute of a
           &lt;fee:fee&gt; element is false then it MUST NOT have a
