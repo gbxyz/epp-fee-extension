@@ -188,7 +188,7 @@
         if a &lt;fee:currency&gt; element is not present in a command, the
         server MUST determine the currency based on the client's account settings
         which MUST be agreed by the client and server via an out-of-band
-        channel. However, &lt;fee:currency&gt; element MUST be present in
+        channel. However, the &lt;fee:currency&gt; element MUST be present in
         responses.</t>
 
         <t>Servers SHOULD NOT perform a currency conversion if a client uses an
@@ -234,7 +234,7 @@
 
         <t><list style="hanging">
       	  <t hangText="description:">an OPTIONAL attribute which provides a
-            human-readable description of the fee. Servers SHOULD provide
+            human-readable description of the fee. Servers should provide
             documentation on the possible values of this attribute, and their
             meanings.</t>
           <t hangText="refundable:">an OPTIONAL boolean attribute indicating
@@ -348,7 +348,7 @@
 
       <t>Depending on server policy, a client MAY be required to include the
       extension elements described in this document for certain transform
-      commands. Servers MUST provide clear documentation to clients about the
+      commands. Servers must provide clear documentation to clients about the
       circumstances in which this extension must be used.</t>
 
       <t>If a server receives a command from a client which does not include
