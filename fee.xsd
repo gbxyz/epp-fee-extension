@@ -182,8 +182,7 @@
     <simpleContent>
       <extension base="fee:nonNegativeDecimal">
         <attribute name="description"/>
-        <attribute name="refundable" type="boolean"
-          default="1" />
+        <attribute name="refundable" type="boolean" />
         <attribute name="grace-period" type="duration" />
         <attribute name="applied" default="immediate">
           <simpleType>
