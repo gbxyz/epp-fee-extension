@@ -32,7 +32,7 @@
             refundable="0">5.00</fee:fee>
           <fee:fee description="Registration Fee"
             refundable="1"
-	    grace-period="P5D">5.00</fee:fee>
+            grace-period="P5D">5.00</fee:fee>
         </fee:cd>
         <fee:cd>
           <fee:name>example.net</fee:name>
@@ -51,7 +51,7 @@
             refundable="0">2.50</fee:fee>
           <fee:fee description="Renewal Fee"
             refundable="1"
-	    grace-period="P5D">10.00</fee:fee>
+            grace-period="P5D">10.00</fee:fee>
         </fee:cd>
         <fee:cd>
           <fee:name>example.xyz</fee:name>
