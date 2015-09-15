@@ -6,7 +6,7 @@
     </result>
     <extension>
       <fee:delData
-        xmlns:fee="urn:ietf:params:xml:ns:fee-0.8">
+        xmlns:fee="urn:ietf:params:xml:ns:fee-0.9">
         <fee:currency>USD</fee:currency>
         <fee:credit description="AGP Credit">-5.00</fee:credit>
         <fee:balance>1005.00</fee:balance>

@@ -3,7 +3,7 @@
   xmlns:fee="urn:ietf:params:xml:ns:fee-0.8"
   xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
   xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"
-  targetNamespace="urn:ietf:params:xml:ns:fee-0.8"
+  targetNamespace="urn:ietf:params:xml:ns:fee-0.9"
   elementFormDefault="qualified">
 
   <import namespace="urn:ietf:params:xml:ns:eppcom-1.0" />

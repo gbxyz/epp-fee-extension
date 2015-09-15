@@ -5,7 +5,7 @@
   <!-- when the namespace version bumps, update this and it will update
     everywhere -->
 
-  <!ENTITY VERSION "0.8">
+  <!ENTITY VERSION "0.9">
 
   <!ENTITY I-D.narten-iana-considerations-rfc2434bis SYSTEM
     "http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.narten-iana-considerations-rfc2434bis.xml">

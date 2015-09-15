@@ -11,7 +11,7 @@
     </check>
     <extension>
       <fee:check
-        xmlns:fee="urn:ietf:params:xml:ns:fee-0.8">
+        xmlns:fee="urn:ietf:params:xml:ns:fee-0.9">
         <fee:domain>
           <fee:name>example.com</fee:name>
           <fee:currency>USD</fee:currency>
