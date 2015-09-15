@@ -152,9 +152,8 @@
     <section title="Extension Elements">
 
       <section title="Client Commands">
-        <t>The &lt;fee:command&gt; element is used in EPP &lt;check&gt; and
-        &lt;info&gt; commands to determine the fee which is applicable to the
-        given command.</t>
+        <t>The &lt;fee:command&gt; element is used in the EPP &lt;check&gt; command to
+	determine the fee which is applicable to the given command.</t>
 
         <t>The element values permitted by the server is a matter of repository
         policy, but MUST include as a minimum the following values:
@@ -196,17 +195,17 @@
       </section>
 
       <section title="Validity Periods" anchor="validity-periods">
-        <t>When querying for fee information using the &lt;check&gt; or
-        &lt;info&gt; commands, the &lt;fee:period&gt; element is used to
-        indicate the units to be added to the registration period of domain
-        names by the &lt;create&gt;, &lt;renew&gt; and &lt;transfer&gt;
-        commands. This element is derived from the &lt;domain:period&gt; element
-        described in <xref target="RFC5731"/>.</t>
+        <t>When querying for fee information using the &lt;check&gt; command,
+        the &lt;fee:period&gt; element is used to indicate the units to be added
+        to the registration period of domain names by the &lt;create&gt;,
+        &lt;renew&gt; and &lt;transfer&gt; commands. This element is derived
+        from the &lt;domain:period&gt; element described in <xref
+        target="RFC5731"/>.</t>
 
-        <t>The &lt;fee:period&gt; element is OPTIONAL in &lt;check&gt; and
-        &lt;info&gt; commands: if omitted, the server MUST determine the
-        fee(s) using a validity period of 1 year. The &lt;fee:period&gt; element
-        MUST be present in &lt;check&gt; and &lt;info&gt; responses.</t>
+        <t>The &lt;fee:period&gt; element is OPTIONAL in &lt;check&gt; commands:
+        if omitted, the server MUST determine the fee(s) using a validity period
+        of 1 year. The &lt;fee:period&gt; element MUST be present in &lt;check&gt;
+        responses.</t>
 
       </section>
 
@@ -333,8 +332,8 @@
       <section title="Classification of Domain Names" anchor="classification">
         <t>Domain names may be assigned to a particular class, category, or tier,
         each of which has a particular fee or set of fees associated with it. The
-        &lt;fee:class&gt; element which appears in &lt;check&gt; and &lt;info&gt;
-        responses is used to indicate the classification of a domain name.</t>
+        &lt;fee:class&gt; element which appears in &lt;check&gt; responses is
+        used to indicate the classification of a domain name.</t>
 
         <t>If a server makes use of this element, it MUST provide clients with a
         list of all the values that the element may take via an out-of-band
