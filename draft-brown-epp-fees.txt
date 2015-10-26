@@ -461,7 +461,7 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
 
    The command MAY contain an <extension> element which MAY contain a
    <fee:check> element.  The <fee:check> element MUST contain at least
-   one <fee:domain> element, with the following child elements:
+   one <fee:object> element, with the following child elements:
 
    o  A <fee:name> element.  The domain name need not correspond to a
       <domain:name> element that appears in the <domain:check> element
@@ -519,28 +519,28 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
    C:     <extension>
    C:       <fee:check
    C:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.9">
-   C:         <fee:domain>
+   C:         <fee:object>
    C:           <fee:name>example.com</fee:name>
    C:           <fee:currency>USD</fee:currency>
    C:           <fee:command phase="sunrise">create</fee:command>
    C:           <fee:period unit="y">1</fee:period>
-   C:         </fee:domain>
-   C:         <fee:domain>
+   C:         </fee:object>
+   C:         <fee:object>
    C:           <fee:name>example.net</fee:name>
    C:           <fee:currency>EUR</fee:currency>
    C:           <fee:command phase="claims" subphase="landrush">
    C:           create</fee:command>
    C:           <fee:period unit="y">2</fee:period>
-   C:         </fee:domain>
-   C:         <fee:domain>
+   C:         </fee:object>
+   C:         <fee:object>
    C:           <fee:name>example.org</fee:name>
    C:           <fee:currency>EUR</fee:currency>
    C:           <fee:command>transfer</fee:command>
-   C:         </fee:domain>
-   C:         <fee:domain>
+   C:         </fee:object>
+   C:         <fee:object>
    C:           <fee:name>example.xyz</fee:name>
    C:           <fee:command>restore</fee:command>
-   C:         </fee:domain>
+   C:         </fee:object>
    C:       </fee:check>
    C:     </extension>
    C:     <clTRID>ABC-12345</clTRID>
@@ -551,7 +551,7 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
    extension elements described above, its response MUST (subject to the
    exception described below) contain an <extension> element, which MUST
    contain a child <fee:chkData> element.  The <fee:chkData> element
-   MUST contain a <fee:cd> element for each <fee:domain> element
+   MUST contain a <fee:cd> element for each <fee:object> element
    contained in the command.  The <fee:cd> MUST contain the following
 
 
@@ -564,24 +564,24 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
    child elements:
 
    o  A <fee:name> element that contains a domain name which matches the
-      name in the corresponding <fee:domain> element.
+      name in the corresponding <fee:object> element.
 
    o  A <fee:currency> element that contains same currency code that
-      appeared in the corresponding <fee:domain> element.  If no <fee:
-      currency> element appeared in the corresponding <fee:domain>
+      appeared in the corresponding <fee:object> element.  If no <fee:
+      currency> element appeared in the corresponding <fee:object>
       element, then the client's default billing currency should be
       used.
 
    o  A <fee:command> element that contains same command that appeared
-      in the corresponding <fee:domain> element.  This element MAY have
+      in the corresponding <fee:object> element.  This element MAY have
       the OPTIONAL "phase" and "subphase" elements, which MUST match the
-      same attributes in the corresponding <fee:domain> element.
+      same attributes in the corresponding <fee:object> element.
 
    o  An OPTIONAL <fee:period> element that contains same unit that
-      appeared in the corresponding <fee:domain> element.  If the value
+      appeared in the corresponding <fee:object> element.  If the value
       of the preceding <fee:command> element is "restore", this element
       MUST NOT be included.  Otherwise it MUST be included.  If no <fee:
-      period> appeared in the corresponding <fee:domain> element (and
+      period> appeared in the corresponding <fee:object> element (and
       the command is not "restore") then this element MUST have a value
       of 1 year.
 
@@ -1369,8 +1369,8 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
 
      <annotation>
        <documentation>Extensible Provisioning Protocol
-       v1.0 domain name extension schema for
-       fee information.</documentation>
+       v1.0 extension schema for fee
+       information.</documentation>
      </annotation>
 
      <!--
@@ -1401,12 +1401,12 @@ Brown                   Expires February 2, 2016               [Page 25]
 Internet-Draft       Registry Fee Extension for EPP          August 2015
 
 
-         <element name="domain" type="fee:domainCheckType"
+         <element name="object" type="fee:objectCheckType"
            maxOccurs="unbounded" />
        </sequence>
      </complexType>
 
-     <complexType name="domainCheckType">
+     <complexType name="objectCheckType">
        <sequence>
          <element name="name" type="eppcom:labelType" />
          <element name="currency" type="fee:currencyType"
@@ -1423,12 +1423,12 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
      -->
      <complexType name="chkDataType">
        <sequence>
-         <element name="cd" type="fee:domainCDType"
+         <element name="cd" type="fee:objectCDType"
            maxOccurs="unbounded" />
        </sequence>
      </complexType>
 
-     <complexType name="domainCDType">
+     <complexType name="objectCDType">
        <sequence>
          <element name="name" type="eppcom:labelType" />
          <element name="currency" type="fee:currencyType" />
@@ -1876,17 +1876,19 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
 
 10.6.  Changes from 05 to 06
 
-   1.  Removed the default value for the "refundable" attribute of <fee:
+   1.  Renamed the <fee:domain> element to <fee:object>.
+
+   2.  Removed the default value for the "refundable" attribute of <fee:
        fee> elements, and added text about how clients should handle
        such cases.  Added similar text to the documentation of the
        "grace-period" attribute.
 
-   2.  Removed references to the defunct <info> command syntax.
+   3.  Removed references to the defunct <info> command syntax.
 
-   3.  "MUST" requirements regarding documentatio have been changed to
+   4.  "MUST" requirements regarding documentatio have been changed to
        "must".
 
-   4.  Created separate "Correlation between Refundability and Grace
+   5.  Created separate "Correlation between Refundability and Grace
        Periods" section describing how the "refundable" and "grace-
        period" attributes work together.
 
@@ -1895,8 +1897,6 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
 
    (Note to RFC Editor: remove this section before publication as an
    RFC.)
-
-
 
 
 

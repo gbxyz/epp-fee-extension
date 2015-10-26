@@ -378,7 +378,7 @@
 
           <t>The command MAY contain an &lt;extension&gt; element which
           MAY contain a &lt;fee:check&gt; element. The &lt;fee:check&gt; element
-          MUST contain at least one &lt;fee:domain&gt; element, with the
+          MUST contain at least one &lt;fee:object&gt; element, with the
           following child elements:</t>
 
           <t><list style="symbols">
@@ -404,31 +404,31 @@
           exception described below) contain an &lt;extension&gt; element,
           which MUST contain a child &lt;fee:chkData&gt; element. The
           &lt;fee:chkData&gt; element MUST contain a &lt;fee:cd&gt; element for
-          each &lt;fee:domain&gt; element contained in the command. The
+          each &lt;fee:object&gt; element contained in the command. The
           &lt;fee:cd&gt; MUST contain the following child elements:</t>
 
           <t><list style="symbols">
             <t>A &lt;fee:name&gt; element that contains a domain name which
-            matches the name in the corresponding &lt;fee:domain&gt; element.</t>
+            matches the name in the corresponding &lt;fee:object&gt; element.</t>
 
             <t>A &lt;fee:currency&gt; element that contains same currency code
-            that appeared in the corresponding &lt;fee:domain&gt; element. If no
+            that appeared in the corresponding &lt;fee:object&gt; element. If no
             &lt;fee:currency&gt; element appeared in the corresponding
-            &lt;fee:domain&gt; element, then the client's default billing
+            &lt;fee:object&gt; element, then the client's default billing
             currency should be used.</t>
 
             <t>A &lt;fee:command&gt; element that contains same command
-            that appeared in the corresponding &lt;fee:domain&gt; element. This
+            that appeared in the corresponding &lt;fee:object&gt; element. This
             element MAY have the OPTIONAL "phase" and "subphase" elements, 
             which MUST match the same attributes in the corresponding
-            &lt;fee:domain&gt; element.</t>
+            &lt;fee:object&gt; element.</t>
 
             <t>An OPTIONAL &lt;fee:period&gt; element that contains same unit
-            that appeared in the corresponding &lt;fee:domain&gt; element. If
+            that appeared in the corresponding &lt;fee:object&gt; element. If
             the value of the preceding &lt;fee:command&gt; element is "restore",
             this element MUST NOT be included. Otherwise it MUST be included. If
             no &lt;fee:period&gt; appeared in the corresponding
-            &lt;fee:domain&gt; element (and the command is not "restore") then
+            &lt;fee:object&gt; element (and the command is not "restore") then
             this element MUST have a value of 1 year.</t>
 
             <t>Zero or more &lt;fee:fee&gt; elements.</t>
@@ -920,6 +920,7 @@ END</artwork></figure>
       </section>
       <section title="Changes from 05 to 06">
         <t><list style="numbers">
+          <t>Renamed the &lt;fee:domain&gt; element to &lt;fee:object&gt;.</t>
           <t>Removed the default value for the "refundable" attribute of &lt;fee:fee&gt;
           elements, and added text about how clients should handle such cases. Added similar
           text to the documentation of the "grace-period" attribute.</t>

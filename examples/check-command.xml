@@ -12,28 +12,28 @@
     <extension>
       <fee:check
         xmlns:fee="urn:ietf:params:xml:ns:fee-0.9">
-        <fee:domain>
+        <fee:object>
           <fee:name>example.com</fee:name>
           <fee:currency>USD</fee:currency>
           <fee:command phase="sunrise">create</fee:command>
           <fee:period unit="y">1</fee:period>
-        </fee:domain>
-        <fee:domain>
+        </fee:object>
+        <fee:object>
           <fee:name>example.net</fee:name>
           <fee:currency>EUR</fee:currency>
           <fee:command phase="claims" subphase="landrush">
           create</fee:command>
           <fee:period unit="y">2</fee:period>
-        </fee:domain>
-        <fee:domain>
+        </fee:object>
+        <fee:object>
           <fee:name>example.org</fee:name>
           <fee:currency>EUR</fee:currency>
           <fee:command>transfer</fee:command>
-        </fee:domain>
-        <fee:domain>
+        </fee:object>
+        <fee:object>
           <fee:name>example.xyz</fee:name>
           <fee:command>restore</fee:command>
-        </fee:domain>
+        </fee:object>
       </fee:check>
     </extension>
     <clTRID>ABC-12345</clTRID>

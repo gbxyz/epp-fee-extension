@@ -11,8 +11,8 @@
 
   <annotation>
     <documentation>Extensible Provisioning Protocol
-    v1.0 domain name extension schema for
-    fee information.</documentation>
+    v1.0 extension schema for fee
+    information.</documentation>
   </annotation>
 
   <!--
@@ -35,12 +35,12 @@
   -->
   <complexType name="checkType">
     <sequence>
-      <element name="domain" type="fee:domainCheckType"
+      <element name="object" type="fee:objectCheckType"
         maxOccurs="unbounded" />
     </sequence>
   </complexType>
 
-  <complexType name="domainCheckType">
+  <complexType name="objectCheckType">
     <sequence>
       <element name="name" type="eppcom:labelType" />
       <element name="currency" type="fee:currencyType"
@@ -57,12 +57,12 @@
   -->
   <complexType name="chkDataType">
     <sequence>
-      <element name="cd" type="fee:domainCDType"
+      <element name="cd" type="fee:objectCDType"
         maxOccurs="unbounded" />
     </sequence>
   </complexType>
 
-  <complexType name="domainCDType">
+  <complexType name="objectCDType">
     <sequence>
       <element name="name" type="eppcom:labelType" />
       <element name="currency" type="fee:currencyType" />

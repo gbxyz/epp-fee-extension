@@ -649,7 +649,7 @@ EPP &lt;check&gt; Command</h3>
 </p>
 <p>The command MAY contain an &lt;extension&gt; element which
           MAY contain a &lt;fee:check&gt; element. The &lt;fee:check&gt; element
-          MUST contain at least one &lt;fee:domain&gt; element, with the
+          MUST contain at least one &lt;fee:object&gt; element, with the
           following child elements:
 </p>
 <p></p>
@@ -682,28 +682,28 @@ C:     &lt;/check&gt;
 C:     &lt;extension&gt;
 C:       &lt;fee:check
 C:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.9"&gt;
-C:         &lt;fee:domain&gt;
+C:         &lt;fee:object&gt;
 C:           &lt;fee:name&gt;example.com&lt;/fee:name&gt;
 C:           &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 C:           &lt;fee:command phase="sunrise"&gt;create&lt;/fee:command&gt;
 C:           &lt;fee:period unit="y"&gt;1&lt;/fee:period&gt;
-C:         &lt;/fee:domain&gt;
-C:         &lt;fee:domain&gt;
+C:         &lt;/fee:object&gt;
+C:         &lt;fee:object&gt;
 C:           &lt;fee:name&gt;example.net&lt;/fee:name&gt;
 C:           &lt;fee:currency&gt;EUR&lt;/fee:currency&gt;
 C:           &lt;fee:command phase="claims" subphase="landrush"&gt;
 C:           create&lt;/fee:command&gt;
 C:           &lt;fee:period unit="y"&gt;2&lt;/fee:period&gt;
-C:         &lt;/fee:domain&gt;
-C:         &lt;fee:domain&gt;
+C:         &lt;/fee:object&gt;
+C:         &lt;fee:object&gt;
 C:           &lt;fee:name&gt;example.org&lt;/fee:name&gt;
 C:           &lt;fee:currency&gt;EUR&lt;/fee:currency&gt;
 C:           &lt;fee:command&gt;transfer&lt;/fee:command&gt;
-C:         &lt;/fee:domain&gt;
-C:         &lt;fee:domain&gt;
+C:         &lt;/fee:object&gt;
+C:         &lt;fee:object&gt;
 C:           &lt;fee:name&gt;example.xyz&lt;/fee:name&gt;
 C:           &lt;fee:command&gt;restore&lt;/fee:command&gt;
-C:         &lt;/fee:domain&gt;
+C:         &lt;/fee:object&gt;
 C:       &lt;/fee:check&gt;
 C:     &lt;/extension&gt;
 C:     &lt;clTRID&gt;ABC-12345&lt;/clTRID&gt;
@@ -715,32 +715,32 @@ C: &lt;/epp&gt;
           exception described below) contain an &lt;extension&gt; element,
           which MUST contain a child &lt;fee:chkData&gt; element. The
           &lt;fee:chkData&gt; element MUST contain a &lt;fee:cd&gt; element for
-          each &lt;fee:domain&gt; element contained in the command. The
+          each &lt;fee:object&gt; element contained in the command. The
           &lt;fee:cd&gt; MUST contain the following child elements:
 </p>
 <p></p>
 <ul class="text">
 <li>A &lt;fee:name&gt; element that contains a domain name which
-            matches the name in the corresponding &lt;fee:domain&gt; element.
+            matches the name in the corresponding &lt;fee:object&gt; element.
 </li>
 <li>A &lt;fee:currency&gt; element that contains same currency code
-            that appeared in the corresponding &lt;fee:domain&gt; element. If no
+            that appeared in the corresponding &lt;fee:object&gt; element. If no
             &lt;fee:currency&gt; element appeared in the corresponding
-            &lt;fee:domain&gt; element, then the client's default billing
+            &lt;fee:object&gt; element, then the client's default billing
             currency should be used.
 </li>
 <li>A &lt;fee:command&gt; element that contains same command
-            that appeared in the corresponding &lt;fee:domain&gt; element. This
+            that appeared in the corresponding &lt;fee:object&gt; element. This
             element MAY have the OPTIONAL "phase" and "subphase" elements, 
             which MUST match the same attributes in the corresponding
-            &lt;fee:domain&gt; element.
+            &lt;fee:object&gt; element.
 </li>
 <li>An OPTIONAL &lt;fee:period&gt; element that contains same unit
-            that appeared in the corresponding &lt;fee:domain&gt; element. If
+            that appeared in the corresponding &lt;fee:object&gt; element. If
             the value of the preceding &lt;fee:command&gt; element is "restore",
             this element MUST NOT be included. Otherwise it MUST be included. If
             no &lt;fee:period&gt; appeared in the corresponding
-            &lt;fee:domain&gt; element (and the command is not "restore") then
+            &lt;fee:object&gt; element (and the command is not "restore") then
             this element MUST have a value of 1 year.
 </li>
 <li>Zero or more &lt;fee:fee&gt; elements.
@@ -1420,8 +1420,8 @@ BEGIN
 
   &lt;annotation&gt;
     &lt;documentation&gt;Extensible Provisioning Protocol
-    v1.0 domain name extension schema for
-    fee information.&lt;/documentation&gt;
+    v1.0 extension schema for fee
+    information.&lt;/documentation&gt;
   &lt;/annotation&gt;
 
   &lt;!--
@@ -1444,12 +1444,12 @@ BEGIN
   --&gt;
   &lt;complexType name="checkType"&gt;
     &lt;sequence&gt;
-      &lt;element name="domain" type="fee:domainCheckType"
+      &lt;element name="object" type="fee:objectCheckType"
         maxOccurs="unbounded" /&gt;
     &lt;/sequence&gt;
   &lt;/complexType&gt;
 
-  &lt;complexType name="domainCheckType"&gt;
+  &lt;complexType name="objectCheckType"&gt;
     &lt;sequence&gt;
       &lt;element name="name" type="eppcom:labelType" /&gt;
       &lt;element name="currency" type="fee:currencyType"
@@ -1466,12 +1466,12 @@ BEGIN
   --&gt;
   &lt;complexType name="chkDataType"&gt;
     &lt;sequence&gt;
-      &lt;element name="cd" type="fee:domainCDType"
+      &lt;element name="cd" type="fee:objectCDType"
         maxOccurs="unbounded" /&gt;
     &lt;/sequence&gt;
   &lt;/complexType&gt;
 
-  &lt;complexType name="domainCDType"&gt;
+  &lt;complexType name="objectCDType"&gt;
     &lt;sequence&gt;
       &lt;element name="name" type="eppcom:labelType" /&gt;
       &lt;element name="currency" type="fee:currencyType" /&gt;
@@ -1915,6 +1915,8 @@ Changes from 05 to 06</h3>
 
 <p></p>
 <ol class="text">
+<li>Renamed the &lt;fee:domain&gt; element to &lt;fee:object&gt;.
+</li>
 <li>Removed the default value for the "refundable" attribute of &lt;fee:fee&gt;
           elements, and added text about how clients should handle such cases. Added similar
           text to the documentation of the "grace-period" attribute.
