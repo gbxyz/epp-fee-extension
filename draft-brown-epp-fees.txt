@@ -100,7 +100,7 @@ Table of Contents
      10.4. Changes from 03 to 04  . . . . . . . . . . . . . . . . . . 33
      10.5. Changes from 04 to 05  . . . . . . . . . . . . . . . . . . 34
      10.6. Changes from 05 to 06  . . . . . . . . . . . . . . . . . . 34
-   11. TODO . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+   11. TODO . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 35
    12. Normative References . . . . . . . . . . . . . . . . . . . . . 35
    Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 36
 
@@ -461,7 +461,7 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
 
    The command MAY contain an <extension> element which MAY contain a
    <fee:check> element.  The <fee:check> element MUST contain at least
-   one <fee:object> element, with the following child elements:
+   one <fee:object> element, which has the following child elements:
 
    o  A <fee:name> element.  The domain name need not correspond to a
       <domain:name> element that appears in the <domain:check> element
@@ -473,13 +473,13 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
 
    o  An OPTIONAL <fee:period> element.
 
+   The <fee:object> element has an OPTIONAL "objURI" attribute which is
+   used to identify the type of the object.  The default value for this
+   element is "urn:ietf:params:xml:ns:domain-1.0".  The value of this
+   attribute MUST match the contents of one of the <objURI> elements
+   from the server <greeting>
+
    Example <check> command:
-
-
-
-
-
-
 
 
 
@@ -519,7 +519,8 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
    C:     <extension>
    C:       <fee:check
    C:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.9">
-   C:         <fee:object>
+   C:         <fee:object
+   C:           objURI="urn:ietf:params:xml:ns:domain-1.0">
    C:           <fee:name>example.com</fee:name>
    C:           <fee:currency>USD</fee:currency>
    C:           <fee:command phase="sunrise">create</fee:command>
@@ -552,7 +553,6 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
    exception described below) contain an <extension> element, which MUST
    contain a child <fee:chkData> element.  The <fee:chkData> element
    MUST contain a <fee:cd> element for each <fee:object> element
-   contained in the command.  The <fee:cd> MUST contain the following
 
 
 
@@ -561,6 +561,7 @@ Brown                   Expires February 2, 2016               [Page 10]
 Internet-Draft       Registry Fee Extension for EPP          August 2015
 
 
+   contained in the command.  The <fee:cd> MUST contain the following
    child elements:
 
    o  A <fee:name> element that contains a domain name which matches the
@@ -608,7 +609,6 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
    S:     <result code="1000">
    S:       <msg>Command completed successfully</msg>
    S:     </result>
-   S:     <resData>
 
 
 
@@ -617,6 +617,7 @@ Brown                   Expires February 2, 2016               [Page 11]
 Internet-Draft       Registry Fee Extension for EPP          August 2015
 
 
+   S:     <resData>
    S:       <domain:chkData
    S:         xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
    S:         <domain:cd>
@@ -664,7 +665,6 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
    S:           <fee:fee description="Renewal Fee"
    S:             refundable="1"
    S:             grace-period="P5D">10.00</fee:fee>
-   S:         </fee:cd>
 
 
 
@@ -673,6 +673,7 @@ Brown                   Expires February 2, 2016               [Page 12]
 Internet-Draft       Registry Fee Extension for EPP          August 2015
 
 
+   S:         </fee:cd>
    S:         <fee:cd>
    S:           <fee:name>example.xyz</fee:name>
    S:           <fee:currency>GBP</fee:currency>
@@ -720,7 +721,6 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
    will be assessed by the server for the transfer.
 
    Example <transfer> query response:
-
 
 
 
@@ -1415,6 +1415,8 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
          <element name="period" type="domain:periodType"
            minOccurs="0" />
        </sequence>
+       <attribute name="objURI" type="anyURI"
+         default="urn:ietf:params:xml:ns:domain-1.0" />
      </complexType>
 
 
@@ -1447,8 +1449,6 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
        general transform (create, renew, update, transfer) command
      -->
      <complexType name="transformCommandType">
-       <sequence>
-         <element name="currency" type="fee:currencyType"
 
 
 
@@ -1457,6 +1457,8 @@ Brown                   Expires February 2, 2016               [Page 26]
 Internet-Draft       Registry Fee Extension for EPP          August 2015
 
 
+       <sequence>
+         <element name="currency" type="fee:currencyType"
            minOccurs="0" />
          <element name="fee" type="fee:feeType"
            maxOccurs="unbounded" />
@@ -1503,8 +1505,6 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
      <!--
        delete result
      -->
-     <complexType name="deleteDataType">
-       <sequence>
 
 
 
@@ -1513,6 +1513,8 @@ Brown                   Expires February 2, 2016               [Page 27]
 Internet-Draft       Registry Fee Extension for EPP          August 2015
 
 
+     <complexType name="deleteDataType">
+       <sequence>
          <element name="currency" type="fee:currencyType" />
          <element name="credit" type="fee:creditType"
            minOccurs="0" maxOccurs="unbounded" />
@@ -1560,8 +1562,6 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
        </restriction>
      </simpleType>
 
-     <complexType name="feeType">
-
 
 
 Brown                   Expires February 2, 2016               [Page 28]
@@ -1569,6 +1569,7 @@ Brown                   Expires February 2, 2016               [Page 28]
 Internet-Draft       Registry Fee Extension for EPP          August 2015
 
 
+     <complexType name="feeType">
        <simpleContent>
          <extension base="fee:nonNegativeDecimal">
            <attribute name="description"/>
@@ -1614,7 +1615,6 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
    domain name mapping [RFC5731], and protocol layers used by EPP.  The
    security considerations described in these other specifications apply
    to this specification as well.
-
 
 
 
@@ -1876,7 +1876,8 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
 
 10.6.  Changes from 05 to 06
 
-   1.  Renamed the <fee:domain> element to <fee:object>.
+   1.  Renamed the <fee:domain> element to <fee:object>.  Added the
+       "objURI" attribute.
 
    2.  Removed the default value for the "refundable" attribute of <fee:
        fee> elements, and added text about how clients should handle
@@ -1893,10 +1894,9 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
        period" attributes work together.
 
 
-11.  TODO
 
-   (Note to RFC Editor: remove this section before publication as an
-   RFC.)
+
+
 
 
 
@@ -1904,6 +1904,11 @@ Brown                   Expires February 2, 2016               [Page 34]
 
 Internet-Draft       Registry Fee Extension for EPP          August 2015
 
+
+11.  TODO
+
+   (Note to RFC Editor: remove this section before publication as an
+   RFC.)
 
    1.  Make the extension object-agnostic so it can be used with other
        objects, not just vanilla domains.
@@ -1948,17 +1953,16 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
               February 2015, <http://www.rfc-editor.org/info/rfc7451>.
 
    [draft-ietf-eppext-launchphase]
-              Gould, J., Tan, W., and G. Brown, "Launch Phase Mapping
-              for the  Extensible Provisioning Protocol (EPP)", 2014.
-
-
-
 
 
 
 Brown                   Expires February 2, 2016               [Page 35]
 
 Internet-Draft       Registry Fee Extension for EPP          August 2015
+
+
+              Gould, J., Tan, W., and G. Brown, "Launch Phase Mapping
+              for the  Extensible Provisioning Protocol (EPP)", 2014.
 
 
 Author's Address
@@ -1972,10 +1976,6 @@ Author's Address
    Phone: +44 20 33 88 0600
    Email: gavin.brown@centralnic.com
    URI:   https://www.centralnic.com
-
-
-
-
 
 
 

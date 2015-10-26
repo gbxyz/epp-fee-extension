@@ -378,7 +378,7 @@
 
           <t>The command MAY contain an &lt;extension&gt; element which
           MAY contain a &lt;fee:check&gt; element. The &lt;fee:check&gt; element
-          MUST contain at least one &lt;fee:object&gt; element, with the
+          MUST contain at least one &lt;fee:object&gt; element, which has the
           following child elements:</t>
 
           <t><list style="symbols">
@@ -392,6 +392,12 @@
 
             <t>An OPTIONAL &lt;fee:period&gt; element.</t>
           </list></t>
+
+          <t>The &lt;fee:object&gt; element has an OPTIONAL "objURI" attribute
+          which is used to identify the type of the object. The default value
+          for this element is "urn:ietf:params:xml:ns:domain-1.0". The value of
+          this attribute MUST match the contents of one of the &lt;objURI&gt;
+          elements from the server &lt;greeting&gt;</t>
 
           <t>Example &lt;check&gt; command:</t>
 
@@ -920,7 +926,8 @@ END</artwork></figure>
       </section>
       <section title="Changes from 05 to 06">
         <t><list style="numbers">
-          <t>Renamed the &lt;fee:domain&gt; element to &lt;fee:object&gt;.</t>
+          <t>Renamed the &lt;fee:domain&gt; element to &lt;fee:object&gt;. Added the
+          "objURI" attribute.</t>
           <t>Removed the default value for the "refundable" attribute of &lt;fee:fee&gt;
           elements, and added text about how clients should handle such cases. Added similar
           text to the documentation of the "grace-period" attribute.</t>

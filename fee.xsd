@@ -49,6 +49,8 @@
       <element name="period" type="domain:periodType"
         minOccurs="0" />
     </sequence>
+    <attribute name="objURI" type="anyURI"
+      default="urn:ietf:params:xml:ns:domain-1.0" />
   </complexType>
 
 

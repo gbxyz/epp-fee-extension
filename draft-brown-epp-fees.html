@@ -649,7 +649,7 @@ EPP &lt;check&gt; Command</h3>
 </p>
 <p>The command MAY contain an &lt;extension&gt; element which
           MAY contain a &lt;fee:check&gt; element. The &lt;fee:check&gt; element
-          MUST contain at least one &lt;fee:object&gt; element, with the
+          MUST contain at least one &lt;fee:object&gt; element, which has the
           following child elements:
 </p>
 <p></p>
@@ -666,6 +666,12 @@ EPP &lt;check&gt; Command</h3>
 </li>
 </ul>
 
+<p>The &lt;fee:object&gt; element has an OPTIONAL "objURI" attribute
+          which is used to identify the type of the object. The default value
+          for this element is "urn:ietf:params:xml:ns:domain-1.0". The value of
+          this attribute MUST match the contents of one of the &lt;objURI&gt;
+          elements from the server &lt;greeting&gt;
+</p>
 <p>Example &lt;check&gt; command:
 </p><div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
 C: &lt;?xml version="1.0" encoding="utf-8" standalone="no"?&gt;
@@ -682,7 +688,8 @@ C:     &lt;/check&gt;
 C:     &lt;extension&gt;
 C:       &lt;fee:check
 C:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.9"&gt;
-C:         &lt;fee:object&gt;
+C:         &lt;fee:object
+C:           objURI="urn:ietf:params:xml:ns:domain-1.0"&gt;
 C:           &lt;fee:name&gt;example.com&lt;/fee:name&gt;
 C:           &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 C:           &lt;fee:command phase="sunrise"&gt;create&lt;/fee:command&gt;
@@ -1458,6 +1465,8 @@ BEGIN
       &lt;element name="period" type="domain:periodType"
         minOccurs="0" /&gt;
     &lt;/sequence&gt;
+    &lt;attribute name="objURI" type="anyURI"
+      default="urn:ietf:params:xml:ns:domain-1.0" /&gt;
   &lt;/complexType&gt;
 
 
@@ -1915,7 +1924,8 @@ Changes from 05 to 06</h3>
 
 <p></p>
 <ol class="text">
-<li>Renamed the &lt;fee:domain&gt; element to &lt;fee:object&gt;.
+<li>Renamed the &lt;fee:domain&gt; element to &lt;fee:object&gt;. Added the
+          "objURI" attribute.
 </li>
 <li>Removed the default value for the "refundable" attribute of &lt;fee:fee&gt;
           elements, and added text about how clients should handle such cases. Added similar
