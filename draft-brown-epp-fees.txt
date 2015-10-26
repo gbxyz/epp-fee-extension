@@ -521,7 +521,7 @@ Internet-Draft       Registry Fee Extension for EPP          August 2015
    C:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.9">
    C:         <fee:object
    C:           objURI="urn:ietf:params:xml:ns:domain-1.0">
-   C:           <fee:objID>example.com</fee:objID>
+   C:           <fee:objID element="name">example.com</fee:objID>
    C:           <fee:currency>USD</fee:currency>
    C:           <fee:command phase="sunrise">create</fee:command>
    C:           <fee:period unit="y">1</fee:period>

@@ -14,7 +14,7 @@
         xmlns:fee="urn:ietf:params:xml:ns:fee-0.9">
         <fee:object
           objURI="urn:ietf:params:xml:ns:domain-1.0">
-          <fee:objID>example.com</fee:objID>
+          <fee:objID element="name">example.com</fee:objID>
           <fee:currency>USD</fee:currency>
           <fee:command phase="sunrise">create</fee:command>
           <fee:period unit="y">1</fee:period>
