@@ -151,6 +151,14 @@
 
     <section title="Extension Elements">
 
+      <section title="Supported Objects">
+        <t>By default, this specification assumes that fees and credits will only be
+        applied for transform commands on domain objects as described in <xref
+        target="RFC5731"/>. However, other object types are supported through the
+        use of OPTIONAL attributes on the &lt;fee:object&gt; and &lt;fee:objId&gt;
+        elements.</t>
+      </section>
+
       <section title="Client Commands">
         <t>The &lt;fee:command&gt; element is used in the EPP &lt;check&gt; command to
         determine the fee which is applicable to the given command.</t>
@@ -159,9 +167,9 @@
         policy, but MUST include as a minimum the following values:
 
         <list style="symbols">
-          <t>"create" indicating a &lt;domain:create&gt; command;</t>
-          <t>"renew" indicating a &lt;domain:renew&gt; command;</t>
-          <t>"transfer" indicating a &lt;domain:transfer&gt; command;</t>
+          <t>"create" indicating a &lt;create&gt; command;</t>
+          <t>"renew" indicating a &lt;renew&gt; command;</t>
+          <t>"transfer" indicating a &lt;transfer&gt; command;</t>
         </list>
 
         If the server supports the <xref target="RFC3915">Registry Grace Period
@@ -197,7 +205,7 @@
       <section title="Validity Periods" anchor="validity-periods">
         <t>When querying for fee information using the &lt;check&gt; command,
         the &lt;fee:period&gt; element is used to indicate the units to be added
-        to the registration period of domain names by the &lt;create&gt;,
+        to the registration period of objects by the &lt;create&gt;,
         &lt;renew&gt; and &lt;transfer&gt; commands. This element is derived
         from the &lt;domain:period&gt; element described in <xref
         target="RFC5731"/>.</t>
@@ -226,7 +234,7 @@
         fee or credit applicable to the transaction is the arithmetic sum of the
         values of each of the &lt;fee:fee&gt; and/or &lt;fee:credit&gt; elements.
         This amount applies to the total additional validity period applied to the
-        domain (where applicable) rather than to any incremental unit.</t>
+        object (where applicable) rather than to any incremental unit.</t>
 
         <t>The following attributes are defined for the &lt;fee:fee&gt; element.
         These are described in detail below:</t>
@@ -237,7 +245,7 @@
             documentation on the possible values of this attribute, and their
             meanings.</t>
             <t hangText="refundable:">an OPTIONAL boolean attribute indicating
-              whether the fee is refundable if the domain name is deleted.</t>
+              whether the fee is refundable if the object is deleted.</t>
           <t hangText="grace-period:">an OPTIONAL attribute which provides the
             time period during which the fee is refundable.</t>
           <t hangText="applied:">an OPTIONAL attribute indicating when the
@@ -253,7 +261,7 @@
           which takes a boolean value. Fees may be refunded under certain
           circumstances, such as when a domain application is rejected (as
           described in <xref target="draft-ietf-eppext-launchphase" />) or when
-          a domain name is deleted during the relevant Grace Period (see below).
+          an object is deleted during the relevant Grace Period (see below).
           If the "refundable" attribute is omitted, then clients SHOULD NOT make
           any assumption about the refundability of the fee.</t>
         </section>
@@ -261,7 +269,7 @@
         <section title="Grace Periods">
           <t><xref target="RFC3915" /> describes a system of "grace periods",
           which are time periods following a billable transaction during which,
-          if a domain name is deleted, the client receives a refund.</t>
+          if an object is deleted, the client receives a refund.</t>
 
           <t>The "grace-period" attribute MAY be used to indicate the relevant
           grace period for a fee. If a server implements the Registry Grace
@@ -300,7 +308,7 @@
         <t>Whether or not the &lt;fee:balance&gt; is included in responses is a
         matter of server policy. However, if a server chooses
         to offer support for this element, it MUST be included in responses
-        to all domain "transform" commands (ie &lt;create&gt;, &lt;renew&gt;,
+        to all "transform" commands (ie &lt;create&gt;, &lt;renew&gt;,
         &lt;update&gt;, &lt;delete&gt;, &lt;transfer op="request"&gt;).</t>
 
         <t>The value of the &lt;fee:balance&gt; MAY be negative. A negative
@@ -325,22 +333,22 @@
         <t>Whether or not the &lt;fee:creditLimit&gt; is included in responses
         is a matter of server policy. However, if a server chooses
         to offer support for this element, it MUST be included in responses
-        to all domain "transform" commands (ie &lt;create&gt;, &lt;renew&gt;,
+        to all "transform" commands (ie &lt;create&gt;, &lt;renew&gt;,
         &lt;update&gt;, &lt;delete&gt;, &lt;transfer op="request"&gt;).</t>
       </section>
 
-      <section title="Classification of Domain Names" anchor="classification">
-        <t>Domain names may be assigned to a particular class, category, or tier,
+      <section title="Classification of Objects" anchor="classification">
+        <t>Objects may be assigned to a particular class, category, or tier,
         each of which has a particular fee or set of fees associated with it. The
         &lt;fee:class&gt; element which appears in &lt;check&gt; responses is
-        used to indicate the classification of a domain name.</t>
+        used to indicate the classification of an object.</t>
 
         <t>If a server makes use of this element, it MUST provide clients with a
         list of all the values that the element may take via an out-of-band
         channel. Servers MUST NOT use values which do not appear on this list.</t>
 
         <t>Servers which make use of this element MUST use a &lt;fee:class&gt;
-        element with the value "standard" for all domains that are subject to the
+        element with the value "standard" for all objects that are subject to the
         standard or default fee.</t>
       </section>
     </section>
@@ -382,9 +390,11 @@
           following child elements:</t>
 
           <t><list style="symbols">
-            <t>A &lt;fee:name&gt; element. The domain name need not correspond
-            to a &lt;domain:name&gt; element that appears in the
-            &lt;domain:check&gt; element of the main body of the frame.</t>
+            <t>A &lt;fee:objID&gt; element. This element contains a string which
+            identifies the object. The &lt;fee:objID&gt; element has an OPTIONAL
+            "element" attribute which identifies the local name of the object
+            attribute which is the unique identifier for the object. The default
+            value for this attribute is "name".</t>
 
             <t>An OPTIONAL &lt;fee:currency&gt; element;</t>
 
@@ -414,8 +424,9 @@
           &lt;fee:cd&gt; MUST contain the following child elements:</t>
 
           <t><list style="symbols">
-            <t>A &lt;fee:name&gt; element that contains a domain name which
-            matches the name in the corresponding &lt;fee:object&gt; element.</t>
+            <t>A &lt;fee:objID&gt; element that contains an identifer which
+            matches the identifier in the corresponding &lt;fee:object&gt;
+            element.</t>
 
             <t>A &lt;fee:currency&gt; element that contains same currency code
             that appeared in the corresponding &lt;fee:object&gt; element. If no
@@ -926,6 +937,8 @@ END</artwork></figure>
       </section>
       <section title="Changes from 05 to 06">
         <t><list style="numbers">
+          <t>The specification is now object-agnostic, but works with <xref target="RFC5731">
+          RFC5731</xref> domains by default.</t>
           <t>Renamed the &lt;fee:domain&gt; element to &lt;fee:object&gt;. Added the
           "objURI" attribute.</t>
           <t>Removed the default value for the "refundable" attribute of &lt;fee:fee&gt;
@@ -937,16 +950,6 @@ END</artwork></figure>
           describing how the "refundable" and "grace-period" attributes work together.</t>
         </list></t>
       </section>
-    </section>
-
-    <section title="TODO">
-      <t>(Note to RFC Editor: remove this section before publication as an
-      RFC.)</t>
-
-      <t><list style="numbers">
-        <t>Make the extension object-agnostic so it can be used with other
-        objects, not just vanilla domains.</t>
-      </list></t>
     </section>
 
   </middle>

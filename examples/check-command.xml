@@ -14,25 +14,25 @@
         xmlns:fee="urn:ietf:params:xml:ns:fee-0.9">
         <fee:object
           objURI="urn:ietf:params:xml:ns:domain-1.0">
-          <fee:name>example.com</fee:name>
+          <fee:objID>example.com</fee:objID>
           <fee:currency>USD</fee:currency>
           <fee:command phase="sunrise">create</fee:command>
           <fee:period unit="y">1</fee:period>
         </fee:object>
         <fee:object>
-          <fee:name>example.net</fee:name>
+          <fee:objID>example.net</fee:objID>
           <fee:currency>EUR</fee:currency>
           <fee:command phase="claims" subphase="landrush">
           create</fee:command>
           <fee:period unit="y">2</fee:period>
         </fee:object>
         <fee:object>
-          <fee:name>example.org</fee:name>
+          <fee:objID>example.org</fee:objID>
           <fee:currency>EUR</fee:currency>
           <fee:command>transfer</fee:command>
         </fee:object>
         <fee:object>
-          <fee:name>example.xyz</fee:name>
+          <fee:objID>example.xyz</fee:objID>
           <fee:command>restore</fee:command>
         </fee:object>
       </fee:check>
