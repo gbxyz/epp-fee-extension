@@ -147,7 +147,7 @@
 <tr><td class="header">Internet Engineering Task Force</td><td class="header">G. Brown</td></tr>
 <tr><td class="header">Internet-Draft</td><td class="header">CentralNic Group plc</td></tr>
 <tr><td class="header">Intended status: Standards Track</td><td class="header">J. Frakes</td></tr>
-<tr><td class="header">Expires: April 28, 2016</td><td class="header">October 26, 2015</td></tr>
+<tr><td class="header">Expires: May 1, 2016</td><td class="header">October 29, 2015</td></tr>
 </table></td></tr></table>
 <h1><br />Registry Fee Extension for
     the Extensible Provisioning Protocol (EPP)<br />draft-brown-epp-fees-06</h1>
@@ -172,7 +172,7 @@ and may be updated, replaced, or obsoleted by other documents at any time.
 It is inappropriate to use Internet-Drafts as reference material or to cite
 them other than as &ldquo;work in progress.&rdquo;</p>
 <p>
-This Internet-Draft will expire on April 28, 2016.</p>
+This Internet-Draft will expire on May 1, 2016.</p>
 
 <h3>Copyright Notice</h3>
 <p>
@@ -374,8 +374,8 @@ Supported Objects</h3>
 
 <p>By default, this specification assumes that fees and credits will only be
         applied for transform commands on domain objects as described in <a class='info' href='#RFC5731'>[RFC5731]<span> (</span><span class='info'>Hollenbeck, S., &ldquo;Extensible Provisioning Protocol (EPP) Domain Name Mapping,&rdquo; August&nbsp;2009.</span><span>)</span></a>. However, other object types are supported through the
-        use of OPTIONAL attributes on the &lt;fee:object&gt; and &lt;fee:objId&gt;
-        elements.
+        use of OPTIONAL "objURI" and "element" attributes on the &lt;fee:object&gt;
+        and &lt;fee:objId&gt; elements, respectively.
 </p>
 <a name="anchor6"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
@@ -482,7 +482,7 @@ Fees and Credits</h3>
 </dd>
 <dt>refundable:</dt>
 <dd>an OPTIONAL boolean attribute indicating
-              whether the fee is refundable if the object is deleted.
+            whether the fee is refundable if the object is deleted.
 </dd>
 <dt>grace-period:</dt>
 <dd>an OPTIONAL attribute which provides the
@@ -508,7 +508,8 @@ Refunds</h3>
           circumstances, such as when a domain application is rejected (as
           described in <a class='info' href='#draft-ietf-eppext-launchphase'>[draft&#8209;ietf&#8209;eppext&#8209;launchphase]<span> (</span><span class='info'>Gould, J., Tan, W., and G. Brown, &ldquo;Launch Phase Mapping for the  Extensible Provisioning               Protocol (EPP),&rdquo; 2014.</span><span>)</span></a>) or when
           an object is deleted during the relevant Grace Period (see below).
-          If the "refundable" attribute is omitted, then clients SHOULD NOT make
+</p>
+<p>If the "refundable" attribute is omitted, then clients SHOULD NOT make
           any assumption about the refundability of the fee.
 </p>
 <a name="anchor8"></a><br /><hr />
@@ -523,7 +524,9 @@ Grace Periods</h3>
 <p>The "grace-period" attribute MAY be used to indicate the relevant
           grace period for a fee. If a server implements the Registry Grace
           Period extension, it MUST specify the grace period for all relevant
-          transactions. If the "grace-period" attribute is omitted, then clients
+          transactions.
+</p>
+<p>If the "grace-period" attribute is omitted, then clients
           SHOULD NOT make any assumption about the grace period of the fee.
 </p>
 <a name="anchor9"></a><br /><hr />
@@ -572,7 +575,7 @@ Account Balance</h3>
         balance indicates that the server has extended a line of credit to the
         client (see below).
 </p>
-<p>When a server includes a &lt;fee:balance&gt; element in response to
+<p>If a server includes a &lt;fee:balance&gt; element in response to
         transform commands, the value of the element MUST reflect the client's
         account balance after any fees or credits associated with that command
         have been applied.
@@ -606,7 +609,7 @@ Classification of Objects</h3>
         &lt;fee:class&gt; element which appears in &lt;check&gt; responses is
         used to indicate the classification of an object.
 </p>
-<p>If a server makes use of this element, it MUST provide clients with a
+<p>If a server makes use of this element, it should provide clients with a
         list of all the values that the element may take via an out-of-band
         channel. Servers MUST NOT use values which do not appear on this list.
 </p>

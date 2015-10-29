@@ -162,8 +162,8 @@
         <t>By default, this specification assumes that fees and credits will only be
         applied for transform commands on domain objects as described in <xref
         target="RFC5731"/>. However, other object types are supported through the
-        use of OPTIONAL attributes on the &lt;fee:object&gt; and &lt;fee:objId&gt;
-        elements.</t>
+        use of OPTIONAL "objURI" and "element" attributes on the &lt;fee:object&gt;
+        and &lt;fee:objId&gt; elements, respectively.</t>
       </section>
 
       <section title="Client Commands">
@@ -251,10 +251,13 @@
             human-readable description of the fee. Servers should provide
             documentation on the possible values of this attribute, and their
             meanings.</t>
-            <t hangText="refundable:">an OPTIONAL boolean attribute indicating
-              whether the fee is refundable if the object is deleted.</t>
+
+          <t hangText="refundable:">an OPTIONAL boolean attribute indicating
+            whether the fee is refundable if the object is deleted.</t>
+
           <t hangText="grace-period:">an OPTIONAL attribute which provides the
             time period during which the fee is refundable.</t>
+
           <t hangText="applied:">an OPTIONAL attribute indicating when the
             fee will be deducted from the client's account.</t>
         </list></t>
@@ -268,8 +271,9 @@
           which takes a boolean value. Fees may be refunded under certain
           circumstances, such as when a domain application is rejected (as
           described in <xref target="draft-ietf-eppext-launchphase" />) or when
-          an object is deleted during the relevant Grace Period (see below).
-          If the "refundable" attribute is omitted, then clients SHOULD NOT make
+          an object is deleted during the relevant Grace Period (see below).</t>
+
+          <t>If the "refundable" attribute is omitted, then clients SHOULD NOT make
           any assumption about the refundability of the fee.</t>
         </section>
 
@@ -281,7 +285,9 @@
           <t>The "grace-period" attribute MAY be used to indicate the relevant
           grace period for a fee. If a server implements the Registry Grace
           Period extension, it MUST specify the grace period for all relevant
-          transactions. If the "grace-period" attribute is omitted, then clients
+          transactions.</t>
+
+          <t>If the "grace-period" attribute is omitted, then clients
           SHOULD NOT make any assumption about the grace period of the fee.</t>
         </section>
 
@@ -322,7 +328,7 @@
         balance indicates that the server has extended a line of credit to the
         client (see below).</t>
 
-        <t>When a server includes a &lt;fee:balance&gt; element in response to
+        <t>If a server includes a &lt;fee:balance&gt; element in response to
         transform commands, the value of the element MUST reflect the client's
         account balance after any fees or credits associated with that command
         have been applied.</t>
@@ -350,7 +356,7 @@
         &lt;fee:class&gt; element which appears in &lt;check&gt; responses is
         used to indicate the classification of an object.</t>
 
-        <t>If a server makes use of this element, it MUST provide clients with a
+        <t>If a server makes use of this element, it should provide clients with a
         list of all the values that the element may take via an out-of-band
         channel. Servers MUST NOT use values which do not appear on this list.</t>
 
