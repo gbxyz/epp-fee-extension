@@ -74,7 +74,7 @@
       </address>
     </author>
 
-    <date month="November" year="2015" />
+    <date month="February" year="2016" />
 
     <area>Applications</area>
     <workgroup>Internet Engineering Task Force</workgroup>
@@ -414,6 +414,8 @@
             <t>A &lt;fee:command&gt; element;</t>
 
             <t>An OPTIONAL &lt;fee:period&gt; element.</t>
+
+            <t>An OPTIONAL &lt;fee:class&gt; element.</t>
           </list></t>
 
           <t>The &lt;fee:object&gt; element has an OPTIONAL "objURI" attribute
@@ -482,6 +484,29 @@
           <figure><artwork>
 <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="text"
    href="examples/check-response.txt" /></artwork></figure>
+
+          <section title="Server Handling of &lt;fee:class&gt; Elements">
+            <t>Clients MAY include a &lt;feeclass&gt; in the &lt;fee:object&gt;
+            element. There are three ways in which servers may handle this
+            element:</t>
+            <t><list style="numbers">
+              <t>If the server supports the concept of tiers or classes of
+              objects, then the value of this element MUST be validated. If
+              incorrect for the specified object, the server MUST return a
+              2004 error to the client.</t>
+              <t>If the server supports different "types" of object
+              registrations (such as a "blocking" registration which does
+              not resolve, or where a registry provides a value-added
+              service that requires an opt-out to disable), then, as with
+              the first model, the server MUST valudate the value of the
+              element. If the value is incorrect, a 2004 error MUST be
+              returned.</t>
+              <t>If the server supports neither of the above models, the
+              element MUST be ignored.</t>
+            </list></t>
+            <t>Server operators must provide clear documentation to client
+            operators which of the above models it supports.</t>
+          </section>
         </section>
 
         <section title="EPP Transfer Query Command">
