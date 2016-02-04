@@ -30,6 +30,7 @@
           <fee:objID>example.org</fee:objID>
           <fee:currency>EUR</fee:currency>
           <fee:command>transfer</fee:command>
+	  <fee:class>self-service</fee:class>
         </fee:object>
         <fee:object>
           <fee:objID>example.xyz</fee:objID>
