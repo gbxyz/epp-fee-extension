@@ -147,7 +147,7 @@
 <tr><td class="header">Internet Engineering Task Force</td><td class="header">G. Brown</td></tr>
 <tr><td class="header">Internet-Draft</td><td class="header">CentralNic Group plc</td></tr>
 <tr><td class="header">Intended status: Standards Track</td><td class="header">J. Frakes</td></tr>
-<tr><td class="header">Expires: May 9, 2016</td><td class="header">November 6, 2015</td></tr>
+<tr><td class="header">Expires: August 7, 2016</td><td class="header">February 4, 2016</td></tr>
 </table></td></tr></table>
 <h1><br />Registry Fee Extension for
     the Extensible Provisioning Protocol (EPP)<br />draft-brown-epp-fees-06</h1>
@@ -172,11 +172,11 @@ and may be updated, replaced, or obsoleted by other documents at any time.
 It is inappropriate to use Internet-Drafts as reference material or to cite
 them other than as &ldquo;work in progress.&rdquo;</p>
 <p>
-This Internet-Draft will expire on May 9, 2016.</p>
+This Internet-Draft will expire on August 7, 2016.</p>
 
 <h3>Copyright Notice</h3>
 <p>
-Copyright (c) 2015 IETF Trust and the persons identified as the
+Copyright (c) 2016 IETF Trust and the persons identified as the
 document authors.  All rights reserved.</p>
 <p>
 This document is subject to BCP 78 and the IETF Trust's Legal
@@ -231,49 +231,51 @@ EPP Command Mapping<br />
 EPP Query Commands<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor14">5.1.1.</a>&nbsp;
 EPP &lt;check&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor15">5.1.2.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor15">5.1.1.1.</a>&nbsp;
+Server Handling of &lt;fee:class&gt; Elements<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor16">5.1.2.</a>&nbsp;
 EPP Transfer Query Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor16">5.2.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor17">5.2.</a>&nbsp;
 EPP Transform Commands<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor17">5.2.1.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor18">5.2.1.</a>&nbsp;
 EPP &lt;create&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor18">5.2.2.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor19">5.2.2.</a>&nbsp;
 EPP &lt;delete&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor19">5.2.3.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor20">5.2.3.</a>&nbsp;
 EPP &lt;renew&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor20">5.2.4.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor21">5.2.4.</a>&nbsp;
 EPP &lt;transfer&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor21">5.2.5.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor22">5.2.5.</a>&nbsp;
 EPP &lt;update&gt; Command<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor22">5.3.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor23">5.3.</a>&nbsp;
 Formal Syntax<br />
 <a href="#Security">6.</a>&nbsp;
 Security Considerations<br />
 <a href="#IANA">7.</a>&nbsp;
 IANA Considerations<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor23">7.1.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor24">7.1.</a>&nbsp;
 XML Namespace<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor24">7.2.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor25">7.2.</a>&nbsp;
 EPP Extension Registry<br />
 <a href="#impl">8.</a>&nbsp;
 Implementation Status<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor25">8.1.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor26">8.1.</a>&nbsp;
 RegistryEngine EPP Service<br />
-<a href="#anchor26">9.</a>&nbsp;
+<a href="#anchor27">9.</a>&nbsp;
 Acknowledgements<br />
-<a href="#anchor27">10.</a>&nbsp;
+<a href="#anchor28">10.</a>&nbsp;
 Change History<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor28">10.1.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor29">10.1.</a>&nbsp;
 Changes from 00 to 01<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor29">10.2.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor30">10.2.</a>&nbsp;
 Changes from 01 to 02<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor30">10.3.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor31">10.3.</a>&nbsp;
 Changes from 02 to 03<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor31">10.4.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor32">10.4.</a>&nbsp;
 Changes from 03 to 04<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor32">10.5.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor33">10.5.</a>&nbsp;
 Changes from 04 to 05<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor33">10.6.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#anchor34">10.6.</a>&nbsp;
 Changes from 05 to 06<br />
 <a href="#rfc.references1">11.</a>&nbsp;
 Normative References<br />
@@ -679,6 +681,8 @@ EPP &lt;check&gt; Command</h3>
 </li>
 <li>An OPTIONAL &lt;fee:period&gt; element.
 </li>
+<li>An OPTIONAL &lt;fee:class&gt; element.
+</li>
 </ul>
 
 <p>The &lt;fee:object&gt; element has an OPTIONAL "objURI" attribute
@@ -721,6 +725,7 @@ C:         &lt;fee:object&gt;
 C:           &lt;fee:objID&gt;example.org&lt;/fee:objID&gt;
 C:           &lt;fee:currency&gt;EUR&lt;/fee:currency&gt;
 C:           &lt;fee:command&gt;transfer&lt;/fee:command&gt;
+C: 	  &lt;fee:class&gt;self-service&lt;/fee:class&gt;
 C:         &lt;/fee:object&gt;
 C:         &lt;fee:object&gt;
 C:           &lt;fee:objID&gt;example.xyz&lt;/fee:objID&gt;
@@ -839,6 +844,9 @@ S:             refundable="0"&gt;2.50&lt;/fee:fee&gt;
 S:           &lt;fee:fee description="Renewal Fee"
 S:             refundable="1"
 S:             grace-period="P5D"&gt;10.00&lt;/fee:fee&gt;
+S:           &lt;fee:fee description="Self-service
+S:             fee" refundable="0"&gt;25.00&lt;/fee:fee&gt;
+S:             &lt;fee:class&gt;self-service&lt;/fee:class&gt;
 S:         &lt;/fee:cd&gt;
 S:         &lt;fee:cd&gt;
 S:           &lt;fee:objID&gt;example.xyz&lt;/fee:objID&gt;
@@ -858,6 +866,38 @@ S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
 <a name="anchor15"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.5.1.1.1"></a><h3>5.1.1.1.&nbsp;
+Server Handling of &lt;fee:class&gt; Elements</h3>
+
+<p>Clients MAY include a &lt;feeclass&gt; in the &lt;fee:object&gt;
+            element. There are three ways in which servers may handle this
+            element:
+</p>
+<p></p>
+<ol class="text">
+<li>If the server supports the concept of tiers or classes of
+              objects, then the value of this element MUST be validated. If
+              incorrect for the specified object, the server MUST return a
+              2004 error to the client.
+</li>
+<li>If the server supports different "types" of object
+              registrations (such as a "blocking" registration which does
+              not resolve, or where a registry provides a value-added
+              service that requires an opt-out to disable), then, as with
+              the first model, the server MUST valudate the value of the
+              element. If the value is incorrect, a 2004 error MUST be
+              returned.
+</li>
+<li>If the server supports neither of the above models, the
+              element MUST be ignored.
+</li>
+</ol>
+
+<p>Server operators must provide clear documentation to client
+            operators which of the above models it supports.
+</p>
+<a name="anchor16"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.5.1.2"></a><h3>5.1.2.&nbsp;
 EPP Transfer Query Command</h3>
@@ -930,12 +970,12 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor16"></a><br /><hr />
+<a name="anchor17"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.5.2"></a><h3>5.2.&nbsp;
 EPP Transform Commands</h3>
 
-<a name="anchor17"></a><br /><hr />
+<a name="anchor18"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.5.2.1"></a><h3>5.2.1.&nbsp;
 EPP &lt;create&gt; Command</h3>
@@ -1043,7 +1083,7 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor18"></a><br /><hr />
+<a name="anchor19"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.5.2.2"></a><h3>5.2.2.&nbsp;
 EPP &lt;delete&gt; Command</h3>
@@ -1096,7 +1136,7 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor19"></a><br /><hr />
+<a name="anchor20"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.5.2.3"></a><h3>5.2.3.&nbsp;
 EPP &lt;renew&gt; Command</h3>
@@ -1192,7 +1232,7 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor20"></a><br /><hr />
+<a name="anchor21"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.5.2.4"></a><h3>5.2.4.&nbsp;
 EPP &lt;transfer&gt; Command</h3>
@@ -1295,7 +1335,7 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor21"></a><br /><hr />
+<a name="anchor22"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.5.2.5"></a><h3>5.2.5.&nbsp;
 EPP &lt;update&gt; Command</h3>
@@ -1384,7 +1424,7 @@ S:     &lt;/trID&gt;
 S:   &lt;/response&gt;
 S: &lt;/epp&gt;
 </pre></div>
-<a name="anchor22"></a><br /><hr />
+<a name="anchor23"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.5.3"></a><h3>5.3.&nbsp;
 Formal Syntax</h3>
@@ -1480,6 +1520,7 @@ BEGIN
       &lt;element name="command" type="fee:commandType" /&gt;
       &lt;element name="period" type="domain:periodType"
         minOccurs="0" /&gt;
+      &lt;element name="class" type="token" minOccurs="0" /&gt;
     &lt;/sequence&gt;
     &lt;attribute name="objURI" type="anyURI"
       default="urn:ietf:params:xml:ns:domain-1.0" /&gt;
@@ -1675,7 +1716,7 @@ Security Considerations</h3>
 <a name="rfc.section.7"></a><h3>7.&nbsp;
 IANA Considerations</h3>
 
-<a name="anchor23"></a><br /><hr />
+<a name="anchor24"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.7.1"></a><h3>7.1.&nbsp;
 XML Namespace</h3>
@@ -1691,7 +1732,7 @@ XML Namespace</h3>
 </p>
 <p>XML: See the "Formal Syntax" section of this document.
 </p>
-<a name="anchor24"></a><br /><hr />
+<a name="anchor25"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.7.2"></a><h3>7.2.&nbsp;
 EPP Extension Registry</h3>
@@ -1744,7 +1785,7 @@ Implementation Status</h3>
       more mature. It is up to the individual working groups to use this
       information as they see fit".
 </p>
-<a name="anchor25"></a><br /><hr />
+<a name="anchor26"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.8.1"></a><h3>8.1.&nbsp;
 RegistryEngine EPP Service</h3>
@@ -1766,7 +1807,7 @@ RegistryEngine EPP Service</h3>
 </p>
 <p>URL: https://www.centralnic.com
 </p>
-<a name="anchor26"></a><br /><hr />
+<a name="anchor27"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.9"></a><h3>9.&nbsp;
 Acknowledgements</h3>
@@ -1798,12 +1839,12 @@ Acknowledgements</h3>
 </li>
 </ul>
 
-<a name="anchor27"></a><br /><hr />
+<a name="anchor28"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.10"></a><h3>10.&nbsp;
 Change History</h3>
 
-<a name="anchor28"></a><br /><hr />
+<a name="anchor29"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.10.1"></a><h3>10.1.&nbsp;
 Changes from 00 to 01</h3>
@@ -1819,7 +1860,7 @@ Changes from 00 to 01</h3>
 </li>
 </ol>
 
-<a name="anchor29"></a><br /><hr />
+<a name="anchor30"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.10.2"></a><h3>10.2.&nbsp;
 Changes from 01 to 02</h3>
@@ -1854,7 +1895,7 @@ Changes from 01 to 02</h3>
 </li>
 </ol>
 
-<a name="anchor30"></a><br /><hr />
+<a name="anchor31"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.10.3"></a><h3>10.3.&nbsp;
 Changes from 02 to 03</h3>
@@ -1877,7 +1918,7 @@ Changes from 02 to 03</h3>
 </li>
 </ol>
 
-<a name="anchor31"></a><br /><hr />
+<a name="anchor32"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.10.4"></a><h3>10.4.&nbsp;
 Changes from 03 to 04</h3>
@@ -1911,7 +1952,7 @@ Changes from 03 to 04</h3>
 </li>
 </ol>
 
-<a name="anchor32"></a><br /><hr />
+<a name="anchor33"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.10.5"></a><h3>10.5.&nbsp;
 Changes from 04 to 05</h3>
@@ -1943,7 +1984,7 @@ Changes from 04 to 05</h3>
 </li>
 </ol>
 
-<a name="anchor33"></a><br /><hr />
+<a name="anchor34"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.10.6"></a><h3>10.6.&nbsp;
 Changes from 05 to 06</h3>

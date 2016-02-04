@@ -4,7 +4,7 @@
 Internet Engineering Task Force                                 G. Brown
 Internet-Draft                                      CentralNic Group plc
 Intended status: Standards Track                               J. Frakes
-Expires: May 9, 2016                                    November 6, 2015
+Expires: August 7, 2016                                 February 4, 2016
 
 
  Registry Fee Extension for the Extensible Provisioning Protocol (EPP)
@@ -30,11 +30,11 @@ Status of this Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 9, 2016.
+   This Internet-Draft will expire on August 7, 2016.
 
 Copyright Notice
 
-   Copyright (c) 2015 IETF Trust and the persons identified as the
+   Copyright (c) 2016 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -52,9 +52,9 @@ Copyright Notice
 
 
 
-Brown & Frakes             Expires May 9, 2016                  [Page 1]
+Brown & Frakes           Expires August 7, 2016                 [Page 1]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
 Table of Contents
@@ -79,38 +79,38 @@ Table of Contents
    5.  EPP Command Mapping  . . . . . . . . . . . . . . . . . . . . .  9
      5.1.  EPP Query Commands . . . . . . . . . . . . . . . . . . . .  9
        5.1.1.  EPP <check> Command  . . . . . . . . . . . . . . . . .  9
-       5.1.2.  EPP Transfer Query Command . . . . . . . . . . . . . . 13
-     5.2.  EPP Transform Commands . . . . . . . . . . . . . . . . . . 14
-       5.2.1.  EPP <create> Command . . . . . . . . . . . . . . . . . 14
-       5.2.2.  EPP <delete> Command . . . . . . . . . . . . . . . . . 17
-       5.2.3.  EPP <renew> Command  . . . . . . . . . . . . . . . . . 18
-       5.2.4.  EPP <transfer> Command . . . . . . . . . . . . . . . . 20
-       5.2.5.  EPP <update> Command . . . . . . . . . . . . . . . . . 22
-     5.3.  Formal Syntax  . . . . . . . . . . . . . . . . . . . . . . 24
-   6.  Security Considerations  . . . . . . . . . . . . . . . . . . . 30
-   7.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 30
-     7.1.  XML Namespace  . . . . . . . . . . . . . . . . . . . . . . 30
-     7.2.  EPP Extension Registry . . . . . . . . . . . . . . . . . . 30
-   8.  Implementation Status  . . . . . . . . . . . . . . . . . . . . 31
-     8.1.  RegistryEngine EPP Service . . . . . . . . . . . . . . . . 31
-   9.  Acknowledgements . . . . . . . . . . . . . . . . . . . . . . . 32
-   10. Change History . . . . . . . . . . . . . . . . . . . . . . . . 32
-     10.1. Changes from 00 to 01  . . . . . . . . . . . . . . . . . . 32
-     10.2. Changes from 01 to 02  . . . . . . . . . . . . . . . . . . 32
-     10.3. Changes from 02 to 03  . . . . . . . . . . . . . . . . . . 33
-     10.4. Changes from 03 to 04  . . . . . . . . . . . . . . . . . . 33
-     10.5. Changes from 04 to 05  . . . . . . . . . . . . . . . . . . 34
-     10.6. Changes from 05 to 06  . . . . . . . . . . . . . . . . . . 34
-   11. Normative References . . . . . . . . . . . . . . . . . . . . . 35
-   Authors' Addresses . . . . . . . . . . . . . . . . . . . . . . . . 36
+         5.1.1.1.  Server Handling of <fee:class> Elements  . . . . . 13
+       5.1.2.  EPP Transfer Query Command . . . . . . . . . . . . . . 14
+     5.2.  EPP Transform Commands . . . . . . . . . . . . . . . . . . 15
+       5.2.1.  EPP <create> Command . . . . . . . . . . . . . . . . . 15
+       5.2.2.  EPP <delete> Command . . . . . . . . . . . . . . . . . 18
+       5.2.3.  EPP <renew> Command  . . . . . . . . . . . . . . . . . 19
+       5.2.4.  EPP <transfer> Command . . . . . . . . . . . . . . . . 21
+       5.2.5.  EPP <update> Command . . . . . . . . . . . . . . . . . 23
+     5.3.  Formal Syntax  . . . . . . . . . . . . . . . . . . . . . . 25
+   6.  Security Considerations  . . . . . . . . . . . . . . . . . . . 31
+   7.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 31
+     7.1.  XML Namespace  . . . . . . . . . . . . . . . . . . . . . . 31
+     7.2.  EPP Extension Registry . . . . . . . . . . . . . . . . . . 31
+   8.  Implementation Status  . . . . . . . . . . . . . . . . . . . . 32
+     8.1.  RegistryEngine EPP Service . . . . . . . . . . . . . . . . 32
+   9.  Acknowledgements . . . . . . . . . . . . . . . . . . . . . . . 33
+   10. Change History . . . . . . . . . . . . . . . . . . . . . . . . 33
+     10.1. Changes from 00 to 01  . . . . . . . . . . . . . . . . . . 33
+     10.2. Changes from 01 to 02  . . . . . . . . . . . . . . . . . . 33
+     10.3. Changes from 02 to 03  . . . . . . . . . . . . . . . . . . 34
+     10.4. Changes from 03 to 04  . . . . . . . . . . . . . . . . . . 34
+     10.5. Changes from 04 to 05  . . . . . . . . . . . . . . . . . . 35
+     10.6. Changes from 05 to 06  . . . . . . . . . . . . . . . . . . 35
+   11. Normative References . . . . . . . . . . . . . . . . . . . . . 36
+   Authors' Addresses . . . . . . . . . . . . . . . . . . . . . . . . 37
 
 
 
 
-
-Brown & Frakes             Expires May 9, 2016                  [Page 2]
+Brown & Frakes           Expires August 7, 2016                 [Page 2]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
 1.  Introduction
@@ -164,9 +164,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
 
 
 
-Brown & Frakes             Expires May 9, 2016                  [Page 3]
+Brown & Frakes           Expires August 7, 2016                 [Page 3]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
 2.  Migrating to Newer Versions of This Extension
@@ -220,9 +220,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
 
 
 
-Brown & Frakes             Expires May 9, 2016                  [Page 4]
+Brown & Frakes           Expires August 7, 2016                 [Page 4]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
    o  "transfer" indicating a <transfer> command;
@@ -276,9 +276,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
 
 
 
-Brown & Frakes             Expires May 9, 2016                  [Page 5]
+Brown & Frakes           Expires August 7, 2016                 [Page 5]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
    The <fee:fee> and <fee:credit> elements are used to provide this
@@ -332,9 +332,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
 
 
 
-Brown & Frakes             Expires May 9, 2016                  [Page 6]
+Brown & Frakes           Expires August 7, 2016                 [Page 6]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
    is deleted, the client receives a refund.
@@ -388,9 +388,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
 
 
 
-Brown & Frakes             Expires May 9, 2016                  [Page 7]
+Brown & Frakes           Expires August 7, 2016                 [Page 7]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
    been applied.
@@ -444,9 +444,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
 
 
 
-Brown & Frakes             Expires May 9, 2016                  [Page 8]
+Brown & Frakes           Expires August 7, 2016                 [Page 8]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
    server MUST reject the command with a 2004 "Parameter value range"
@@ -484,6 +484,8 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
 
    o  An OPTIONAL <fee:period> element.
 
+   o  An OPTIONAL <fee:class> element.
+
    The <fee:object> element has an OPTIONAL "objURI" attribute which is
    used to identify the type of the object.  The default value for this
    element is "urn:ietf:params:xml:ns:domain-1.0".  The value of this
@@ -498,11 +500,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
 
 
 
-
-
-Brown & Frakes             Expires May 9, 2016                  [Page 9]
+Brown & Frakes           Expires August 7, 2016                 [Page 9]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
    C: <?xml version="1.0" encoding="utf-8" standalone="no"?>
@@ -537,6 +537,7 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
    C:           <fee:objID>example.org</fee:objID>
    C:           <fee:currency>EUR</fee:currency>
    C:           <fee:command>transfer</fee:command>
+   C:        <fee:class>self-service</fee:class>
    C:         </fee:object>
    C:         <fee:object>
    C:           <fee:objID>example.xyz</fee:objID>
@@ -552,15 +553,15 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
    extension elements described above, its response MUST (subject to the
    exception described below) contain an <extension> element, which MUST
    contain a child <fee:chkData> element.  The <fee:chkData> element
-   MUST contain a <fee:cd> element for each <fee:object> element
 
 
 
-Brown & Frakes             Expires May 9, 2016                 [Page 10]
+Brown & Frakes           Expires August 7, 2016                [Page 10]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
+   MUST contain a <fee:cd> element for each <fee:object> element
    contained in the command.  The <fee:cd> MUST contain the following
    child elements:
 
@@ -608,15 +609,15 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
    S:   <response>
    S:     <result code="1000">
    S:       <msg>Command completed successfully</msg>
-   S:     </result>
 
 
 
-Brown & Frakes             Expires May 9, 2016                 [Page 11]
+Brown & Frakes           Expires August 7, 2016                [Page 11]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
+   S:     </result>
    S:     <resData>
    S:       <domain:chkData
    S:         xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
@@ -664,15 +665,18 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
    S:             refundable="0">2.50</fee:fee>
    S:           <fee:fee description="Renewal Fee"
    S:             refundable="1"
-   S:             grace-period="P5D">10.00</fee:fee>
 
 
 
-Brown & Frakes             Expires May 9, 2016                 [Page 12]
+Brown & Frakes           Expires August 7, 2016                [Page 12]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
+   S:             grace-period="P5D">10.00</fee:fee>
+   S:           <fee:fee description="Self-service
+   S:             fee" refundable="0">25.00</fee:fee>
+   S:             <fee:class>self-service</fee:class>
    S:         </fee:cd>
    S:         <fee:cd>
    S:           <fee:objID>example.xyz</fee:objID>
@@ -690,6 +694,40 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
    S:     </trID>
    S:   </response>
    S: </epp>
+
+5.1.1.1.  Server Handling of <fee:class> Elements
+
+   Clients MAY include a <feeclass> in the <fee:object> element.  There
+   are three ways in which servers may handle this element:
+
+   1.  If the server supports the concept of tiers or classes of
+       objects, then the value of this element MUST be validated.  If
+       incorrect for the specified object, the server MUST return a 2004
+       error to the client.
+
+   2.  If the server supports different "types" of object registrations
+       (such as a "blocking" registration which does not resolve, or
+       where a registry provides a value-added service that requires an
+       opt-out to disable), then, as with the first model, the server
+       MUST valudate the value of the element.  If the value is
+       incorrect, a 2004 error MUST be returned.
+
+   3.  If the server supports neither of the above models, the element
+       MUST be ignored.
+
+   Server operators must provide clear documentation to client operators
+   which of the above models it supports.
+
+
+
+
+
+
+
+Brown & Frakes           Expires August 7, 2016                [Page 13]
+
+Internet-Draft       Registry Fee Extension for EPP        February 2016
+
 
 5.1.2.  EPP Transfer Query Command
 
@@ -724,9 +762,27 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
 
 
 
-Brown & Frakes             Expires May 9, 2016                 [Page 13]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Brown & Frakes           Expires August 7, 2016                [Page 14]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
    S: <?xml version="1.0" encoding="utf-8" standalone="no"?>
@@ -780,9 +836,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
 
 
 
-Brown & Frakes             Expires May 9, 2016                 [Page 14]
+Brown & Frakes           Expires August 7, 2016                [Page 15]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
    When the <create> command has been processed successfully, and the
@@ -836,9 +892,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
 
 
 
-Brown & Frakes             Expires May 9, 2016                 [Page 15]
+Brown & Frakes           Expires August 7, 2016                [Page 16]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
    C: <?xml version="1.0" encoding="utf-8" standalone="no"?>
@@ -892,9 +948,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
 
 
 
-Brown & Frakes             Expires May 9, 2016                 [Page 16]
+Brown & Frakes           Expires August 7, 2016                [Page 17]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
    S: <?xml version="1.0" encoding="utf-8" standalone="no"?>
@@ -948,9 +1004,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
 
 
 
-Brown & Frakes             Expires May 9, 2016                 [Page 17]
+Brown & Frakes           Expires August 7, 2016                [Page 18]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
    If no credit has been assessed by the server for this transaction, a
@@ -1004,9 +1060,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
 
 
 
-Brown & Frakes             Expires May 9, 2016                 [Page 18]
+Brown & Frakes           Expires August 7, 2016                [Page 19]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
    o  Zero or more <fee:fee> elements;
@@ -1060,9 +1116,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
 
 
 
-Brown & Frakes             Expires May 9, 2016                 [Page 19]
+Brown & Frakes           Expires August 7, 2016                [Page 20]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
    S: <?xml version="1.0" encoding="utf-8" standalone="no"?>
@@ -1116,9 +1172,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
 
 
 
-Brown & Frakes             Expires May 9, 2016                 [Page 20]
+Brown & Frakes           Expires August 7, 2016                [Page 21]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
    o  A <fee:currency> element;
@@ -1172,9 +1228,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
 
 
 
-Brown & Frakes             Expires May 9, 2016                 [Page 21]
+Brown & Frakes           Expires August 7, 2016                [Page 22]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
    S: <?xml version="1.0" encoding="utf-8" standalone="no"?>
@@ -1228,9 +1284,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
 
 
 
-Brown & Frakes             Expires May 9, 2016                 [Page 22]
+Brown & Frakes           Expires August 7, 2016                [Page 23]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
    element that contains the following child elements:
@@ -1284,9 +1340,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
 
 
 
-Brown & Frakes             Expires May 9, 2016                 [Page 23]
+Brown & Frakes           Expires August 7, 2016                [Page 24]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
    S: <?xml version="1.0" encoding="utf-8" standalone="no"?>
@@ -1340,9 +1396,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
 
 
 
-Brown & Frakes             Expires May 9, 2016                 [Page 24]
+Brown & Frakes           Expires August 7, 2016                [Page 25]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -1396,9 +1452,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
 
 
 
-Brown & Frakes             Expires May 9, 2016                 [Page 25]
+Brown & Frakes           Expires August 7, 2016                [Page 26]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
          <element name="object" type="fee:objectCheckType"
@@ -1414,6 +1470,7 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
          <element name="command" type="fee:commandType" />
          <element name="period" type="domain:periodType"
            minOccurs="0" />
+         <element name="class" type="token" minOccurs="0" />
        </sequence>
        <attribute name="objURI" type="anyURI"
          default="urn:ietf:params:xml:ns:domain-1.0" />
@@ -1448,15 +1505,15 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
          <element name="fee" type="fee:feeType"
             minOccurs="0" maxOccurs="unbounded" />
          <element name="credit" type="fee:creditType"
-            minOccurs="0" maxOccurs="unbounded" />
 
 
 
-Brown & Frakes             Expires May 9, 2016                 [Page 26]
+Brown & Frakes           Expires August 7, 2016                [Page 27]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
+            minOccurs="0" maxOccurs="unbounded" />
          <element name="class" type="token" minOccurs="0" />
        </sequence>
        <attribute name="objURI" type="anyURI"
@@ -1507,10 +1564,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
 
 
 
-
-Brown & Frakes             Expires May 9, 2016                 [Page 27]
+Brown & Frakes           Expires August 7, 2016                [Page 28]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
          <element name="fee" type="fee:feeType"
@@ -1564,9 +1620,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
 
 
 
-Brown & Frakes             Expires May 9, 2016                 [Page 28]
+Brown & Frakes           Expires August 7, 2016                [Page 29]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
        <restriction base="decimal">
@@ -1620,9 +1676,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
 
 
 
-Brown & Frakes             Expires May 9, 2016                 [Page 29]
+Brown & Frakes           Expires August 7, 2016                [Page 30]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
 6.  Security Considerations
@@ -1676,9 +1732,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
 
 
 
-Brown & Frakes             Expires May 9, 2016                 [Page 30]
+Brown & Frakes           Expires August 7, 2016                [Page 31]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
 8.  Implementation Status
@@ -1732,9 +1788,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
 
 
 
-Brown & Frakes             Expires May 9, 2016                 [Page 31]
+Brown & Frakes           Expires August 7, 2016                [Page 32]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
 9.  Acknowledgements
@@ -1788,9 +1844,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
 
 
 
-Brown & Frakes             Expires May 9, 2016                 [Page 32]
+Brown & Frakes           Expires August 7, 2016                [Page 33]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
    4.   Added the <fee:balance> element.
@@ -1844,9 +1900,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
 
 
 
-Brown & Frakes             Expires May 9, 2016                 [Page 33]
+Brown & Frakes           Expires August 7, 2016                [Page 34]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
    6.  Forbidden the inclusion of extension elements in transform
@@ -1900,9 +1956,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
 
 
 
-Brown & Frakes             Expires May 9, 2016                 [Page 34]
+Brown & Frakes           Expires August 7, 2016                [Page 35]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
    5.  "MUST" requirements regarding documentation have been changed to
@@ -1956,9 +2012,9 @@ Internet-Draft       Registry Fee Extension for EPP        November 2015
 
 
 
-Brown & Frakes             Expires May 9, 2016                 [Page 35]
+Brown & Frakes           Expires August 7, 2016                [Page 36]
 
-Internet-Draft       Registry Fee Extension for EPP        November 2015
+Internet-Draft       Registry Fee Extension for EPP        February 2016
 
 
               for the  Extensible Provisioning Protocol (EPP)", 2014.
@@ -2012,5 +2068,5 @@ Authors' Addresses
 
 
 
-Brown & Frakes             Expires May 9, 2016                 [Page 36]
+Brown & Frakes           Expires August 7, 2016                [Page 37]
 
