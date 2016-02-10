@@ -37,4 +37,4 @@ build:
 	xml2rfc draft-brown-epp-fees.xml draft-brown-epp-fees.html
 
 clean:
-	rm -vf draft-brown-epp-fees.xml examples/*txt
+	rm -vf examples/*txt
