@@ -11,7 +11,7 @@
       </domain:update>
     </update>
     <extension>
-      <fee:update xmlns:fee="urn:ietf:params:xml:ns:fee-0.10">
+      <fee:update xmlns:fee="urn:ietf:params:xml:ns:fee-0.11">
         <fee:currency>USD</fee:currency>
         <fee:fee>5.00</fee:fee>
       </fee:update>

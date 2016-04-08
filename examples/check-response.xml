@@ -11,58 +11,51 @@
           <domain:name avail="1">example.com</domain:name>
         </domain:cd>
         <domain:cd>
-          <domain:name avail="0">example.net</domain:name>
-          <domain:reason>In use</domain:reason>
+          <domain:name avail="1">example.net</domain:name>
         </domain:cd>
         <domain:cd>
-          <domain:name avail="0">example.org</domain:name>
-          <domain:reason>In use</domain:reason>
+          <domain:name avail="1">example.xyz</domain:name>
         </domain:cd>
       </domain:chkData>
     </resData>
     <extension>
       <fee:chkData
-        xmlns:fee="urn:ietf:params:xml:ns:fee-0.10">
-        <fee:cd>
-          <fee:objID>example.com</fee:objID>
+          xmlns:fee="urn:ietf:params:xml:ns:fee-0.11"
+          xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
+        <fee:cd avail="1">
+          <fee:object>
+            <domain:name>example.com</domain:name>
+          </fee:object>
+          <fee:command>create</fee:command>
           <fee:currency>USD</fee:currency>
-          <fee:command phase="sunrise">create</fee:command>
           <fee:period unit="y">1</fee:period>
-          <fee:fee description="Application Fee"
-            refundable="0">5.00</fee:fee>
-          <fee:fee description="Registration Fee"
+          <fee:fee
+            description="Registration Fee"
             refundable="1"
             grace-period="P5D">5.00</fee:fee>
         </fee:cd>
-        <fee:cd>
-          <fee:objID>example.net</fee:objID>
-          <fee:currency>EUR</fee:currency>
-          <fee:command phase="claims" subphase="landrush">
-          create</fee:command>
-          <fee:period unit="y">2</fee:period>
-          <fee:fee>5.00</fee:fee>
-        </fee:cd>
-        <fee:cd>
-          <fee:objID>example.org</fee:objID>
-          <fee:currency>EUR</fee:currency>
-          <fee:command>transfer</fee:command>
-          <fee:period unit="y">2</fee:period>
-          <fee:fee description="Transfer Fee"
-            refundable="0">2.50</fee:fee>
-          <fee:fee description="Renewal Fee"
+        <fee:cd avail="1">
+          <fee:object>
+            <domain:name>example.com</domain:name>
+          </fee:object>
+          <fee:command>create</fee:command>
+          <fee:currency>USD</fee:currency>
+          <fee:period unit="y">1</fee:period>
+          <fee:fee
+            description="Registration Fee"
             refundable="1"
-            grace-period="P5D">10.00</fee:fee>
-          <fee:fee description="Self-service
-            fee" refundable="0">25.00</fee:fee>
-            <fee:class>self-service</fee:class>
+            grace-period="P5D">5.00</fee:fee>
         </fee:cd>
-        <fee:cd>
-          <fee:objID>example.xyz</fee:objID>
-          <fee:currency>GBP</fee:currency>
-          <fee:command>restore</fee:command>
-          <fee:fee description="Restore Fee"
-            refundable="0">25</fee:fee>
-          <fee:class>premium-tier1</fee:class>
+        <fee:cd avail="0">
+          <fee:object>
+            <domain:name>example.com</domain:name>
+          </fee:object>
+          <fee:command>create</fee:command>
+          <fee:currency>USD</fee:currency>
+          <fee:period unit="y">1</fee:period>
+          <fee:reason>
+            minimum period is 2 years.
+          </fee:reason>
         </fee:cd>
       </fee:chkData>
     </extension>

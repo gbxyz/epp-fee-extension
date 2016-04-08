@@ -6,36 +6,13 @@
         xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
         <domain:name>example.com</domain:name>
         <domain:name>example.net</domain:name>
-        <domain:name>example.org</domain:name>
+        <domain:name>example.xyz</domain:name>
       </domain:check>
     </check>
     <extension>
-      <fee:check
-        xmlns:fee="urn:ietf:params:xml:ns:fee-0.10">
-        <fee:object
-          objURI="urn:ietf:params:xml:ns:domain-1.0">
-          <fee:objID element="name">example.com</fee:objID>
-          <fee:currency>USD</fee:currency>
-          <fee:command phase="sunrise">create</fee:command>
-          <fee:period unit="y">1</fee:period>
-        </fee:object>
-        <fee:object>
-          <fee:objID>example.net</fee:objID>
-          <fee:currency>EUR</fee:currency>
-          <fee:command phase="claims" subphase="landrush">
-          create</fee:command>
-          <fee:period unit="y">2</fee:period>
-        </fee:object>
-        <fee:object>
-          <fee:objID>example.org</fee:objID>
-          <fee:currency>EUR</fee:currency>
-          <fee:command>transfer</fee:command>
-          <fee:class>self-service</fee:class>
-        </fee:object>
-        <fee:object>
-          <fee:objID>example.xyz</fee:objID>
-          <fee:command>restore</fee:command>
-        </fee:object>
+      <fee:check xmlns:fee="urn:ietf:params:xml:ns:fee-0.11">
+        <fee:command>create</fee:command>
+        <fee:currency>USD</fee:currency>
       </fee:check>
     </extension>
     <clTRID>ABC-12345</clTRID>

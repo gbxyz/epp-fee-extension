@@ -5,7 +5,7 @@
   <!-- when the namespace version bumps, update this and it will update
     everywhere -->
 
-  <!ENTITY VERSION "0.10">
+  <!ENTITY VERSION "0.11">
 
   <!ENTITY I-D.narten-iana-considerations-rfc2434bis SYSTEM
     "http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.narten-iana-considerations-rfc2434bis.xml">
@@ -45,7 +45,7 @@
 <?rfc comments="yes" ?>
 <?rfc inline="yes" ?>
 
-<rfc category="std" docName="draft-brown-epp-fees-06" ipr="trust200902">
+<rfc category="std" docName="draft-brown-epp-fees-07" ipr="trust200902">
 
   <front>
     <title abbrev="Registry Fee Extension for EPP">Registry Fee Extension for
@@ -74,7 +74,7 @@
       </address>
     </author>
 
-    <date month="February" year="2016" />
+    <date month="April" year="2016" />
 
     <area>Applications</area>
     <workgroup>Internet Engineering Task Force</workgroup>
@@ -158,14 +158,6 @@
 
     <section title="Extension Elements">
 
-      <section title="Supported Objects">
-        <t>By default, this specification assumes that fees and credits will only be
-        applied for transform commands on domain objects as described in <xref
-        target="RFC5731"/>. However, other object types are supported through the
-        use of OPTIONAL "objURI" and "element" attributes on the &lt;fee:object&gt;
-        and &lt;fee:objId&gt; elements, respectively.</t>
-      </section>
-
       <section title="Client Commands">
         <t>The &lt;fee:command&gt; element is used in the EPP &lt;check&gt; command to
         determine the fee which is applicable to the given command.</t>
@@ -247,7 +239,7 @@
         These are described in detail below:</t>
 
         <t><list style="hanging">
-      	  <t hangText="description:">an OPTIONAL attribute which provides a
+          <t hangText="description:">an OPTIONAL attribute which provides a
             human-readable description of the fee. Servers should provide
             documentation on the possible values of this attribute, and their
             meanings.</t>
@@ -399,30 +391,17 @@
 
           <t>The command MAY contain an &lt;extension&gt; element which
           MAY contain a &lt;fee:check&gt; element. The &lt;fee:check&gt; element
-          MUST contain at least one &lt;fee:object&gt; element, which has the
-          following child elements:</t>
+          contains the following child elements:</t>
 
           <t><list style="symbols">
-            <t>A &lt;fee:objID&gt; element. This element contains a string which
-            identifies the object. The &lt;fee:objID&gt; element has an OPTIONAL
-            "element" attribute which identifies the local name of the object
-            attribute which is the unique identifier for the object. The default
-            value for this attribute is "name".</t>
+            <t>A &lt;fee:command&gt; element;</t>
 
             <t>An OPTIONAL &lt;fee:currency&gt; element;</t>
-
-            <t>A &lt;fee:command&gt; element;</t>
 
             <t>An OPTIONAL &lt;fee:period&gt; element.</t>
 
             <t>An OPTIONAL &lt;fee:class&gt; element.</t>
           </list></t>
-
-          <t>The &lt;fee:object&gt; element has an OPTIONAL "objURI" attribute
-          which is used to identify the type of the object. The default value
-          for this element is "urn:ietf:params:xml:ns:domain-1.0". The value of
-          this attribute MUST match the contents of one of the &lt;objURI&gt;
-          elements from the server &lt;greeting&gt;</t>
 
           <t>Example &lt;check&gt; command:</t>
 
@@ -435,49 +414,57 @@
           exception described below) contain an &lt;extension&gt; element,
           which MUST contain a child &lt;fee:chkData&gt; element. The
           &lt;fee:chkData&gt; element MUST contain a &lt;fee:cd&gt; element for
-          each &lt;fee:object&gt; element contained in the command. The
-          &lt;fee:cd&gt; MUST contain the following child elements:</t>
+          each object referenced in the &lt;check&gt; element in the command.</t>
+
+          <t>The &lt;fee:cd&gt; element has an OPTIONAL "avail" atribute which
+          is a boolean. If the value of this attribute evalutes to false, this
+          indicates that the server cannot calculate the relevant fees, because
+          the object, command, currency, period or class is invalid according to
+          server policy.</t>
+
+          <t>The &lt;fee:cd&gt; contains the following child elements:</t>
 
           <t><list style="symbols">
-            <t>A &lt;fee:objID&gt; element that contains an identifer which
-            matches the identifier in the corresponding &lt;fee:object&gt;
-            element.</t>
+            <t>A &lt;fee:object&gt; element, which contains a copy of the child
+            element of the &lt;check&gt; element of the command, to which the fee
+            information relates.</t>
 
-            <t>A &lt;fee:currency&gt; element that contains same currency code
-            that appeared in the corresponding &lt;fee:object&gt; element. If no
-            &lt;fee:currency&gt; element appeared in the corresponding
-            &lt;fee:object&gt; element, then the client's default billing
-            currency should be used.</t>
-
-            <t>A &lt;fee:command&gt; element that contains same command
+            <t>A &lt;fee:command&gt; element, which contains the same command
             that appeared in the corresponding &lt;fee:object&gt; element. This
             element MAY have the OPTIONAL "phase" and "subphase" elements, 
             which MUST match the same attributes in the corresponding
             &lt;fee:object&gt; element.</t>
 
-            <t>An OPTIONAL &lt;fee:period&gt; element that contains same unit
-            that appeared in the corresponding &lt;fee:object&gt; element. If
+            <t>A &lt;fee:currency&gt; element, which contains the same currency code
+            that appeared in the &lt;fee:currency&gt; element of the command.
+            If no &lt;fee:currency&gt; element appeared in the command, then
+            the client's default billing currency should be used.</t>
+
+            <t>An OPTIONAL &lt;fee:period&gt; element, which contains the same unit
+            that appeared in the &lt;fee:currency&gt; element of the command. If
             the value of the preceding &lt;fee:command&gt; element is "restore",
             this element MUST NOT be included. Otherwise it MUST be included. If
-            no &lt;fee:period&gt; appeared in the corresponding
-            &lt;fee:object&gt; element (and the command is not "restore") then
-            this element MUST have a value of 1 year.</t>
+            no &lt;fee:period&gt; appeared in command (and the command is not
+            "restore") then this element MUST have a value of 1 year.</t>
 
             <t>Zero or more &lt;fee:fee&gt; elements.</t>
 
             <t>Zero or more &lt;fee:credit&gt; elements.</t>
 
             <t>An OPTIONAL &lt;fee:class&gt; element.</t>
+
+            <t>An OPTIONAL &lt;fee:reason&gt; element.</t>
           </list></t>
 
           <t>If no &lt;fee:fee&gt; elements are present in a &lt;fee:cd&gt;
-          element, this indicates that the requested command is not permitted by
-          server policy.</t>
-
-          <t>The presence of one or more &lt;fee:fee&gt; and &lt;fee:credit&gt;
-          elements with a total value of "0.00" (ie a zero amount) in a
-          &lt;fee:cd&gt; element indicates that no fee will be assessed by the
+          element, this indicates that no fee will be assessed by the
           server for this command.</t>
+
+	  <t>If the "avail" attribute of the &lt;fee:cd&gt; element is false, then
+          the &lt;fee:cd&gt; element MUST NOT contain any &lt;fee:fee&gt; or
+          &lt;fee:credit&gt; child elements. If the "avail" attribute is true,
+          then the &lt;fee:cd&gt; element MUST NOT contain a &lt;fee:reason&gt;
+          element.</t>
 
           <t>Example &lt;check&gt; response:</t>
 
@@ -486,21 +473,21 @@
    href="examples/check-response.txt" /></artwork></figure>
 
           <section title="Server Handling of &lt;fee:class&gt; Elements">
-            <t>Clients MAY include a &lt;feeclass&gt; in the &lt;fee:object&gt;
+            <t>Clients MAY include a &lt;fee:class&gt; in the &lt;fee:check&gt;
             element. There are three ways in which servers may handle this
             element:</t>
             <t><list style="numbers">
               <t>If the server supports the concept of tiers or classes of
               objects, then the value of this element MUST be validated. If
-              incorrect for the specified object, the server MUST return a
-              2004 error to the client.</t>
+              incorrect for the specified object, the "avail" attribute of
+              the corresponding &lt;fee:cd&gt; element MUST be false.</t>
               <t>If the server supports different "types" of object
               registrations (such as a "blocking" registration which does
               not resolve, or where a registry provides a value-added
               service that requires an opt-out to disable), then, as with
               the first model, the server MUST valudate the value of the
-              element. If the value is incorrect, a 2004 error MUST be
-              returned.</t>
+              element. If the value is incorrect, the "avail" attribute of
+              the corresponding &lt;fee:cd&gt; element MUST be false.</t>
               <t>If the server supports neither of the above models, the
               element MUST be ignored.</t>
             </list></t>
@@ -519,7 +506,7 @@
           successfully, the client selected the extension when it logged in, and
           the client is authorised by the server to view information about the
           transfer, the server MAY include in the &lt;extension&gt; section of
-          the EPP response a &lt;fee:trnData&gt; element that contains the
+          the EPP response a &lt;fee:trnData&gt; element, which contains the
           following child elements:</t>
           
           <t><list style="symbols">
@@ -573,7 +560,7 @@
           and the client selected the extension when it logged in, and a fee was
           assessed by the server for the transaction, the server MUST include in
           the &lt;extension&gt; section of the EPP response a
-          &lt;fee:creData&gt; element that contains the following child
+          &lt;fee:creData&gt; element, which contains the following child
           elements:</t>
 
           <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="xml"
@@ -604,7 +591,7 @@
           <t>When the &lt;delete&gt; command has been processed successfully,
           and the client selected the extension when it logged in, the server
           MAY include in the &lt;extension&gt; section of the EPP response a
-          &lt;fee:delData&gt; element that contains the following child
+          &lt;fee:delData&gt; element, which contains the following child
           elements:</t>
 
           <t><list style="symbols">
@@ -645,13 +632,13 @@
           <t>When the &lt;renew&gt; command has been processed successfully,
           and the client selected the extension when it logged in, the server
           MAY include in the &lt;extension&gt; section of the EPP response a
-          &lt;fee:renData&gt; element that contains the following child
+          &lt;fee:renData&gt; element, which contains the following child
           elements:</t>
 
           <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="xml"
             href="transform-response-elements.xml" />
 
-  	  <t>If no fee or credit has been assessed by the server for this transaction,
+          <t>If no fee or credit has been assessed by the server for this transaction,
           a &lt;fee:renData&gt; element MUST NOT be included in the response.</t>
 
           <t>Example &lt;renew&gt; command:</t>
@@ -687,13 +674,13 @@
           <t>When the &lt;transfer&gt; command has been processed successfully,
           and the client selected the extension when it logged in, the server
           MAY include in the &lt;extension&gt; section of the EPP response a
-          &lt;fee:trnData&gt; element that contains the following child
+          &lt;fee:trnData&gt; element, which contains the following child
           elements:</t>
 
           <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="xml"
             href="transform-response-elements.xml" />
 
-  	  <t>If no fee or credit has been assessed by the server for this transaction,
+          <t>If no fee or credit has been assessed by the server for this transaction,
           a &lt;fee:trnData&gt; element MUST NOT be included in the response.</t>
 
           <t>Example &lt;transfer&gt; command:</t>
@@ -728,13 +715,13 @@
           <t>When the &lt;update&gt; command has been processed successfully,
           and the client selected the extension when it logged in, the server
           MAY include in the &lt;extension&gt; section of the EPP response a
-          &lt;fee:upData&gt; element that contains the following child
+          &lt;fee:upData&gt; element, which contains the following child
           elements:</t>
 
           <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="xml"
             href="transform-response-elements.xml" />
 
-  	  <t>If no fee or credit has been assessed by the server for this transaction,
+          <t>If no fee or credit has been assessed by the server for this transaction,
           a &lt;fee:upData&gt; element MUST NOT be included in the response.</t>
 
           <t>Example &lt;update&gt; command:</t>
@@ -986,6 +973,19 @@ END</artwork></figure>
           <t>"MUST" requirements regarding documentation have been changed to "must".</t>
           <t>Created separate "Correlation between Refundability and Grace Periods" section
           describing how the "refundable" and "grace-period" attributes work together.</t>
+        </list></t>
+      </section>
+      <section title="Changes from 06 to 07">
+        <t><list style="numbers">
+          <t>Changed the syntax of the &lt;check&gt; form to be simpler: a single set of
+          &lt;fee:command&gt;, &lt;fee:currency&gt; etc elements is applied to the objects
+          specified in the main body of the &lt;check&gt; command.</t>
+          <t>Simplified the object-agnosticism to simply copy the element from the
+          &lt;check&gt; command into the &lt;fee:cd&gt; element.</t>
+          <t>Added the "avail" attribute to the &lt;fee:cd&gt; element and added commentary
+          about its semantics.</t>
+	  <t>Added the &lt;fee:reason&gt; element to the &lt;check&gt; response so
+          servers can indicate why fee information is not available.</t>
         </list></t>
       </section>
     </section>
