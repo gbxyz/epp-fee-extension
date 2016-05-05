@@ -18,5 +18,5 @@ use the most recent version published on the IETF website at:
 This Internet-Draft is submitted in full conformance with the provisions of BCP
 78 and BCP 79.
 
-Copyright (c) 2014 IETF Trust and the persons identified as the document
+Copyright (c) 2016 IETF Trust and the persons identified as the document
 authors. All rights reserved.

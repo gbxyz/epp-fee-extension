@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="us-ascii"?>
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
 <!-- when the namespace version bumps, update this and it will update
-    everywhere --><!ENTITY VERSION "0.11">
+    everywhere --><!ENTITY VERSION "0.12">
 <!ENTITY I-D.narten-iana-considerations-rfc2434bis SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml3/reference.I-D.narten-iana-considerations-rfc2434bis.xml">
 <!ENTITY RFC2119 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml">
 <!ENTITY RFC3688 SYSTEM "http://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.3688.xml">
@@ -21,7 +21,7 @@
 <?rfc subcompact="no" ?>
 <?rfc comments="yes" ?>
 <?rfc inline="yes" ?>
-<rfc category="std" docName="draft-brown-epp-fees-07" ipr="trust200902">
+<rfc category="std" docName="draft-ietf-regext-epp-fees-00" ipr="trust200902">
 
   <front>
     <title abbrev="Registry Fee Extension for EPP">Registry Fee Extension for
@@ -50,7 +50,7 @@
       </address>
     </author>
 
-    <date month="April" year="2016"/>
+    <date month="May" year="2016"/>
 
     <area>Applications</area>
     <workgroup>Internet Engineering Task Force</workgroup>
@@ -392,7 +392,7 @@ C:         &lt;domain:name&gt;example.xyz&lt;/domain:name&gt;
 C:       &lt;/domain:check&gt;
 C:     &lt;/check&gt;
 C:     &lt;extension&gt;
-C:       &lt;fee:check xmlns:fee="urn:ietf:params:xml:ns:fee-0.11"&gt;
+C:       &lt;fee:check xmlns:fee="urn:ietf:params:xml:ns:fee-0.12"&gt;
 C:         &lt;fee:command&gt;create&lt;/fee:command&gt;
 C:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 C:       &lt;/fee:check&gt;
@@ -409,8 +409,8 @@ C: &lt;/epp&gt;
           &lt;fee:chkData&gt; element MUST contain a &lt;fee:cd&gt; element for
           each object referenced in the &lt;check&gt; element in the command.</t>
 
-          <t>The &lt;fee:cd&gt; element has an OPTIONAL "avail" atribute which
-          is a boolean. If the value of this attribute evalutes to false, this
+          <t>The &lt;fee:cd&gt; element has an OPTIONAL "avail" attribute which
+          is a boolean. If the value of this attribute evaluates to false, this
           indicates that the server cannot calculate the relevant fees, because
           the object, command, currency, period or class is invalid according to
           server policy.</t>
@@ -453,7 +453,7 @@ C: &lt;/epp&gt;
           element, this indicates that no fee will be assessed by the
           server for this command.</t>
 
-	  <t>If the "avail" attribute of the &lt;fee:cd&gt; element is false, then
+          <t>If the "avail" attribute of the &lt;fee:cd&gt; element is false, then
           the &lt;fee:cd&gt; element MUST NOT contain any &lt;fee:fee&gt; or
           &lt;fee:credit&gt; child elements. If the "avail" attribute is true,
           then the &lt;fee:cd&gt; element MUST NOT contain a &lt;fee:reason&gt;
@@ -484,7 +484,7 @@ S:       &lt;/domain:chkData&gt;
 S:     &lt;/resData&gt;
 S:     &lt;extension&gt;
 S:       &lt;fee:chkData
-S:           xmlns:fee="urn:ietf:params:xml:ns:fee-0.11"
+S:           xmlns:fee="urn:ietf:params:xml:ns:fee-0.12"
 S:           xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"&gt;
 S:         &lt;fee:cd avail="1"&gt;
 S:           &lt;fee:object&gt;
@@ -500,7 +500,7 @@ S:             grace-period="P5D"&gt;5.00&lt;/fee:fee&gt;
 S:         &lt;/fee:cd&gt;
 S:         &lt;fee:cd avail="1"&gt;
 S:           &lt;fee:object&gt;
-S:             &lt;domain:name&gt;example.com&lt;/domain:name&gt;
+S:             &lt;domain:name&gt;example.net&lt;/domain:name&gt;
 S:           &lt;/fee:object&gt;
 S:           &lt;fee:command&gt;create&lt;/fee:command&gt;
 S:           &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
@@ -512,7 +512,7 @@ S:             grace-period="P5D"&gt;5.00&lt;/fee:fee&gt;
 S:         &lt;/fee:cd&gt;
 S:         &lt;fee:cd avail="0"&gt;
 S:           &lt;fee:object&gt;
-S:             &lt;domain:name&gt;example.com&lt;/domain:name&gt;
+S:             &lt;domain:name&gt;example.xyz&lt;/domain:name&gt;
 S:           &lt;/fee:object&gt;
 S:           &lt;fee:command&gt;create&lt;/fee:command&gt;
 S:           &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
@@ -532,26 +532,17 @@ S: &lt;/epp&gt;
 </artwork></figure>
 
           <section title="Server Handling of &lt;fee:class&gt; Elements">
-            <t>Clients MAY include a &lt;fee:class&gt; in the &lt;fee:check&gt;
-            element. There are three ways in which servers may handle this
-            element:</t>
-            <t><list style="numbers">
-              <t>If the server supports the concept of tiers or classes of
-              objects, then the value of this element MUST be validated. If
-              incorrect for the specified object, the "avail" attribute of
-              the corresponding &lt;fee:cd&gt; element MUST be false.</t>
-              <t>If the server supports different "types" of object
-              registrations (such as a "blocking" registration which does
-              not resolve, or where a registry provides a value-added
-              service that requires an opt-out to disable), then, as with
-              the first model, the server MUST valudate the value of the
-              element. If the value is incorrect, the "avail" attribute of
-              the corresponding &lt;fee:cd&gt; element MUST be false.</t>
-              <t>If the server supports neither of the above models, the
-              element MUST be ignored.</t>
-            </list></t>
-            <t>Server operators must provide clear documentation to client
-            operators which of the above models it supports.</t>
+            <t>When a server supports classes as described in Section 3.7<!-- hard coded cross-reference! -->,
+            and the &lt;fee:class&gt; element is present in the command, the server MUST
+            validate the value of this element, and return an error for unknown values.
+            If the given value is incorrect for the specified object, the
+            "avail" attribute of the corresponding &lt;fee:cd&gt; element MUST be
+            false.</t>
+
+            <t>The &lt;fee:cd&gt; section MUST contain the appropriate
+            &lt;fee:class&gt; element when the servers support classes, as described
+            in Section 3.7,<!-- hard coded cross-reference! --> and the "avail"
+            attribute of the &lt;fee:cd&gt; element is true.</t>
           </section>
         </section>
 
@@ -610,7 +601,7 @@ S:         &lt;domain:exDate&gt;2002-09-08T22:00:00.0Z&lt;/domain:exDate&gt;
 S:       &lt;/domain:trnData&gt;
 S:     &lt;/resData&gt;
 S:     &lt;extension&gt;
-S:       &lt;fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.11"&gt;
+S:       &lt;fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.12"&gt;
 S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 S:         &lt;fee:period unit="y"&gt;1&lt;/fee:period&gt;
 S:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
@@ -691,7 +682,7 @@ C:         &lt;/domain:authInfo&gt;
 C:       &lt;/domain:create&gt;
 C:     &lt;/create&gt;
 C:     &lt;extension&gt;
-C:       &lt;fee:create xmlns:fee="urn:ietf:params:xml:ns:fee-0.11"&gt;
+C:       &lt;fee:create xmlns:fee="urn:ietf:params:xml:ns:fee-0.12"&gt;
 C:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 C:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
 C:       &lt;/fee:create&gt;
@@ -719,7 +710,7 @@ S:         &lt;domain:exDate&gt;2001-04-03T22:00:00.0Z&lt;/domain:exDate&gt;
 S:       &lt;/domain:creData&gt;
 S:     &lt;/resData&gt;
 S:     &lt;extension&gt;
-S:       &lt;fee:creData xmlns:fee="urn:ietf:params:xml:ns:fee-0.11"&gt;
+S:       &lt;fee:creData xmlns:fee="urn:ietf:params:xml:ns:fee-0.12"&gt;
 S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 S:         &lt;fee:fee grace-period="P5D"&gt;5.00&lt;/fee:fee&gt;
 S:         &lt;fee:balance&gt;-5.00&lt;/fee:balance&gt;
@@ -771,7 +762,7 @@ S:       &lt;msg&gt;Command completed successfully&lt;/msg&gt;
 S:     &lt;/result&gt;
 S:     &lt;extension&gt;
 S:       &lt;fee:delData
-S:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.11"&gt;
+S:         xmlns:fee="urn:ietf:params:xml:ns:fee-0.12"&gt;
 S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 S:         &lt;fee:credit description="AGP Credit"&gt;-5.00&lt;/fee:credit&gt;
 S:         &lt;fee:balance&gt;1005.00&lt;/fee:balance&gt;
@@ -837,7 +828,7 @@ C:         &lt;domain:period unit="y"&gt;5&lt;/domain:period&gt;
 C:       &lt;/domain:renew&gt;
 C:     &lt;/renew&gt;
 C:     &lt;extension&gt;
-C:       &lt;fee:renew xmlns:fee="urn:ietf:params:xml:ns:fee-0.11"&gt;
+C:       &lt;fee:renew xmlns:fee="urn:ietf:params:xml:ns:fee-0.12"&gt;
 C:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 C:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
 C:       &lt;/fee:renew&gt;
@@ -864,7 +855,7 @@ S:         &lt;domain:exDate&gt;2005-04-03T22:00:00.0Z&lt;/domain:exDate&gt;
 S:       &lt;/domain:renData&gt;
 S:     &lt;/resData&gt;
 S:     &lt;extension&gt;
-S:       &lt;fee:renData xmlns:fee="urn:ietf:params:xml:ns:fee-0.11"&gt;
+S:       &lt;fee:renData xmlns:fee="urn:ietf:params:xml:ns:fee-0.12"&gt;
 S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 S:         &lt;fee:fee grace-period="P5D"&gt;5.00&lt;/fee:fee&gt;
 S:         &lt;fee:balance&gt;1000.00&lt;/fee:balance&gt;
@@ -934,7 +925,7 @@ C:         &lt;/domain:authInfo&gt;
 C:       &lt;/domain:transfer&gt;
 C:     &lt;/transfer&gt;
 C:     &lt;extension&gt;
-C:       &lt;fee:transfer xmlns:fee="urn:ietf:params:xml:ns:fee-0.11"&gt;
+C:       &lt;fee:transfer xmlns:fee="urn:ietf:params:xml:ns:fee-0.12"&gt;
 C:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 C:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
 C:       &lt;/fee:transfer&gt;
@@ -966,7 +957,7 @@ S:         &lt;domain:exDate&gt;2002-09-08T22:00:00.0Z&lt;/domain:exDate&gt;
 S:       &lt;/domain:trnData&gt;
 S:     &lt;/resData&gt;
 S:     &lt;extension&gt;
-S:       &lt;fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.11"&gt;
+S:       &lt;fee:trnData xmlns:fee="urn:ietf:params:xml:ns:fee-0.12"&gt;
 S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 S:         &lt;fee:fee grace-period="P5D"&gt;5.00&lt;/fee:fee&gt;
 S:       &lt;/fee:trnData&gt;
@@ -1033,7 +1024,7 @@ C:         &lt;/domain:chg&gt;
 C:       &lt;/domain:update&gt;
 C:     &lt;/update&gt;
 C:     &lt;extension&gt;
-C:       &lt;fee:update xmlns:fee="urn:ietf:params:xml:ns:fee-0.11"&gt;
+C:       &lt;fee:update xmlns:fee="urn:ietf:params:xml:ns:fee-0.12"&gt;
 C:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 C:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
 C:       &lt;/fee:update&gt;
@@ -1053,7 +1044,7 @@ S:     &lt;result code="1000"&gt;
 S:       &lt;msg&gt;Command completed successfully&lt;/msg&gt;
 S:     &lt;/result&gt;
 S:     &lt;extension&gt;
-S:       &lt;fee:updData xmlns:fee="urn:ietf:params:xml:ns:fee-0.11"&gt;
+S:       &lt;fee:updData xmlns:fee="urn:ietf:params:xml:ns:fee-0.12"&gt;
 S:         &lt;fee:currency&gt;USD&lt;/fee:currency&gt;
 S:         &lt;fee:fee&gt;5.00&lt;/fee:fee&gt;
 S:       &lt;/fee:updData&gt;
@@ -1113,10 +1104,10 @@ S: &lt;/epp&gt;
 BEGIN
 &lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;schema xmlns="http://www.w3.org/2001/XMLSchema"
-  xmlns:fee="urn:ietf:params:xml:ns:fee-0.11"
+  xmlns:fee="urn:ietf:params:xml:ns:fee-0.12"
   xmlns:eppcom="urn:ietf:params:xml:ns:eppcom-1.0"
   xmlns:domain="urn:ietf:params:xml:ns:domain-1.0"
-  targetNamespace="urn:ietf:params:xml:ns:fee-0.11"
+  targetNamespace="urn:ietf:params:xml:ns:fee-0.12"
   elementFormDefault="qualified"&gt;
 
   &lt;import namespace="urn:ietf:params:xml:ns:eppcom-1.0" /&gt;
@@ -1237,6 +1228,11 @@ BEGIN
         maxOccurs="unbounded" /&gt;
       &lt;element name="credit" type="fee:creditType"
         minOccurs="0" maxOccurs="unbounded" /&gt;
+
+      &lt;element name="balance" type="fee:balanceType"
+        minOccurs="0" /&gt;
+      &lt;element name="creditLimit" type="fee:creditLimitType"
+        minOccurs="0" /&gt;
     &lt;/sequence&gt;
   &lt;/complexType&gt;
 
@@ -1407,7 +1403,7 @@ END</artwork></figure>
       <t>The authors wish to thank the following persons for their feedback and
       suggestions:</t>
       <t><list style="symbols">
-        <t>James Gould of Verisign</t>
+        <t>James Gould and Scott Hollenbeck of Verisign</t>
         <t>Luis Mu&#241;oz of ISC</t>
         <t>Michael Young of Architelos</t>
         <t>Ben Levac and Jeff Eckhaus of Demand Media</t>
@@ -1417,6 +1413,8 @@ END</artwork></figure>
         <t>Michael Holloway of Com Laude</t>
         <t>Santosh Kalsangrah of Impetus Infotech</t>
         <t>Alex Mayrhofer of Nic.at</t>
+        <t>Pat Moroney of Name.com</t>
+        <t>Bernhard Reutner-Fischer</t>
       </list></t>
     </section>
 
@@ -1528,8 +1526,15 @@ END</artwork></figure>
           &lt;check&gt; command into the &lt;fee:cd&gt; element.</t>
           <t>Added the "avail" attribute to the &lt;fee:cd&gt; element and added commentary
           about its semantics.</t>
-	  <t>Added the &lt;fee:reason&gt; element to the &lt;check&gt; response so
+          <t>Added the &lt;fee:reason&gt; element to the &lt;check&gt; response so
           servers can indicate why fee information is not available.</t>
+        </list></t>
+      </section>
+      <section title="Changes from draft-brown-epp-fees-07 to draft-ietf-regext-epp-fees-00">
+        <t><list style="numbers">
+          <t>Minor typographic corrections.</t>
+          <t>The schema was updated to allow &lt;balance&gt; and &lt;creditLimit&gt; elements
+          in &lt;transfer&gt; responses, as the text stated.</t>
         </list></t>
       </section>
     </section>
@@ -1567,7 +1572,7 @@ END</artwork></figure>
               <author fullname="James Gould" initials="J" surname="Gould"/>
               <author fullname="Wil Tan" initials="W" surname="Tan"/>
               <author fullname="Gavin Brown" initials="G" surname="Brown"/>
-              <date year="2014"/>
+              <date year="2016"/>
           </front>
           <format type="HTML" target="http://tools.ietf.org/html/draft-ietf-eppext-launchphase"/>
       </reference>
