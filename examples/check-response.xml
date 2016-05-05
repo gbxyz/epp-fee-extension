@@ -20,7 +20,7 @@
     </resData>
     <extension>
       <fee:chkData
-          xmlns:fee="urn:ietf:params:xml:ns:fee-0.11"
+          xmlns:fee="urn:ietf:params:xml:ns:fee-0.12"
           xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
         <fee:cd avail="1">
           <fee:object>

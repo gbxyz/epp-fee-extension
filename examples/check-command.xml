@@ -10,7 +10,7 @@
       </domain:check>
     </check>
     <extension>
-      <fee:check xmlns:fee="urn:ietf:params:xml:ns:fee-0.11">
+      <fee:check xmlns:fee="urn:ietf:params:xml:ns:fee-0.12">
         <fee:command>create</fee:command>
         <fee:currency>USD</fee:currency>
       </fee:check>
