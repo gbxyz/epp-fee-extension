@@ -124,6 +124,11 @@
         maxOccurs="unbounded" />
       <element name="credit" type="fee:creditType"
         minOccurs="0" maxOccurs="unbounded" />
+
+      <element name="balance" type="fee:balanceType"
+        minOccurs="0" />
+      <element name="creditLimit" type="fee:creditLimitType"
+        minOccurs="0" />
     </sequence>
   </complexType>
 
