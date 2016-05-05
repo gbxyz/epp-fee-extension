@@ -1025,7 +1025,7 @@ END</artwork></figure>
               <author fullname="James Gould" initials="J" surname="Gould"/>
               <author fullname="Wil Tan" initials="W" surname="Tan"/>
               <author fullname="Gavin Brown" initials="G" surname="Brown"/>
-              <date year="2014" />
+              <date year="2016" />
           </front>
           <format type="HTML"
             target="http://tools.ietf.org/html/draft-ietf-eppext-launchphase" />
