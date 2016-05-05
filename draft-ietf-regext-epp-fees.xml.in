@@ -460,7 +460,7 @@
           element, this indicates that no fee will be assessed by the
           server for this command.</t>
 
-	  <t>If the "avail" attribute of the &lt;fee:cd&gt; element is false, then
+          <t>If the "avail" attribute of the &lt;fee:cd&gt; element is false, then
           the &lt;fee:cd&gt; element MUST NOT contain any &lt;fee:fee&gt; or
           &lt;fee:credit&gt; child elements. If the "avail" attribute is true,
           then the &lt;fee:cd&gt; element MUST NOT contain a &lt;fee:reason&gt;
@@ -473,26 +473,17 @@
    href="examples/check-response.txt" /></artwork></figure>
 
           <section title="Server Handling of &lt;fee:class&gt; Elements">
-            <t>Clients MAY include a &lt;fee:class&gt; in the &lt;fee:check&gt;
-            element. There are three ways in which servers may handle this
-            element:</t>
-            <t><list style="numbers">
-              <t>If the server supports the concept of tiers or classes of
-              objects, then the value of this element MUST be validated. If
-              incorrect for the specified object, the "avail" attribute of
-              the corresponding &lt;fee:cd&gt; element MUST be false.</t>
-              <t>If the server supports different "types" of object
-              registrations (such as a "blocking" registration which does
-              not resolve, or where a registry provides a value-added
-              service that requires an opt-out to disable), then, as with
-              the first model, the server MUST validate the value of the
-              element. If the value is incorrect, the "avail" attribute of
-              the corresponding &lt;fee:cd&gt; element MUST be false.</t>
-              <t>If the server supports neither of the above models, the
-              element MUST be ignored.</t>
-            </list></t>
-            <t>Server operators must provide clear documentation to client
-            operators which of the above models it supports.</t>
+            <t>When a server supports classes as described in Section 3.7<!-- hard coded cross-reference! -->,
+            and the &lt;fee:class&gt; element is present in the command, the server MUST
+            validate the value of this element, and return an error for unknown values.
+            If the given value is incorrect for the specified object, the
+            "avail" attribute of the corresponding &lt;fee:cd&gt; element MUST be
+            false.</t>
+
+            <t>The &lt;fee:cd&gt; section MUST contain the appropriate
+            &lt;fee:class&gt; element when the servers support classes, as described
+            in Section 3.7,<!-- hard coded cross-reference! --> and the "avail"
+            attribute of the &lt;fee:cd&gt; element is true.</t>
           </section>
         </section>
 
@@ -873,8 +864,8 @@ END</artwork></figure>
         <t>Michael Holloway of Com Laude</t>
         <t>Santosh Kalsangrah of Impetus Infotech</t>
         <t>Alex Mayrhofer of Nic.at</t>
-	<t>Pat Moroney of Name.com</t>
-	<t>Bernhard Reutner-Fischer</t>
+        <t>Pat Moroney of Name.com</t>
+        <t>Bernhard Reutner-Fischer</t>
       </list></t>
     </section>
 
@@ -986,7 +977,7 @@ END</artwork></figure>
           &lt;check&gt; command into the &lt;fee:cd&gt; element.</t>
           <t>Added the "avail" attribute to the &lt;fee:cd&gt; element and added commentary
           about its semantics.</t>
-	  <t>Added the &lt;fee:reason&gt; element to the &lt;check&gt; response so
+          <t>Added the &lt;fee:reason&gt; element to the &lt;check&gt; response so
           servers can indicate why fee information is not available.</t>
         </list></t>
       </section>
@@ -994,7 +985,7 @@ END</artwork></figure>
         <t><list style="numbers">
           <t>Minor typographic corrections.</t>
           <t>The schema was updated to allow &lt;balance&gt; and &lt;creditLimit&gt; elements
-	    in &lt;transfer&gt; responses, as the text stated.</t>
+          in &lt;transfer&gt; responses, as the text stated.</t>
         </list></t>
       </section>
     </section>
