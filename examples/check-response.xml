@@ -36,7 +36,7 @@
         </fee:cd>
         <fee:cd avail="1">
           <fee:object>
-            <domain:name>example.com</domain:name>
+            <domain:name>example.net</domain:name>
           </fee:object>
           <fee:command>create</fee:command>
           <fee:currency>USD</fee:currency>
@@ -48,7 +48,7 @@
         </fee:cd>
         <fee:cd avail="0">
           <fee:object>
-            <domain:name>example.com</domain:name>
+            <domain:name>example.xyz</domain:name>
           </fee:object>
           <fee:command>create</fee:command>
           <fee:currency>USD</fee:currency>
