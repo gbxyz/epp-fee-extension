@@ -416,8 +416,8 @@
           &lt;fee:chkData&gt; element MUST contain a &lt;fee:cd&gt; element for
           each object referenced in the &lt;check&gt; element in the command.</t>
 
-          <t>The &lt;fee:cd&gt; element has an OPTIONAL "avail" atribute which
-          is a boolean. If the value of this attribute evalutes to false, this
+          <t>The &lt;fee:cd&gt; element has an OPTIONAL "avail" attribute which
+          is a boolean. If the value of this attribute evaluates to false, this
           indicates that the server cannot calculate the relevant fees, because
           the object, command, currency, period or class is invalid according to
           server policy.</t>
@@ -485,7 +485,7 @@
               registrations (such as a "blocking" registration which does
               not resolve, or where a registry provides a value-added
               service that requires an opt-out to disable), then, as with
-              the first model, the server MUST valudate the value of the
+              the first model, the server MUST validate the value of the
               element. If the value is incorrect, the "avail" attribute of
               the corresponding &lt;fee:cd&gt; element MUST be false.</t>
               <t>If the server supports neither of the above models, the
