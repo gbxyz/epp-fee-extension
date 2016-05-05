@@ -988,6 +988,13 @@ END</artwork></figure>
           servers can indicate why fee information is not available.</t>
         </list></t>
       </section>
+      <section title="Changes from 07 to 08">
+        <t><list style="numbers">
+          <t>Minor typographic corrections.</t>
+          <t>The schema was updated to allow &lt;balance&gt; and &lt;creditLimit&gt; elements
+	    in &lt;transfer&gt; responses, as the text stated.</t>
+        </list></t>
+      </section>
     </section>
 
   </middle>
