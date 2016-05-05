@@ -11,7 +11,7 @@ documents that appear in this repository: these are "living" documents and will
 change rapidly and radically. If you want to develop an implementation, then
 use the most recent version published on the IETF website at:
 
-* http://tools.ietf.org/html/draft-brown-epp-fees
+* http://tools.ietf.org/html/draft-ietf-regext-epp-fees
 
 ## Copyright and Patent Statement
 
