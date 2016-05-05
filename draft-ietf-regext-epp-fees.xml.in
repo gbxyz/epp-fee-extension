@@ -863,7 +863,7 @@ END</artwork></figure>
       <t>The authors wish to thank the following persons for their feedback and
       suggestions:</t>
       <t><list style="symbols">
-        <t>James Gould of Verisign</t>
+        <t>James Gould and Scott Hollenbeck of Verisign</t>
         <t>Luis Mu&#241;oz of ISC</t>
         <t>Michael Young of Architelos</t>
         <t>Ben Levac and Jeff Eckhaus of Demand Media</t>
@@ -873,6 +873,8 @@ END</artwork></figure>
         <t>Michael Holloway of Com Laude</t>
         <t>Santosh Kalsangrah of Impetus Infotech</t>
         <t>Alex Mayrhofer of Nic.at</t>
+	<t>Pat Moroney of Name.com</t>
+	<t>Bernhard Reutner-Fischer</t>
       </list></t>
     </section>
 
