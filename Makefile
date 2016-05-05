@@ -31,10 +31,10 @@ build:
 	perl -pi -e 's/^(.)/S: \1/' < examples/update-response.xml > examples/update-response.txt
 	perl -pi -e 's/^(.)/S: \1/' < examples/delete-response.xml > examples/delete-response.txt
 
-	xmllint --xinclude draft-brown-epp-fees.xml.in > draft-brown-epp-fees.xml
+	xmllint --xinclude draft-ietf-regext-epp-fees.xml.in > draft-ietf-regext-epp-fees.xml
 
-	xml2rfc draft-brown-epp-fees.xml draft-brown-epp-fees.txt
-	xml2rfc draft-brown-epp-fees.xml draft-brown-epp-fees.html
+	xml2rfc draft-ietf-regext-epp-fees.xml draft-ietf-regext-epp-fees.txt
+	xml2rfc draft-ietf-regext-epp-fees.xml draft-ietf-regext-epp-fees.html
 
 clean:
 	rm -vf examples/*txt
