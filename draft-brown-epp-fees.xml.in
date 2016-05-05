@@ -45,7 +45,7 @@
 <?rfc comments="yes" ?>
 <?rfc inline="yes" ?>
 
-<rfc category="std" docName="draft-brown-epp-fees-07" ipr="trust200902">
+<rfc category="std" docName="draft-ietf-regext-epp-fees-00" ipr="trust200902">
 
   <front>
     <title abbrev="Registry Fee Extension for EPP">Registry Fee Extension for
@@ -74,7 +74,7 @@
       </address>
     </author>
 
-    <date month="April" year="2016" />
+    <date month="May" year="2016" />
 
     <area>Applications</area>
     <workgroup>Internet Engineering Task Force</workgroup>
@@ -988,7 +988,7 @@ END</artwork></figure>
           servers can indicate why fee information is not available.</t>
         </list></t>
       </section>
-      <section title="Changes from 07 to 08">
+      <section title="Changes from draft-brown-epp-fees-07 to draft-ietf-regext-epp-fees-00">
         <t><list style="numbers">
           <t>Minor typographic corrections.</t>
           <t>The schema was updated to allow &lt;balance&gt; and &lt;creditLimit&gt; elements
