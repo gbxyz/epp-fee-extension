@@ -1801,7 +1801,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
    o  Ben Levac and Jeff Eckhaus of Demand Media
 
-   o  Seth Goldman of Google
+   o  Seth Goldman and Brian Mountford of Google
 
    o  Klaus Malorny and Michael Bauland of Knipp
 
