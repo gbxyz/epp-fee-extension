@@ -4,7 +4,7 @@
 Internet Engineering Task Force                                 G. Brown
 Internet-Draft                                      CentralNic Group plc
 Intended status: Standards Track                               J. Frakes
-Expires: November 6, 2016                                    May 5, 2016
+Expires: November 7, 2016                                    May 6, 2016
 
 
  Registry Fee Extension for the Extensible Provisioning Protocol (EPP)
@@ -30,7 +30,7 @@ Status of this Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on November 6, 2016.
+   This Internet-Draft will expire on November 7, 2016.
 
 Copyright Notice
 
@@ -52,7 +52,7 @@ Copyright Notice
 
 
 
-Brown & Frakes          Expires November 6, 2016                [Page 1]
+Brown & Frakes          Expires November 7, 2016                [Page 1]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -108,7 +108,7 @@ Table of Contents
 
 
 
-Brown & Frakes          Expires November 6, 2016                [Page 2]
+Brown & Frakes          Expires November 7, 2016                [Page 2]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -164,7 +164,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016                [Page 3]
+Brown & Frakes          Expires November 7, 2016                [Page 3]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -220,7 +220,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016                [Page 4]
+Brown & Frakes          Expires November 7, 2016                [Page 4]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -276,7 +276,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016                [Page 5]
+Brown & Frakes          Expires November 7, 2016                [Page 5]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -332,7 +332,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016                [Page 6]
+Brown & Frakes          Expires November 7, 2016                [Page 6]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -388,7 +388,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016                [Page 7]
+Brown & Frakes          Expires November 7, 2016                [Page 7]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -444,7 +444,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016                [Page 8]
+Brown & Frakes          Expires November 7, 2016                [Page 8]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -500,7 +500,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016                [Page 9]
+Brown & Frakes          Expires November 7, 2016                [Page 9]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -556,7 +556,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016               [Page 10]
+Brown & Frakes          Expires November 7, 2016               [Page 10]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -578,10 +578,10 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
       information relates.
 
    o  A <fee:command> element, which contains the same command that
-      appeared in the corresponding <fee:object> element.  This element
-      MAY have the OPTIONAL "phase" and "subphase" elements, which MUST
-      match the same attributes in the corresponding <fee:object>
-      element.
+      appeared in the corresponding <fee:command> element in the
+      command.  This element MAY have the OPTIONAL "phase" and
+      "subphase" elements, which MUST match the same attributes in the
+      corresponding <fee:command> element in the command.
 
    o  A <fee:currency> element, which contains the same currency code
       that appeared in the <fee:currency> element of the command.  If no
@@ -612,7 +612,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016               [Page 11]
+Brown & Frakes          Expires November 7, 2016               [Page 11]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -668,7 +668,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016               [Page 12]
+Brown & Frakes          Expires November 7, 2016               [Page 12]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -724,7 +724,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016               [Page 13]
+Brown & Frakes          Expires November 7, 2016               [Page 13]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -780,7 +780,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016               [Page 14]
+Brown & Frakes          Expires November 7, 2016               [Page 14]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -836,7 +836,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016               [Page 15]
+Brown & Frakes          Expires November 7, 2016               [Page 15]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -892,7 +892,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016               [Page 16]
+Brown & Frakes          Expires November 7, 2016               [Page 16]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -948,7 +948,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016               [Page 17]
+Brown & Frakes          Expires November 7, 2016               [Page 17]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -1004,7 +1004,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016               [Page 18]
+Brown & Frakes          Expires November 7, 2016               [Page 18]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -1060,7 +1060,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016               [Page 19]
+Brown & Frakes          Expires November 7, 2016               [Page 19]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -1116,7 +1116,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016               [Page 20]
+Brown & Frakes          Expires November 7, 2016               [Page 20]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -1172,7 +1172,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016               [Page 21]
+Brown & Frakes          Expires November 7, 2016               [Page 21]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -1228,7 +1228,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016               [Page 22]
+Brown & Frakes          Expires November 7, 2016               [Page 22]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -1284,7 +1284,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016               [Page 23]
+Brown & Frakes          Expires November 7, 2016               [Page 23]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -1340,7 +1340,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016               [Page 24]
+Brown & Frakes          Expires November 7, 2016               [Page 24]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -1396,7 +1396,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016               [Page 25]
+Brown & Frakes          Expires November 7, 2016               [Page 25]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -1452,7 +1452,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016               [Page 26]
+Brown & Frakes          Expires November 7, 2016               [Page 26]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -1508,7 +1508,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016               [Page 27]
+Brown & Frakes          Expires November 7, 2016               [Page 27]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -1564,7 +1564,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016               [Page 28]
+Brown & Frakes          Expires November 7, 2016               [Page 28]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -1620,7 +1620,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016               [Page 29]
+Brown & Frakes          Expires November 7, 2016               [Page 29]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -1676,7 +1676,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016               [Page 30]
+Brown & Frakes          Expires November 7, 2016               [Page 30]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -1732,7 +1732,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016               [Page 31]
+Brown & Frakes          Expires November 7, 2016               [Page 31]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -1788,7 +1788,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016               [Page 32]
+Brown & Frakes          Expires November 7, 2016               [Page 32]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -1844,7 +1844,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016               [Page 33]
+Brown & Frakes          Expires November 7, 2016               [Page 33]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -1900,7 +1900,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016               [Page 34]
+Brown & Frakes          Expires November 7, 2016               [Page 34]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -1956,7 +1956,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016               [Page 35]
+Brown & Frakes          Expires November 7, 2016               [Page 35]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -2012,7 +2012,7 @@ Internet-Draft       Registry Fee Extension for EPP             May 2016
 
 
 
-Brown & Frakes          Expires November 6, 2016               [Page 36]
+Brown & Frakes          Expires November 7, 2016               [Page 36]
 
 Internet-Draft       Registry Fee Extension for EPP             May 2016
 
@@ -2068,5 +2068,5 @@ Authors' Addresses
 
 
 
-Brown & Frakes          Expires November 6, 2016               [Page 37]
+Brown & Frakes          Expires November 7, 2016               [Page 37]
 

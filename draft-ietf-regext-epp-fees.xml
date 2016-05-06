@@ -423,10 +423,10 @@ C: &lt;/epp&gt;
             information relates.</t>
 
             <t>A &lt;fee:command&gt; element, which contains the same command
-            that appeared in the corresponding &lt;fee:object&gt; element. This
-            element MAY have the OPTIONAL "phase" and "subphase" elements, 
+            that appeared in the corresponding &lt;fee:command&gt; element in the
+	    command. This element MAY have the OPTIONAL "phase" and "subphase" elements, 
             which MUST match the same attributes in the corresponding
-            &lt;fee:object&gt; element.</t>
+            &lt;fee:command&gt; element in the command.</t>
 
             <t>A &lt;fee:currency&gt; element, which contains the same currency code
             that appeared in the &lt;fee:currency&gt; element of the command.
