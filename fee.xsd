@@ -18,17 +18,17 @@
   <!--
   Child elements found in EPP commands and responses
   -->
-  <element name="check" type="fee:checkType" />
-  <element name="chkData" type="fee:chkDataType" />
-  <element name="create" type="fee:transformCommandType" />
-  <element name="creData" type="fee:transformResultType" />
-  <element name="renew" type="fee:transformCommandType" />
-  <element name="renData" type="fee:transformResultType" />
+  <element name="check"    type="fee:checkType" />
+  <element name="chkData"  type="fee:chkDataType" />
+  <element name="create"   type="fee:transformCommandType" />
+  <element name="creData"  type="fee:transformResultType" />
+  <element name="renew"    type="fee:transformCommandType" />
+  <element name="renData"  type="fee:transformResultType" />
   <element name="transfer" type="fee:transformCommandType" />
-  <element name="trnData" type="fee:transferResultType" />
-  <element name="update" type="fee:transformCommandType" />
-  <element name="updData" type="fee:transformResultType" />
-  <element name="delData" type="fee:deleteDataType" />
+  <element name="trnData"  type="fee:transferResultType" />
+  <element name="update"   type="fee:transformCommandType" />
+  <element name="updData"  type="fee:transformResultType" />
+  <element name="delData"  type="fee:transformResultType" />
 
   <!--
   client <check> command
@@ -93,7 +93,7 @@
   </complexType>
 
   <!--
-    general transform (create, renew, update) result
+    general transform (create, renew, update, delete) result
   -->
   <complexType name="transformResultType">
     <sequence>
@@ -125,21 +125,6 @@
       <element name="credit" type="fee:creditType"
         minOccurs="0" maxOccurs="unbounded" />
 
-      <element name="balance" type="fee:balanceType"
-        minOccurs="0" />
-      <element name="creditLimit" type="fee:creditLimitType"
-        minOccurs="0" />
-    </sequence>
-  </complexType>
-
-  <!--
-    delete result
-  -->
-  <complexType name="deleteDataType">
-    <sequence>
-      <element name="currency" type="fee:currencyType" />
-      <element name="credit" type="fee:creditType"
-        minOccurs="0" maxOccurs="unbounded" />
       <element name="balance" type="fee:balanceType"
         minOccurs="0" />
       <element name="creditLimit" type="fee:creditLimitType"

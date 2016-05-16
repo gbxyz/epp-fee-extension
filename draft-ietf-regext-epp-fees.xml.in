@@ -585,15 +585,8 @@
           &lt;fee:delData&gt; element, which contains the following child
           elements:</t>
 
-          <t><list style="symbols">
-            <t>A &lt;fee:currency&gt; element;</t>
-
-            <t>Zero or more &lt;fee:credit&gt; elements;</t>
-
-            <t>An OPTIONAL &lt;fee:balance&gt; element;</t>
-
-            <t>An OPTIONAL &lt;fee:creditLimit&gt; element.</t>
-          </list></t>
+          <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" parse="xml"
+            href="transform-response-elements.xml" />
 
           <t>If no credit has been assessed by the server for this transaction,
           a &lt;fee:delData&gt; element MUST NOT be included in the response.</t>
@@ -855,7 +848,7 @@ END</artwork></figure>
       suggestions:</t>
       <t><list style="symbols">
         <t>James Gould and Scott Hollenbeck of Verisign</t>
-        <t>Luis Mu&#241;oz of ISC</t>
+        <t>Luis Mu&#241;oz of Uniregistry</t>
         <t>Michael Young of Architelos</t>
         <t>Ben Levac and Jeff Eckhaus of Demand Media</t>
         <t>Seth Goldman and Brian Mountford of Google</t>
@@ -986,6 +979,8 @@ END</artwork></figure>
           <t>Minor typographic corrections.</t>
           <t>The schema was updated to allow &lt;balance&gt; and &lt;creditLimit&gt; elements
           in &lt;transfer&gt; responses, as the text stated.</t>
+          <t>Allow &lt;fee:fee&gt; elements in &lt;delete&gt; responses (suggested by
+          Luis Mu&#241;oz)</t>
         </list></t>
       </section>
     </section>

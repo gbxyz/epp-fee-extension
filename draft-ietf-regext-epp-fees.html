@@ -147,7 +147,7 @@
 <tr><td class="header">Internet Engineering Task Force</td><td class="header">G. Brown</td></tr>
 <tr><td class="header">Internet-Draft</td><td class="header">CentralNic Group plc</td></tr>
 <tr><td class="header">Intended status: Standards Track</td><td class="header">J. Frakes</td></tr>
-<tr><td class="header">Expires: November 7, 2016</td><td class="header">May 6, 2016</td></tr>
+<tr><td class="header">Expires: November 17, 2016</td><td class="header">May 16, 2016</td></tr>
 </table></td></tr></table>
 <h1><br />Registry Fee Extension for
     the Extensible Provisioning Protocol (EPP)<br />draft-ietf-regext-epp-fees-00</h1>
@@ -172,7 +172,7 @@ and may be updated, replaced, or obsoleted by other documents at any time.
 It is inappropriate to use Internet-Drafts as reference material or to cite
 them other than as &ldquo;work in progress.&rdquo;</p>
 <p>
-This Internet-Draft will expire on November 7, 2016.</p>
+This Internet-Draft will expire on November 17, 2016.</p>
 
 <h3>Copyright Notice</h3>
 <p>
@@ -1044,6 +1044,8 @@ EPP &lt;delete&gt; Command</h3>
 <ul class="text">
 <li>A &lt;fee:currency&gt; element;
 </li>
+<li>Zero or more &lt;fee:fee&gt; elements;
+</li>
 <li>Zero or more &lt;fee:credit&gt; elements;
 </li>
 <li>An OPTIONAL &lt;fee:balance&gt; element;
@@ -1432,17 +1434,17 @@ BEGIN
   &lt;!--
   Child elements found in EPP commands and responses
   --&gt;
-  &lt;element name="check" type="fee:checkType" /&gt;
-  &lt;element name="chkData" type="fee:chkDataType" /&gt;
-  &lt;element name="create" type="fee:transformCommandType" /&gt;
-  &lt;element name="creData" type="fee:transformResultType" /&gt;
-  &lt;element name="renew" type="fee:transformCommandType" /&gt;
-  &lt;element name="renData" type="fee:transformResultType" /&gt;
+  &lt;element name="check"    type="fee:checkType" /&gt;
+  &lt;element name="chkData"  type="fee:chkDataType" /&gt;
+  &lt;element name="create"   type="fee:transformCommandType" /&gt;
+  &lt;element name="creData"  type="fee:transformResultType" /&gt;
+  &lt;element name="renew"    type="fee:transformCommandType" /&gt;
+  &lt;element name="renData"  type="fee:transformResultType" /&gt;
   &lt;element name="transfer" type="fee:transformCommandType" /&gt;
-  &lt;element name="trnData" type="fee:transferResultType" /&gt;
-  &lt;element name="update" type="fee:transformCommandType" /&gt;
-  &lt;element name="updData" type="fee:transformResultType" /&gt;
-  &lt;element name="delData" type="fee:deleteDataType" /&gt;
+  &lt;element name="trnData"  type="fee:transferResultType" /&gt;
+  &lt;element name="update"   type="fee:transformCommandType" /&gt;
+  &lt;element name="updData"  type="fee:transformResultType" /&gt;
+  &lt;element name="delData"  type="fee:transformResultType" /&gt;
 
   &lt;!--
   client &lt;check&gt; command
@@ -1507,7 +1509,7 @@ BEGIN
   &lt;/complexType&gt;
 
   &lt;!--
-    general transform (create, renew, update) result
+    general transform (create, renew, update, delete) result
   --&gt;
   &lt;complexType name="transformResultType"&gt;
     &lt;sequence&gt;
@@ -1539,21 +1541,6 @@ BEGIN
       &lt;element name="credit" type="fee:creditType"
         minOccurs="0" maxOccurs="unbounded" /&gt;
 
-      &lt;element name="balance" type="fee:balanceType"
-        minOccurs="0" /&gt;
-      &lt;element name="creditLimit" type="fee:creditLimitType"
-        minOccurs="0" /&gt;
-    &lt;/sequence&gt;
-  &lt;/complexType&gt;
-
-  &lt;!--
-    delete result
-  --&gt;
-  &lt;complexType name="deleteDataType"&gt;
-    &lt;sequence&gt;
-      &lt;element name="currency" type="fee:currencyType" /&gt;
-      &lt;element name="credit" type="fee:creditType"
-        minOccurs="0" maxOccurs="unbounded" /&gt;
       &lt;element name="balance" type="fee:balanceType"
         minOccurs="0" /&gt;
       &lt;element name="creditLimit" type="fee:creditLimitType"
@@ -1754,7 +1741,7 @@ Acknowledgements</h3>
 <ul class="text">
 <li>James Gould and Scott Hollenbeck of Verisign
 </li>
-<li>Luis Mu&#241;oz of ISC
+<li>Luis Mu&#241;oz of Uniregistry
 </li>
 <li>Michael Young of Architelos
 </li>
@@ -1981,6 +1968,9 @@ Changes from draft-brown-epp-fees-07 to draft-ietf-regext-epp-fees-00</h3>
 </li>
 <li>The schema was updated to allow &lt;balance&gt; and &lt;creditLimit&gt; elements
           in &lt;transfer&gt; responses, as the text stated.
+</li>
+<li>Allow &lt;fee:fee&gt; elements in &lt;delete&gt; responses (suggested by
+          Luis Mu&#241;oz)
 </li>
 </ol>
 
