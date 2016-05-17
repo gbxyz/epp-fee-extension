@@ -33,6 +33,8 @@
             description="Registration Fee"
             refundable="1"
             grace-period="P5D">5.00</fee:fee>
+          <fee:cmdDate
+            >2016-05-17T13:22:21.0Z</fee:cmdDate>
         </fee:cd>
         <fee:cd avail="1">
           <fee:object>
@@ -45,6 +47,8 @@
             description="Registration Fee"
             refundable="1"
             grace-period="P5D">5.00</fee:fee>
+          <fee:cmdDate
+            >2016-05-17T13:22:21.0Z</fee:cmdDate>
         </fee:cd>
         <fee:cd avail="0">
           <fee:object>
@@ -56,6 +60,8 @@
           <fee:reason>
             minimum period is 2 years.
           </fee:reason>
+          <fee:cmdDate
+            >2016-05-17T13:22:21.0Z</fee:cmdDate>
         </fee:cd>
       </fee:chkData>
     </extension>

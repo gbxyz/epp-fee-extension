@@ -13,6 +13,8 @@
       <fee:check xmlns:fee="urn:ietf:params:xml:ns:fee-0.12">
         <fee:command>create</fee:command>
         <fee:currency>USD</fee:currency>
+        <fee:cmdDate
+          >2016-05-17T13:22:21.0Z</fee:cmdDate>
       </fee:check>
     </extension>
     <clTRID>ABC-12345</clTRID>

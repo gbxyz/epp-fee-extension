@@ -376,6 +376,28 @@
 
     </section>
 
+    <section title="Retrieving Future Fee Information">
+      <t>Sometimes, the time interval between when a client queries the
+      fee for a command, and when that command takes place, is long enough that
+      there is a non-negligible probability that the fee might change in
+      the intervening time.</t>
+
+      <t>To ensure that clients can obtain the most accurate fee information
+      in such circumstances, clients can include a &lt;fee:cmdDate&gt; element
+      in fee &lt;check&gt; commands, to indicate the anticipated date and time
+      of a billable transaction.</t>
+
+      <t>If a server receives a command containing a &lt;fee:cmdDate&gt; element,
+      and the server is unable to provide accurate fee information for the given
+      date and time, then it MUST respond with a 2306 "Parameter value policy
+      error" error. Otherwise, the server MUST return fee information that will
+      prevail at the date and time provided.</t>
+
+      <t>This extension provides no mechanism to enforce the application of these
+      fees when the command is subsequently submitted; servers MUST reject commands
+      which include incorrect fee information, as described above.</t>
+    </section>
+
     <section title="EPP Command Mapping">
 
       <t>A detailed description of the EPP syntax and semantics can be found in
@@ -401,6 +423,8 @@
             <t>An OPTIONAL &lt;fee:period&gt; element.</t>
 
             <t>An OPTIONAL &lt;fee:class&gt; element.</t>
+
+            <t>An OPTIONAL &lt;fee:cmdDate&gt; element.</t>
           </list></t>
 
           <t>Example &lt;check&gt; command:</t>
@@ -431,7 +455,7 @@
 
             <t>A &lt;fee:command&gt; element, which contains the same command
             that appeared in the corresponding &lt;fee:command&gt; element in the
-	    command. This element MAY have the OPTIONAL "phase" and "subphase" elements, 
+            command. This element MAY have the OPTIONAL "phase" and "subphase" elements, 
             which MUST match the same attributes in the corresponding
             &lt;fee:command&gt; element in the command.</t>
 
@@ -454,6 +478,10 @@
             <t>An OPTIONAL &lt;fee:class&gt; element.</t>
 
             <t>An OPTIONAL &lt;fee:reason&gt; element.</t>
+
+            <t>An OPTIONAL &lt;fee:cmdDate&gt; element, which contains the same
+            date and time that appeared in the &lt;fee:check&gt; element of
+            the command.</t>
           </list></t>
 
           <t>If no &lt;fee:fee&gt; elements are present in a &lt;fee:cd&gt;
@@ -981,6 +1009,7 @@ END</artwork></figure>
           in &lt;transfer&gt; responses, as the text stated.</t>
           <t>Allow &lt;fee:fee&gt; elements in &lt;delete&gt; responses (suggested by
           Luis Mu&#241;oz)</t>
+	  <t>Added &lt;fee:cmdDate&gt; element in fee &lt;check&gt; commands.</t>
         </list></t>
       </section>
     </section>
