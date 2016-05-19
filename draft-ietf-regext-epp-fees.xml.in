@@ -396,6 +396,15 @@
       <t>This extension provides no mechanism to enforce the application of these
       fees when the command is subsequently submitted; servers MUST reject commands
       which include incorrect fee information, as described above.</t>
+
+      <t>If a server knows that the fee information it is returning to a client
+      is going to change in the future, it MAY include &lt;fee:notAfter&gt;
+      elements in &lt;check&gt; responses. This element contains a date and time
+      after which the provided fee information will no longer apply. Clients which
+      receive a response from a server which contain &lt;fee:notAfter&gt; elements
+      may then re-query for the fee information (using the &lt;fee:cmdDate&gt;
+      element) described above if the value of the &lt;fee:notAfter&gt; element
+      is before the anticipated time when the command will be submitted.</t>
     </section>
 
     <section title="EPP Command Mapping">
@@ -1010,6 +1019,7 @@ END</artwork></figure>
           <t>Allow &lt;fee:fee&gt; elements in &lt;delete&gt; responses (suggested by
           Luis Mu&#241;oz)</t>
 	  <t>Added &lt;fee:cmdDate&gt; element in fee &lt;check&gt; commands.</t>
+	  <t>Added &lt;fee:notAfter&gt; element in fee &lt;check&gt; responses.</t>
         </list></t>
       </section>
     </section>

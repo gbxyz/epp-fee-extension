@@ -147,7 +147,7 @@
 <tr><td class="header">Internet Engineering Task Force</td><td class="header">G. Brown</td></tr>
 <tr><td class="header">Internet-Draft</td><td class="header">CentralNic Group plc</td></tr>
 <tr><td class="header">Intended status: Standards Track</td><td class="header">J. Frakes</td></tr>
-<tr><td class="header">Expires: November 18, 2016</td><td class="header">May 17, 2016</td></tr>
+<tr><td class="header">Expires: November 20, 2016</td><td class="header">May 19, 2016</td></tr>
 </table></td></tr></table>
 <h1><br />Registry Fee Extension for
     the Extensible Provisioning Protocol (EPP)<br />draft-ietf-regext-epp-fees-00</h1>
@@ -172,7 +172,7 @@ and may be updated, replaced, or obsoleted by other documents at any time.
 It is inappropriate to use Internet-Drafts as reference material or to cite
 them other than as &ldquo;work in progress.&rdquo;</p>
 <p>
-This Internet-Draft will expire on November 18, 2016.</p>
+This Internet-Draft will expire on November 20, 2016.</p>
 
 <h3>Copyright Notice</h3>
 <p>
@@ -656,6 +656,15 @@ Retrieving Future Fee Information</h3>
 <p>This extension provides no mechanism to enforce the application of these
       fees when the command is subsequently submitted; servers MUST reject commands
       which include incorrect fee information, as described above.
+</p>
+<p>If a server knows that the fee information it is returning to a client
+      is going to change in the future, it MAY include &lt;fee:notAfter&gt;
+      elements in &lt;check&gt; responses. This element contains a date and time
+      after which the provided fee information will no longer apply. Clients which
+      receive a response from a server which contain &lt;fee:notAfter&gt; elements
+      may then re-query for the fee information (using the &lt;fee:cmdDate&gt;
+      element) described above if the value of the &lt;fee:notAfter&gt; element
+      is before the anticipated time when the command will be submitted.
 </p>
 <a name="anchor12"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
@@ -1535,6 +1544,8 @@ BEGIN
        &lt;element name="reason" type="token" minOccurs="0" /&gt;
        &lt;element name="cmdDate" type="dateTime"
          minOccurs="0" /&gt;
+         &lt;element name="notAfter" type="dateTime"
+           minOccurs="0" /&gt;
     &lt;/sequence&gt;
     &lt;attribute name="avail" type="boolean" default="1" /&gt;
   &lt;/complexType&gt;
@@ -2018,6 +2029,8 @@ Changes from draft-brown-epp-fees-07 to draft-ietf-regext-epp-fees-00</h3>
           Luis Mu&#241;oz)
 </li>
 <li>Added &lt;fee:cmdDate&gt; element in fee &lt;check&gt; commands.
+</li>
+<li>Added &lt;fee:notAfter&gt; element in fee &lt;check&gt; responses.
 </li>
 </ol>
 

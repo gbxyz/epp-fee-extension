@@ -78,6 +78,8 @@
        <element name="reason" type="token" minOccurs="0" />
        <element name="cmdDate" type="dateTime"
          minOccurs="0" />
+         <element name="notAfter" type="dateTime"
+           minOccurs="0" />
     </sequence>
     <attribute name="avail" type="boolean" default="1" />
   </complexType>
