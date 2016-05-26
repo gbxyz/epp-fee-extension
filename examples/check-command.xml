@@ -11,10 +11,17 @@
     </check>
     <extension>
       <fee:check xmlns:fee="urn:ietf:params:xml:ns:fee-0.12">
-        <fee:command>create</fee:command>
         <fee:currency>USD</fee:currency>
-        <fee:cmdDate
-          >2016-05-17T13:22:21.0Z</fee:cmdDate>
+        <fee:command name="create" />
+        <fee:command name="create" phase="sunrise">
+          <fee:date>2017-05-17T13:22:21.0Z</fee:date>
+	</fee:command>
+        <fee:command name="create">
+          <fee:period unit="y">2</fee:period>
+        </fee:command>
+        <fee:command name="renew">
+          <fee:class>standard</fee:class>
+        </fee:command>
       </fee:check>
     </extension>
     <clTRID>ABC-12345</clTRID>

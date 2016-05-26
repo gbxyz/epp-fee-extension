@@ -35,16 +35,30 @@
   -->
   <complexType name="checkType">
     <sequence>
-      <element name="command" type="fee:commandType" />
-      <element name="currency" type="fee:currencyType"
+      <element name="currency"
+        type="fee:currencyType"
         minOccurs="0" />
-      <element name="period" type="domain:periodType"
+      <element name="command"
+	type="fee:commandCheckType"
+        maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+
+  <complexType name="commandCheckType">
+    <sequence>
+      <element name="period"
+        type="domain:periodType"
         minOccurs="0" />
-      <element name="class" type="token"
+      <element name="class"
+        type="token"
         minOccurs="0" />
-      <element name="cmdDate" type="dateTime"
+      <element name="date"
+        type="dateTime"
         minOccurs="0" />
     </sequence>
+    <attribute name="name" type="fee:commandTypeValue" />
+    <attribute name="phase" type="token" />
+    <attribute name="subphase" type="token" />
   </complexType>
 
   <!--
@@ -52,6 +66,7 @@
   -->
   <complexType name="chkDataType">
     <sequence>
+      <element name="currency" type="fee:currencyType" />
       <element name="cd" type="fee:objectCDType"
         maxOccurs="unbounded" />
     </sequence>
@@ -66,22 +81,40 @@
           </sequence>
         </complexType>
       </element>
-      <element name="command" type="fee:commandType" />
-      <element name="currency" type="fee:currencyType" />
-      <element name="period" type="domain:periodType"
+      <element name="command"
+        type="fee:commandCDType"
+        maxOccurs="unbounded" />
+    </sequence>
+  </complexType>
+
+  <complexType name="commandCDType">
+    <sequence>
+      <element name="period"
+        type="domain:periodType"
         minOccurs="0" maxOccurs="1" />
-      <element name="fee" type="fee:feeType"
-         minOccurs="0" maxOccurs="unbounded" />
-      <element name="credit" type="fee:creditType"
-         minOccurs="0" maxOccurs="unbounded" />
-       <element name="class" type="token" minOccurs="0" />
-       <element name="reason" type="token" minOccurs="0" />
-       <element name="cmdDate" type="dateTime"
-         minOccurs="0" />
-         <element name="notAfter" type="dateTime"
-           minOccurs="0" />
+      <element name="fee"
+        type="fee:feeType"
+        minOccurs="0" maxOccurs="unbounded" />
+      <element name="credit"
+        type="fee:creditType"
+        minOccurs="0" maxOccurs="unbounded" />
+      <element name="class"
+        type="token"
+        minOccurs="0" />
+      <element name="reason"
+        type="token"
+        minOccurs="0" />
+      <element name="date"
+        type="dateTime"
+        minOccurs="0" />
+      <element name="notAfter"
+        type="dateTime"
+        minOccurs="0" />
     </sequence>
     <attribute name="avail" type="boolean" default="1" />
+    <attribute name="name" type="fee:commandTypeValue" />
+    <attribute name="phase" type="token" />
+    <attribute name="subphase" type="token" />
   </complexType>
 
   <!--
@@ -146,15 +179,6 @@
       <pattern value="[A-Z]{3}" />
     </restriction>
   </simpleType>
-
-  <complexType name="commandType">
-    <simpleContent>
-      <extension base="fee:commandTypeValue">
-        <attribute name="phase" type="token" />
-        <attribute name="subphase" type="token" />
-      </extension>
-    </simpleContent>
-  </complexType>
 
   <simpleType name="commandTypeValue">
     <restriction base="token">

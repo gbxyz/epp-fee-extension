@@ -20,48 +20,114 @@
     </resData>
     <extension>
       <fee:chkData
-          xmlns:fee="urn:ietf:params:xml:ns:fee-0.12"
-          xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
-        <fee:cd avail="1">
+        xmlns:fee="urn:ietf:params:xml:ns:fee-0.12"
+        xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
+        <fee:currency>USD</fee:currency>
+        <fee:cd>
           <fee:object>
             <domain:name>example.com</domain:name>
           </fee:object>
-          <fee:command>create</fee:command>
-          <fee:currency>USD</fee:currency>
-          <fee:period unit="y">1</fee:period>
-          <fee:fee
-            description="Registration Fee"
-            refundable="1"
-            grace-period="P5D">5.00</fee:fee>
-          <fee:cmdDate
-            >2016-05-17T13:22:21.0Z</fee:cmdDate>
+          <fee:command name="create">
+            <fee:period unit="y">1</fee:period>
+            <fee:fee
+              description="Registration Fee"
+              refundable="1" grace-period="P5D"
+            >10.00</fee:fee>
+          </fee:command>
+          <fee:command name="create" phase="sunrise">
+           <fee:period unit="y">1</fee:period>
+            <fee:fee
+              description="Registration Fee"
+              refundable="1" grace-period="P5D"
+            >10.00</fee:fee>
+            <fee:fee
+              description="Application Fee">
+              50.00</fee:fee>
+            <fee:date>2017-05-17T13:22:21.0Z</fee:date>
+          </fee:command>
+          <fee:command name="create" avail="0">
+            <fee:period unit="y">2</fee:period>
+            <fee:reason>maximum validity period is
+              1 year</fee:reason>
+          </fee:command>
+          <fee:command name="renew">
+            <fee:period unit="y">1</fee:period>
+            <fee:fee
+              description="Renewal Fee"
+              refundable="1" grace-period="P5D"
+            >10.00</fee:fee>
+            <fee:class>standard</fee:class>
+          </fee:command>
         </fee:cd>
-        <fee:cd avail="1">
+        <fee:cd>
           <fee:object>
             <domain:name>example.net</domain:name>
           </fee:object>
-          <fee:command>create</fee:command>
-          <fee:currency>USD</fee:currency>
-          <fee:period unit="y">1</fee:period>
-          <fee:fee
-            description="Registration Fee"
-            refundable="1"
-            grace-period="P5D">5.00</fee:fee>
-          <fee:cmdDate
-            >2016-05-17T13:22:21.0Z</fee:cmdDate>
+          <fee:command name="create">
+            <fee:period unit="y">1</fee:period>
+            <fee:fee
+              description="Registration Fee"
+              refundable="1" grace-period="P5D"
+            >5.00</fee:fee>
+          </fee:command>
+          <fee:command
+            name="create" phase="sunrise"
+             avail="0">
+            <fee:period unit="y">1</fee:period>
+            <fee:reason>sunrise not
+              available</fee:reason>
+            <fee:date>2017-05-17T13:22:21.0Z</fee:date>
+          </fee:command>
+          <fee:command name="create">
+            <fee:period unit="y">2</fee:period>
+            <fee:fee
+              description="Registration Fee"
+              refundable="1" grace-period="P5D"
+            >10.00</fee:fee>
+          </fee:command>
+          <fee:command name="renew">
+            <fee:period unit="y">1</fee:period>
+            <fee:fee
+              description="Renewal Fee"
+              refundable="1" grace-period="P5D"
+            >10.00</fee:fee>
+            <fee:class>standard</fee:class>
+          </fee:command>
         </fee:cd>
-        <fee:cd avail="0">
+        <fee:cd>
           <fee:object>
             <domain:name>example.xyz</domain:name>
           </fee:object>
-          <fee:command>create</fee:command>
-          <fee:currency>USD</fee:currency>
-          <fee:period unit="y">1</fee:period>
-          <fee:reason>
-            minimum period is 2 years.
-          </fee:reason>
-          <fee:cmdDate
-            >2016-05-17T13:22:21.0Z</fee:cmdDate>
+          <fee:command name="create">
+            <fee:period unit="y">1</fee:period>
+            <fee:fee
+              description="Registration Fee"
+              refundable="1" grace-period="P5D"
+            >5.00</fee:fee>
+          </fee:command>
+          <fee:command
+            name="create" phase="sunrise"
+             avail="0">
+            <fee:period unit="y">1</fee:period>
+            <fee:reason>sunrise not
+              available</fee:reason>
+            <fee:date>2017-05-17T13:22:21.0Z</fee:date>
+          </fee:command>
+          <fee:command name="create">
+            <fee:period unit="y">2</fee:period>
+            <fee:fee
+              description="Registration Fee"
+              refundable="1" grace-period="P5D"
+            >10.00</fee:fee>
+          </fee:command>
+          <fee:command name="renew">
+            <fee:period unit="y">1</fee:period>
+            <fee:fee
+              description="Renewal Fee"
+              refundable="1" grace-period="P5D"
+            >10.00</fee:fee>
+            <fee:class>standard</fee:class>
+          </fee:command>
         </fee:cd>
       </fee:chkData>
     </extension>
